@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
-<script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
-<script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
-  <body style='margin : 0px; overflow: hidden;'>
+<head>
+    <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            
+        });
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
-      <a-marker preset="hiro">
-          <a-box position='0 0.5 0' material='color: yellow;'></a-box>
-      </a-marker>
-      <a-entity camera></a-entity>
+        <a-marker preset="hiro">
+            <a-entity geometry="primitive:sphere; radius: 1;" position='0 0.5 0' material='color: yellow;'></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
     </a-scene>
-  </body>
+</body>
 </html>
