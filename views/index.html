@@ -6,6 +6,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             console.log("Hello, World!");
+            document.getElementById("secondary-marker").setAttribute("patternRatio", "0.9");
         });
     </script>
 </head>
@@ -19,7 +20,7 @@
             <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #earth-planet-object-texture'></a-entity>
         </a-marker>
         
-        <a-marker type="pattern" url="../media/pattern/ssshh.patt" patternRatio="0.9">
+        <a-marker id="secondary-marker" type="pattern" url="../media/pattern/ssshh.patt">
             <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #venus-planet-object-texture'></a-entity>
         </a-marker>
         
