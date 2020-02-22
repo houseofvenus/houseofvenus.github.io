@@ -1,25 +1,24 @@
-# BARS And Restaurants (B.A.R.s)
-## a DIA for exploring local dining venues and evening entertainment options
-### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130)
-### Minu BIDZIMOU
-### Elven
+# House of Venus
+## an MD-Benefit Corporation providing city-as-a-service infrastructure for communities in the United States and abroad.
+### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130) , founder/ceo
+### Beatrice GOMA [] , lead (kdf)
 
 ## Getting Started
-### To view the master branch of the app deployed by HoV do the following:
+### View the master branch of our landing page and connect to HoV services:
 
-* pARk: @bars
-* WWW: http://houseofven.us/bars
+* pARk: @home
+* WWW: http://houseofven.us/
 
-### To install a local copy and start developing do the following:
+### Review the introduction to principles of ATOWN and programming in Lyoko:
 
+pARk
+1. Tap ARia and ask for a new town ("Add a new town to the scene", "Build me a new town", "May I have a blank city please", etc.)
+
+WWW
 1. Open your Terminal (on Mac/Linux) or your PowerShell (Windows) console
-2. Make a new directory named "bar"
-3. In you console enter: cd ./bar
-4. Then: git clone {input url corresponding to languages desired, see list below}
-
-* For Lyoko+JS:  https://github.com/houseofvenus/bar.git
-* For JavaScript only: https://github.com/houseofvenus/bar-js.git
-* For Lyoko only: https://github.com/houseofvenus/bar-lyoko.git
+2. Make a new directory named "atown"
+3. In you console enter: cd ./atown
+4. Then: git clone https://github.com/houseofvenus/mytown.git
 
 ## Testing
 
@@ -50,7 +49,10 @@
 ### If deploying to some other system:
 
 Built With
-* ATOWN
+* C/C++
+* Python
+* JavaScript
+* Lyoko
 * Brackets
 
 ## Contributors
