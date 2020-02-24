@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("Hello, World!");
+        });
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+        <a-assets>
+            <img id="mercury-planet-object-texture" src="../media/texture/mercurymap.jpg" preload="true" />
+            <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />
+            <img id="venus-planet-object-texture" src="../media/texture/venusmap.jpg" preload="true" />
+            <img id="mars-planet-object-texture" src="../media/texture/marsmap1k.jpg" preload="true" />
+            <img id="jupiter-planet-object-texture" src="../media/texture/jupiter2_2k.jpg" preload="true" />
+            <img id="saturn-planet-object-texture" src="../media/texture/saturnmap.jpg" preload="true" />
+            <img id="neptune-planet-object-texture" src="../media/texture/neptunemap.jpg" preload="true" />
+            <img id="uranus-planet-object-texture" src="../media/texture/uranusmap.jpg" preload="true" />
+            <img id="pluto-planet-object-texture" src="../media/texture/plutomap1k.jpg" preload="true" />
+        </a-assets>
+        <a-marker id="marker-0" type="pattern" url="../media/pattern/pattern-princeton-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #saturn-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-marker id="marker-1" type="pattern" url="../media/pattern/pattern-harvard-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #earth-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-marker id="marker-2" type="pattern" url="../media/pattern/pattern-yale-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #mercury-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-marker id="marker-3" type="pattern" url="../media/pattern/pattern-brown-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #mars-planet-object-texture'></a-entity>
+        </a-marker>
+        <a-marker id="marker-4" type="pattern" url="../media/pattern/pattern-mit-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #venus-planet-object-texture'></a-entity>
+        </a-marker>
+        <a-marker id="marker-5" type="pattern" url="../media/pattern/pattern-dartmouth-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #jupiter-planet-object-texture'></a-entity>
+        </a-marker>
+        <a-marker id="marker-6" type="pattern" url="../media/pattern/pattern-cornell-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #neptune-planet-object-texture'></a-entity>
+        </a-marker>
+        <a-marker id="marker-7" type="pattern" url="../media/pattern/pattern-penn-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #uranus-planet-object-texture'></a-entity>
+        </a-marker>
+        <a-marker id="marker-8" type="pattern" url="../media/pattern/pattern-penn-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #pluto-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
