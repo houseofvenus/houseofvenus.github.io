@@ -38,17 +38,19 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             console.log("Hello, World!");
+            
+            document.getElementById("play-button").addEventListener("click", function(){
+                document.getElementById("test-video").play();
+            });
         });
         
-        document.getElementById("play-button").addEventListener("click", function(){
-            document.getElementById("test-video").play();
-        });
+        
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <div id="play-button">play</div>
     <a-scene embedded arjs>
-        <a-assets>
+        <a-assets timeout="10000">
             <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />
             <video id="test-video" autoplay="true" loop="true" src="../media/vid/test.mp4"></video>
         </a-assets>
