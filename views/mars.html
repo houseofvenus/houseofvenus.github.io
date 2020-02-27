@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mars Report DIA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #play-button{
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px white solid;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            font-family: monospace;
+            cursor: pointer;
+            z-index: 500;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        
+        #play-button:hover{
+            background-color: rgba(255, 255, 255, 1.0);
+            color: black;
+        }
+    </style>
+    <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("Hello, World!");
+            
+            document.getElementById("play-button").addEventListener("click", function(){
+                document.getElementById("test-video").play();
+            });
+        });
+        
+        
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <div id="play-button">play</div>
+    <a-scene embedded arjs>
+        <a-assets timeout="10000">
+            <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />
+            <video id="test-video" autoplay="true" loop="true" src="../media/vid/test.mp4"></video>
+        </a-assets>
+      
+        <a-marker preset="hiro">
+            <a-video src="#test-video" width="3" height="6" position="0 0 0" rotation="-90 0 0"></a-video>
+        </a-marker>
+        
+        <a-marker type="pattern" url="../media/pattern/pattern-nasa-crest-logo.patt">
+            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #earth-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
