@@ -44,6 +44,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             console.log("Hello, World!");
+            let maidenStart = true;
             let videoPlaying = false;
             
             document.getElementById("play-button").addEventListener("click", function(){
@@ -52,8 +53,18 @@
                     videoPlaying = false;
                 }
                 else{
-                    document.getElementById("test-video").play();
-                    videoPlaying = true;
+                    let timer = 0;
+                    
+                    if(maidenStart){
+                        document.getElementById("video-container").click();
+                        timer = 5050;
+                        maidenStart = false;
+                    }
+                    
+                    setTimeout(function(){
+                        document.getElementById("test-video").play();
+                        videoPlaying = true;
+                    }, timer);
                 }
             });
         });
@@ -65,23 +76,15 @@
         <a-assets>
             <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />
             <img id="discovery-album-cover" src="../media/img/discovery-cover.png" preload="true" />
-            <!--<img id="venus-planet-object-texture" src="../media/texture/venusmap.jpg" preload="true" />
-            <img id="mars-planet-object-texture" src="../media/texture/marsmap1k.jpg" preload="true" />-->
+            <video id="test-video" autoplay="true" loop="true" src="../media/vid/one-more-time.mp4" preload="true"></video>
         </a-assets>
         
         <a-marker preset="hiro">
-            <a-entity geometry="primitive: plane; width: 1; height: 1;" rotation="-90 0 0" material="src: #discovery-album-cover; side: double;" position="0 0.2 0"></a-entity>
-            <a-video src="#test-video" width="4" height="3" position="0 -0.5 0" rotation="-90 0 0"></a-video>
-            <!--<a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #earth-planet-object-texture'></a-entity>-->
+            <a-entity geometry="primitive: plane; width: 1; height: 1;" rotation="-90 0 0" material="src: #discovery-album-cover; side: double;" position="0 0.2 0">
+            </a-entity>
+            <a-video id="video-container" src="#test-video" width="4" height="3" position="0 -0.5 0" rotation="-90 0 0" animation__rotate="property: rotation; to: 0 0 0; loop: false; dur: 5000; easing: linear; autoplay: false; startEvents: click" animation__lift="property: position; to: 0 0.5 0; loop: false; dur: 5000; easing: linear; autoplay: false; startEvents: click">
+            </a-video>
         </a-marker>
-        
-       <!-- <a-marker id="secondary-marker" type="pattern" url="../media/pattern/ssshh.patt">
-            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #venus-planet-object-texture'></a-entity>
-        </a-marker>
-        
-        <a-marker id="tertiary-marker" type="pattern" url="../media/pattern/pattern-discovery-cover-white.patt">
-            <a-entity geometry="primitive:sphere; radius: 0.5;" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear" position='0 0.5 0' material='src: #mars-planet-object-texture'></a-entity>
-        </a-marker>-->
         
         <a-entity camera></a-entity>
     </a-scene>
