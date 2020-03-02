@@ -43,10 +43,7 @@
         #play-button:hover{
             /*background-color: rgba(255, 255, 255, 1.0);
             color: black;*/
-            background-image: url("../media/img/pause-button.png");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center center;
+            border: 2px black solid;
         }
     </style>
     <script>
@@ -56,26 +53,22 @@
             let videoPlaying = false;
             setTimeout(function(){
                 document.getElementById("test-video").pause();
-            }, 1000);
+            }, 500);
             
             document.getElementById("play-button").addEventListener("click", function(){
                 if(videoPlaying){
                     document.getElementById("test-video").pause();
                     videoPlaying = false;
+                    
+                    document.getElementById("play-button").style.backgroundImage = `url("../media/img/play-button.png")`;
                 }
                 else{
                     let timer = 0;
                     
-                    /*if(maidenStart){
-                        document.getElementById("video-container").click();
-                        timer = 5050;
-                        maidenStart = false;
-                    }*/
+                    document.getElementById("test-video").play();
+                    videoPlaying = true;
                     
-                   // setTimeout(function(){
-                        document.getElementById("test-video").play();
-                        videoPlaying = true;
-                    //}, timer);
+                    document.getElementById("play-button").style.backgroundImage = `url("../media/img/pause-button.png")`;
                 }
             });
         });
