@@ -25,12 +25,16 @@
             font-family: monospace;
             cursor: pointer;
             z-index: 500;
-            transition: background-color 0.5s, color 0.5s;
+            /*transition: background-color 0.5s, color 0.5s;*/
         }
         
         #play-button:hover{
-            background-color: rgba(255, 255, 255, 1.0);
-            color: black;
+            /*background-color: rgba(255, 255, 255, 1.0);
+            color: black;*/
+            background-image: url("../media/img/play-button.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
     </style>
     <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
@@ -46,7 +50,7 @@
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <div id="play-button">play</div>
+    <div id="play-button"></div>
     <a-scene embedded arjs>
         <a-assets timeout="10000">
             <!--
