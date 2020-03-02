@@ -52,7 +52,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             console.log("Hello, World!");
-            let maidenStart = true;
+            //let maidenStart = true;
             let videoPlaying = false;
             
             document.getElementById("play-button").addEventListener("click", function(){
@@ -63,11 +63,11 @@
                 else{
                     let timer = 0;
                     
-                    if(maidenStart){
+                    /*if(maidenStart){
                         document.getElementById("video-container").click();
                         timer = 5050;
                         maidenStart = false;
-                    }
+                    }*/
                     
                     setTimeout(function(){
                         document.getElementById("test-video").play();
