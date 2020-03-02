@@ -54,6 +54,9 @@
             console.log("Hello, World!");
             //let maidenStart = true;
             let videoPlaying = false;
+            setTimeout(function(){
+                document.getElementById("test-video").pause();
+            }, 1000);
             
             document.getElementById("play-button").addEventListener("click", function(){
                 if(videoPlaying){
@@ -69,10 +72,10 @@
                         maidenStart = false;
                     }*/
                     
-                    setTimeout(function(){
+                   // setTimeout(function(){
                         document.getElementById("test-video").play();
                         videoPlaying = true;
-                    }, timer);
+                    //}, timer);
                 }
             });
         });
