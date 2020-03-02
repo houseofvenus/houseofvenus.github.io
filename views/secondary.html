@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #play-button{
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px white solid;
+            /*background-color: rgba(255, 255, 255, 0.2);
+            color: white;*/
+            text-align: center;
+            line-height: 100px;
+            font-family: monospace;
+            cursor: pointer;
+            z-index: 500;
+            /*transition: background-color 0.5s, color 0.5s;*/
+            background-image: url("../media/img/play-button.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        #play-button:hover{
+            /*background-color: rgba(255, 255, 255, 1.0);
+            color: black;*/
+            border: 2px black solid;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("Hello, World!");
+            //let maidenStart = true;
+            let videoPlaying = false;
+            setTimeout(function(){
+                document.getElementById("test-video").pause();
+            }, 500);
+            
+            document.getElementById("play-button").addEventListener("click", function(){
+                if(videoPlaying){
+                    document.getElementById("test-video").pause();
+                    videoPlaying = false;
+                    
+                    document.getElementById("play-button").style.backgroundImage = `url("../media/img/play-button.png")`;
+                }
+                else{
+                    let timer = 0;
+                    
+                    document.getElementById("test-video").play();
+                    videoPlaying = true;
+                    
+                    document.getElementById("play-button").style.backgroundImage = `url("../media/img/pause-button.png")`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="play-button"></div>
+    <a-scene embedded arjs>
+        <a-assets>
+            <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />
+            <img id="discovery-album-cover" src="../media/img/discovery-cover.png" preload="true" />
+            <video id="test-video" autoplay="false" loop="false" src="../media/vid/one-more-time.mp4" preload="true"></video>
+        </a-assets>
+        
+        <a-marker id="unibeat-cover" type="pattern" url="../media/pattern/pattern-france-flag.patt">
+            <a-entity id="panel-cover"
+                      geometry="primitive: plane; width: 2; height: 2;"
+                      rotation="-90 0 0"
+                      material="src: #discovery-album-cover; side: double;"
+                      position="0 0 0">
+            </a-entity>
+            <a-video id="video-container"
+                     src="#test-video"
+                     width="3"
+                     height="2.25"
+                     position="0 -0.5 0"
+                     rotation="-90 0 0"
+                     animation__lift="property: position; to: 0 0.5 0; loop: false; dur: 5000; easing: linear; autoplay: true; delay: 10000">
+            </a-video>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+        <!--4 , 3-->
+    </a-scene>
+</body>
+</html>
