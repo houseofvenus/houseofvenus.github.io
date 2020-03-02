@@ -49,12 +49,14 @@
     <div id="play-button">play</div>
     <a-scene embedded arjs>
         <a-assets timeout="10000">
-            <!--<img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />-->
+            <!--
+            <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true"/>
+            -->
             <video id="test-video" autoplay="true" loop="true" src="../media/vid/one-more-time.mp4"></video>
         </a-assets>
       
         <a-marker preset="hiro">
-            <a-video src="#test-video" width="3" height="6" position="0 0 0" rotation="-90 0 0"></a-video>
+            <a-video src="#test-video" width="4" height="3" position="0 0 0" rotation="-90 0 0"></a-video>
         </a-marker>
         
         <a-entity camera></a-entity>
