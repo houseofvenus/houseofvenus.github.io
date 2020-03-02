@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <style>
@@ -84,7 +86,7 @@
                       geometry="primitive: plane; width: 1; height: 1;"
                       rotation="-90 0 0"
                       material="src: #discovery-album-cover; side: double;"
-                      position="0 0.2 0">
+                      position="0 0.1 0">
             </a-entity>
             <a-video id="video-container"
                      src="#test-video"
@@ -92,8 +94,8 @@
                      height="3"
                      position="0 -0.5 0"
                      rotation="-90 0 0"
-                     animation__rotate="property: rotation; to: 0 0 0; loop: false; dur: 5000; easing: linear; autoplay: false; startEvents: click;"
-                     animation__lift="property: position; to: 0 0.5 0; loop: false; dur: 5000; easing: linear; autoplay: false; startEvents: click;">
+                     animation__rotate="property: rotation; to: 0 0 0; loop: false; dur: 5000; easing: linear; autoplay: true; delay: 10000"
+                     animation__lift="property: position; to: 0 0.5 0; loop: false; dur: 5000; easing: linear; autoplay: true; delay: 10000">
             </a-video>
         </a-marker>
         
