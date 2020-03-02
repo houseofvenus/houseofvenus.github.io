@@ -11,27 +11,31 @@
         
         #play-button{
             position: absolute;
-            bottom: 5%;
+            bottom: 10%;
             left: 50%;
             margin-left: -50px;
             width: 100px;
             height: 100px;
             border-radius: 50%;
             border: 3px white solid;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
+            /*background-color: rgba(255, 255, 255, 0.2);
+            color: white;*/
             text-align: center;
             line-height: 100px;
             font-family: monospace;
             cursor: pointer;
             z-index: 500;
             /*transition: background-color 0.5s, color 0.5s;*/
+            background-image: url("../media/img/play-button.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
         
         #play-button:hover{
             /*background-color: rgba(255, 255, 255, 1.0);
             color: black;*/
-            background-image: url("../media/img/play-button.png");
+            background-image: url("../media/img/pause-button.png");
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -42,9 +46,17 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             console.log("Hello, World!");
+            let videoPlaying = false;
             
             document.getElementById("play-button").addEventListener("click", function(){
-                document.getElementById("test-video").play();
+                if(videoPlaying){
+                    document.getElementById("test-video").pause();
+                    videoPlaying = false;
+                }
+                else{
+                    document.getElementById("test-video").play();
+                    videoPlaying = true;
+                }
             });
         });
     </script>
