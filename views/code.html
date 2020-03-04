@@ -5,87 +5,118 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Contest for the Democratic Nomination</title>
     <style>
+        #play-button{
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px white solid;
+            /*background-color: rgba(255, 255, 255, 0.2);
+            color: white;*/
+            text-align: center;
+            line-height: 100px;
+            font-family: monospace;
+            cursor: pointer;
+            z-index: 500;
+            /*transition: background-color 0.5s, color 0.5s;*/
+            background-image: url("../media/img/play-button.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
         
+        #play-button:hover{
+            /*background-color: rgba(255, 255, 255, 1.0);
+            color: black;*/
+            border: 2px black solid;
+        }
     </style>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
-            setTimeout(function(){
-                 document.getElementById("super-tuesday-title-container").object3D.visible = true;
-            }, 4000);
             
-            setTimeout(function(){
-                document.getElementById("live-primary-title-container").object3D.visible = true;
-            }, 6000);
-            
-            setTimeout(function(){
-                document.getElementById("election-results-title-container").object3D.visible = true;
-            }, 8000);
-            
-            setTimeout(function(){
-                document.getElementById("check-for-updates-title-container").object3D.visible = true;
-            }, 10000);
-            
-            let timerCount;
-            
-            setTimeout(function(){
-                let timerObject = document.getElementById("update-timer-container");
-                let mapObject = document.getElementById("map-container");
-                let timerArray = [
-                    ":10",
-                    ":09",
-                    ":08",
-                    ":07",
-                    ":06",
-                    ":05",
-                    ":04",
-                    ":03",
-                    ":02",
-                    ":01",
-                    ":00",
-                ];
-                let count = 1;
-                
-                timerObject.object3D.visible = true;
-                
-                let permaCounter;
-                let permaCount = 0;
-                
-                timerCount = setInterval(function(){
-                    
-                    timerObject.setAttribute("text", "value", timerArray[count]);
-                    count++;
-                    
-                    if(count===timerArray.length){
-                        clearInterval(timerCount);
-                        mapObject.setAttribute("material", "src", "#nyt-electoral-map");
-                        mapObject.setAttribute("material", "color", "#D1EBDC");
-                        
-                        document.getElementById("live-primary-title-container").object3D.visible = false;
-            
-                        document.getElementById("election-results-title-container").object3D.visible = false;
-            
-                        document.getElementById("super-tuesday-title-container").object3D.visible = false;
-                        
-                        permaCounter = setInterval(function(){
-                            timerObject.setAttribute("text", "value", timerArray[permaCount]);
-                            permaCount++;
-                            
-                            if(permaCount===timerArray.length){
-                                permaCount = 0;
-                            }
-                        }, 1000);
-                        
-                    }
-                    
-                }, 1000);
-                
-            }, 12000);
+            document.getElementById("play-button").addEventListener(function(){
+                    setTimeout(function(){
+                     document.getElementById("super-tuesday-title-container").object3D.visible = true;
+                }, 4000);
+
+                setTimeout(function(){
+                    document.getElementById("live-primary-title-container").object3D.visible = true;
+                }, 6000);
+
+                setTimeout(function(){
+                    document.getElementById("election-results-title-container").object3D.visible = true;
+                }, 8000);
+
+                setTimeout(function(){
+                    document.getElementById("check-for-updates-title-container").object3D.visible = true;
+                }, 10000);
+
+                let timerCount;
+
+                setTimeout(function(){
+                    let timerObject = document.getElementById("update-timer-container");
+                    let mapObject = document.getElementById("map-container");
+                    let timerArray = [
+                        ":10",
+                        ":09",
+                        ":08",
+                        ":07",
+                        ":06",
+                        ":05",
+                        ":04",
+                        ":03",
+                        ":02",
+                        ":01",
+                        ":00",
+                    ];
+                    let count = 1;
+
+                    timerObject.object3D.visible = true;
+
+                    let permaCounter;
+                    let permaCount = 0;
+
+                    timerCount = setInterval(function(){
+
+                        timerObject.setAttribute("text", "value", timerArray[count]);
+                        count++;
+
+                        if(count===timerArray.length){
+                            clearInterval(timerCount);
+                            mapObject.setAttribute("material", "src", "#nyt-electoral-map");
+                            mapObject.setAttribute("material", "color", "#D1EBDC");
+
+                            document.getElementById("live-primary-title-container").object3D.visible = false;
+
+                            document.getElementById("election-results-title-container").object3D.visible = false;
+
+                            document.getElementById("super-tuesday-title-container").object3D.visible = false;
+
+                            permaCounter = setInterval(function(){
+                                timerObject.setAttribute("text", "value", timerArray[permaCount]);
+                                permaCount++;
+
+                                if(permaCount===timerArray.length){
+                                    permaCount = 0;
+                                }
+                            }, 1000);
+
+                        }
+
+                    }, 1000);
+
+                }, 12000);
+            });
         });
     </script>
 </head>
-<body>
+<body style='margin : 0px; overflow: hidden;'>
+    <div id="play-button"></div>
     <a-scene embedded arjs>
         <a-assets>
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
