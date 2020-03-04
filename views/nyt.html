@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>NYT v.0.0.4</title>
+    <title>NYT v.0.0.5</title>
     <style>
         
     </style>
@@ -91,7 +91,7 @@
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
             <img id="nyt-electoral-map" src="../media/img/nyt-super-tuesday-map.png" preload="true" />
         </a-assets>
-        <a-marker preset="hiro">
+        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">
             <a-entity id="map-container"
                       geometry="primitive: plane; width: 0.1; height: 0.1"
                       position="0 1 -4"
