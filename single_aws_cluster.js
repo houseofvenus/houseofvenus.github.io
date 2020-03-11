@@ -115,7 +115,7 @@ else {*/
             deviceType = 'mobile';
         }
 
-        res.render('nyt.html',{root: dir[0]});
+        res.render('newyorktimes.html',{root: dir[0]});
     });
 
     app.get('/wapo', function(req, res){
