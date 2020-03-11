@@ -103,6 +103,36 @@ else {*/
         res.render('index.html',{root: dir[0]});
     });
 
+    app.get('/nyt', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('nyt.html',{root: dir[0]});
+    });
+
+    app.get('/wapo', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('wapo.html',{root: dir[0]});
+    });
+
     app.get('/dev', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -140,7 +170,7 @@ else {*/
 
     app.get('/media/pattern/:pattern_id', function(req, res){
         var pattern_id = req.params.pattern_id;
-        res.sendFile(pattern_id+'.patt', {root: dir[5]});
+        res.sendFile(pattern_id, {root: dir[5]});
     });
 
     app.get('/media/img/:img_id', function(req, res){
