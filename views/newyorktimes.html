@@ -15,12 +15,13 @@
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <!--<div id="play-button"></div>-->
-    <a-scene embedded arjs>
+    <a-scene>
+    <!--<a-scene embedded arjs>-->
         <a-assets>
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
             <img id="wapo-banner" src="../media/img/wapo_banner.png" preload="true" />
         </a-assets>
-        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">
+        <!--<a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">-->
             
             <a-entity id="nyt-banner-container"
                       geometry="primitive: plane; width: 3.5; height: 0.5"
@@ -30,19 +31,7 @@
                       animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;">
             </a-entity>
 
-        </a-marker>
-        
-        <a-marker type="pattern" url="../media/pattern/pattern-wapo-logo.patt">
-            
-            <a-entity id="wapo-banner-container"
-                      geometry="primitive: plane; width: 3.5; height: 0.5"
-                      position="0 1.2 -5"
-                      rotation="-90 0 0"
-                      material="side: double; src: #wapo-banner"
-                      animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;">
-            </a-entity>
-
-        </a-marker>
+        <!--</a-marker>-->
     </a-scene>
 </body>
 </html>
