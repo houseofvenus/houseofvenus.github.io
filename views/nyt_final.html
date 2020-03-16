@@ -6,23 +6,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>NYT v.0.0.9</title>
     <script src="../js/aframe100.js"></script>
-    <!--<script src="../js/aframe-ar.js"></script>-->
+    <script src="../js/aframe-ar.js"></script><!---->
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             let position = [0, 4, 0];
             let newHeight = "0 4 0";
             let covers = [
                 document.getElementById("front-page-main-cover-0"),
-                document.getElementById("front-page-main-cover-1"),
-                document.getElementById("front-page-main-cover-2"),
-                document.getElementById("front-page-main-cover-3"),
-                document.getElementById("front-page-main-cover-4"),
-                document.getElementById("front-page-main-cover-5"),
-                document.getElementById("front-page-main-cover-6"),
-                document.getElementById("front-page-main-cover-7")
+                document.getElementById("front-page-main-cover-1")
             ];
             
-            document.getElementById("up-button").addEventListener("click", function(){
+            /*document.getElementById("up-button").addEventListener("click", function(){
                 position[1]+=1;
                 newHeight = position[0]+" "+position[1]+" "+position[2];
                 document.getElementById("rig").setAttribute("position", newHeight);
@@ -32,25 +26,7 @@
                 position[1]-=1;
                 newHeight = position[0]+" "+position[1]+" "+position[2];
                 document.getElementById("rig").setAttribute("position", newHeight);
-            });
-            
-            setTimeout(function(){
-                covers[0].emit("hideCoverZero");
-                covers[1].emit("showCoverOne");
-                
-                setTimeout(function(){
-                    covers[1].emit("hideCoverOne");
-                    covers[2].emit("showCoverTwo");
-                    
-                    setTimeout(function(){
-                        covers[2].emit("hideCoverTwo");
-                        covers[3].emit("showCoverThree");
-                        
-                    }, 10000);
-                }, 10000);
-            }, 8000);
-            
-            /**/
+            });*/
             
             /*setTimeout(function(){
                 covers[0].setAttribute("visible", "false");
@@ -60,11 +36,11 @@
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: greenyellow; color: black; right: 5%; bottom: 20%;text-align: center;line-height: 100px;font-size: 24px;" id="up-button">up</div>
+    <!--<div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: greenyellow; color: black; right: 5%; bottom: 20%;text-align: center;line-height: 100px;font-size: 24px;" id="up-button">up</div>
     <div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: red; color: white;right: 5%; bottom: 5%;text-align: center;line-height: 100px;font-size: 24px;" id="down-button">down</div>
     <!--<div id="play-button"></div>-->
-    <a-scene><!---->
-   <!-- <a-scene embedded arjs> <!-- -->
+    <!--<a-scene>-->
+    <a-scene embedded arjs> <!-- -->
         <a-assets>
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
             <img id="the-daily-cover" src="../media/img/the-daily-cover.png" preload="true" />
@@ -82,7 +58,7 @@
             <img id="main-cover-image-7" src="../media/img/empty-shelves-london-supermarket-coronavirus-story-image.png" preload="true"/>
             <img id="main-cover-image-8" src="../media/img/italian-music-balcony-coronavirus-story-image.png" preload="true"/>
         </a-assets>
-     <!--   <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
+        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
             
             <a-entity id="nyt-banner-container"
                       geometry="primitive: plane; width: 4.5; height: 0.75"
@@ -91,12 +67,12 @@
                       material="side: double; src: #nyt-banner"
                       >
             </a-entity>
-            
+        
             <a-entity id="date-container" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Sunday\nMarch 15,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Saturday\nMarch 14,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       material="transparent: true; opacity: 0;"
                       >
             </a-entity>
@@ -146,9 +122,12 @@
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-0; opacity: 1.0; transparent: false;"
                       visible="true"
-                      animation__hideCoverZeroTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverZero;"
-                      animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; startEvents: hideCoverZero;"
-
+                      animation__hideCoverZeroTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 10000;"
+                      animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; delay: 8000;"
+                      animation__showCoverZeroOpaLoop="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 88000; easing: linear; loop; true;"
+                  animation__showCoverZeroTransLoop="property: material.transparent; from: true; to: false; dur: 50; delay: 90000; loop: true;"
+                      animation__hideCoverZeroOpaLoop="property: material.opacity; from: 1.0; to: 0; dur: 2000; delay: 98000;"
+                      animation__hideCoverZeroTransLoop="property: material.transparent; from: false; to: true; dur: 50; delay: 100000; loop: true;"
                       
                       >
             </a-entity><!--
@@ -161,10 +140,14 @@ animation__showCoverOneTrans="property: material.transparent; from: true; to : f
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-1; opacity: 0; transparent: true;"
-                      animation__showCoverOneOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverOne; easing: linear;"
-                      animation__showCoverOneTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverOne; easing: linear;"
-                      animation__hideCoverOneOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverOne; easing: linear;"  
-                      animation__hideCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverOne; easing: linear;"
+                  animation__showCoverOneOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 8000; easing: linear;"
+                  animation__showCoverOneTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 10000;"
+                  animation__hideCoverOneOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 18000; easing: linear;"
+                      animation__hideCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 20000; easing: linear;"
+                      animation__showCoverOneOpaLoop="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 98000; easing: linear; loop; true;"
+                  animation__showCoverOneTransLoop="property: material.transparent; from: true; to: false; dur: 50; delay: 100000; loop: true;"
+                      animation__hideCoverOneOpaLoop="property: material.opacity; from: 1.0; to: 0; dur: 2000; delay: 108000;"
+                      animation__hideCoverOneTransLoop="property: material.transparent; from: false; to: true; dur: 50; delay: 110000; loop: true;"
                       >
             </a-entity>
         
@@ -173,10 +156,14 @@ animation__showCoverOneTrans="property: material.transparent; from: true; to : f
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-2; opacity: 0; transparent: true;"
-                  animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverTwo; easing: linear;"
-                  animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: showCoverTwo; easing: linear;"
-                  animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverTwo; easing: linear;"
-                  animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverTwo; easing: linear;"
+                  animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 18000; easing: linear;"
+                  animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 20000;"
+                  animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 28000; easing: linear;"
+                  animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 30000;"
+                      animation__showCoverTwoOpaLoop="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 108000; easing: linear; loop; true;"
+                  animation__showCoverTwoTransLoop="property: material.transparent; from: true; to: false; dur: 50; delay: 11000; loop: true;"
+                      animation__hideCoverTwoOpaLoop="property: material.opacity; from: 1.0; to: 0; dur: 2000; delay: 118000;"
+                      animation__hideCoverTwoTransLoop="property: material.transparent; from: false; to: true; dur: 50; delay: 120000;"
                       >
             </a-entity>
         
@@ -185,10 +172,15 @@ animation__showCoverOneTrans="property: material.transparent; from: true; to : f
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-3; opacity: 0; transparent: true;"
-                  animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverThree; easing: linear; "
-                  animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverThree; easing: linear;"
+                  animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 28000; easing: linear;"
+                  animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 30000;"
                   animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 38000;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverThree;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 40000;"
+                      
+                      animation__showCoverThreeOpaLoop="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 118000; easing: linear; loop; true;"
+                  animation__showCoverThreeTransLoop="property: material.transparent; from: true; to: false; dur: 50; delay: 120000; loop: true;"
+                      animation__hideCoverThreeOpaLoop="property: material.opacity; from: 1.0; to: 0; dur: 2000; delay: 128000;"
+                      animation__hideCoverThreeTransLoop="property: material.transparent; from: false; to: true; dur: 50; delay: 130000;"
                       >
                 
             </a-entity>
@@ -256,14 +248,14 @@ animation__showCoverOneTrans="property: material.transparent; from: true; to : f
                       animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 90000;"
                       >
             </a-entity>
-        <!--</a-marker> <!-- animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;"
-        -->
+        </a-marker> <!-- animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;"
+        
         <a-entity id="rig" position="0 4 0" rotation="0 0 0">
             <a-entity camera wasd-controls look-controls position="0 1.6 0"></a-entity>
         </a-entity>
         <a-sky color="aquamarine"></a-sky>
 
-
+-->
     </a-scene>
 </body>
 </html>
