@@ -19,7 +19,8 @@
                 document.getElementById("front-page-main-cover-4"),
                 document.getElementById("front-page-main-cover-5"),
                 document.getElementById("front-page-main-cover-6"),
-                document.getElementById("front-page-main-cover-7")
+                document.getElementById("front-page-main-cover-7"),
+                document.getElementById("front-page-main-cover-8")
             ];
             
             document.getElementById("up-button").addEventListener("click", function(){
@@ -46,6 +47,31 @@
                         covers[2].emit("hideCoverTwo");
                         covers[3].emit("showCoverThree");
                         
+                        setTimeout(function(){
+                            covers[3].emit("hideCoverThree");
+                            covers[4].emit("showCoverFour");
+                            
+                            setTimeout(function(){
+                                covers[4].emit("hideCoverFour");
+                                covers[5].emit("showCoverFive");
+
+                                setTimeout(function(){
+                                    covers[5].emit("hideCoverFive");
+                                    covers[6].emit("showCoverSix");
+                                    
+                                    setTimeout(function(){
+                                        covers[6].emit("hideCoverSix");
+                                        covers[7].emit("showCoverSeven");
+
+                                        setTimeout(function(){
+                                            covers[7].emit("hideCoverSeven");
+                                            covers[8].emit("showCoverEight");
+
+                                        }, 10000);
+                                    }, 10000);
+                                }, 10000);
+                            }, 10000);
+                        }, 10000);
                     }, 10000);
                 }, 10000);
             }, 8000);
@@ -96,7 +122,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Sunday\nMarch 15,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Monday\nMarch 16,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       material="transparent: true; opacity: 0;"
                       >
             </a-entity>
@@ -148,13 +174,8 @@
                       visible="true"
                       animation__hideCoverZeroTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverZero;"
                       animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; startEvents: hideCoverZero;"
-
-                      
                       >
-            </a-entity><!--
-                      
-
-animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
+            </a-entity><!--animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
         
             <a-entity id="front-page-main-cover-1" 
                       geometry="primitive: plane; width: 4.5; height: 3"
@@ -173,10 +194,10 @@ animation__showCoverOneTrans="property: material.transparent; from: true; to : f
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-2; opacity: 0; transparent: true;"
-                  animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverTwo; easing: linear;"
-                  animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: showCoverTwo; easing: linear;"
-                  animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverTwo; easing: linear;"
-                  animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverTwo; easing: linear;"
+                      animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverTwo; easing: linear;"
+                      animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: showCoverTwo; easing: linear;"
+                      animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverTwo; easing: linear;"
+                      animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverTwo; easing: linear;"
                       >
             </a-entity>
         
@@ -185,75 +206,70 @@ animation__showCoverOneTrans="property: material.transparent; from: true; to : f
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-3; opacity: 0; transparent: true;"
-                  animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverThree; easing: linear; "
-                  animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverThree; easing: linear;"
-                  animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 38000;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverThree;"
+                      animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverThree; easing: linear;"
+                      animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverThree; easing: linear;"
+                      animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverThree; easing: linear;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverThree; easing: linear;"
                       >
-                
             </a-entity>
         
-        <a-entity id="front-page-main-cover-4" 
+            <a-entity id="front-page-main-cover-4" 
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-4; opacity: 0; transparent: true;"
-                  animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 38000; easing: linear;"
-                  animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 40000;"
-                  animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 48000;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 50000;"
-                  animation__showCoverFourOpaLoop="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 128000; easing: linear; loop; true;"
-                  animation__showCoverFourTransLoop="property: material.transparent; from: true; to: false; dur: 50; delay: 130000; loop: true;"
-                      animation__hideCoverFourOpaLoop="property: material.opacity; from: 1.0; to: 0; dur: 2000; delay: 138000;"
-                      animation__hideCoverFourTransLoop="property: material.transparent; from: false; to: true; dur: 50; delay: 140000;"
+                      animation__showCoverFourOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFour; easing: linear;"
+                      animation__showCoverFourTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFour; easing: linear;"  
+                      animation__hideCoverFourOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverFour; easing: linear;"
+                      animation__hideCoverFourTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverFour; easing: linear;"
                       >
             </a-entity>
         
-        <a-entity id="front-page-main-cover-5" 
+            <a-entity id="front-page-main-cover-5" 
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-5; opacity: 0; transparent: true;"
-                  animation__showCoverFiveOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 48000; easing: linear;"
-                  animation__showCoverFiveTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 50000;"
-                  animation__hideCoverFiveOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 58000;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 60000;"
+                      animation__showCoverFiveOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFive; easing: linear;"
+                      animation__showCoverFiveTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFive; easing: linear;"
+                      animation__hideCoverFiveOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverFive; easing: linear;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverFive; easing: linear;"
                       >
             </a-entity>
         
-        <a-entity id="front-page-main-cover-6" 
+            <a-entity id="front-page-main-cover-6" 
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-6; opacity: 0; transparent: true;"
-                  animation__showCoverSixOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 58000; easing: linear;"
-                  animation__showCoverSixTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 60000;"
-                  animation__hideCoverSixOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 68000;"
-                      animation__hideCoverSixTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 70000;"
+                      animation__showCoverSixOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSix; easing: linear;"
+                      animation__showCoverSixTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSix; easing: linear;"
+                      animation__hideCoverSixOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverSix; easing: linear;"
+                      animation__hideCoverSixTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverSix; easing: linear;"
                       >
             </a-entity>
         
-        <a-entity id="front-page-main-cover-7" 
+            <a-entity id="front-page-main-cover-7" 
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-7; opacity: 0; transparent: true;"
-                  animation__showCoverSevenOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 68000; easing: linear;"
-                  animation__showCoverSevenTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 70000;"
-                  animation__hideCoverSevenOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 78000;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 80000;"
+                      animation__showCoverSevenOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSeven; easing: linear;"
+                      animation__showCoverSevenTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSeven; easing: linear;"
+                      animation__hideCoverSevenOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverSeven; easing: linear;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverSeven; easing: linear;"
                       >
             </a-entity>
         
-        <a-entity id="front-page-main-cover-8" 
+            <a-entity id="front-page-main-cover-8" 
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
                       material="side: double; src: #main-cover-image-8; opacity: 0; transparent: true;"
-                  animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; delay: 78000; easing: linear;"
-                  animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 80000;"
-                  animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; delay: 88000;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 90000;"
+                      animation__showCoverEightOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverEight easing: linear;"
+                      animation__showCoverEightTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverEight; easing: linear;"
+                      animation__hideCoverEightOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverEight; easing: linear;"
+                      animation__hideCoverEightTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverEight; easing: linear;"
                       >
             </a-entity>
         <!--</a-marker> <!-- animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;"
