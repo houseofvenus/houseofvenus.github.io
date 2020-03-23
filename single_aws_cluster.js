@@ -130,7 +130,7 @@ else {*/
             deviceType = 'mobile';
         }
 
-        res.render('nyt_final.html',{root: dir[0]});
+        res.render('nyt.html',{root: dir[0]});
     });
 
     app.get('/wapo', function(req, res){
