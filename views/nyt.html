@@ -4,11 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Skeleton Draft for NYT v.0.0.13</title>
+    <title>Skeleton Draft for NYT v.0.0.14</title>
+    <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
     <script>
         document.addEventListener("DOMContentLoaded", function(){
+            var socket = io.connect(location.host);
+            socket.emit("CLIENTconnectToSERVER", {status: true, targetDIA: "New York Times"});
+            
+            socket.on("SERVERloadImmersiveNewspaperOnCLIENT", function(data){
+                if(data.status){
+                    let newspaper = data.paper;
+                }
+            });
+            
             let position = [0, 4, 0];
             let newHeight = "0 4 0";
             let covers = [

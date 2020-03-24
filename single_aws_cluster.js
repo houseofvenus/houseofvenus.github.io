@@ -368,15 +368,160 @@ else {*/
             }
         }    
     ];
+    
+    var DecentralizedImmersiveApplications = {
+        "New York Times": {
+            type: "immersive",
+            viewTarget: ["Chrome v 0.0.0", "Safari v 0.0.0", "Safari on iOS v 0.0.0", "Chrome on Android v 0.0.0", "Firefox on Android v 0.0.0"],
+            origin: "In the pARk, there is a newspaper called the 'New York Times' sourced from the eponymous paper published in New York City and beyond since 1851. Readers of the immersive newspaper have access to a daily selection of premium content for $15.99 a month. Subscribers qualify for autonomous home delivery and can upgrade their delivery specifications as they see fit.",
+            object: {
+                divRender: {
+                    tree: [],
+                    type: null
+                },
+                aframeRender: {
+                    tree: [
+                        
+                    ],
+                    type: null
+                },
+                dataSource: {
+                    articles: [
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                        {
+                            name:"",
+                            author:"",
+                            date:"",
+                            lastupdated:"",
+                            coverLink:"",
+                            articleTextOnlyLink:""
+                        },
+                    ],
+                }
+            }
+        }
+    };
 
     io.sockets.on('connection', function(socket){
         var conn = socket;
 
         socket.on("CLIENTconnectToSERVER", function(data){
             console.log("CLIENT connected to SERVER...");
-             socket.emit("SERVERloadRestaurantMetaDataAtNodesOnCLIENT", {status: true, locations: Restaurants});
+            let message = data;
+            if(message.targetDIA=="Foodid"){
+                socket.emit("SERVERloadRestaurantMetaDataAtNodesOnCLIENT", {status: true, locations: Restaurants});
+            }
+            else if(message.targetDIA=="New York Times"){
+                socket.emit("SERVERloadImmersiveNewspaperOnCLIENT", {status: true, paper: DecentralizedImmersiveApplications["New York Times"].object.dataSource});
+            }
+            else{
+                console.log("no associated dia found in registry.")
+            }
+             
         });
-        
        
         socket.on('disconnect', function(){
             console.log(`socket ${socket.id} disconnected.`);

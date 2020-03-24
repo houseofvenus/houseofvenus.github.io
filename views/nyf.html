@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>NYT v.0.0.8</title>
+    <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
+            var socket = io.connect(location.host);
+            if(socket){
+                console.log("dynamic process running...")
+            }
+            else{
+                console.log("static site delivered with client side AJAJ")
+            }
+            
             setTimeout(function(){
                  document.getElementById("super-tuesday-title-container").object3D.visible = true;
             }, 4000);
