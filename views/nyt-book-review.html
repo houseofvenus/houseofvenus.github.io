@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Skeleton Draft for NYT v.0.0.14</title>
+    <script src="../js/socket.io.js"></script>
+    <script src="../js/aframe100.js"></script>
+    <script src="../js/aframe-ar.js"></script><!---->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var socket = io.connect(location.host);
+            socket.emit("CLIENTconnectToSERVER", {status: true, targetDIA: "New York Times"});
+            
+            socket.on("SERVERloadImmersiveNewspaperOnCLIENT", function(data){
+                if(data.status){
+                    let newspaper = data.paper;
+                }
+            });
+            
+            let position = [0, 4, 0];
+            let newHeight = "0 4 0";
+            let covers = [
+                document.getElementById("front-page-main-cover-0"),
+                document.getElementById("front-page-main-cover-1"),
+                document.getElementById("front-page-main-cover-2"),
+                document.getElementById("front-page-main-cover-3"),
+                document.getElementById("front-page-main-cover-4"),
+                document.getElementById("front-page-main-cover-5"),
+                document.getElementById("front-page-main-cover-6"),
+                document.getElementById("front-page-main-cover-7"),
+                document.getElementById("front-page-main-cover-8")
+            ];
+            
+            setTimeout(function(){
+                covers[0].emit("hideCoverZero");
+                covers[1].emit("showCoverOne");
+                
+                setTimeout(function(){
+                    covers[1].emit("hideCoverOne");
+                    covers[2].emit("showCoverTwo");
+                    
+                    setTimeout(function(){
+                        covers[2].emit("hideCoverTwo");
+                        covers[3].emit("showCoverThree");
+                        
+                        setTimeout(function(){
+                            covers[3].emit("hideCoverThree");
+                            covers[4].emit("showCoverFour");
+                            
+                            setTimeout(function(){
+                                covers[4].emit("hideCoverFour");
+                                covers[5].emit("showCoverFive");
+
+                                setTimeout(function(){
+                                    covers[5].emit("hideCoverFive");
+                                    covers[6].emit("showCoverSix");
+                                    
+                                    setTimeout(function(){
+                                        covers[6].emit("hideCoverSix");
+                                        covers[7].emit("showCoverSeven");
+
+                                        setTimeout(function(){
+                                            covers[7].emit("hideCoverSeven");
+                                            covers[8].emit("showCoverEight");
+
+                                        }, 10000);
+                                    }, 10000);
+                                }, 10000);
+                            }, 10000);
+                        }, 10000);
+                    }, 10000);
+                }, 10000);
+            }, 8000);
+            
+            /*document.getElementById("up-button").addEventListener("click", function(){
+                position[1]+=1;
+                newHeight = position[0]+" "+position[1]+" "+position[2];
+                document.getElementById("rig").setAttribute("position", newHeight);
+            });
+            
+            document.getElementById("down-button").addEventListener("click", function(){
+                position[1]-=1;
+                newHeight = position[0]+" "+position[1]+" "+position[2];
+                document.getElementById("rig").setAttribute("position", newHeight);
+            });*/
+            
+            /*setTimeout(function(){
+                covers[0].setAttribute("visible", "false");
+                covers[1].setAttribute("visible", "true");
+            }, 10000);*/
+        });
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <!--<div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: greenyellow; color: black; right: 5%; bottom: 20%;text-align: center;line-height: 100px;font-size: 24px;" id="up-button">up</div>
+    <div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: red; color: white;right: 5%; bottom: 5%;text-align: center;line-height: 100px;font-size: 24px;" id="down-button">down</div>
+    <!--<div id="play-button"></div>-->
+    <!--<a-scene>-->
+    <a-scene embedded arjs> <!-- -->
+        <a-assets>
+            <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
+            <img id="the-daily-cover" src="../media/img/the-daily-cover.png" preload="true" />
+            <img id="coronavirus-cover" src="../media/img/coronavirus-logo.png" preload="true" />
+            <img id="book-review-cover" src="../media/img/nyt-book-review-logo.png" preload="true" />
+            <img id="stock-cover" src="../media/img/stock-cover-mon2052.png" preload="true" />
+            <img id="weather-preview-cover" src="../media/img/weather-cover-ss-mon2052.png" preload="true" />
+            <img id="main-cover-image-0" src="../media/img/apple-store-closures-over-coronavirus-story-image.png" preload="true"/>
+            <img id="main-cover-image-1" src="../media/img/coronavirus-arcdetriomphe-story-image.png" preload="true"/>
+            <img id="main-cover-image-2" src="../media/img/trump-gets-tested-for-coronavirus-story-image.png" preload="true"/>
+            <img id="main-cover-image-3" src="../media/img/views-from-barcelona-spain-on-lockdown-coronavirus-story-image.png" preload="true"/>
+            <img id="main-cover-image-4" src="../media/img/manila-coronavirus-task-force-story-image.png" preload="true"/>
+            <img id="main-cover-image-5" src="../media/img/munich-town-square-coronavirus-story-image.png" preload="true"/>
+            <img id="main-cover-image-6" src="../media/img/house-leaders-gathered-over-coronavirus-funding-story-image.png" preload="true"/>
+            <img id="main-cover-image-7" src="../media/img/empty-shelves-london-supermarket-coronavirus-story-image.png" preload="true"/>
+            <img id="main-cover-image-8" src="../media/img/italian-music-balcony-coronavirus-story-image.png" preload="true"/>
+        </a-assets>
+        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
+            <a-entity id="nyt-banner-container"
+                      geometry="primitive: plane; width: 4.5; height: 0.75"
+                      position="0.25 1.2 -5"
+                      rotation="-90 0 0"
+                      material="side: double; src: #nyt-banner"
+                      >
+            </a-entity>
+            
+            <a-entity id="date-container" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 1; height: 1"
+                      position="-2.75 1.2 -4"
+                      rotation="-90 0 0"
+                      text="value: Monday\nMarch 16,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      material="transparent: true; opacity: 0;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-banner-item-container-0" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 1; height: 1"
+                      position="-1.5 1.2 -4"
+                      rotation="-90 0 0"
+                      material="side: double; src: #the-daily-cover"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 1; height: 1"
+                      position="-0.5 1.2 -4"
+                      rotation="-90 0 0"
+                      material="side: double; src: #coronavirus-cover;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-banner-item-container-2" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 1; height: 1"
+                      position="0.5 1.2 -4"
+                      rotation="-90 0 0"
+                      material="side: double; src: #book-review-cover;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-banner-item-container-3" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 1.5; height: 1"
+                      position="1.75 1.2 -4"
+                      rotation="-90 0 0"
+                      material="side: double; src: #stock-cover;"
+                      >
+            </a-entity>
+            <a-entity id="front-page-banner-item-container-4" class="front-page-banner-item-container weather-preview-container"
+                      geometry="primitive: plane; width: 1.5; height: 1"
+                      position="3.3 1.2 -4"
+                      rotation="-90 0 0"
+                      material="side: double; src: #weather-preview-cover;"
+                      >
+            </a-entity>
+            
+            <a-entity id="right-side-banner-item-container-0" class="right-side-banner-item-container"
+                      geometry="primitive: plane; width: 1.5; height: 1"
+                      position="3.3 1.2 -3"
+                      rotation="-90 0 0"
+                      material="side: double; color: blue;"
+                      >
+            </a-entity>
+        
+            <a-entity id="right-side-banner-item-container-1" class="right-side-banner-item-container"
+                      geometry="primitive: plane; width: 1.5; height: 1"
+                      position="3.3 1.2 -2"
+                      rotation="-90 0 0"
+                      material="side: double; color: green;"
+                      >
+            </a-entity>
+            
+            <a-entity id="right-side-banner-item-container-2" class="right-side-banner-item-container"
+                      geometry="primitive: plane; width: 1.5; height: 1"
+                      position="3.3 1.2 -1"
+                      rotation="-90 0 0"
+                      material="side: double; color: red;"
+                      >
+            </a-entity>
+            
+            <a-entity id="left-side-banner-item-container-0" class="left-side-banner-item-container"
+                      geometry="primitive: plane; width: 1.5; height: 2"
+                      position="-2.8 1.2 -2.25"
+                      rotation="-90 0 0"
+                      material="side: double; color: red;"
+                      >
+            </a-entity>
+            
+            <a-entity id="left-side-banner-item-container-1" class="left-side-banner-item-container"
+                      geometry="primitive: plane; width: 1.5; height: 2"
+                      position="-2.8 1.2 -0.25"
+                      rotation="-90 0 0"
+                      material="side: double; color: green;"
+                      >
+            </a-entity>
+            
+            
+            <a-entity id="bottom-banner-item-container-0" class="bottom-banner-item-container"
+                      geometry="primitive: plane; width: 2.85; height: 1.5"
+                      position="-0.45 1.2 0.5"
+                      rotation="-90 0 0"
+                      material="side: double; color: blue;"
+                      >
+            </a-entity>
+            
+            
+            <a-entity id="bottom-banner-item-container-1" class="bottom-banner-item-container"
+                      geometry="primitive: plane; width: 2.85; height: 1.5"
+                      position="2.65 1.2 0.5"
+                      rotation="-90 0 0"
+                      material="side: double; color: white;"
+                      >
+            </a-entity>
+            
+            <a-entity id="other-stories-banner-item-container-0" class="other-stories-banner-item-container"
+                      geometry="primitive: plane; width: 2; height: 2"
+                      position="-1 1.2 2.5"
+                      rotation="-90 0 0"
+                      material="side: double; color: blue;"
+                      >
+            </a-entity>
+            
+            
+            <a-entity id="other-stories-banner-item-container-1" class="other-stories-banner-item-container"
+                      geometry="primitive: plane; width: 2; height: 2"
+                      position="1.25 1.2 2.5"
+                      rotation="-90 0 0"
+                      material="side: double; color: red;"
+                      >
+            </a-entity>
+            
+            <a-entity id="other-stories-banner-item-container-2" class="other-stories-banner-item-container"
+                      geometry="primitive: plane; width: 2; height: 2"
+                      position="3.5 1.2 2.5"
+                      rotation="-90 0 0"
+                      material="side: double; color: green;"
+                      >
+            </a-entity>
+            
+            <a-entity id="front-page-main-cover-0" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-0; opacity: 1.0; transparent: false;"
+                      visible="true"
+                      animation__hideCoverZeroTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverZero;"
+                      animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; startEvents: hideCoverZero;"
+                      >
+            </a-entity><!--animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
+        
+            <a-entity id="front-page-main-cover-1" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-1; opacity: 0; transparent: true;"
+                      animation__showCoverOneOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverOne; easing: linear;"
+                      animation__showCoverOneTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverOne; easing: linear;"
+                      animation__hideCoverOneOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverOne; easing: linear;"  
+                      animation__hideCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverOne; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-2" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-2; opacity: 0; transparent: true;"
+                      animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverTwo; easing: linear;"
+                      animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: showCoverTwo; easing: linear;"
+                      animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverTwo; easing: linear;"
+                      animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverTwo; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-3" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-3; opacity: 0; transparent: true;"
+                      animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverThree; easing: linear;"
+                      animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverThree; easing: linear;"
+                      animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverThree; easing: linear;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverThree; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-4" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-4; opacity: 0; transparent: true;"
+                      animation__showCoverFourOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFour; easing: linear;"
+                      animation__showCoverFourTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFour; easing: linear;"  
+                      animation__hideCoverFourOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverFour; easing: linear;"
+                      animation__hideCoverFourTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverFour; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-5" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-5; opacity: 0; transparent: true;"
+                      animation__showCoverFiveOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFive; easing: linear;"
+                      animation__showCoverFiveTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFive; easing: linear;"
+                      animation__hideCoverFiveOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverFive; easing: linear;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverFive; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-6" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-6; opacity: 0; transparent: true;"
+                      animation__showCoverSixOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSix; easing: linear;"
+                      animation__showCoverSixTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSix; easing: linear;"
+                      animation__hideCoverSixOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverSix; easing: linear;"
+                      animation__hideCoverSixTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverSix; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-7" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-7; opacity: 0; transparent: true;"
+                      animation__showCoverSevenOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSeven; easing: linear;"
+                      animation__showCoverSevenTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSeven; easing: linear;"
+                      animation__hideCoverSevenOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverSeven; easing: linear;"
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverSeven; easing: linear;"
+                      >
+            </a-entity>
+        
+            <a-entity id="front-page-main-cover-8" 
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.2 -1.9"
+                      rotation="-90 0 0"
+                      material="side: double; src: #main-cover-image-8; opacity: 0; transparent: true;"
+                      animation__showCoverEightOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverEight easing: linear;"
+                      animation__showCoverEightTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverEight; easing: linear;"
+                      animation__hideCoverEightOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverEight; easing: linear;"
+                      animation__hideCoverEightTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverEight; easing: linear;"
+                      >
+            </a-entity>
+        </a-marker> 
+        
+        <a-marker preset="hiro">
+            <a-entity id="bottom-half-front-cover-container" 
+                      geometry="primitive: plane; width: 6.5; height: 5"
+                      position="2 1.2 -2"
+                      rotation="-90 0 0"
+                      material="color:blue;side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="bottom-half-front-cover-action-button-container-0"
+                      class="bottom-half-front-cover-container action-button-container"
+                      geometry="primitive: circle; radius: 0.5;"
+                      position="5.5 1.5 -2"
+                      rotation="-90 0 0"
+                      material="color: red; side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="bottom-half-front-cover-action-button-container-1"
+                      class="bottom-half-front-cover-container action-button-container"
+                      geometry="primitive: circle; radius: 0.5"
+                      position="5.5 1.5 -1"
+                      rotation="-90 0 0"
+                      material="color: green; side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="bottom-half-front-cover-action-button-container-2" 
+                      class="bottom-half-front-cover-container action-button-container"
+                      geometry="primitive: circle; radius: 0.5;"
+                      position="5.5 1.5 0"
+                      rotation="-90 0 0"
+                      material="color: white; side: double;"
+                      >
+            </a-entity>
+        </a-marker><!-- animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;"
+        
+        <a-entity id="rig" position="0 4 0" rotation="0 0 0">
+            <a-entity camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+        </a-entity>
+        <a-sky color="aquamarine"></a-sky>
+
+-->
+    </a-scene>
+</body>
+</html>
