@@ -16,6 +16,7 @@
             socket.on("SERVERloadImmersiveNewspaperOnCLIENT", function(data){
                 if(data.status){
                     let newspaper = data.paper;
+                    console.log(newspaper);
                 }
             });
             
@@ -102,19 +103,29 @@
         <a-assets>
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
             <img id="the-daily-cover" src="../media/img/the-daily-cover.png" preload="true" />
-            <img id="coronavirus-cover" src="../media/img/coronavirus-logo.png" preload="true" />
+            <img id="evening-brief-cover" src="../media/img/evening-briefing-cover.png" preload="true" />
+            <img id="still-processing-cover" src="../media/img/still-processing-cover.png" preload="true" />
             <img id="book-review-cover" src="../media/img/nyt-book-review-logo.png" preload="true" />
-            <img id="stock-cover" src="../media/img/stock-cover-mon2052.png" preload="true" />
-            <img id="weather-preview-cover" src="../media/img/weather-cover-ss-mon2052.png" preload="true" />
-            <img id="main-cover-image-0" src="../media/img/apple-store-closures-over-coronavirus-story-image.png" preload="true"/>
-            <img id="main-cover-image-1" src="../media/img/coronavirus-arcdetriomphe-story-image.png" preload="true"/>
-            <img id="main-cover-image-2" src="../media/img/trump-gets-tested-for-coronavirus-story-image.png" preload="true"/>
-            <img id="main-cover-image-3" src="../media/img/views-from-barcelona-spain-on-lockdown-coronavirus-story-image.png" preload="true"/>
-            <img id="main-cover-image-4" src="../media/img/manila-coronavirus-task-force-story-image.png" preload="true"/>
-            <img id="main-cover-image-5" src="../media/img/munich-town-square-coronavirus-story-image.png" preload="true"/>
-            <img id="main-cover-image-6" src="../media/img/house-leaders-gathered-over-coronavirus-funding-story-image.png" preload="true"/>
-            <img id="main-cover-image-7" src="../media/img/empty-shelves-london-supermarket-coronavirus-story-image.png" preload="true"/>
-            <img id="main-cover-image-8" src="../media/img/italian-music-balcony-coronavirus-story-image.png" preload="true"/>
+            <img id="chuck-shumer-coronavirus-cover" src="../media/img/chuck-shumer-coronavirus-cover.png" preload="true" />
+            <img id="virus-stimulus-art-cover" src="../media/img/virus-stimulus-art-cover.png" preload="true" />
+            <img id="modern-love-cover" src="../media/img/modern-love-cover.png" preload="true" />
+            <img id="stock-cover" src="../media/img/stock-cover.png" preload="true" />
+            <img id="weather-preview-cover" src="../media/img/weather-cover.png" preload="true" />
+            <img id="main-cover-image-0" src="../media/img/empty-restaurant-coronavirus-cover.png" preload="true"/>
+            <img id="main-cover-image-1" src="../media/img/brooklyn-hospital-coronavirus-cover.png" preload="true"/>
+            <img id="main-cover-image-2" src="../media/img/new-orleans-coronavirus-cover.png" preload="true"/>
+            <img id="main-cover-image-3" src="../media/img/spraying-for-coronavirus-in-spain-story-image.png" preload="true"/>
+            <img id="main-cover-image-4" src="../media/img/sarmaca-displaced-center-story-image.png" preload="true"/>
+            <img id="main-cover-image-5" src="../media/img/g20-japan-view-story-image.png" preload="true"/>
+            <img id="main-cover-image-6" src="../media/img/trump-coronavirus-cover.png" preload="true"/>
+            <img id="main-cover-image-7" src="../media/img/migrants-returned-home-coronavirus.png" preload="true"/>
+            <img id="main-cover-image-8" src="../media/img/we-can-go-bigger-cover.png" preload="true"/>
+            
+            <img id="science-section-cover" src="../media/img/science-section-thursday-cover.png" preload="true"/>
+            <img id="technology-section-cover" src="../media/img/technology-section-thursday-cover.png" preload="true"/>
+            <img id="business-section-cover" src="../media/img/business-section-thursday-cover.png" preload="true"/>
+            <img id="arts-section-cover" src="../media/img/arts-section-thursday-cover.png" preload="true"/>
+            <img id="books-section-cover" src="../media/img/books-section-thursday-cover.png" preload="true"/>
         </a-assets>
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
             <a-entity id="nyt-banner-container"
@@ -138,25 +149,25 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-1.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #the-daily-cover"
-                      >
+                      material="side: double; src: #evening-brief-cover;"
+                      ><!--#the-daily-cover-->
             </a-entity>
         
             <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #coronavirus-cover;"
+                      material="side: double; src: #still-processing-cover;"
                       >
-            </a-entity>
+            </a-entity><!-- #coronavirus-cover;-->
         
             <a-entity id="front-page-banner-item-container-2" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #book-review-cover;"
+                      material="side: double; src: #modern-love-cover;"
                       >
-            </a-entity>
+            </a-entity><!-- #book-review-cover-->
         
             <a-entity id="front-page-banner-item-container-3" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
@@ -177,7 +188,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -3"
                       rotation="-90 0 0"
-                      material="side: double; color: blue;"
+                      material="side: double; src: #chuck-shumer-coronavirus-cover;"
                       >
             </a-entity>
         
@@ -185,7 +196,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -2"
                       rotation="-90 0 0"
-                      material="side: double; color: green;"
+                      material="side: double; src: #virus-stimulus-art-cover;"
                       >
             </a-entity>
             
@@ -218,7 +229,7 @@
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="-0.45 1.2 0.5"
                       rotation="-90 0 0"
-                      material="side: double; color: blue;"
+                      material="side: double; src: #science-section-cover;"
                       >
             </a-entity>
             
@@ -227,7 +238,7 @@
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="2.65 1.2 0.5"
                       rotation="-90 0 0"
-                      material="side: double; color: white;"
+                      material="side: double; src: #technology-section-cover;"
                       >
             </a-entity>
             
@@ -235,7 +246,7 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="-1 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; color: blue;"
+                      material="side: double; src: #arts-section-cover;"
                       >
             </a-entity>
             
@@ -244,7 +255,7 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="1.25 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; color: red;"
+                      material="side: double; src: #business-section-cover;"
                       >
             </a-entity>
             
@@ -252,7 +263,7 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="3.5 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; color: green;"
+                      material="side: double; src: #books-section-cover;"
                       >
             </a-entity>
             
