@@ -103,6 +103,7 @@
         <a-assets>
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
             <img id="the-daily-cover" src="../media/img/the-daily-cover.png" preload="true" />
+            <img id="the-argument-cover" src="../media/img/the-argument-cover.png" preload="true" />
             <img id="evening-brief-cover" src="../media/img/evening-briefing-cover.png" preload="true" />
             <img id="still-processing-cover" src="../media/img/still-processing-cover.png" preload="true" />
             <img id="book-review-cover" src="../media/img/nyt-book-review-logo.png" preload="true" />
@@ -111,7 +112,7 @@
             <img id="modern-love-cover" src="../media/img/modern-love-cover.png" preload="true" />
             <img id="stock-cover" src="../media/img/stock-cover.png" preload="true" />
             <img id="weather-preview-cover" src="../media/img/weather-cover.png" preload="true" />
-            <img id="main-cover-image-0" src="../media/img/elmhurst-hospital-nyc-story-image.png" preload="true"/>
+            <img id="main-cover-image-0" src="../media/img/coronavirus-nyc-metro-comparison-story-image.png" preload="true"/>
             <img id="main-cover-image-1" src="../media/img/biden-debate-story-image.png" preload="true"/>
             <img id="main-cover-image-2" src="../media/img/views-from-albany-ga-story-image.png" preload="true"/>
             <img id="main-cover-image-3" src="../media/img/nyc-paramedics-story-image.png" preload="true"/>
@@ -121,6 +122,8 @@
             <img id="main-cover-image-7" src="../media/img/medical-staff-ppe-in-paris-story-image.png" preload="true"/>
             <img id="main-cover-image-8" src="../media/img/zaandam-cruise-ship-bay-of-panama-city-story-image.png" preload="true"/>
             
+            <img id="we-have-lost-cover" src="../media/img/we-have-lost-story-cover.png" preload="true"/>
+            <img id="a-single-gesture-cover" src="../media/img/a-single-gesture-story-cover.png" preload="true"/>
             <img id="science-section-cover" src="../media/img/uranus-voyager-2-story-image.png" preload="true"/>
             <img id="technology-section-cover" src="../media/img/virus-fighting-robot-from-china-story-image.png" preload="true"/>
             <img id="business-section-cover" src="../media/img/virus-fighting-robot-from-china-story-image.png" preload="true"/>
@@ -149,15 +152,15 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-1.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #evening-brief-cover;"
-                      ><!--#the-daily-cover-->
+                      material="side: double; src: #the-daily-cover;"
+                      ><!-- #evening-brief-cover; -->
             </a-entity>
         
             <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #still-processing-cover;"
+                      material="side: double; src: #the-argument-cover;"
                       >
             </a-entity><!-- #coronavirus-cover;-->
         
@@ -165,9 +168,9 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #modern-love-cover;"
+                      material="side: double; src:#still-processing-cover;"
                       >
-            </a-entity><!-- #book-review-cover-->
+            </a-entity><!-- #book-review-cover;    #modern-love-cover;-->
         
             <a-entity id="front-page-banner-item-container-3" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
@@ -188,16 +191,16 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -3"
                       rotation="-90 0 0"
-                      material="side: double; src: #chuck-shumer-coronavirus-cover;"
-                      >
+                      material="side: double; src: #a-single-gesture-cover"
+                      ><!-- #chuck-shumer-coronavirus-cover;-->
             </a-entity>
         
             <a-entity id="right-side-banner-item-container-1" class="right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -2"
                       rotation="-90 0 0"
-                      material="side: double; src: #virus-stimulus-art-cover;"
-                      >
+                      material="side: double; src: #we-have-lost-cover;"
+                      ><!-- #virus-stimulus-art-cover;-->
             </a-entity>
             
             <a-entity id="right-side-banner-item-container-2" class="right-side-banner-item-container"
