@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Skeleton Draft for NYT v.0.0.16</title>
+    <title>NYT v.0.0.18</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
@@ -110,25 +110,28 @@
             <img id="chuck-shumer-coronavirus-cover" src="../media/img/chuck-shumer-coronavirus-cover.png" preload="true" />
             <img id="virus-stimulus-art-cover" src="../media/img/virus-stimulus-art-cover.png" preload="true" />
             <img id="modern-love-cover" src="../media/img/modern-love-cover.png" preload="true" />
-            <img id="stock-cover" src="../media/img/stock-cover.png" preload="true" />
-            <img id="weather-preview-cover" src="../media/img/weather-cover.png" preload="true" />
+            <img id="stock-cover" src="../media/img/stock-cover-tues0205.png" preload="true" />
+            <img id="weather-preview-cover" src="../media/img/weather-cover-ss-tues0205.png" preload="true" />
             <img id="main-cover-image-0" src="../media/img/coronavirus-nyc-metro-comparison-story-image.png" preload="true"/>
-            <img id="main-cover-image-1" src="../media/img/biden-debate-story-image.png" preload="true"/>
-            <img id="main-cover-image-2" src="../media/img/views-from-albany-ga-story-image.png" preload="true"/>
-            <img id="main-cover-image-3" src="../media/img/nyc-paramedics-story-image.png" preload="true"/>
-            <img id="main-cover-image-4" src="../media/img/off-site-trading-nyse-story-image.png" preload="true"/>
-            <img id="main-cover-image-5" src="../media/img/ventilator-shipment-story-image.png" preload="true"/>
-            <img id="main-cover-image-6" src="../media/img/transporting-coffins-in-bergamo-story-image.png" preload="true"/>
+            <img id="main-cover-image-1" src="../media/img/nearly-empy-park-brooklyn-story-image.png" preload="true"/>
+            <img id="main-cover-image-2" src="../media/img/checkpoint-santiago-story-image.png" preload="true"/>
+            <img id="main-cover-image-3" src="../media/img/zoom-ipo-story-image.png" preload="true"/>
+            <img id="main-cover-image-4" src="../media/img/produce-vendors-delhi-story-image.png" preload="true"/>
+            <img id="main-cover-image-5" src="../media/img/austria-masks-in-grocery-stores-story-image.png" preload="true"/>
+            <img id="main-cover-image-6" src="../media/img/chinese-factories-back-to-work-story-image.png" preload="true"/>
             <img id="main-cover-image-7" src="../media/img/medical-staff-ppe-in-paris-story-image.png" preload="true"/>
             <img id="main-cover-image-8" src="../media/img/zaandam-cruise-ship-bay-of-panama-city-story-image.png" preload="true"/>
             
             <img id="we-have-lost-cover" src="../media/img/we-have-lost-story-cover.png" preload="true"/>
             <img id="a-single-gesture-cover" src="../media/img/a-single-gesture-story-cover.png" preload="true"/>
-            <img id="science-section-cover" src="../media/img/uranus-voyager-2-story-image.png" preload="true"/>
+            <img id="science-section-cover" src="../media/img/science-cover-grazing-fireball-australia.png" preload="true"/>
             <img id="technology-section-cover" src="../media/img/technology-cover-tech-giants-prepared-for-2016-style-meddling.png" preload="true"/>
             <img id="business-section-cover" src="../media/img/business-cover-inside-gms-race-to-build-ventilators.png" preload="true"/>
             <img id="arts-section-cover" src="../media/img/art-cover-monday-30-celebrity-culture-is-burning.png" preload="true"/>
             <img id="books-section-cover" src="../media/img/books-section-thursday-cover.png" preload="true"/>
+            <img id="sports-section-cover" src="../media/img/sports-cover-summer-olympics-in-tokyo.png" preload="true"/>
+            <img id="opinion-story-preview" src="../media/img/opinion-story-preview.png" preload="true"/>
+            <img id="opinion-image-cover" src="../media/img/opinion-image-cover.png" preload="true"/>
         </a-assets>
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
             <a-entity id="nyt-banner-container"
@@ -143,7 +146,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Monday\nMarch 16,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Monday\nMarch 30,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       material="transparent: true; opacity: 0;"
                       >
             </a-entity>
@@ -215,7 +218,7 @@
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -2.25"
                       rotation="-90 0 0"
-                      material="side: double; color: red;"
+                      material="side: double; src: #opinion-image-cover;"
                       >
             </a-entity>
             
@@ -223,7 +226,7 @@
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -0.25"
                       rotation="-90 0 0"
-                      material="side: double; color: green;"
+                      material="side: double; src: #opinion-story-preview;"
                       >
             </a-entity>
             
@@ -266,8 +269,8 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="3.5 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #books-section-cover;"
-                      >
+                      material="side: double; src: #sports-section-cover;"
+                      ><!--#books-section-cover;-->
             </a-entity>
             
             <a-entity id="front-page-main-cover-0" 
