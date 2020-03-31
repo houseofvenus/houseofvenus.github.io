@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Panel View (OS-0.0.1)</title>
+    <script src="../js/socket.io.js"></script>
+    <script src="../js/aframe100.js"></script>
+    <script src="../js/aframe-ar.js"></script><!---->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("panelView0.html");
+        });
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs> <!-- -->
+        <a-assets>
+            <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
+        </a-assets>
+        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
+            <a-entity id="nyt-banner-container"
+                      geometry="primitive: plane; width: 4.5; height: 0.75"
+                      position="0.25 1.2 0"
+                      rotation="-90 0 0"
+                      material="side: double; src: #nyt-banner"
+                      >
+            </a-entity>
+        </a-marker> 
+    </a-scene>
+</body>
+</html>
+        
