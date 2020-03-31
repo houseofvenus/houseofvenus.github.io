@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>NYT v.0.0.18</title>
+    <title>NYT v.0.0.20</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
@@ -22,58 +22,14 @@
             
             let position = [0, 4, 0];
             let newHeight = "0 4 0";
-            let covers = [
-                document.getElementById("front-page-main-cover-0"),
-                document.getElementById("front-page-main-cover-1"),
-                document.getElementById("front-page-main-cover-2"),
-                document.getElementById("front-page-main-cover-3"),
-                document.getElementById("front-page-main-cover-4"),
-                document.getElementById("front-page-main-cover-5"),
-                document.getElementById("front-page-main-cover-6"),
-                document.getElementById("front-page-main-cover-7"),
-                document.getElementById("front-page-main-cover-8")
-            ];
+            cycleLoop();
             
-            setTimeout(function(){
-                covers[0].emit("hideCoverZero");
-                covers[1].emit("showCoverOne");
+            let mainPanelViewAnimation = setInterval(function(){
                 
-                setTimeout(function(){
-                    covers[1].emit("hideCoverOne");
-                    covers[2].emit("showCoverTwo");
-                    
-                    setTimeout(function(){
-                        covers[2].emit("hideCoverTwo");
-                        covers[3].emit("showCoverThree");
-                        
-                        setTimeout(function(){
-                            covers[3].emit("hideCoverThree");
-                            covers[4].emit("showCoverFour");
-                            
-                            setTimeout(function(){
-                                covers[4].emit("hideCoverFour");
-                                covers[5].emit("showCoverFive");
-
-                                setTimeout(function(){
-                                    covers[5].emit("hideCoverFive");
-                                    covers[6].emit("showCoverSix");
-                                    
-                                    setTimeout(function(){
-                                        covers[6].emit("hideCoverSix");
-                                        covers[7].emit("showCoverSeven");
-
-                                        setTimeout(function(){
-                                            covers[7].emit("hideCoverSeven");
-                                            covers[8].emit("showCoverEight");
-
-                                        }, 10000);
-                                    }, 10000);
-                                }, 10000);
-                            }, 10000);
-                        }, 10000);
-                    }, 10000);
-                }, 10000);
-            }, 8000);
+                cycleLoop();
+            }, 78500);
+            //88500
+            
             
             /*document.getElementById("up-button").addEventListener("click", function(){
                 position[1]+=1;
@@ -92,6 +48,67 @@
                 covers[1].setAttribute("visible", "true");
             }, 10000);*/
         });
+        
+        function cycleLoop(){
+            console.log("start cycle");
+            let covers = [
+                document.getElementById("front-page-main-cover-0"),
+                document.getElementById("front-page-main-cover-1"),
+                document.getElementById("front-page-main-cover-2"),
+                document.getElementById("front-page-main-cover-3"),
+                document.getElementById("front-page-main-cover-4"),
+                document.getElementById("front-page-main-cover-5"),
+                document.getElementById("front-page-main-cover-6"),
+                document.getElementById("front-page-main-cover-7"),
+                document.getElementById("front-page-main-cover-8")
+            ];
+            
+            setTimeout(function(){
+                    covers[0].emit("hideCoverZero");
+                    covers[1].emit("showCoverOne");
+
+                    setTimeout(function(){
+                        covers[1].emit("hideCoverOne");
+                        covers[2].emit("showCoverTwo");
+
+                        setTimeout(function(){
+                            covers[2].emit("hideCoverTwo");
+                            covers[3].emit("showCoverThree");
+
+                            setTimeout(function(){
+                                covers[3].emit("hideCoverThree");
+                                covers[4].emit("showCoverFour");
+
+                                setTimeout(function(){
+                                    covers[4].emit("hideCoverFour");
+                                    covers[5].emit("showCoverFive");
+
+                                    setTimeout(function(){
+                                        covers[5].emit("hideCoverFive");
+                                        covers[6].emit("showCoverSix");
+
+                                        setTimeout(function(){
+                                            covers[6].emit("hideCoverSix");
+                                           /* covers[7].emit("showCoverSeven");
+
+                                            setTimeout(function(){
+                                                covers[7].emit("hideCoverSeven");
+                                                covers[8].emit("showCoverEight");
+
+                                                setTimeout(function(){
+                                                    covers[8].emit("hideCoverEight");*/
+                                                    covers[0].emit("showCoverZero");
+                                                    console.log("end cycle");
+                                                /*}, 10000);
+                                            }, 10000);*/
+                                        }, 10000);
+                                    }, 10000);
+                                }, 10000);
+                            }, 10000);
+                        }, 10000);
+                    }, 10000);
+                }, 8000);
+        }
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
@@ -112,15 +129,15 @@
             <img id="modern-love-cover" src="../media/img/modern-love-cover.png" preload="true" />
             <img id="stock-cover" src="../media/img/stock-cover-tues0205.png" preload="true" />
             <img id="weather-preview-cover" src="../media/img/weather-cover-ss-tues0205.png" preload="true" />
-            <img id="main-cover-image-0" src="../media/img/coronavirus-nyc-metro-comparison-story-image.png" preload="true"/>
-            <img id="main-cover-image-1" src="../media/img/nearly-empy-park-brooklyn-story-image.png" preload="true"/>
-            <img id="main-cover-image-2" src="../media/img/checkpoint-santiago-story-image.png" preload="true"/>
-            <img id="main-cover-image-3" src="../media/img/zoom-ipo-story-image.png" preload="true"/>
-            <img id="main-cover-image-4" src="../media/img/produce-vendors-delhi-story-image.png" preload="true"/>
-            <img id="main-cover-image-5" src="../media/img/austria-masks-in-grocery-stores-story-image.png" preload="true"/>
-            <img id="main-cover-image-6" src="../media/img/chinese-factories-back-to-work-story-image.png" preload="true"/>
-            <img id="main-cover-image-7" src="../media/img/medical-staff-ppe-in-paris-story-image.png" preload="true"/>
-            <img id="main-cover-image-8" src="../media/img/zaandam-cruise-ship-bay-of-panama-city-story-image.png" preload="true"/>
+            <img id="main-cover-image-0" src="../media/img/nearly-empy-park-brooklyn-story-image.png" preload="true"/>
+            <img id="main-cover-image-1" src="../media/img/checkpoint-santiago-story-image.png" preload="true"/>
+            <img id="main-cover-image-2" src="../media/img/zoom-ipo-story-image.png" preload="true"/>
+            <img id="main-cover-image-3" src="../media/img/produce-vendors-delhi-story-image.png" preload="true"/>
+            <img id="main-cover-image-4" src="../media/img/austria-masks-in-grocery-stores-story-image.png" preload="true"/>
+            <img id="main-cover-image-5" src="../media/img/chinese-factories-back-to-work-story-image.png" preload="true"/>
+            <img id="main-cover-image-6" src="../media/img/medical-staff-ppe-in-paris-story-image.png" preload="true"/>
+            <img id="main-cover-image-7" src="../media/img/cant-afford-quarantine-story-image.png" preload="true"/>
+            <img id="main-cover-image-8" src="../media/img/coronavirus-nyc-metro-comparison-story-image.png" preload="true"/>
             
             <img id="we-have-lost-cover" src="../media/img/we-have-lost-story-cover.png" preload="true"/>
             <img id="a-single-gesture-cover" src="../media/img/a-single-gesture-story-cover.png" preload="true"/>
@@ -146,7 +163,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Monday\nMarch 30,\n2020; color: black; width: 5; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Monday\nMarch 30,\n2020; color: white; width: 6; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       material="transparent: true; opacity: 0;"
                       >
             </a-entity>
@@ -210,7 +227,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -1"
                       rotation="-90 0 0"
-                      material="side: double; color: red;"
+                      material="side: double; src: #main-cover-image-7;"
                       >
             </a-entity>
             
@@ -281,6 +298,9 @@
                       visible="true"
                       animation__hideCoverZeroTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverZero;"
                       animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; startEvents: hideCoverZero;"
+                      
+                      animation__showCoverZeroTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverZero;"
+                      animation__showCoverZeroOpa="property: material.opacity; from: 0; to: 1.0; dur: 2000; startEvents: showCoverZero;"
                       >
             </a-entity><!--animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
         
