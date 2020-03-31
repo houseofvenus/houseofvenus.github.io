@@ -1,13 +1,13 @@
 # House of Venus
-## an MD-Benefit Corporation providing city-as-a-service infrastructure for communities in the United States and abroad.
-### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130) , founder/ceo
-### Beatrice GOMA [] , lead (kdf)
+## a MD-Benefit Corporation providing city-as-a-service infrastructure for communities in the United States and abroad.
+### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130) , ceo/chairman
+### Beatrice GOMA [] , member of board (kdf)
 
 ## Getting Started
 ### View the master branch of our landing page and connect to HoV services:
 
 * pARk: @home
-* WWW: http://houseofven.us/
+* WWW: http://www.houseofven.us/
 
 ### Review the introduction to principles of ATOWN and programming in Lyoko:
 
@@ -47,14 +47,27 @@ WWW
 10. Upload the package and wait for the service to start
 
 ### If deploying to some other system:
+Only AWS is currently supported as a deployment target. Supporting other platforms is an open issue; contact branch manager for more info.
 
-Built With
+
+
+## Contributors
+* @starmaker2130
+* @ericrom1228
+* @bgoma
+
+Built With:
 * C/C++
 * Python
 * JavaScript
 * Lyoko
-* Brackets
 
-## Contributors
+Using:
+* Brackets IDE
+* CodeLyoko IDE
+* XCode IDE
+* MacBook Pro (2019) running macOS Mojave v. 10.14.6
+* ARia prototype II and accompanying prototype controller (2018) running CLOSED v. 0.0.199
+
 
 ## License
