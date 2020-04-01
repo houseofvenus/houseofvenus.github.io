@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>NYT v.0.0.21</title>
+    <title>NYT v.0.0.22</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
@@ -150,8 +150,10 @@
             <img id="opinion-story-preview" src="../media/img/opinion-story-preview.png" preload="true"/>
             <img id="opinion-image-cover" src="../media/img/opinion-image-cover.png" preload="true"/>
             
-            <video id="nyt-main-video" autoplay="true" loop="false" src="../media/vid/cuomo-announcement.mp4"></video>
-
+            <video id="nyt-main-video" autoplay="true" webkit-playsinline="true" playsinline="true" loop="false" src="../media/vid/cuomo-announcement.mp4"></video>
+            <img id="toggle-playback-pause-button-icon" src="../media/img/pause-icon.png" preload="true"/>
+            <img id="play-next-item-button-icon" src="../media/img/play-next-icon.png" preload="true"/>
+            <img id="toggle-volume-button-icon" src="../media/img/volume-on-icon.png" preload="true"/>
         </a-assets>
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
             <a-entity id="nyt-banner-container"
@@ -414,29 +416,29 @@
             </a-entity>
             
             <a-entity id="bottom-half-front-cover-action-button-container-0"
-                      class="bottom-half-front-cover-container action-button-container"
+                      class="bottom-half-front-cover-container action-button-container toggle-playback-button"
                       geometry="primitive: circle; radius: 0.5;"
                       position="5.5 1.5 -2"
                       rotation="-90 0 0"
-                      material="color: red; side: double;"
+                      material="src: #toggle-playback-pause-button-icon; side: double;"
                       >
             </a-entity>
             
             <a-entity id="bottom-half-front-cover-action-button-container-1"
-                      class="bottom-half-front-cover-container action-button-container"
+                      class="bottom-half-front-cover-container action-button-container play-next-item-button"
                       geometry="primitive: circle; radius: 0.5"
                       position="5.5 1.5 -1"
                       rotation="-90 0 0"
-                      material="color: green; side: double;"
+                      material="src: #play-next-item-button-icon; side: double;"
                       >
             </a-entity>
             
             <a-entity id="bottom-half-front-cover-action-button-container-2" 
-                      class="bottom-half-front-cover-container action-button-container"
+                      class="bottom-half-front-cover-container action-button-container toggle-volume-button"
                       geometry="primitive: circle; radius: 0.5;"
                       position="5.5 1.5 0"
                       rotation="-90 0 0"
-                      material="color: white; side: double;"
+                      material="src: #toggle-volume-button-icon; side: double;"
                       >
             </a-entity>
         </a-marker><!-- animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;"
