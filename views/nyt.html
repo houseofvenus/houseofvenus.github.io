@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>NYT v.0.0.20</title>
+    <title>NYT v.0.0.21</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
@@ -149,6 +149,9 @@
             <img id="sports-section-cover" src="../media/img/sports-cover-summer-olympics-in-tokyo.png" preload="true"/>
             <img id="opinion-story-preview" src="../media/img/opinion-story-preview.png" preload="true"/>
             <img id="opinion-image-cover" src="../media/img/opinion-image-cover.png" preload="true"/>
+            
+            <video id="nyt-main-video" autoplay="true" loop="false" src="../media/vid/cuomo-announcement.mp4"></video>
+
         </a-assets>
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
             <a-entity id="nyt-banner-container"
@@ -406,7 +409,7 @@
                       geometry="primitive: plane; width: 6.5; height: 5"
                       position="2 1.2 -2"
                       rotation="-90 0 0"
-                      material="color:blue;side: double;"
+                      material="src: #nyt-main-video; side: double;"
                       >
             </a-entity>
             
