@@ -22,12 +22,23 @@
             
             let position = [0, 4, 0];
             let newHeight = "0 4 0";
-            cycleLoop();
+            playThroughPhotoPresentationOnce();
             
             let mainPanelViewAnimation = setInterval(function(){
                 
-                cycleLoop();
+                playThroughPnotoPresentationOnce();
             }, 78500);
+            
+            document.getElementById("select-panel-2").click(function(){
+                clearInterval(mainPanelViewAnimation);
+                // get panel array
+                // hide all panels not associated with this animation
+                // animate this panel
+                // redirect page to target
+                
+                ]
+            });
+            
             //88500
             
             
@@ -49,7 +60,7 @@
             }, 10000);*/
         });
         
-        function cycleLoop(){
+        function playThroughPnotoPresentationOnce(){
             console.log("start cycle");
             let covers = [
                 document.getElementById("front-page-main-cover-0"),
