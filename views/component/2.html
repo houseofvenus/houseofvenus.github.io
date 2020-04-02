@@ -4,16 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Panel View (OS-0.0.2)</title>
+    <title>Panel View (OS-0.0.1)</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
     <script>
         document.addEventListener("DOMContentLoaded", function(){
-            console.log("panelView2");
-            // add initial mapping size on front page
-            // add target size after animation and on load of this page
-            // add scaffolding for other meta data
+            console.log("panelView2.html");
+            // source view, i.e. the model view on the front page
+            // add a button for toggling between the centered view and the actual view as it appears on the front page
         });
     </script>
 </head>
@@ -24,7 +23,7 @@
         </a-assets>
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">        
             <a-entity id="front-page-banner-item-container-0" class="front-page-banner-item-container"
-                      geometry="primitive: plane; width: 5; height: 5"
+                      geometry="primitive: plane; width: 1; height: 1"
                       position="0 1.2 0"
                       rotation="-90 0 0"
                       material="side: double; src: #the-daily-cover;"
