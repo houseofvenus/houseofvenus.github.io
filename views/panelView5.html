@@ -20,7 +20,7 @@
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs> <!-- -->
         <a-assets>
-            <img id="stock-cover" src="../media/img/stock-cover-tues0205.png" preload="true" />
+            <img id="stock-cover" src="../media/img/stock-cover-thurs0034.png" preload="true" />
             <img id="daily-stock-chart" src="../media/img/daily-stock-chart.png" preload="true" />
             <img id="wed-dow-numbers" src="../media/img/wed-dow.png" preload="true" />
             <img id="wed-snp-numbers" src="../media/img/wed-snp.png" preload="true" />
@@ -28,32 +28,35 @@
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">        
             <a-entity id="front-page-banner-item-container-3" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
-                      position="0 1.2 0"
+                      position="0 1.2 -5.5"
                       rotation="-90 0 0"
                       material="side: double; src: #stock-cover;"
                       >
             </a-entity>
+            
             <a-entity id="front-page-banner-item-container-0" class="front-page-banner-item-container"
                       geometry="primitive: plane; width: 3.5; height: 2"
+                      position="-2 1.2 -3.5"
+                      rotation="-90 0 0"
+                      material="side: double; src: #wed-dow-numbers;"
+                      >
+            </a-entity>
+            <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 3.5; height: 2"
+                      position="2 1.2 -3.5"
+                      rotation="-90 0 0"
+                      material="side: double; src: #wed-snp-numbers;"
+                      >
+            </a-entity>
+            
+            <a-entity id="front-page-banner-item-container-2" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 6; height: 4.5"
                       position="0 1.2 0"
                       rotation="-90 0 0"
                       material="side: double; src: #daily-stock-chart;"
                       >
             </a-entity>
-            <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
-                      geometry="primitive: plane; width: 3.5; height: 2"
-                      position="0 1.2 0"
-                      rotation="-90 0 0"
-                      material="side: double; src: #wed-snp-numbers;"
-                      >
-            </a-entity>
-            <a-entity id="front-page-banner-item-container-2" class="front-page-banner-item-container"
-                      geometry="primitive: plane; width: 6; height: 4.5"
-                      position="0 1.2 0"
-                      rotation="-90 0 0"
-                      material="side: double; src: #wed-dow-numbers;"
-                      >
-            </a-entity>
+            
         </a-marker>
     </a-scene>
 </body>
