@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>NYT v.0.0.23</title>
+    <title>NYT v.0.0.24</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
@@ -92,14 +92,28 @@
                 playThroughPnotoPresentationOnce();
             }, 78500);
             
-            document.getElementById("select-panel-2").addEventListener("click", function(){
-                clearInterval(mainPanelViewAnimation);
-                console.log("cleared interval");
-                let panel2 = document.getElementById("front-page-banner-item-container-0");
-                panel2.emit("selectPanel");
-                setTimeout(function(){
-                    window.location.href = "./2"
-                }, 5000);
+            //document.getElementById("select-panel-2").addEventListener("click", function(){
+            socket.on("SERVERrelayPanelRemoteRequestToCLIENT", function(data){
+                if(data.status){
+                    switch(data.target){
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval");
+                            let panel2 = document.getElementById("front-page-banner-item-container-0");
+                            panel2.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./2"
+                            }, 5000);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
                 // get panel array-->NOT IMPLEMENTED IN THIS VERSION; panel array abstraction needs to be built but we are no longer hiding all non-selected panels
                 // hide all panels not associated with this animation---->NOT TO BE IMPLEMENTED; feature dropped
                 // DONE------------------------------animate this panel
@@ -138,7 +152,7 @@
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <div id="select-panel-2" style="position: absolute; width: 100px; height: 100px; border-radius: 50%; right: 5%; bottom: 5%; z-index: 100; background-color: white; color: black; text-align: center; line-height: 100px; cursor: pointer;">select 2</div>
+    
     <!--<div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: greenyellow; color: black; right: 5%; bottom: 20%;text-align: center;line-height: 100px;font-size: 24px;" id="up-button">up</div>
     <div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: red; color: white;right: 5%; bottom: 5%;text-align: center;line-height: 100px;font-size: 24px;" id="down-button">down</div>
     <!--<div id="play-button"></div>-->

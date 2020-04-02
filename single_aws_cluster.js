@@ -568,6 +568,21 @@ else {*/
         res.render('panelView0.html',{root: dir[0]});
     });*/
 
+    app.get('/remote', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('panelRemote.html',{root: dir[0]});
+    });
+
     app.get('/nyt', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -969,7 +984,7 @@ else {*/
             }
         }
     };
-
+let ActiveDias = [];
     io.sockets.on('connection', function(socket){
         var conn = socket;
 
@@ -981,6 +996,9 @@ else {*/
             }
             else if(message.targetDIA=="New York Times"){
                 socket.emit("SERVERloadImmersiveNewspaperOnCLIENT", {status: true, paper: DecentralizedImmersiveApplications["New York Times"].object.dataSource});
+                
+                ActiveDias.push({id: socket, name: "NYT", ver: "0.0.24", aut: "@pamo"});
+                console.log("active dia registered");
             }
             else{
                 console.log("no associated dia found in registry.")
@@ -988,6 +1006,47 @@ else {*/
              
         });
        
+        socket.on("CLIENTconnectPanelRemoteToSERVER", function(data){
+            if(data.status){
+                console.log("panel remote connected");//to :
+                //console.log(ActiveDias);
+                socket.emit("SERVERauthenticateConnectionToPanelRemoteOnCLIENT", {status: true});
+            }
+        });
+        
+        socket.on("CLIENTbroadcastPanelRemoteRequestToSERVER", function(data){
+            console.log("received broadcast remote request\nrelaying to client... ")
+            let broadcastTarget = ActiveDias[0];
+            if(data.status){
+                if(data.action==="selectPanel"){
+                    switch(data.target){
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            console.log("panel 2 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        });
+        
         socket.on('disconnect', function(){
             console.log(`socket ${socket.id} disconnected.`);
         });
