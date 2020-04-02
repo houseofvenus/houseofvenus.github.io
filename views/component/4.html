@@ -10,26 +10,23 @@
     <script src="../js/aframe-ar.js"></script><!---->
     <script>
         document.addEventListener("DOMContentLoaded", function(){
-            console.log("panelView3");
-            // add initial mapping size on front page
-            // add target size after animation and on load of this page
-            // add scaffolding for other meta data
+            console.log("panelView4.html");
         });
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs> <!-- -->
         <a-assets>
-            <img id="the-argument-cover" src="../media/img/the-argument-cover.png" preload="true" />
+            <img id="still-processing-cover" src="../media/img/still-processing-cover.png" preload="true" />
         </a-assets>       
-        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
-                      geometry="primitive: plane; width: 5; height: 5"
+        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">        
+            <a-entity id="front-page-banner-item-container-2" class="front-page-banner-item-container"
+                      geometry="primitive: plane; width: 1; height: 1"
                       position="0 1.2 0"
                       rotation="-90 0 0"
-                      material="side: double; src: #the-argument-cover;"
+                      material="side: double; src:#still-processing-cover;"
                       >
-            </a-entity><!-- #coronavirus-cover;-->
+            </a-entity><!-- #book-review-cover;    #modern-love-cover;-->
         </a-marker>
     </a-scene>
 </body>

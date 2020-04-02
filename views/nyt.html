@@ -109,6 +109,15 @@
                                 window.location.href = "./2"
                             }, 5000);
                             break;
+                        case 3:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 3");
+                            let panel3 = document.getElementById("front-page-banner-item-container-1");
+                            panel3.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./3"
+                            }, 5000);
+                            break;
                         default:
                             break;
                     }
@@ -219,9 +228,9 @@
                       position="-1.5 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #the-daily-cover;"
-                      animation__selectPanelMoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
-                      animation__selectPanelGrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
-                      animation__selectPanelGrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel2MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
+                      animation__selectPanel2GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel2GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       ><!-- #evening-brief-cover; -->
             </a-entity>
         
@@ -230,6 +239,9 @@
                       position="-0.5 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #the-argument-cover;"
+                      animation__selectPanel3MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
+                      animation__selectPanel3GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel3GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       >
             </a-entity><!-- #coronavirus-cover;-->
         
