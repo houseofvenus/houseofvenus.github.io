@@ -1033,6 +1033,9 @@ let ActiveDias = [];
                             broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
                             break;
                         case 4:
+                            console.log("panel 4 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
                             break;
                         case 5:
                             break;

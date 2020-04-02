@@ -118,6 +118,15 @@
                                 window.location.href = "./3"
                             }, 5000);
                             break;
+                        case 4:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 4");
+                            let panel4 = document.getElementById("front-page-banner-item-container-2");
+                            panel4.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./4"
+                            }, 5000);
+                            break;    
                         default:
                             break;
                     }
@@ -249,7 +258,10 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src:#still-processing-cover;"
+                      material="side: double; src: #still-processing-cover;"
+                      animation__selectPanel3MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
+                      animation__selectPanel3GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel3GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       >
             </a-entity><!-- #book-review-cover;    #modern-love-cover;-->
         
