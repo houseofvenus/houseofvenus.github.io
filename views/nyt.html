@@ -4,61 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>NYT v.0.0.22</title>
+    <title>NYT v.0.0.23</title>
     <script src="../js/socket.io.js"></script>
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            var socket = io.connect(location.host);
-            socket.emit("CLIENTconnectToSERVER", {status: true, targetDIA: "New York Times"});
-            
-            socket.on("SERVERloadImmersiveNewspaperOnCLIENT", function(data){
-                if(data.status){
-                    let newspaper = data.paper;
-                    console.log(newspaper);
-                }
-            });
-            
-            let position = [0, 4, 0];
-            let newHeight = "0 4 0";
-            playThroughPhotoPresentationOnce();
-            
-            let mainPanelViewAnimation = setInterval(function(){
-                
-                playThroughPnotoPresentationOnce();
-            }, 78500);
-            
-            document.getElementById("select-panel-2").click(function(){
-                clearInterval(mainPanelViewAnimation);
-                // get panel array
-                // hide all panels not associated with this animation
-                // animate this panel
-                // redirect page to target
-                
-                ]
-            });
-            
-            //88500
-            
-            
-            /*document.getElementById("up-button").addEventListener("click", function(){
-                position[1]+=1;
-                newHeight = position[0]+" "+position[1]+" "+position[2];
-                document.getElementById("rig").setAttribute("position", newHeight);
-            });
-            
-            document.getElementById("down-button").addEventListener("click", function(){
-                position[1]-=1;
-                newHeight = position[0]+" "+position[1]+" "+position[2];
-                document.getElementById("rig").setAttribute("position", newHeight);
-            });*/
-            
-            /*setTimeout(function(){
-                covers[0].setAttribute("visible", "false");
-                covers[1].setAttribute("visible", "true");
-            }, 10000);*/
-        });
         
         function playThroughPnotoPresentationOnce(){
             console.log("start cycle");
@@ -120,9 +70,75 @@
                     }, 10000);
                 }, 8000);
         }
+        let mainPanelViewAnimation;
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            var socket = io.connect(location.host);
+            socket.emit("CLIENTconnectToSERVER", {status: true, targetDIA: "New York Times"});
+            
+            socket.on("SERVERloadImmersiveNewspaperOnCLIENT", function(data){
+                if(data.status){
+                    let newspaper = data.paper;
+                    console.log(newspaper);
+                }
+            });
+            
+            let position = [0, 4, 0];
+            let newHeight = "0 4 0";
+            playThroughPnotoPresentationOnce();
+            
+            mainPanelViewAnimation = setInterval(function(){
+                
+                playThroughPnotoPresentationOnce();
+            }, 78500);
+            
+            document.getElementById("select-panel-2").addEventListener("click", function(){
+                clearInterval(mainPanelViewAnimation);
+                console.log("cleared interval");
+                let panel2 = document.getElementById("front-page-banner-item-container-0");
+                panel2.emit("selectPanel");
+                setTimeout(function(){
+                    window.location.href = "./2"
+                }, 5000);
+                // get panel array-->NOT IMPLEMENTED IN THIS VERSION; panel array abstraction needs to be built but we are no longer hiding all non-selected panels
+                // hide all panels not associated with this animation---->NOT TO BE IMPLEMENTED; feature dropped
+                // DONE------------------------------animate this panel
+                // DONE------------------------------redirect page to target
+                
+                // 2/4 = 50% for this task
+            });
+            
+            //88500
+            
+            /*0 1
+            1 7
+            2 8
+            3 9
+            4 10
+            5 11*/
+            
+            /*document.getElementById("up-button").addEventListener("click", function(){
+                position[1]+=1;
+                newHeight = position[0]+" "+position[1]+" "+position[2];
+                document.getElementById("rig").setAttribute("position", newHeight);
+            });
+            
+            document.getElementById("down-button").addEventListener("click", function(){
+                position[1]-=1;
+                newHeight = position[0]+" "+position[1]+" "+position[2];
+                document.getElementById("rig").setAttribute("position", newHeight);
+            });*/
+            
+            /*setTimeout(function(){
+                covers[0].setAttribute("visible", "false");
+                covers[1].setAttribute("visible", "true");
+            }, 10000);*/
+        });
+        
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
+    <div id="select-panel-2" style="position: absolute; width: 100px; height: 100px; border-radius: 50%; right: 5%; bottom: 5%; z-index: 100; background-color: white; color: black; text-align: center; line-height: 100px; cursor: pointer;">select 2</div>
     <!--<div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: greenyellow; color: black; right: 5%; bottom: 20%;text-align: center;line-height: 100px;font-size: 24px;" id="up-button">up</div>
     <div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: red; color: white;right: 5%; bottom: 5%;text-align: center;line-height: 100px;font-size: 24px;" id="down-button">down</div>
     <!--<div id="play-button"></div>-->
@@ -189,6 +205,9 @@
                       position="-1.5 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #the-daily-cover;"
+                      animation__selectPanelMoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
+                      animation__selectPanelGrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanelGrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       ><!-- #evening-brief-cover; -->
             </a-entity>
         
