@@ -127,6 +127,30 @@
                                 window.location.href = "./4"
                             }, 5000);
                             break;    
+                        case 5:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 5");
+                            let collection = document.getElementsByClassName("immersive-component");
+                            let panel5 = document.getElementById("front-page-banner-item-container-3");
+                            
+                            for(var i=0;i<collection.length;i++){
+                                (function(){
+                                    let iteration = i;
+                                    if(collection[iteration]!=panel5){
+                                        setTimeout(function(){
+                                            collection[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel5.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./5"
+                            }, 5000);
+                            break;   
+                            break;    
                         default:
                             break;
                     }
@@ -215,7 +239,7 @@
             <img id="toggle-volume-button-icon" src="../media/img/volume-on-icon.png" preload="true"/>
         </a-assets>
         <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
-            <a-entity id="nyt-banner-container"
+            <a-entity id="nyt-banner-container" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 0.75"
                       position="0.25 1.2 -5"
                       rotation="-90 0 0"
@@ -223,16 +247,16 @@
                       >
             </a-entity>
             
-            <a-entity id="date-container" class="front-page-banner-item-container"
+            <a-entity id="date-container" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Monday\nMarch 30,\n2020; color: white; width: 6; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Thursday\nApril 2,\n2020; color: white; width: 6; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       material="transparent: true; opacity: 0;"
                       >
             </a-entity>
         
-            <a-entity id="front-page-banner-item-container-0" class="front-page-banner-item-container"
+            <a-entity id="front-page-banner-item-container-0" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-1.5 1.2 -4"
                       rotation="-90 0 0"
@@ -243,7 +267,7 @@
                       ><!-- #evening-brief-cover; -->
             </a-entity>
         
-            <a-entity id="front-page-banner-item-container-1" class="front-page-banner-item-container"
+            <a-entity id="front-page-banner-item-container-1" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-0.5 1.2 -4"
                       rotation="-90 0 0"
@@ -254,25 +278,26 @@
                       >
             </a-entity><!-- #coronavirus-cover;-->
         
-            <a-entity id="front-page-banner-item-container-2" class="front-page-banner-item-container"
+            <a-entity id="front-page-banner-item-container-2" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="0.5 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #still-processing-cover;"
-                      animation__selectPanel3MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
-                      animation__selectPanel3GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
-                      animation__selectPanel3GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel4MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
+                      animation__selectPanel4GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel4GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       >
             </a-entity><!-- #book-review-cover;    #modern-love-cover;-->
         
-            <a-entity id="front-page-banner-item-container-3" class="front-page-banner-item-container"
+            <a-entity id="front-page-banner-item-container-3" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="1.75 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #stock-cover;"
+                      animation__selectPanel5MoveToCentert="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       >
             </a-entity>
-            <a-entity id="front-page-banner-item-container-4" class="front-page-banner-item-container weather-preview-container"
+            <a-entity id="front-page-banner-item-container-4" class="immersive-component front-page-banner-item-container weather-preview-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -4"
                       rotation="-90 0 0"
@@ -280,7 +305,7 @@
                       >
             </a-entity>
             
-            <a-entity id="right-side-banner-item-container-0" class="right-side-banner-item-container"
+            <a-entity id="right-side-banner-item-container-0" class="immersive-component right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -3"
                       rotation="-90 0 0"
@@ -288,7 +313,7 @@
                       ><!-- #chuck-shumer-coronavirus-cover;-->
             </a-entity>
         
-            <a-entity id="right-side-banner-item-container-1" class="right-side-banner-item-container"
+            <a-entity id="right-side-banner-item-container-1" class="immersive-component right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -2"
                       rotation="-90 0 0"
@@ -296,7 +321,7 @@
                       ><!-- #virus-stimulus-art-cover;-->
             </a-entity>
             
-            <a-entity id="right-side-banner-item-container-2" class="right-side-banner-item-container"
+            <a-entity id="right-side-banner-item-container-2" class="immersive-component right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -1"
                       rotation="-90 0 0"
@@ -304,7 +329,7 @@
                       >
             </a-entity>
             
-            <a-entity id="left-side-banner-item-container-0" class="left-side-banner-item-container"
+            <a-entity id="left-side-banner-item-container-0" class="immersive-component left-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -2.25"
                       rotation="-90 0 0"
@@ -312,7 +337,7 @@
                       >
             </a-entity>
             
-            <a-entity id="left-side-banner-item-container-1" class="left-side-banner-item-container"
+            <a-entity id="left-side-banner-item-container-1" class="immersive-component left-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -0.25"
                       rotation="-90 0 0"
@@ -321,7 +346,7 @@
             </a-entity>
             
             
-            <a-entity id="bottom-banner-item-container-0" class="bottom-banner-item-container"
+            <a-entity id="bottom-banner-item-container-0" class="immersive-component bottom-banner-item-container"
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="-0.45 1.2 0.5"
                       rotation="-90 0 0"
@@ -330,7 +355,7 @@
             </a-entity>
             
             
-            <a-entity id="bottom-banner-item-container-1" class="bottom-banner-item-container"
+            <a-entity id="bottom-banner-item-container-1" class="immersive-component bottom-banner-item-container"
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="2.65 1.2 0.5"
                       rotation="-90 0 0"
@@ -338,7 +363,7 @@
                       >
             </a-entity>
             
-            <a-entity id="other-stories-banner-item-container-0" class="other-stories-banner-item-container"
+            <a-entity id="other-stories-banner-item-container-0" class="immersive-component other-stories-banner-item-container"
                       geometry="primitive: plane; width: 2; height: 2"
                       position="-1 1.2 2.5"
                       rotation="-90 0 0"
@@ -347,7 +372,7 @@
             </a-entity>
             
             
-            <a-entity id="other-stories-banner-item-container-1" class="other-stories-banner-item-container"
+            <a-entity id="other-stories-banner-item-container-1" class="immersive-component other-stories-banner-item-container"
                       geometry="primitive: plane; width: 2; height: 2"
                       position="1.25 1.2 2.5"
                       rotation="-90 0 0"
@@ -355,7 +380,7 @@
                       >
             </a-entity>
             
-            <a-entity id="other-stories-banner-item-container-2" class="other-stories-banner-item-container"
+            <a-entity id="other-stories-banner-item-container-2" class="immersive-component other-stories-banner-item-container"
                       geometry="primitive: plane; width: 2; height: 2"
                       position="3.5 1.2 2.5"
                       rotation="-90 0 0"
@@ -363,7 +388,7 @@
                       ><!--#books-section-cover;-->
             </a-entity>
             
-            <a-entity id="front-page-main-cover-0" 
+            <a-entity id="front-page-main-cover-0" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -377,7 +402,7 @@
                       >
             </a-entity><!--animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
         
-            <a-entity id="front-page-main-cover-1" 
+            <a-entity id="front-page-main-cover-1" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -389,7 +414,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-2" 
+            <a-entity id="front-page-main-cover-2" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -401,7 +426,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-3" 
+            <a-entity id="front-page-main-cover-3" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -413,7 +438,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-4" 
+            <a-entity id="front-page-main-cover-4" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -425,7 +450,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-5" 
+            <a-entity id="front-page-main-cover-5" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -437,7 +462,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-6" 
+            <a-entity id="front-page-main-cover-6" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -449,7 +474,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-7" 
+            <a-entity id="front-page-main-cover-7" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -461,7 +486,7 @@
                       >
             </a-entity>
         
-            <a-entity id="front-page-main-cover-8" 
+            <a-entity id="front-page-main-cover-8" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
@@ -475,7 +500,7 @@
         </a-marker> 
         
         <a-marker preset="hiro">
-            <a-entity id="bottom-half-front-cover-container" 
+            <a-entity id="bottom-half-front-cover-container" class="immersive-component"
                       geometry="primitive: plane; width: 6.5; height: 5"
                       position="2 1.2 -2"
                       rotation="-90 0 0"
@@ -483,8 +508,8 @@
                       >
             </a-entity>
             
-            <a-entity id="bottom-half-front-cover-action-button-container-0"
-                      class="bottom-half-front-cover-container action-button-container toggle-playback-button"
+            <a-entity id="bottom-half-front-cover-action-button-container-0" class="immersive-component"
+                      class="immersive-component bottom-half-front-cover-container action-button-container toggle-playback-button"
                       geometry="primitive: circle; radius: 0.5;"
                       position="5.5 1.5 -2"
                       rotation="-90 0 0"
@@ -492,8 +517,8 @@
                       >
             </a-entity>
             
-            <a-entity id="bottom-half-front-cover-action-button-container-1"
-                      class="bottom-half-front-cover-container action-button-container play-next-item-button"
+            <a-entity id="bottom-half-front-cover-action-button-container-1" class="immersive-component"
+                      class="immersive-component bottom-half-front-cover-container action-button-container play-next-item-button"
                       geometry="primitive: circle; radius: 0.5"
                       position="5.5 1.5 -1"
                       rotation="-90 0 0"
@@ -501,8 +526,8 @@
                       >
             </a-entity>
             
-            <a-entity id="bottom-half-front-cover-action-button-container-2" 
-                      class="bottom-half-front-cover-container action-button-container toggle-volume-button"
+            <a-entity id="bottom-half-front-cover-action-button-container-2" class="immersive-component"
+                      class="immersive-component bottom-half-front-cover-container action-button-container toggle-volume-button"
                       geometry="primitive: circle; radius: 0.5;"
                       position="5.5 1.5 0"
                       rotation="-90 0 0"
