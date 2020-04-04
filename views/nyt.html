@@ -274,8 +274,8 @@
                         case 11:
                             clearInterval(mainPanelViewAnimation);
                             console.log("cleared interval 11");
-                            let collection6 = document.getElementsByClassName("immersive-component");
-                            let panel6 = document.getElementById("left-side-banner-item-container-1");
+                            let collection11 = document.getElementsByClassName("immersive-component");
+                            let panel11 = document.getElementById("left-side-banner-item-container-1");
                             
                             for(var j=0;j<collection11.length;j++){
                                 (function(){
@@ -297,8 +297,8 @@
                         case 12:
                             clearInterval(mainPanelViewAnimation);
                             console.log("cleared interval 12");
-                            let collection6 = document.getElementsByClassName("immersive-component");
-                            let panel6 = document.getElementById("bottom-banner-item-container-0");
+                            let collection12 = document.getElementsByClassName("immersive-component");
+                            let panel12 = document.getElementById("bottom-banner-item-container-0");
                             
                             for(var j=0;j<collection12.length;j++){
                                 (function(){
@@ -319,16 +319,16 @@
                             break;
                         case 13:
                             clearInterval(mainPanelViewAnimation);
-                            console.log("cleared interval 6");
-                            let collection6 = document.getElementsByClassName("immersive-component");
-                            let panel6 = document.getElementById("bottom-banner-item-container-1");
+                            console.log("cleared interval 13");
+                            let collection13 = document.getElementsByClassName("immersive-component");
+                            let panel13 = document.getElementById("bottom-banner-item-container-1");
                             
-                            for(var j=0;j<collection6.length;j++){
+                            for(var j=0;j<collection13.length;j++){
                                 (function(){
                                     let iteration = j;
-                                    if(collection6[iteration]!=panel6){
+                                    if(collection13[iteration]!=panel13){
                                         setTimeout(function(){
-                                            collection6[iteration].setAttribute("visible", "false");
+                                            collection13[iteration].setAttribute("visible", "false");
                                         }, iteration*125);
                                     }
                                 })();
@@ -775,8 +775,7 @@
                       position="3.3 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #weather-preview-cover;"
-                      animation__selectPanel6MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"
-                      >
+                      animation__selectPanel6MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
             <!-- PANEL 7 -->
@@ -881,8 +880,7 @@
                       animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; startEvents: hideCoverZero;"
                       
                       animation__showCoverZeroTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverZero;"
-                      animation__showCoverZeroOpa="property: material.opacity; from: 0; to: 1.0; dur: 2000; startEvents: showCoverZero;"
-                      >
+                      animation__showCoverZeroOpa="property: material.opacity; from: 0; to: 1.0; dur: 2000; startEvents: showCoverZero;">
             </a-entity><!--animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
         
             <!-- PANEL 18 -->
@@ -894,8 +892,7 @@
                       animation__showCoverOneOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverOne; easing: linear;"
                       animation__showCoverOneTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverOne; easing: linear;"
                       animation__hideCoverOneOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverOne; easing: linear;"  
-                      animation__hideCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverOne; easing: linear;"
-                      >
+                      animation__hideCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverOne; easing: linear;">
             </a-entity>
         
             <!-- PANEL 19 -->
@@ -907,8 +904,7 @@
                       animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverTwo; easing: linear;"
                       animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: showCoverTwo; easing: linear;"
                       animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverTwo; easing: linear;"
-                      animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverTwo; easing: linear;"
-                      >
+                      animation__hideCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverTwo; easing: linear;">
             </a-entity>
         
             <!-- PANEL 20 -->
@@ -920,8 +916,7 @@
                       animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverThree; easing: linear;"
                       animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverThree; easing: linear;"
                       animation__hideCoverThreeOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverThree; easing: linear;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverThree; easing: linear;"
-                      >
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverThree; easing: linear;">
             </a-entity>
         
             <!-- PANEL 21 -->
@@ -933,8 +928,7 @@
                       animation__showCoverFourOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFour; easing: linear;"
                       animation__showCoverFourTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFour; easing: linear;"  
                       animation__hideCoverFourOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverFour; easing: linear;"
-                      animation__hideCoverFourTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverFour; easing: linear;"
-                      >
+                      animation__hideCoverFourTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverFour; easing: linear;">
             </a-entity>
         
             <!-- PANEL 22 -->
@@ -946,8 +940,7 @@
                       animation__showCoverFiveOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFive; easing: linear;"
                       animation__showCoverFiveTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFive; easing: linear;"
                       animation__hideCoverFiveOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverFive; easing: linear;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverFive; easing: linear;"
-                      >
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverFive; easing: linear;">
             </a-entity>
         
             <!-- PANEL 23 -->
@@ -959,8 +952,7 @@
                       animation__showCoverSixOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSix; easing: linear;"
                       animation__showCoverSixTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSix; easing: linear;"
                       animation__hideCoverSixOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverSix; easing: linear;"
-                      animation__hideCoverSixTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverSix; easing: linear;"
-                      >
+                      animation__hideCoverSixTrans="property: material.transparent; from: true; to : false; dur: 50; startEvents: hideCoverSix; easing: linear;">
             </a-entity>
         
             <!-- PANEL 24 -->
@@ -972,8 +964,7 @@
                       animation__showCoverSevenOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSeven; easing: linear;"
                       animation__showCoverSevenTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSeven; easing: linear;"
                       animation__hideCoverSevenOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverSeven; easing: linear;"
-                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverSeven; easing: linear;"
-                      >
+                      animation__hideCoverThreeTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverSeven; easing: linear;">
             </a-entity>
         
             <!-- PANEL 25 -->
@@ -985,8 +976,7 @@
                       animation__showCoverEightOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverEight easing: linear;"
                       animation__showCoverEightTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverEight; easing: linear;"
                       animation__hideCoverEightOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverEight; easing: linear;"
-                      animation__hideCoverEightTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverEight; easing: linear;"
-                      >
+                      animation__hideCoverEightTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 2000; startEvents: hideCoverEight; easing: linear;">
             </a-entity>
         </a-marker> 
         
