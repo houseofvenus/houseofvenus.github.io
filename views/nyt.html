@@ -9,7 +9,7 @@
     <script src="../js/aframe100.js"></script>
     <script src="../js/aframe-ar.js"></script><!---->
     <script>
-        
+        var maidenPlay = false;
         function playThroughPnotoPresentationOnce(){
             console.log("start cycle");
             let covers = [
@@ -39,7 +39,12 @@
                             setTimeout(function(){
                                 covers[3].emit("hideCoverThree");
                                 covers[4].emit("showCoverFour");
-
+                                
+                                if(!maidenPlay){
+                                    document.getElementById("nyt-main-video").play();
+                                    maidenPlay = true;
+                                }
+                                
                                 setTimeout(function(){
                                     covers[4].emit("hideCoverFour");
                                     covers[5].emit("showCoverFive");
@@ -130,15 +135,15 @@
                         case 5:
                             clearInterval(mainPanelViewAnimation);
                             console.log("cleared interval 5");
-                            let collection = document.getElementsByClassName("immersive-component");
+                            let collection5 = document.getElementsByClassName("immersive-component");
                             let panel5 = document.getElementById("front-page-banner-item-container-3");
                             
-                            for(var i=0;i<collection.length;i++){
+                            for(var i=0;i<collection5.length;i++){
                                 (function(){
                                     let iteration = i;
-                                    if(collection[iteration]!=panel5){
+                                    if(collection5[iteration]!=panel5){
                                         setTimeout(function(){
-                                            collection[iteration].setAttribute("visible", "false");
+                                            collection5[iteration].setAttribute("visible", "false");
                                         }, iteration*125);
                                     }
                                 })();
@@ -153,15 +158,15 @@
                         case 6:
                             clearInterval(mainPanelViewAnimation);
                             console.log("cleared interval 6");
-                            let collection = document.getElementsByClassName("immersive-component");
+                            let collection6 = document.getElementsByClassName("immersive-component");
                             let panel6 = document.getElementById("front-page-banner-item-container-4");
                             
-                            for(var j=0;j<collection.length;j++){
+                            for(var j=0;j<collection6.length;j++){
                                 (function(){
                                     let iteration = j;
-                                    if(collection[iteration]!=panel6){
+                                    if(collection6[iteration]!=panel6){
                                         setTimeout(function(){
-                                            collection[iteration].setAttribute("visible", "false");
+                                            collection6[iteration].setAttribute("visible", "false");
                                         }, iteration*125);
                                     }
                                 })();
@@ -171,6 +176,443 @@
                             panel6.emit("selectPanel");
                             setTimeout(function(){
                                 window.location.href = "./6"
+                            }, 5000);
+                            break;
+                        case 7:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 7");
+                            let collection7 = document.getElementsByClassName("immersive-component");
+                            let panel7 = document.getElementById("right-side-banner-item-container-0");
+                            
+                            //document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection7.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection7[iteration]!=panel7){
+                                        setTimeout(function(){
+                                            collection7[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel7.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./7"
+                            }, 5000);
+                            break;
+                        case 8:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 8");
+                            let collection8 = document.getElementsByClassName("immersive-component");
+                            let panel8 = document.getElementById("right-side-banner-item-container-1");
+                            
+                            for(var j=0;j<collection8.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection8[iteration]!=panel8){
+                                        setTimeout(function(){
+                                            collection8[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./8"
+                            }, 5000);
+                            break;
+                        case 9:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 9");
+                            let collection9 = document.getElementsByClassName("immersive-component");
+                            let panel9 = document.getElementById("right-side-banner-item-container-2");
+                            
+                            for(var j=0;j<collection9.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection9[iteration]!=panel9){
+                                        setTimeout(function(){
+                                            collection9[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                            }
+                            
+                            panel9.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./9"
+                            }, 5000);
+                            break;
+                        case 10:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 10");
+                            let collection10 = document.getElementsByClassName("immersive-component");
+                            let panel10 = document.getElementById("left-side-banner-item-container-0");
+                            
+                            for(var j=0;j<collection10.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection10[iteration]!=panel10){
+                                        setTimeout(function(){
+                                            collection10[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./10"
+                            }, 5000);
+                            break;
+                        case 11:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 11");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("left-side-banner-item-container-1");
+                            
+                            for(var j=0;j<collection11.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection11[iteration]!=panel11){
+                                        setTimeout(function(){
+                                            collection11[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./11"
+                            }, 5000);
+                            break;
+                        case 12:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 12");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("bottom-banner-item-container-0");
+                            
+                            for(var j=0;j<collection12.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection12[iteration]!=panel12){
+                                        setTimeout(function(){
+                                            collection12[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./12"
+                            }, 5000);
+                            break;
+                        case 13:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("bottom-banner-item-container-1");
+                            
+                            for(var j=0;j<collection6.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection6[iteration]!=panel6){
+                                        setTimeout(function(){
+                                            collection6[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./13"
+                            }, 5000);
+                            break;
+                        case 14:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("other-stories-banner-item-container-0");
+                            
+                            for(var j=0;j<collection6.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection6[iteration]!=panel6){
+                                        setTimeout(function(){
+                                            collection6[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./14"
+                            }, 5000);
+                            break;
+                        case 15:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("other-stories-banner-item-container-1");
+                            
+                            for(var j=0;j<collection6.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection6[iteration]!=panel6){
+                                        setTimeout(function(){
+                                            collection6[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./15"
+                            }, 5000);
+                            break;
+                        case 16:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("other-stories-banner-item-container-2");
+                            
+                            for(var j=0;j<collection6.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection6[iteration]!=panel6){
+                                        setTimeout(function(){
+                                            collection6[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./16"
+                            }, 5000);
+                            break;
+                        case 17:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection6 = document.getElementsByClassName("immersive-component");
+                            let panel6 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection6.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection6[iteration]!=panel6){
+                                        setTimeout(function(){
+                                            collection6[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./17"
+                            }, 5000);
+                            break;
+                        case 18:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 18");
+                            let collection18 = document.getElementsByClassName("immersive-component");
+                            let panel18 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection18.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection18[iteration]!=panel18){
+                                        setTimeout(function(){
+                                            collection18[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel18.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./18"
+                            }, 5000);
+                            break;
+                        case 19:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 19");
+                            let collection19 = document.getElementsByClassName("immersive-component");
+                            let panel19 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection19.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection19[iteration]!=panel19){
+                                        setTimeout(function(){
+                                            collection19[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./19"
+                            }, 5000);
+                            break;
+                        case 20:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 20");
+                            let collection20 = document.getElementsByClassName("immersive-component");
+                            let panel20 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection20.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection20[iteration]!=panel20){
+                                        setTimeout(function(){
+                                            collection20[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel20.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./20"
+                            }, 5000);
+                            break;
+                        case 21:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection21 = document.getElementsByClassName("immersive-component");
+                            let panel21 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection21.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection21[iteration]!=panel21){
+                                        setTimeout(function(){
+                                            collection21[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel6.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./6"
+                            }, 5000);
+                            break;
+                        case 22:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection22 = document.getElementsByClassName("immersive-component");
+                            let panel22 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection22.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection22[iteration]!=panel22){
+                                        setTimeout(function(){
+                                            collection22[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel22.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./22"
+                            }, 5000);
+                            break;
+                        case 23:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 6");
+                            let collection23 = document.getElementsByClassName("immersive-component");
+                            let panel23 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection23.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection23[iteration]!=panel23){
+                                        setTimeout(function(){
+                                            collection23[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel23.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./23"
+                            }, 5000);
+                            break;
+                        case 24:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 24");
+                            let collection24 = document.getElementsByClassName("immersive-component");
+                            let panel24 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection24.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection24[iteration]!=panel24){
+                                        setTimeout(function(){
+                                            collection24[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                            }
+                            
+                            panel24.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./24"
+                            }, 5000);
+                            break;
+                        case 25:
+                            clearInterval(mainPanelViewAnimation);
+                            console.log("cleared interval 25");
+                            let collection25 = document.getElementsByClassName("immersive-component");
+                            let panel25 = document.getElementById("front-page-banner-item-container-4");
+                            
+                            for(var j=0;j<collection25.length;j++){
+                                (function(){
+                                    let iteration = j;
+                                    if(collection25[iteration]!=panel25){
+                                        setTimeout(function(){
+                                            collection25[iteration].setAttribute("visible", "false");
+                                        }, iteration*125);
+                                    }
+                                })();
+                                
+                            }
+                            
+                            panel25.emit("selectPanel");
+                            setTimeout(function(){
+                                window.location.href = "./25"
                             }, 5000);
                             break;
                         default:
@@ -221,7 +663,7 @@
     <div style="cursor: pointer; z-index:1000;position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: red; color: white;right: 5%; bottom: 5%;text-align: center;line-height: 100px;font-size: 24px;" id="down-button">down</div>
     <!--<div id="play-button"></div>-->
     <!--<a-scene>-->
-    <a-scene embedded arjs> <!-- -->
+    <a-scene embedded arjs timeout="10000"> <!-- -->
         <a-assets>
             <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
             <img id="the-daily-cover" src="../media/img/the-daily-cover.png" preload="true" />
@@ -255,12 +697,14 @@
             <img id="opinion-story-preview" src="../media/img/opinion-story-preview.png" preload="true"/>
             <img id="opinion-image-cover" src="../media/img/opinion-image-cover.png" preload="true"/>
             
-            <video id="nyt-main-video" autoplay="true" webkit-playsinline="true" playsinline="true" loop="false" src="../media/vid/cuomo-announcement.mp4"></video>
+            <video id="nyt-main-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="../media/vid/cuomo-announcement.mp4"></video>
             <img id="toggle-playback-pause-button-icon" src="../media/img/pause-icon.png" preload="true"/>
             <img id="play-next-item-button-icon" src="../media/img/play-next-icon.png" preload="true"/>
             <img id="toggle-volume-button-icon" src="../media/img/volume-on-icon.png" preload="true"/>
         </a-assets>
-        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt"> <!-- -->
+        <a-marker type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">
+            
+            <!-- PANEL 0 -->        
             <a-entity id="nyt-banner-container" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 0.75"
                       position="0.25 1.2 -5"
@@ -269,6 +713,7 @@
                       >
             </a-entity>
             
+            <!-- PANEL 1 -->
             <a-entity id="date-container" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
@@ -277,8 +722,8 @@
                       material="transparent: true; opacity: 0;"
                       >
             </a-entity>
-        
-            <!-- PANNEL 2 -->
+            
+            <!-- PANEL 2 -->
             <a-entity id="front-page-banner-item-container-0" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-1.5 1.2 -4"
@@ -289,8 +734,8 @@
                       animation__selectPanel2GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       ><!-- #evening-brief-cover; -->
             </a-entity>
-        
-            <!-- PANNEL 3 -->
+            
+            <!-- PANEL 3 -->
             <a-entity id="front-page-banner-item-container-1" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-0.5 1.2 -4"
@@ -302,7 +747,7 @@
                       >
             </a-entity><!-- #coronavirus-cover;-->
         
-            <!-- PANNEL 4 -->
+            <!-- PANEL 4 -->
             <a-entity id="front-page-banner-item-container-2" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1; height: 1"
                       position="0.5 1.2 -4"
@@ -314,102 +759,118 @@
                       >
             </a-entity><!-- #book-review-cover;    #modern-love-cover;-->
         
-            <!-- PANNEL 5 -->
+            <!-- PANEL 5 -->
             <a-entity id="front-page-banner-item-container-3" class="immersive-component front-page-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="1.75 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #stock-cover;"
-                      animation__selectPanel5MoveToCentert="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel5MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       >
             </a-entity>
             
-            <!-- PANNEL 6 -->
+            <!-- PANEL 6 -->
             <a-entity id="front-page-banner-item-container-4" class="immersive-component front-page-banner-item-container weather-preview-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -4"
                       rotation="-90 0 0"
                       material="side: double; src: #weather-preview-cover;"
-                      animation__selectPanel6MoveToCentert="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"
+                      animation__selectPanel6MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       >
             </a-entity>
             
-            <!-- PANNEL 7 -->
+            <!-- PANEL 7 -->
             <a-entity id="right-side-banner-item-container-0" class="immersive-component right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -3"
                       rotation="-90 0 0"
-                      material="side: double; src: #a-single-gesture-cover"><!-- #chuck-shumer-coronavirus-cover;-->
+                      material="side: double; src: #a-single-gesture-cover"
+                      animation__selectPanel7MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!-- #chuck-shumer-coronavirus-cover;-->
             </a-entity>
         
-            <!-- PANNEL 8 -->
+            <!-- PANEL 8 -->
             <a-entity id="right-side-banner-item-container-1" class="immersive-component right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -2"
                       rotation="-90 0 0"
-                      material="side: double; src: #we-have-lost-cover;"><!-- #virus-stimulus-art-cover;-->
+                      material="side: double; src: #we-have-lost-cover;"
+                      animation__selectPanel8MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!-- #virus-stimulus-art-cover;-->
             </a-entity>
             
-            <!-- PANNEL 9 -->
+            <!-- PANEL 9 -->
             <a-entity id="right-side-banner-item-container-2" class="immersive-component right-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -1"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-7;">
+                      material="side: double; src: #main-cover-image-7;"
+                      animation__selectPanel9MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
+            <!-- PANEL 10 -->
             <a-entity id="left-side-banner-item-container-0" class="immersive-component left-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -2.25"
                       rotation="-90 0 0"
-                      material="side: double; src: #opinion-image-cover;">
+                      material="side: double; src: #opinion-image-cover;"
+                      animation__selectPanel10MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
+            <!-- PANEL 11 -->
             <a-entity id="left-side-banner-item-container-1" class="immersive-component left-side-banner-item-container"
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -0.25"
                       rotation="-90 0 0"
-                      material="side: double; src: #opinion-story-preview;">
+                      material="side: double; src: #opinion-story-preview;"
+                      animation__selectPanel11MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
-            
+            <!-- PANEL 12 -->
             <a-entity id="bottom-banner-item-container-0" class="immersive-component bottom-banner-item-container"
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="-0.45 1.2 0.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #science-section-cover;">
+                      material="side: double; src: #science-section-cover;"
+                      animation__selectPanel12MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
-            
+            <!-- PANEL 13 -->
             <a-entity id="bottom-banner-item-container-1" class="immersive-component bottom-banner-item-container"
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="2.65 1.2 0.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #technology-section-cover;">
+                      material="side: double; src: #technology-section-cover;"
+                      animation__selectPanel13MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
+            <!-- PANEL 14 -->
             <a-entity id="other-stories-banner-item-container-0" class="immersive-component other-stories-banner-item-container"
                       geometry="primitive: plane; width: 2; height: 2"
                       position="-1 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #arts-section-cover;">
+                      material="side: double; src: #arts-section-cover;"
+                      animation__selectPanel14MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
-            
+            <!-- PANEL 15 -->
             <a-entity id="other-stories-banner-item-container-1" class="immersive-component other-stories-banner-item-container"
                       geometry="primitive: plane; width: 2; height: 2"
                       position="1.25 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #business-section-cover;">
+                      material="side: double; src: #business-section-cover;"
+                      animation__selectPanel15MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
             
+            <!-- PANEL 16 -->
             <a-entity id="other-stories-banner-item-container-2" class="immersive-component other-stories-banner-item-container"
                       geometry="primitive: plane; width: 2; height: 2"
                       position="3.5 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #sports-section-cover;"><!--#books-section-cover;-->
+                      material="side: double; src: #sports-section-cover;"
+                      animation__selectPanel16MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!--#books-section-cover;-->
             </a-entity>
             
+            <!-- start of the photo gallery -->
+            <!-- PANEL 17 -->
             <a-entity id="front-page-main-cover-0" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -424,6 +885,7 @@
                       >
             </a-entity><!--animation__showCoverOneTrans="property: material.transparent; from: true; to : false; dur: 50; delay: 12000; easing: linear;"-->
         
+            <!-- PANEL 18 -->
             <a-entity id="front-page-main-cover-1" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -436,6 +898,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 19 -->
             <a-entity id="front-page-main-cover-2" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -448,6 +911,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 20 -->
             <a-entity id="front-page-main-cover-3" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -460,6 +924,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 21 -->
             <a-entity id="front-page-main-cover-4" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -472,6 +937,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 22 -->
             <a-entity id="front-page-main-cover-5" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -484,6 +950,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 23 -->
             <a-entity id="front-page-main-cover-6" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -496,6 +963,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 24 -->
             <a-entity id="front-page-main-cover-7" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
@@ -508,6 +976,7 @@
                       >
             </a-entity>
         
+            <!-- PANEL 25 -->
             <a-entity id="front-page-main-cover-8" class="immersive-component"
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
