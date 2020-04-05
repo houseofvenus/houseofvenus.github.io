@@ -984,7 +984,9 @@ else {*/
             }
         }
     };
-let ActiveDias = [];
+    
+    let ActiveDias = [];
+    
     io.sockets.on('connection', function(socket){
         var conn = socket;
 
@@ -1036,14 +1038,89 @@ let ActiveDias = [];
                             console.log("panel 4 selected!");
                             broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
                             break;
-                        case 5:console.log("panel 5 selected!");
+                        case 5:
+                            console.log("panel 5 selected!");
                             broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
                             break;
                         case 6:
+                            console.log("panel 6 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
                             break;
                         case 7:
+                            console.log("panel 7 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
                             break;
                         case 8:
+                            console.log("panel 8 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 9:
+                            console.log("panel 9 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 10:
+                            console.log("panel 10 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 11:
+                            console.log("panel 11 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 12:
+                            console.log("panel 12 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 13:
+                            console.log("panel 13 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 14:
+                            console.log("panel 14 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 15:
+                            console.log("panel 15 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 16:
+                            console.log("panel 16 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 17:
+                            console.log("panel 17 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 18:
+                            console.log("panel 18 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 19:
+                            console.log("panel 19 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 20:
+                            console.log("panel 20 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 21:
+                            console.log("panel 21 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 22:
+                            console.log("panel 22 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 23:
+                            console.log("panel 23 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 24:
+                            console.log("panel 24 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
+                            break;
+                        case 25:
+                            console.log("panel 25 selected!");
+                            broadcastTarget.id.emit("SERVERrelayPanelRemoteRequestToCLIENT", {status: true, target: data.target});
                             break;
                         default:
                             break;
