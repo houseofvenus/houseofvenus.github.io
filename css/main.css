@@ -1,0 +1,562 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+    /*font-family: monospace;*/
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+#main-app-container{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    font-size: 0;
+}
+
+.page-container{
+    width: 100%;
+    height: 100%;
+    /*background-size: 100% 100%;*/
+    display: inline-block;
+    color: white;
+    position: relative;
+}
+
+#page-0-content-wrapper{
+    width: 300px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#company-logo-container{
+    width: 100px;
+    height: 100px;
+    background-image: url("../media/img/hov_ig_logo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display: block;
+    margin: 5% auto;
+}
+
+#company-title-container{
+    width: 300px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+#company-slogan-container{
+    width: 300px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+#next-page-container{
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 900;
+    background-image: url("../media/img/down-arrow.png");
+    background-size: 100% 100%;
+    opacity: 1.0;
+    transition: opacity 0.5s;
+    animation: blinkButton 2s linear 0s infinite normal;/**/
+}
+
+@keyframes blinkButton {
+  50% {opacity: 0;}
+}
+
+.service-select-button-container{
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+    border: 2px white solid;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.service-select-button-container:hover{
+    background-color: white;
+    color: black;
+}
+
+#services-button-container{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#subscribe-button-container{
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#page-0-container{
+    background-image: url("../media/img/venus_bg.jpg");
+    background-repeat: repeat-x;
+    background-position: 0% -35%;
+    animation: mymove 60s linear 0s infinite normal;/**/
+}
+
+#page-1-container{
+    background-color: black;
+    background-image: url("../media/img/rotated_venus_bg.jpg");
+    background-repeat: repeat-x;
+    background-position: 0% 125%;
+    animation: mymoveBottom 60s linear 0s infinite normal;/**/
+}
+
+@keyframes mymove {
+  100% {background-position: 400% -35%;}
+}
+
+@keyframes mymoveBottom {
+  100% {background-position: 400% 125%;}
+}
+
+@keyframes mymovePhones {
+  100% {background-position: 400% 150%;}
+}
+
+@keyframes mymoveBottomPhones {
+  100% {background-position: 400% -100%;}
+}
+
+.service-option-container{
+    width: 120px;
+    height: 120px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    transition: border 0.5s, width 0.5s, height 0.5s;
+}
+
+.service-option-container:hover{
+    border: 5px white solid;
+    width: 110px;
+    height: 110px;
+}
+
+#annes-flower-shop-button-container{
+    /*background-color: blue;*/
+    background-image: url("../media/img/annes-flower-shop.png");
+}
+
+#foodid-button-container{
+    /*background-color: white;*/
+    background-image: url("../media/img/foodid.png");
+    background-size: 120% 120%;
+}
+
+#talk-show-host-button-container{
+    /*background-color: red;*/
+    background-image: url("../media/img/talk-show-host.png");
+}
+
+#page-1-content-wrapper{
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: -60px;
+    transition: opacity 0.5s;
+}
+
+
+/* FOR IPHONE 11 */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) {
+        #page-0-container{
+            background-image: url("../media/img/venus_bg.jpg");
+            background-repeat: repeat-x;
+            background-position: 0% 150%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #page-1-container{
+            background-color: black;
+            background-image: url("../media/img/rotated_venus_bg.jpg");
+            background-repeat: repeat-x;
+            background-position: 0% -100%;
+            animation: mymoveBottomPhones 60s linear 0s infinite normal;/**/
+        }
+
+
+        #next-page-container{
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            margin-left: -100px;
+            cursor: pointer;
+            font-size: 0px;
+            font-weight: 900;
+            background-image: url("../media/img/down-arrow.png");
+            background-size: 100% 100%;
+            opacity: 1.0;
+            transition: opacity 0.5s;
+            animation: blinkButton 2s linear 0s infinite normal;/**/
+        }
+        
+        #company-logo-container{
+            width: 250px;
+            height: 250px;
+            background-image: url("../media/img/hov_ig_logo.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            display: block;
+            margin: 5% auto;
+        }
+        
+        #page-0-content-wrapper{
+            width: 500px;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            margin-left: -250px;
+        }
+
+        #company-title-container{
+            width: 500px;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 50px;
+        }
+        
+        #company-slogan-container{
+            width: 500px;
+            text-align: center;
+            font-size: 36px;
+            margin-top: 2%;
+        }
+        
+        #page-1-content-wrapper{
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -420px;
+            margin-top: -125px;
+            transition: opacity 0.5s;
+            width: 840px;
+        }
+        
+        .service-option-container{
+            width: 250px;
+            height: 250px;
+            margin-left: 15px;
+            margin-right: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+            transition: border 0.5s, width 0.5s, height 0.5s;
+        }
+
+        .service-option-container:hover{
+            border: 5px white solid;
+            width: 240px;
+            height: 240px;
+        }
+        
+        .service-select-button-container{
+            width: 400px;
+            height: 75px;
+            border-radius: 25px;
+            background-color: black;
+            border: 2px white solid;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s;
+        }
+}
+
+/* FOR IPHONE 11 PRO */
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+        #page-0-container{
+            background-image: url("../media/img/venus_bg.jpg");
+            background-repeat: repeat-x;
+            background-position: 0% 150%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #page-1-container{
+            background-color: black;
+            background-image: url("../media/img/rotated_venus_bg.jpg");
+            background-repeat: repeat-x;
+            background-position: 0% -100%;
+            animation: mymoveBottomPhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #next-page-container{
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            margin-left: -100px;
+            cursor: pointer;
+            font-size: 0px;
+            font-weight: 900;
+            background-image: url("../media/img/down-arrow.png");
+            background-size: 100% 100%;
+            opacity: 1.0;
+            transition: opacity 0.5s;
+            animation: blinkButton 2s linear 0s infinite normal;/**/
+        }
+        
+        #company-logo-container{
+            width: 250px;
+            height: 250px;
+            background-image: url("../media/img/hov_ig_logo.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            display: block;
+            margin: 5% auto;
+        }
+        
+        #page-0-content-wrapper{
+            width: 500px;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            margin-left: -250px;
+        }
+        
+        #company-title-container{
+            width: 500px;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 50px;
+        }
+
+        #company-slogan-container{
+            width: 500px;
+            text-align: center;
+            font-size: 36px;
+            margin-top: 2%;
+        }
+        
+        #page-1-content-wrapper{
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -420px;
+            margin-top: -125px;
+            transition: opacity 0.5s;
+            width: 840px;
+        }
+        
+        .service-option-container{
+            width: 250px;
+            height: 250px;
+            margin-left: 15px;
+            margin-right: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+            transition: border 0.5s, width 0.5s, height 0.5s;
+        }
+
+        .service-option-container:hover{
+            border: 5px white solid;
+            width: 240px;
+            height: 240px;
+        }
+        
+        #services-button-container{
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            margin-left: -200px;
+        }
+
+        #subscribe-button-container{
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            margin-left: -200px;
+        }
+        
+        .service-select-button-container{
+            width: 400px;
+            height: 75px;
+            border-radius: 25px;
+            background-color: black;
+            border: 2px white solid;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s;
+        }
+}
+
+/* FOR IPHONE 11 PRO MAX */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 3) {
+        #page-0-container{
+            background-image: url("../media/img/venus_bg.jpg");
+            background-repeat: repeat-x;
+            background-position: 0% 150%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #page-1-container{
+            background-color: black;
+            background-image: url("../media/img/rotated_venus_bg.jpg");
+            background-repeat: repeat-x;
+            background-position: 0% -100%;
+            animation: mymoveBottomPhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #next-page-container{
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            margin-left: -100px;
+            cursor: pointer;
+            font-size: 0px;
+            font-weight: 900;
+            background-image: url("../media/img/down-arrow.png");
+            background-size: 100% 100%;
+            opacity: 1.0;
+            transition: opacity 0.5s;
+            animation: blinkButton 2s linear 0s infinite normal;/**/
+        }
+        
+        #company-logo-container{
+            width: 250px;
+            height: 250px;
+            background-image: url("../media/img/hov_ig_logo.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            display: block;
+            margin: 5% auto;
+        }
+        
+        #page-0-content-wrapper{
+            width: 500px;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            margin-left: -250px;
+        }
+        
+        #company-title-container{
+            width: 500px;
+            text-align: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 50px;
+        }
+
+        #company-slogan-container{
+            width: 500px;
+            text-align: center;
+            font-size: 36px;
+            margin-top: 2%;
+        }
+        
+        #page-1-content-wrapper{
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -420px;
+            margin-top: -125px;
+            transition: opacity 0.5s;
+            width: 840px;
+        }
+        
+        .service-option-container{
+            width: 250px;
+            height: 250px;
+            margin-left: 15px;
+            margin-right: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+            transition: border 0.5s, width 0.5s, height 0.5s;
+        }
+
+        .service-option-container:hover{
+            border: 5px white solid;
+            width: 240px;
+            height: 240px;
+        }
+        
+        .service-select-button-container{
+            width: 400px;
+            height: 75px;
+            border-radius: 25px;
+            background-color: black;
+            border: 2px white solid;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s;
+        }
+}
