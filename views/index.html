@@ -16,10 +16,13 @@
                     left: 0,
                     behavior: 'smooth'
                 });
+                setTimeout(function(){
+                    document.getElementById("services-button-container").click();
+                }, 250);
             });
             
             document.getElementById("subscribe-button-container").addEventListener("click", function(){
-                window.location.replace("subscribe");
+                window.location.href = "subscribe";
             });
             
             document.getElementById("services-button-container").addEventListener("click", function(){

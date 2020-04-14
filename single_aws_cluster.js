@@ -628,6 +628,21 @@ else {*/
         res.render('washingtonpost.html',{root: dir[0]});
     });
 
+    app.get('/subscribe', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('subscribe.html',{root: dir[0]});
+    });
+
     app.get('/dev', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
