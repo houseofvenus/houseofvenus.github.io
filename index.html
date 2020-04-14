@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>House of Venus | City as a Service</title>
+    <title>House of Venus | City as a Service | Registration v 0.3.0</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="../css/main.css" type="text/css" />
-    <script>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script>        
         document.addEventListener("DOMContentLoaded", function(){
             let servicesVisible = false;
             
             document.getElementById("next-page-container").addEventListener("click", function(){
-                let moveToPosition = document.getElementById("page-0-container").scrollHeight;
-                console.log("scroll down to the second page", moveToPosition);
-                window.scrollTo({
-                    top: moveToPosition,
-                    left: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            document.getElementById("subscribe-button-container").addEventListener("click", function(){
-                window.location.replace("subscribe");
-            });
-            
-            document.getElementById("services-button-container").addEventListener("click", function(){
-                if(!servicesVisible){
-                    document.getElementById("page-1-content-wrapper").style.opacity = 1.0;
-                }
+                
             });
         });
     </script>
@@ -39,18 +24,8 @@
                 <div id="company-slogan-container">The world is your desktop</div>
             </div>
             <div id="next-page-container"></div>
-        </div>
-        <div id="page-1-container" class="page-container">
-            <div id="services-button-container" class="service-select-button-container">
-                services
-            </div>
-            <div id="page-1-content-wrapper">
-                <div id="annes-flower-shop-button-container" class="service-option-container"></div>
-                <div id="foodid-button-container" class="service-option-container"></div>
-                <div id="talk-show-host-button-container" class="service-option-container"></div>
-            </div>
-            <div id="subscribe-button-container" class="service-select-button-container">
-                subscribe
+            <div id="page-overlay-container">
+                
             </div>
         </div>
     </div>
