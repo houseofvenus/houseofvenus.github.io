@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>House of Venus | City as a Service | Registration v 0.2.0</title>
+    <title>House of Venus | City as a Service | Registration v 0.3.0</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="./css/main.css" type="text/css" />
     <script>
@@ -9,12 +9,7 @@
             let servicesVisible = false;
             
             document.getElementById("next-page-container").addEventListener("click", function(){
-                let moveToPosition = document.getElementById("page-0-container").scrollHeight;
-                console.log("scroll down to the second page", moveToPosition);
                 
-                /*setTimeout(function(){
-                    document.getElementById("services-button-container").click();
-                }, 250);*/
             });
             
            /* document.getElementById("subscribe-button-container").addEventListener("click", function(){
@@ -38,6 +33,9 @@
                 <div id="company-slogan-container">The world is your desktop</div>
             </div>
             <div id="next-page-container"></div>
+            <div id="page-overlay-container">
+                
+            </div>
         </div>
         <!--<div id="page-1-container" class="page-container">
             <div id="services-button-container" class="service-select-button-container">
