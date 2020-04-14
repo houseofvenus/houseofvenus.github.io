@@ -115,35 +115,42 @@ body, html{
     margin-left: -150px;
 }
 
+/* iPHONE 11 - 1792x828px at 326ppi */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) { 
+        #page-0-container{
+            background-position: 0% -35%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+}
+
+/* iPHONE 11 PRO - 2436x1125px at 458ppi */
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+        #page-0-container{
+            background-position: 0% -35%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+}
+
+
 #page-0-container{
     background-image: url("../media/img/venus_bg.jpg");
     background-repeat: repeat-x;
-    background-position: 0% -35%;
+    background-position: 0% -15%;
     animation: mymove 60s linear 0s infinite normal;/**/
 }
 
-#page-1-container{
-    background-color: black;
-    background-image: url("../media/img/rotated_venus_bg.jpg");
-    background-repeat: repeat-x;
-    background-position: 0% 125%;
-    animation: mymoveBottom 60s linear 0s infinite normal;/**/
-}
-
 @keyframes mymove {
-  100% {background-position: 400% -35%;}
-}
-
-@keyframes mymoveBottom {
-  100% {background-position: 400% 125%;}
+  100% {background-position: 400% -15%;}
 }
 
 @keyframes mymovePhones {
-  100% {background-position: 400% 150%;}
-}
-
-@keyframes mymoveBottomPhones {
-  100% {background-position: 400% -100%;}
+  100% {background-position: 400% -35%;}
 }
 
 .service-option-container{
