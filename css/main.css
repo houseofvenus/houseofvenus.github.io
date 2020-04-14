@@ -27,6 +27,16 @@ body, html{
     position: relative;
 }
 
+#page-overlay-container{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    display: none;
+    opacity: 0;
+}
+
 #page-0-content-wrapper{
     width: 300px;
     position: absolute;
@@ -85,8 +95,9 @@ body, html{
 .service-select-button-container{
     width: 300px;
     height: 50px;
-    border-radius: 25px;
-    background-color: black;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
     border: 2px white solid;
     text-align: center;
     line-height: 50px;
@@ -94,11 +105,6 @@ body, html{
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.5s, color 0.5s;
-}
-
-.service-select-button-container:hover{
-    background-color: white;
-    color: black;
 }
 
 #services-button-container{
@@ -136,7 +142,6 @@ body, html{
             animation: mymovePhones 60s linear 0s infinite normal;/**/
         }
 }
-
 
 #page-0-container{
     background-image: url("../media/img/venus_bg.jpg");

@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>House of Venus | City as a Service | Registration v 0.3.0</title>
+    <title>House of Venus | City as a Service | Registration v 0.3.3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="./css/main.css" type="text/css" />
     <script src="./js/jquery-3.2.1.min.js"></script>
-    <script>        
+    <script>
         document.addEventListener("DOMContentLoaded", function(){
             let servicesVisible = false;
             
-            document.getElementById("next-page-container").addEventListener("click", function(){
+            function transitionToActions(){
+                let page0wrapper = document.getElementById("page-0-content-wrapper");
+                let page1wrapper = document.getElementById("page-1-content-wrapper");
                 
+                $(page0wrapper).animate({
+                    opacity: 0
+                }, 500, "swing");
+                
+                $(page1wrapper).animate({
+                    opacity: 1.0
+                }, 500, "swing");
+                
+            }
+            
+            document.getElementById("subscribe-button-container").addEventListener("click", function(){
+                window.location.href = "./subscribe";
+            });
+            
+            document.getElementById("annes-flower-shop-button-container").addEventListener("click", function(){
+                window.location.href = "./annesflowershop";
+            });
+            
+            document.getElementById("foodid-button-container").addEventListener("click", function(){
+                window.location.href = "./foodid";
+            });
+            
+            document.getElementById("talk-show-host-button-container").addEventListener("click", function(){
+                window.location.href = "./talkshowhost";
+            });
+            
+            document.getElementById("next-page-container").addEventListener("click", function(){
+                let overlay = document.getElementById("page-overlay-container");
+                overlay.style.display = "block";
+                $(overlay).animate({
+                    height: "100%",
+                    opacity: 1.0
+                }, 500, "swing", transitionToActions());
             });
         });
     </script>
@@ -25,7 +60,17 @@
             </div>
             <div id="next-page-container"></div>
             <div id="page-overlay-container">
-                
+                <div id="services-button-container" class="service-select-button-container">
+                    services
+                </div>
+                <div id="page-1-content-wrapper">
+                    <div id="annes-flower-shop-button-container" class="service-option-container"></div>
+                    <div id="foodid-button-container" class="service-option-container"></div>
+                    <div id="talk-show-host-button-container" class="service-option-container"></div>
+                </div>
+                <div id="subscribe-button-container" class="service-select-button-container">
+                    subscribe
+                </div>
             </div>
         </div>
     </div>
