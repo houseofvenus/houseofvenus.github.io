@@ -1,0 +1,782 @@
+* {
+    font-family: 'Proxima Nova', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body, html, #main-app-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#full-page-container{
+    position: absolute;
+    display: none;
+    opacity: 0;
+    width: 100%;
+    height: 0;
+    z-index: 100;
+}
+
+#full-page-navigation-bar{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#vision-navigation-option{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.navigation-page-option{
+    display: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+#legacy-navigation-option{
+    background-color: rgba(255, 255, 0, 0.5);
+    color: white;
+}
+
+#roster-navigation-option{
+    background-color: rgba(230, 250, 250, 0.5);
+    color: white;
+}
+
+#eos-navigation-option{
+    background-color: rgba(255, 255, 0, 0.5);
+    color: white;
+}
+
+#lyoko-navigation-option{
+    background-color: rgba(0, 0, 255, 0.5);
+    color: white;
+}
+
+#background-layer{
+    z-index: -50;
+    position: fixed;
+    left: -10%;
+    bottom: -20%;
+    min-width: 120%; 
+    min-height: 120%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.navigation-bubbles-container{
+    position: absolute;
+    display: block;
+    z-index: 100;
+    width: 200px;
+    height: 50px;
+    bottom: 5%;
+    left: 50%;
+    margin-left: -100px;
+}
+
+.navigation-bubble{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: auto 13px;
+    text-align: center;
+    line-height: 15px;
+    background-color: white;
+    color: white;
+    cursor: pointer;
+    border: 0;
+}
+
+.navigation-bubble:hover{
+    width: 18px;
+    height: 18px;
+    color: black;
+    background-color: black;
+    border: 2px white solid;
+}
+
+.selected-navigation-bubble{
+    width: 20px;
+    height: 20px;
+    color: white;
+    background-color: black;
+}
+
+.navigation-option-title{
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    position: absolute;
+    opacity: 1.0;
+    font-size: 36px;
+    font-weight: 800;
+    width: 500px;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -250px;
+    text-align: center;
+}
+
+.navigation-option-subtitle{
+    position: absolute;
+    font-size: 16px;
+    width: 300px;
+    bottom: 30%;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#logo{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: 122% 112%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url('../media/img/hov-md.png');
+    z-index: 50;
+    cursor: pointer;
+}
+
+#logo:hover{
+    background-image: url('../media/img/white-hov-md.png');
+}
+
+#company-header-button{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 225px;
+    height: 50px;
+    z-index: 50;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    line-height: 50px;
+}
+
+#menu-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 49;
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    display: none;
+    opacity: 0;
+    
+}
+
+.menu-option{
+    display: block;
+    margin: 3% auto;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+#vision-menu-option{
+    margin-top: 10%;
+}
+
+.menu-option:hover{
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+#close-team-page-container-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px black solid;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#close-demos-page-container-button, .close-page-container-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px white solid;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#close-team-page-container-button:hover{
+    background-color: white;
+    border: 2px white solid;
+    color: black;
+}
+
+#close-demos-page-container-button:hover, .close-page-container-button:hover{
+    background-color: white;
+    color: black;
+}
+
+#vision-team-option{
+    position: absolute;
+    left: 15%;
+    bottom: 35%;
+    background-image: url('../media/texture/roster-icon.png');
+    background-size: 80% 100%;
+}
+
+#vision-apps-option{
+    position: absolute;
+    right: 15%;
+    bottom: 35%;
+    background-image: url('../media/texture/dapps-icon.png');
+    background-size: 100% 100%;
+}
+
+#vision-team-option:hover{
+    background-image: url('../media/texture/roster-icon-white.png');
+}
+
+#vision-apps-option:hover{
+    background-image: url('../media/texture/dapps-icon-white.png');
+}
+
+.vision-page-option-button{
+    color: aquamarine;
+    font-weight: 900;
+    min-width: 125px;
+    min-height: 100px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 1.0);
+    text-align: center;
+    cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.vision-page-option-button:hover{
+    background-color: black;
+    color: black;
+    font-weight: 900;
+    border: 2px white solid;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.vision-page-option-button:focus{
+    outline:none;
+}
+
+.page-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 1.0;
+    width: 100%;
+    height: 100%;
+}
+
+.page-container-title{
+    display: block;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+}
+
+.secondary-page-container-title{
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+
+#cam-year-container, #pamo-year-container{
+    vertical-align: top;
+    line-height: 50px;
+    height: 50px;
+}
+
+#vaibhav-year-container:hover{
+    color: aquamarine;
+}
+
+#pamo-year-container:hover{
+    color: aquamarine;
+}
+
+.math-link{
+    cursor: pointer;
+    font-weight: 900;
+    color: white;
+}
+
+.cpe-link{
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.cpe-link:hover{
+    color: white;
+}
+
+.page-container-content{
+    display: block;
+    width: 100%;
+    height: 50%;
+    line-height: 25px;
+}
+
+#vision-page-container{
+    background-color: black;
+    color: white;
+}
+
+#legacy-page-container{
+    background-color: yellow;
+    color: white;
+}
+
+#legacy-close-page-button{
+    color: black;
+    background-color: white;
+}
+
+#legacy-close-page-button:hover{
+    background-color: rgba(0, 0, 0, 0);
+}
+                    
+
+#demos-page-container{
+    opacity: 0;
+    background-color: black;
+    color: white;
+}
+
+.aria-app-container, .shop-app-container, .card-app-container, .demo-app-container{
+    margin: 0 auto 2% auto;
+    width: 250px;
+    height: 180px;
+    border-radius: 10px;
+    border: 2px white solid;
+}
+
+#shop-page-container{
+    background-color: blueviolet;
+    color: white;
+}
+
+.view-preview-button{
+    width: 100%;
+    border-radius: 5px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.photo-bg-container{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin: 5% auto;
+    display: block;
+    background-color: white;
+    border: 2px white solid;
+    cursor: pointer;
+}
+
+#cARd-technology-block{
+    background-image: url('../media/texture/reneapple.gif');
+    background-size: auto 100%;
+    background-position: center center;
+}
+
+#dev-technology-block{
+    background-image: url('../media/texture/museum.gif');
+    background-size: auto 100%;
+    background-position: center center;
+}
+
+.photo-bg-container:hover{
+    background-color: black;
+    border: 2px black solid;
+}
+
+#vaibhav-name-container, #cam-name-container{
+    margin-top: 7%;
+}
+
+#pamo-position-container, #pamo-name-container, #vaibhav-position-container, #vaibhav-name-container{
+    color: white;
+    cursor: pointer;
+}
+
+#vaibhav-position-container:hover, #vaibhav-name-container:hover{
+    color: aquamarine;
+}
+
+#pamo-position-container:hover, #pamo-name-container:hover{
+    color: aquamarine;
+}
+
+.demo-app-title-container, .card-app-title-container, .aria-app-title-container{
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.add-to-shopping-cart-button{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.card-app-description-container, .aria-app-description-container{
+    text-align: center;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.demo-app-description-container{
+    text-align: justify;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.card-app-version-container:hover, .aria-app-version-container:hover{
+    background-color: white;
+    color: blueviolet;
+}
+.card-app-version-container:hover::before, .aria-app-version-container:hover::before{
+    content: 'see ';
+}
+
+.card-app-version-container:hover::after, .aria-app-version-container:hover::after{
+    content: ' preview';
+}
+
+.add-to-shopping-cart-button:hover{
+    background-color: white;
+    font-weight: 900;
+    color: blueviolet;
+}
+
+.add-to-shopping-cart-button:hover::after{
+    cursor: pointer;
+    content: ' add to cart +';
+}
+
+.demo-app-version-container, .card-app-version-container, .aria-app-version-container{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 10px;
+}
+
+#roster-page-container{
+    opacity: 0;
+    background-color: aquamarine;
+    color: rgba(148, 0 211, 1.0);
+}
+
+#eos-page-container{
+    background-color: yellow;
+    color: black;
+}
+
+#lyoko-page-container{
+    background-color: blue;
+    color: white;
+}
+
+.page-container-title{
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+}
+
+.lyoko-option:hover{
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.page-content-paragraph{
+    display: block;
+    width: 300px;
+    margin: 2% auto 0 auto;
+    text-align: center;
+    cursor: pointer;
+}
+
+#technology-block-array-container{
+    width: 550px;
+    height: 255px;
+    font-size: 0;
+    display: block;
+    margin: 1% auto;
+}
+
+#roster-block-array-container{
+    width: 755px;
+    height: 255px;
+    font-size: 0;
+    display: block;
+    margin: 1% auto;
+}
+
+.roster-block-content{
+    position: absolute;
+    top: 1%;
+}
+
+.roster-block-container, .technology-block-container{
+    position: relative;
+    vertical-align: bottom;
+    width: 250px;
+    height: 300px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.technology-block-container{
+   margin: 0 10px;
+}
+
+.roster-name-container, .technology-name-container{
+    display: inline-block;
+    width: 100%;
+    font-size: 24px;
+}
+
+.roster-year-container{
+    display: inline-block;
+    width: 40%;
+    font-size: 16px;
+}
+
+.roster-position-container{
+    display: inline-block;
+    width: 58%;
+    font-size: 20px;
+}
+
+.price-tag-container{
+    font-size: 16px;
+}
+
+.technology-description-container{
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 89%;
+    padding: 0 5%;
+    height: 50%;
+    font-size: 20px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.technology-description-container:hover{
+    background-color: rgba(255, 255, 255, 1.0);
+    color: black;
+}
+
+.add-to-cart-button{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    line-height: 75px;
+    border-radius: 0 0 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-to-cart-button:hover{
+    background-color: white;
+    color: black;
+}
+
+#cARd-technology-block{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#dev-technology-block{
+    background-color: rgba(150, 150, 150, 0.6);
+}
+
+#pamo-roster-block{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#vaibhav-roster-block{
+    background-color: rgba(150, 150, 150, 0.6);
+}
+
+#cam-roster-block{
+    background-color: rgba(250, 250, 250, 0.6);
+}
+
+@media screen and (max-width: 600px) {
+    #company-header-button{
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        width: 200px;
+        height: 50px;
+        z-index: 50;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: white;
+        font-size: 20px;
+        line-height: 50px;
+        margin-left: -100px;
+        text-align: center;
+    }
+
+    
+    #background-layer{
+        z-index: -50;
+        position: fixed;
+        left: -60%;
+        bottom: -20%;
+        min-width: 120%; 
+        min-height: 120%;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    /*#background-layer{
+        position: absolute;
+        z-index: -50;
+        height: 120%;
+        left: -10%;
+        /*min-height: 90%;
+        height: auto;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    /*#background-layer{
+        position: relative;
+        margin: 0 auto 0 -75%;
+        z-index: -50;
+        height: 120%;
+        width: auto;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }*/
+    
+    .navigation-option-title{
+        -webkit-user-select: none;  
+        -moz-user-select: none;    
+        -ms-user-select: none;      
+        user-select: none;
+        position: absolute;
+        opacity: 1.0;
+        font-size: 30px;
+        font-weight: 800;
+        width: 300px;
+        bottom: 50%;
+        left: 50%;
+        margin-left: -150px;
+        text-align: left;
+    }
+
+    .navigation-option-subtitle{
+        -webkit-user-select: none;  
+        -moz-user-select: none;    
+        -ms-user-select: none;      
+        user-select: none;
+        position: absolute;
+        font-size: 16px;
+        width: 250px;
+        bottom: 35%;
+        left: 50%;
+        margin-left: -125px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    #vision-menu-option{
+        margin-top: 25%;
+        /*margin-left: 10%;*/
+    }
+}
+
+#author-footer{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    bottom: 1%;
+    left: 50%;
+    margin-left: -125px;
+    color: white;
+    line-height: 50px;
+    font-size: 10px;
+}
+
+.demo-app-container{
+    cursor: pointer;
+}
+
+.demo-app-container:hover{
+    color: black;
+    background-color: white;
+}
+
+#cam-name-container, #cam-position-container{
+    cursor: pointer;
+}
+
+#cam-name-container:hover, #cam-position-container:hover{
+    color: white;
+}
+
+#kinectome-link{
+    color: aquamarine;
+    font-weight: 800;
+}

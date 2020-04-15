@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Talk.Show.Host</title>
+    <title>Talk.Show.Host | a HOV company</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="./css/tsh.css" type="text/css" />
+    <link rel="stylesheet" href="./css/foodid.css" type="text/css" />
     <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
+            let learnMoreButton = document.getElementById("learn-more-button-container");
+            let mainAppContainer = document.getElementById("main-app-container");
             
+            learnMoreButton.addEventListener("click", function(){
+                console.log("show bg and video");
+                mainAppContainer.classList.add("hide-overlay");
+            });
         });
     </script>
 </head>
 <body>
     <div id="main-app-container">
-        <div id="page-0-container" class="page-container">
-            <div id="page-0-content-wrapper">
-                <div id="company-logo-container"></div>
-                <div id="company-title-container">House of Venus</div>
-                <div id="company-slogan-container">The world is your desktop</div>
+        <div id="background-underlay-container">
+        </div>
+        <div id="foodid-page-container" class="page-container">
+            <div id='menu-container'>
+                <div id='vision-menu-option' class='menu-option'>explore</div>
+                <div id='legacy-menu-option' class='menu-option'>build</div>
+                <div id='lyoko-menu-option' class='menu-option'>docs</div>
+                <div id='shop-menu-option' class='menu-option'>shop</div>
             </div>
-            <div id="next-page-container"></div>
-            <div id="page-overlay-container">
-                <div id="services-button-container" class="service-select-button-container">
-                    services
-                </div>
-                <div id="page-1-content-wrapper">
-                    <div id="annes-flower-shop-button-container" class="service-option-container"></div>
-                    <div id="foodid-button-container" class="service-option-container"></div>
-                    <div id="talk-show-host-button-container" class="service-option-container"></div>
-                </div>
-                <div id="subscribe-button-container" class="service-select-button-container">
-                    subscribe
-                </div>
+            <div id='company-header-button'>foodid</div>
+            <div id='logo'></div>
+            <div id="learn-more-container">
+                <div id="learn-more-button-container"></div>
+                <div id="learn-more-button-label-container">learn more</div>
+            </div>
+            <div id="subscribe-button-container">subscribe</div>
+            <div id="social-media-button-bar-container">
+                <div id="instagram-social-button-container" class="social-button-container"></div>
+                <div id="youtube-social-button-container" class="social-button-container"></div>
             </div>
         </div>
-        <!--<div id="page-1-container" class="page-container">
-            <div id="services-button-container" class="service-select-button-container">
-                services
-            </div>
-            <div id="page-1-content-wrapper">
-                <div id="annes-flower-shop-button-container" class="service-option-container"></div>
-                <div id="foodid-button-container" class="service-option-container"></div>
-                <div id="talk-show-host-button-container" class="service-option-container"></div>
-            </div>
-            <div id="subscribe-button-container" class="service-select-button-container">
-                subscribe
-            </div>
-        </div>-->
     </div>
 </body>
 </html>
