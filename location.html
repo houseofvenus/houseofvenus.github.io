@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Location| Old Row Maryland | v. 0.1.0</title>
+    <title>Location| Old Row Maryland | v. 0.1.1</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,12 +25,9 @@
             <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
         </a-assets>
         
-        <a-text
-            value="This content will always face you."
-            look-at="[gps-camera]"
-            scale="120 120 120"
-            gps-entity-place="latitude: 39.0806609; longitude: -76.9794914;"
-          ></a-text>
+        <a-box color="yellow" width="1" height="1" depth="1" gps-entity-place="latitude: 39.0806609; longitude: -76.9794914;"/>
+        
+        
         <!--<a-marker type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             <a-entity
                       geometry="primitive:sphere; radius: 0.5;"
