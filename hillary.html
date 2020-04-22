@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.3</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.4</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -87,19 +87,26 @@
                 console.log(`${timeDiff} has elapsed`);
                 
                 if(MarkerGridTracker.nyt.initiated){
-                    if(timeDiff>=3000 && timeDiff<=6000){
-                        console.log("show content from option selection");
-                        
-                        document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
-                        document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
-                        
-                        document.getElementById("nyt-application-panel").emit("showPanelNYT");
-                        document.getElementById("nyt-application-panel").setAttribute("visible",true);
+                    if(MarkerGridTracker.nyt.active){
+                        console.log("marker content already activated");
                     }
                     else{
-                        console.log("missed content trigger window\nresetting timer.");
-                        MarkerGridTracker.nyt.counter = 0;
+                        if(timeDiff>=3000 && timeDiff<=6000){
+                            console.log("show content from option selection");
+
+                            document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
+                            document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
+                            
+                            document.getElementById("nyt-application-panel").emit("showPanelNYT");
+                            document.getElementById("nyt-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.nyt.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.nyt.counter = 0;
+                        }
                     }
+                    
                 }
                 else{
                     console.log("activating marker\nshow initial content");
@@ -155,11 +162,12 @@
                       position="0 0.5 0"
                       material="src: #mercury-planet-object-texture"></a-entity>
             <a-entity id="nyt-application-panel"
-                      geometry="primitive: plane; width: 3; height: 1.5;"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
                       animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
                       position="0 0.25 0"
+                      rotation="0 -90 0"
                       visible="false"
-                      material="color: red; opacity: 0;"></a-entity>
+                      material="color: red; opacity: 0; side:double;"></a-entity>
         </a-marker>
         
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
