@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.2</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.3</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -82,9 +82,12 @@
             
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
                 let stopTime = new Date().getTime();
+                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                
+                console.log(`${timeDiff} has elapsed`);
                 
                 if(MarkerGridTracker.nyt.initiated){
-                    if(stopTime-MarkerGridTracker.nyt.counter>3000 && stopTime-MarkerGridTracker.nyt.counter<6000){
+                    if(timeDiff>=3000 && timeDiff<=6000){
                         console.log("show content from option selection");
                         
                         document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
