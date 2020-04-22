@@ -1,30 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.0</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.1</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script>
+        let MarkerGridTracker = {
+            nyt : {
+                initiated: false,
+                active: false,
+                tapping: false
+            },
+            mit : {
+                initiated: false,
+                active: false,
+                tapping: false
+            },
+            hiro : {
+                initiated: false,
+                active: false,
+                tapping: false
+            },
+            unibeat : {
+                initiated: false,
+                active: false,
+                tapping: false
+            }
+        };
+        
         document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("start finger counter");
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
             
+            document.getElementById("mit-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("start finger counter");
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("start finger counter");
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            document.getElementById("unibeat-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("start finger counter");
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            
+            
+            
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("show content from option selection");
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.nyt.initiated = true;
+                }
+            });
+            
+            document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
+                if(MarkerGridTracker.mit.initiated){
+                    console.log("show content from option selection");
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.mit.initiated = true;
+                }
+            });
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
+                if(MarkerGridTracker.hiro.initiated){
+                    console.log("show content from option selection");
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.hiro.initiated = true;
+                }
+            });
+            
+            document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
+                if(MarkerGridTracker.unibeat.initiated){
+                    console.log("show content from option selection");
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.unibeat.initiated = true;
+                }
+            });
         });
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
         <a-assets timeout="10000">
+            <img id="mercury-planet-object-texture" src="./media/texture/mercurymap.jpg" preload="true" />
+            <img id="venus-planet-object-texture" src="./media/texture/venusmap.jpg" preload="true" />
             <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
+            <img id="jupiter-planet-object-texture" src="./media/texture/jupiter2_2k.jpg" preload="true" />
         </a-assets>
         
-        <a-marker preset="hiro">
+        <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-entity
+                      geometry="primitive:sphere; radius: 0.5;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+                      position='0 0.5 0'
+                      material='src: #mercury-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
+            <a-entity
+                      geometry="primitive:sphere; radius: 0.5;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+                      position='0 0.5 0'
+                      material='src: #venus-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-marker id="hiro-marker-container" preset="hiro">
             <a-entity
                       geometry="primitive:sphere; radius: 0.5;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position='0 0.5 0'
                       material='src: #earth-planet-object-texture'></a-entity>
+        </a-marker>
+        
+        <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
+            <a-entity
+                      geometry="primitive:sphere; radius: 0.5;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+                      position='0 0.5 0'
+                      material='src: #jupiter-planet-object-texture'></a-entity>
         </a-marker>
         
         <a-entity camera></a-entity>
