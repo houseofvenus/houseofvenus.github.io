@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.1</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.2</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,22 +12,26 @@
             nyt : {
                 initiated: false,
                 active: false,
-                tapping: false
+                tapping: false,
+                counter: 0
             },
             mit : {
                 initiated: false,
                 active: false,
-                tapping: false
+                tapping: false,
+                counter: 0
             },
             hiro : {
                 initiated: false,
                 active: false,
-                tapping: false
+                tapping: false,
+                counter: 0
             },
             unibeat : {
                 initiated: false,
                 active: false,
-                tapping: false
+                tapping: false,
+                counter: 0
             }
         };
         
@@ -35,6 +39,7 @@
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
                 if(MarkerGridTracker.nyt.initiated){
                     console.log("start finger counter");
+                    MarkerGridTracker.nyt.counter = new Date().getTime();
                 }
                 else{
                     console.log("probably just a camera issue");
@@ -42,8 +47,9 @@
             });
             
             document.getElementById("mit-marker-container").addEventListener("markerLost", function(){
-                if(MarkerGridTracker.nyt.initiated){
+                if(MarkerGridTracker.mit.initiated){
                     console.log("start finger counter");
+                    MarkerGridTracker.mit.counter = new Date().getTime();
                 }
                 else{
                     console.log("probably just a camera issue");
@@ -51,8 +57,9 @@
             });
             
             document.getElementById("hiro-marker-container").addEventListener("markerLost", function(){
-                if(MarkerGridTracker.nyt.initiated){
+                if(MarkerGridTracker.hiro.initiated){
                     console.log("start finger counter");
+                    MarkerGridTracker.hiro.counter = new Date().getTime();
                 }
                 else{
                     console.log("probably just a camera issue");
@@ -60,8 +67,9 @@
             });
             
             document.getElementById("unibeat-marker-container").addEventListener("markerLost", function(){
-                if(MarkerGridTracker.nyt.initiated){
+                if(MarkerGridTracker.unibeat.initiated){
                     console.log("start finger counter");
+                    MarkerGridTracker.unibeat.counter = new Date().getTime();
                 }
                 else{
                     console.log("probably just a camera issue");
@@ -73,8 +81,22 @@
             
             
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
+                let stopTime = new Date().getTime();
+                
                 if(MarkerGridTracker.nyt.initiated){
-                    console.log("show content from option selection");
+                    if(stopTime-MarkerGridTracker.nyt.counter>3000 && stopTime-MarkerGridTracker.nyt.counter<6000){
+                        console.log("show content from option selection");
+                        
+                        document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
+                        document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
+                        
+                        document.getElementById("nyt-application-panel").emit("showPanelNYT");
+                        document.getElementById("nyt-application-panel").setAttribute("visible",true);
+                    }
+                    else{
+                        console.log("missed content trigger window\nresetting timer.");
+                        MarkerGridTracker.nyt.counter = 0;
+                    }
                 }
                 else{
                     console.log("activating marker\nshow initial content");
@@ -124,11 +146,17 @@
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-entity
+            <a-entity id="nyt-rotating-globe"
                       geometry="primitive:sphere; radius: 0.5;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
-                      position='0 0.5 0'
-                      material='src: #mercury-planet-object-texture'></a-entity>
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT;"
+                      position="0 0.5 0"
+                      material="src: #mercury-planet-object-texture"></a-entity>
+            <a-entity id="nyt-application-panel"
+                      geometry="primitive: plane; width: 3; height: 1.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
+                      position="0 0.25 0"
+                      visible="false"
+                      material="color: red; opacity: 0;"></a-entity>
         </a-marker>
         
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
@@ -137,6 +165,11 @@
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position='0 0.5 0'
                       material='src: #venus-planet-object-texture'></a-entity>
+            <a-entity
+                      geometry="primitive: plane; width: 3; height: 1.5;"
+                      position="0 0.25 0"
+                      visible="false"
+                      material="color: blue; opacity: 0;"></a-entity>
         </a-marker>
         
         <a-marker id="hiro-marker-container" preset="hiro">
@@ -145,6 +178,11 @@
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position='0 0.5 0'
                       material='src: #earth-planet-object-texture'></a-entity>
+            <a-entity
+                      geometry="primitive: plane; width: 3; height: 1.5;"
+                      position="0 0.25 0"
+                      visible="false"
+                      material="color: green; opacity: 0;"></a-entity>
         </a-marker>
         
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
@@ -153,6 +191,11 @@
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position='0 0.5 0'
                       material='src: #jupiter-planet-object-texture'></a-entity>
+            <a-entity
+                      geometry="primitive: plane; width: 3; height: 1.5;"
+                      position="0 0.25 0"
+                      visible="false"
+                      material="color: yellow; opacity: 0;"></a-entity>
         </a-marker>
         
         <a-entity camera></a-entity>
