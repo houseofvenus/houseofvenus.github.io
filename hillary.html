@@ -115,32 +115,83 @@
             });
             
             document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
+                let stopTime = new Date().getTime();
+                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                
+                console.log(`${timeDiff} has elapsed`);
+                
                 if(MarkerGridTracker.mit.initiated){
                     console.log("show content from option selection");
                 }
                 else{
-                    console.log("activating marker\nshow initial content");
-                    MarkerGridTracker.mit.initiated = true;
+                    if(timeDiff>=3000 && timeDiff<=6000){
+                        console.log("show content from option selection");
+
+                        document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
+                        document.getElementById("mit-rotating-globe").setAttribute("visible",false);
+
+                        document.getElementById("mit-application-panel").emit("showPanelMIT");
+                        document.getElementById("mit-application-panel").setAttribute("visible",true);
+                        MarkerGridTracker.mit.active = true;
+                    }
+                    else{
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.mit.initiated = true;
+                    }
                 }
             });
             
             document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
+                let stopTime = new Date().getTime();
+                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                
+                console.log(`${timeDiff} has elapsed`);
+                
                 if(MarkerGridTracker.hiro.initiated){
                     console.log("show content from option selection");
                 }
                 else{
-                    console.log("activating marker\nshow initial content");
-                    MarkerGridTracker.hiro.initiated = true;
+                    if(timeDiff>=3000 && timeDiff<=6000){
+                        console.log("show content from option selection");
+
+                        document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO");
+                        document.getElementById("hiro-rotating-globe").setAttribute("visible",false);
+
+                        document.getElementById("hiro-application-panel").emit("showPanelHIRO");
+                        document.getElementById("hiro-application-panel").setAttribute("visible",true);
+                        MarkerGridTracker.mit.active = true;
+                    }
+                    else{
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.hiro.initiated = true;
+                    }
                 }
             });
             
             document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
+                let stopTime = new Date().getTime();
+                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                
+                console.log(`${timeDiff} has elapsed`);
+                
                 if(MarkerGridTracker.unibeat.initiated){
                     console.log("show content from option selection");
                 }
                 else{
-                    console.log("activating marker\nshow initial content");
-                    MarkerGridTracker.unibeat.initiated = true;
+                    if(timeDiff>=3000 && timeDiff<=6000){
+                        console.log("show content from option selection");
+                        
+                        document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI");
+                        document.getElementById("unibeat-rotating-globe").setAttribute("visible",false);
+                        
+                        document.getElementById("unibeat-application-panel").emit("showPanelUNI");
+                        document.getElementById("unibeat-application-panel").setAttribute("visible",true);
+                        MarkerGridTracker.mit.active = true;
+                    }
+                    else{
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.unibeat.initiated = true;
+                    }
                 }
             });
         });
@@ -171,42 +222,48 @@
         </a-marker>
         
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
-            <a-entity
+            <a-entity id="mit-rotating-globe"
                       geometry="primitive:sphere; radius: 0.5;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT;"
                       position='0 0.5 0'
                       material='src: #venus-planet-object-texture'></a-entity>
-            <a-entity
-                      geometry="primitive: plane; width: 3; height: 1.5;"
+            <a-entity id="mit-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelMIT;"
                       position="0 0.25 0"
+                      rotation="-90 0 0"
                       visible="false"
-                      material="color: blue; opacity: 0;"></a-entity>
+                      material="color: blue; opacity: 0; side:double;"></a-entity>
         </a-marker>
         
         <a-marker id="hiro-marker-container" preset="hiro">
-            <a-entity
+            <a-entity id="hiro-rotating-globe"
                       geometry="primitive:sphere; radius: 0.5;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position='0 0.5 0'
                       material='src: #earth-planet-object-texture'></a-entity>
-            <a-entity
-                      geometry="primitive: plane; width: 3; height: 1.5;"
+            <a-entity id="hiro-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelHIRO;"
                       position="0 0.25 0"
+                      rotation="-90 0 0"
                       visible="false"
-                      material="color: green; opacity: 0;"></a-entity>
+                      material="color: green; opacity: 0; side:double;"></a-entity>
         </a-marker>
         
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
-            <a-entity
+            <a-entity id="unibeat-rotating-globe"
                       geometry="primitive:sphere; radius: 0.5;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position='0 0.5 0'
                       material='src: #jupiter-planet-object-texture'></a-entity>
-            <a-entity
-                      geometry="primitive: plane; width: 3; height: 1.5;"
+            <a-entity id="unibeat-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelUNI;"
                       position="0 0.25 0"
+                      rotation="-90 0 0"
                       visible="false"
-                      material="color: yellow; opacity: 0;"></a-entity>
+                      material="color: yellow; opacity: 0; side:double;"></a-entity>
         </a-marker>
         
         <a-entity camera></a-entity>
