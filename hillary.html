@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.7</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.8</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +34,8 @@
                 counter: 0
             }
         };
+        
+        let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
         
         document.addEventListener("DOMContentLoaded", function(){
             
@@ -79,8 +81,8 @@
             
             
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
-                let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                stopTimeNYT = new Date().getTime();
+                timeDiffNYT = stopTime-MarkerGridTracker.nyt.counter;
                 
                 console.log(`${timeDiff} has elapsed`);
                 
@@ -104,7 +106,6 @@
                             MarkerGridTracker.nyt.counter = 0;
                         }
                     }
-                    
                 }
                 else{
                     console.log("activating marker\nshow initial content");
@@ -113,83 +114,101 @@
             });
             
             document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
-                let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.mit.counter;
+                stopTimeMIT = new Date().getTime();
+                timeDiffMIT = stopTime-MarkerGridTracker.mit.counter;
                 
-                console.log(`${timeDiff} has elapsed`);
+                console.log(`--------------------------\n${timeDiffMIT} has elapsed\n--------------------------`);
                 
                 if(MarkerGridTracker.mit.initiated){
-                    console.log("show content from option selection");
-                }
-                else{
-                    if(timeDiff>=3000 && timeDiff<=6000){
-                        console.log("show content from option selection");
-                        
-                        document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
-                        document.getElementById("mit-rotating-globe").setAttribute("visible",false);
-
-                        document.getElementById("mit-application-panel").emit("showPanelMIT");
-                        document.getElementById("mit-application-panel").setAttribute("visible",true);
-                        MarkerGridTracker.mit.active = true;
+                    if(MarkerGridTracker.mit.active){
+                        console.log("show content from MIT selection");
                     }
                     else{
-                        console.log("activating marker\nshow initial content");
-                        MarkerGridTracker.mit.initiated = true;
+                        if(timeDiffMIT>=3000 && timeDiffMIT<=6000){
+                            console.log("show MIT content from option selection");
+
+                            document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
+                            document.getElementById("mit-rotating-globe").setAttribute("visible",false);
+
+                            document.getElementById("mit-application-panel").emit("showPanelMIT");
+                            document.getElementById("mit-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.mit.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.mit.counter = 0;
+                        }
                     }
+                }
+                else{
+                    console.log("activating MIT  marker\nshow initial content");
+                    MarkerGridTracker.mit.initiated = true;
                 }
             });
             
             document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
-                let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.hiro.counter;
+                stopTimeHIRO = new Date().getTime();
+                timeDiffHIRO = stopTime-MarkerGridTracker.hiro.counter;
                 
-                console.log(`${timeDiff} has elapsed`);
+                console.log(`${timeDiffHIRO} has elapsed`);
                 
                 if(MarkerGridTracker.hiro.initiated){
-                    console.log("show content from option selection");
-                }
-                else{
-                    if(timeDiff>=3000 && timeDiff<=6000){
-                        console.log("show content from option selection");
-
-                        document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO");
-                        document.getElementById("hiro-rotating-globe").setAttribute("visible",false);
-
-                        document.getElementById("hiro-application-panel").emit("showPanelHIRO");
-                        document.getElementById("hiro-application-panel").setAttribute("visible",true);
-                        MarkerGridTracker.hiro.active = true;
+                    if(MarkerGridTracker.hiro.active){
+                        console.log("show content from HIRO selection");
                     }
                     else{
-                        console.log("activating marker\nshow initial content");
+                        if(timeDiffHIRO>=3000 && timeDiffHIRO<=6000){
+                            console.log("show HIRO content from option selection");
+
+                            document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO");
+                            document.getElementById("hiro-rotating-globe").setAttribute("visible",false);
+
+                            document.getElementById("hiro-application-panel").emit("showPanelHIRO");
+                            document.getElementById("hiro-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.hiro.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.hiro.counter = 0;
+                        }   
+                    }
+                    else{
+                        console.log("activating HIRO marker\nshow initial content");
                         MarkerGridTracker.hiro.initiated = true;
                     }
                 }
             });
             
             document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
-                let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.unibeat.counter;
+                stopTimeUNI = new Date().getTime();
+                timeDiffUNI = stopTime-MarkerGridTracker.unibeat.counter;
                 
-                console.log(`${timeDiff} has elapsed`);
+                console.log(`${timeDiffUNI} has elapsed`);
                 
                 if(MarkerGridTracker.unibeat.initiated){
-                    console.log("show content from option selection");
-                }
-                else{
-                    if(timeDiff>=3000 && timeDiff<=6000){
-                        console.log("show content from option selection");
-
-                        document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI");
-                        document.getElementById("unibeat-rotating-globe").setAttribute("visible",false);
-                        
-                        document.getElementById("unibeat-application-panel").emit("showPanelUNI");
-                        document.getElementById("unibeat-application-panel").setAttribute("visible",true);
-                        MarkerGridTracker.unibeat.active = true;
+                    if(MarkerGridTracker.unibeat.active){
+                        console.log("show content from UNI selection");
                     }
                     else{
-                        console.log("activating marker\nshow initial content");
-                        MarkerGridTracker.unibeat.initiated = true;
+                        if(timeDiffUNI>=3000 && timeDiffUNI<=6000){
+                            console.log("show UNI content from option selection");
+
+                            document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI");
+                            document.getElementById("unibeat-rotating-globe").setAttribute("visible",false);
+
+                            document.getElementById("unibeat-application-panel").emit("showPanelUNI");
+                            document.getElementById("unibeat-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.unibeat.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.unibeat.counter = 0;
+                        }
                     }
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.unibeat.initiated = true;
                 }
             });
         });
