@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.9</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.10</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -82,16 +82,16 @@
             
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
                 stopTimeNYT = new Date().getTime();
-                timeDiffNYT = stopTime-MarkerGridTracker.nyt.counter;
+                timeDiffNYT = stopTimeNYT-MarkerGridTracker.nyt.counter;
                 
-                console.log(`${timeDiff} has elapsed`);
+                console.log(`--------------------------\n${timeDiffNYT} has elapsed\n--------------------------`);
                 
                 if(MarkerGridTracker.nyt.initiated){
                     if(MarkerGridTracker.nyt.active){
                         console.log("marker content already activated");
                     }
                     else{
-                        if(timeDiff>=3000 && timeDiff<=6000){
+                        if(timeDiffNYT>=3000 && timeDiffNYT<=6000){
                             console.log("show content from option selection");
 
                             document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
@@ -115,7 +115,7 @@
             
             document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
                 stopTimeMIT = new Date().getTime();
-                timeDiffMIT = stopTime-MarkerGridTracker.mit.counter;
+                timeDiffMIT = stopTimeMIT-MarkerGridTracker.mit.counter;
                 
                 console.log(`--------------------------\n${timeDiffMIT} has elapsed\n--------------------------`);
                 
@@ -148,9 +148,9 @@
             
             document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
                 stopTimeHIRO = new Date().getTime();
-                timeDiffHIRO = stopTime-MarkerGridTracker.hiro.counter;
+                timeDiffHIRO = stopTimeHIRO-MarkerGridTracker.hiro.counter;
                 
-                console.log(`${timeDiffHIRO} has elapsed`);
+                console.log(`--------------------------\n${timeDiffHIRO} has elapsed\n--------------------------`);
                 
                 if(MarkerGridTracker.hiro.initiated){
                     if(MarkerGridTracker.hiro.active){
@@ -181,9 +181,9 @@
             
             document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
                 stopTimeUNI = new Date().getTime();
-                timeDiffUNI = stopTime-MarkerGridTracker.unibeat.counter;
+                timeDiffUNI = stopTimeUNI-MarkerGridTracker.unibeat.counter;
                 
-                console.log(`${timeDiffUNI} has elapsed`);
+                console.log(`--------------------------\n${timeDiffUNI} has elapsed\n--------------------------`);
                 
                 if(MarkerGridTracker.unibeat.initiated){
                     if(MarkerGridTracker.unibeat.active){
