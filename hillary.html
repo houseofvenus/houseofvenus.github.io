@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.11</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.12</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -37,6 +37,9 @@
         
         let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
         
+        //TODO:
+        // if one app is active then all the other event listeners to open apps need to be turn off
+        //  add corresponding assets to the other markers for app loading
         document.addEventListener("DOMContentLoaded", function(){
             
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
@@ -226,11 +229,12 @@
             <img id="nyt-app-icon-texture" src="./media/img/nyt-app-icon.png" preload="true" />
             <img id="bakuas-app-icon-texture" src="./media/img/bakuas-app-icon.png" preload="true" />
             <img id="bodytime-app-icon-texture" src="./media/img/bodytime-app-icon.png" preload="true" />
+            <img id="hov-office-app-icon-texture" src="./media/img/hov_ig_logo.png" preload="true" />
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
             <a-entity id="nyt-rotating-globe"
-                      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5;"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT;"
                       position="0 0.5 0"
                       material="src: #nyt-app-icon-texture;">
@@ -264,10 +268,10 @@
         
         <a-marker id="hiro-marker-container" preset="hiro">
             <a-entity id="hiro-rotating-globe"
-                      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5;"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position="0 0.5 0"
-                      material="src: #earth-planet-object-texture">
+                      material="src: #bodytime-app-icon-texture;">
             </a-entity>
             <a-entity id="hiro-application-panel"
                       geometry="primitive: plane; width: 5; height: 2.5;"
@@ -281,10 +285,10 @@
         
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
             <a-entity id="unibeat-rotating-globe"
-                      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5;"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
                       position="0 0.5 0"
-                      material="src: #jupiter-planet-object-texture">
+                      material="src: #hov-office-app-icon-texture;">
             </a-entity>
             <a-entity id="unibeat-application-panel"
                       geometry="primitive: plane; width: 5; height: 2.5;"
