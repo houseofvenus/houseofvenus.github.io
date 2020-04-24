@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.6</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.7</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
         };
         
         document.addEventListener("DOMContentLoaded", function(){
+            
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
                 if(MarkerGridTracker.nyt.initiated){
                     console.log("start finger counter");
@@ -77,9 +78,6 @@
             });
             
             
-            
-            
-            
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
                 let stopTime = new Date().getTime();
                 let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
@@ -116,7 +114,7 @@
             
             document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
                 let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                let timeDiff = stopTime-MarkerGridTracker.mit.counter;
                 
                 console.log(`${timeDiff} has elapsed`);
                 
@@ -126,7 +124,7 @@
                 else{
                     if(timeDiff>=3000 && timeDiff<=6000){
                         console.log("show content from option selection");
-
+                        
                         document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
                         document.getElementById("mit-rotating-globe").setAttribute("visible",false);
 
@@ -143,7 +141,7 @@
             
             document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
                 let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                let timeDiff = stopTime-MarkerGridTracker.hiro.counter;
                 
                 console.log(`${timeDiff} has elapsed`);
                 
@@ -159,7 +157,7 @@
 
                         document.getElementById("hiro-application-panel").emit("showPanelHIRO");
                         document.getElementById("hiro-application-panel").setAttribute("visible",true);
-                        MarkerGridTracker.mit.active = true;
+                        MarkerGridTracker.hiro.active = true;
                     }
                     else{
                         console.log("activating marker\nshow initial content");
@@ -170,7 +168,7 @@
             
             document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
                 let stopTime = new Date().getTime();
-                let timeDiff = stopTime-MarkerGridTracker.nyt.counter;
+                let timeDiff = stopTime-MarkerGridTracker.unibeat.counter;
                 
                 console.log(`${timeDiff} has elapsed`);
                 
@@ -180,13 +178,13 @@
                 else{
                     if(timeDiff>=3000 && timeDiff<=6000){
                         console.log("show content from option selection");
-                        
+
                         document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI");
                         document.getElementById("unibeat-rotating-globe").setAttribute("visible",false);
                         
                         document.getElementById("unibeat-application-panel").emit("showPanelUNI");
                         document.getElementById("unibeat-application-panel").setAttribute("visible",true);
-                        MarkerGridTracker.mit.active = true;
+                        MarkerGridTracker.unibeat.active = true;
                     }
                     else{
                         console.log("activating marker\nshow initial content");
