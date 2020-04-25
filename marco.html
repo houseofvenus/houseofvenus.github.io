@@ -1,14 +1,220 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Marc Anderson Miller | Old Row Maryland | v. 0.2.0</title>
+    <title>Marc Anderson Miller | Old Row Maryland | v. 0.2.13</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script>
+        let MarkerGridTracker = {
+            nyt : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            mit : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            hiro : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            unibeat : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            }
+        };
+        
+        let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
+        
+        //  TODO:
+        //  if one app is active then all the other event listeners to open apps need to be turn off
+        //  add corresponding assets to the other markers for app loading
         document.addEventListener("DOMContentLoaded", function(){
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("start finger counter");
+                    MarkerGridTracker.nyt.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            document.getElementById("mit-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.mit.initiated){
+                    console.log("start finger counter");
+                    MarkerGridTracker.mit.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.hiro.initiated){
+                    console.log("start finger counter");
+                    MarkerGridTracker.hiro.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            document.getElementById("unibeat-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.unibeat.initiated){
+                    console.log("start finger counter");
+                    MarkerGridTracker.unibeat.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
+                stopTimeNYT = new Date().getTime();
+                timeDiffNYT = stopTimeNYT-MarkerGridTracker.nyt.counter;
+                
+                console.log(`--------------------------\n${timeDiffNYT} has elapsed\n--------------------------`);
+                
+                if(MarkerGridTracker.nyt.initiated){
+                    if(MarkerGridTracker.nyt.active){
+                        console.log("marker content already activated");
+                    }
+                    else{
+                        if(timeDiffNYT>=3000 && timeDiffNYT<=6000){
+                            console.log("show content from option selection");
+
+                            document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
+                            document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
+                            
+                            document.getElementById("nyt-application-panel").emit("showPanelNYT");
+                            document.getElementById("nyt-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.nyt.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.nyt.counter = 0;
+                        }
+                    }
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.nyt.initiated = true;
+                }
+            });
+            
+            document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
+                stopTimeMIT = new Date().getTime();
+                timeDiffMIT = stopTimeMIT-MarkerGridTracker.mit.counter;
+                
+                console.log(`--------------------------\n${timeDiffMIT} has elapsed\n--------------------------`);
+                
+                if(MarkerGridTracker.mit.initiated){
+                    if(MarkerGridTracker.mit.active){
+                        console.log("show content from MIT selection");
+                    }
+                    else{
+                        if(timeDiffMIT>=3000 && timeDiffMIT<=6000){
+                            console.log("show MIT content from option selection");
+
+                            document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
+                            document.getElementById("mit-rotating-globe").setAttribute("visible",false);
+
+                            document.getElementById("mit-application-panel").emit("showPanelMIT");
+                            document.getElementById("mit-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.mit.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.mit.counter = 0;
+                        }
+                    }
+                }
+                else{
+                    console.log("activating MIT  marker\nshow initial content");
+                    MarkerGridTracker.mit.initiated = true;
+                }
+            });
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
+                stopTimeHIRO = new Date().getTime();
+                timeDiffHIRO = stopTimeHIRO-MarkerGridTracker.hiro.counter;
+                
+                console.log(`--------------------------\n${timeDiffHIRO} has elapsed\n--------------------------`);
+                
+                if(MarkerGridTracker.hiro.initiated){
+                    if(MarkerGridTracker.hiro.active){
+                        console.log("show content from HIRO selection");
+                    }
+                    else{
+                        if(timeDiffHIRO>=3000 && timeDiffHIRO<=6000){
+                            console.log("show HIRO content from option selection");
+
+                            document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO");
+                            document.getElementById("hiro-rotating-globe").setAttribute("visible",false);
+
+                            document.getElementById("hiro-application-panel").emit("showPanelHIRO");
+                            document.getElementById("hiro-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.hiro.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.hiro.counter = 0;
+                        }   
+                    }
+                }
+                else{
+                    console.log("activating HIRO marker\nshow initial content");
+                    MarkerGridTracker.hiro.initiated = true;
+                }
+            });
+            
+            document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
+                stopTimeUNI = new Date().getTime();
+                timeDiffUNI = stopTimeUNI-MarkerGridTracker.unibeat.counter;
+                
+                console.log(`--------------------------\n${timeDiffUNI} has elapsed\n--------------------------`);
+                
+                if(MarkerGridTracker.unibeat.initiated){
+                    if(MarkerGridTracker.unibeat.active){
+                        console.log("show content from UNI selection");
+                    }
+                    else{
+                        if(timeDiffUNI>=3000 && timeDiffUNI<=6000){
+                            console.log("show UNI content from option selection");
+
+                            document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI");
+                            document.getElementById("unibeat-rotating-globe").setAttribute("visible",false);
+
+                            document.getElementById("unibeat-application-panel").emit("showPanelUNI");
+                            document.getElementById("unibeat-application-panel").setAttribute("visible",true);
+                            MarkerGridTracker.unibeat.active = true;
+                        }
+                        else{
+                            console.log("missed content trigger window\nresetting timer.");
+                            MarkerGridTracker.unibeat.counter = 0;
+                        }
+                    }
+                }
+                else{
+                    console.log("activating marker\nshow initial content");
+                    MarkerGridTracker.unibeat.initiated = true;
+                }
+            });
             
         });
     </script>
@@ -16,18 +222,85 @@
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
         <a-assets timeout="10000">
+            <!--<img id="mercury-planet-object-texture" src="./media/texture/mercurymap.jpg" preload="true" />
+            <img id="venus-planet-object-texture" src="./media/texture/venusmap.jpg" preload="true" />
             <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
+            <img id="jupiter-planet-object-texture" src="./media/texture/jupiter2_2k.jpg" preload="true" />-->
+            <img id="nyt-app-icon-texture" src="./media/img/nyt-app-icon.png" preload="true" />
+            <img id="bakuas-app-icon-texture" src="./media/img/bakuas-app-icon.png" preload="true" />
+            <img id="bodytime-app-icon-texture" src="./media/img/bodytime-app-icon.png" preload="true" />
+            <img id="hov-office-app-icon-texture" src="./media/img/hov-office-app-icon.png" preload="true" />
         </a-assets>
         
-        <a-marker preset="hiro">
-            <a-entity
-                      geometry="primitive:sphere; radius: 0.5;"
+        <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-entity id="nyt-rotating-globe"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT;"
+                      position="0 0.5 0"
+                      material="src: #nyt-app-icon-texture;">
+            </a-entity>
+            <a-entity id="nyt-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="color: red; opacity: 0; side: double;">
+            </a-entity>
+        </a-marker>
+        
+        <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
+            <a-entity id="mit-rotating-globe"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT;"
+                      position="0 0.5 0"
+                      material="src: #bakuas-app-icon-texture;">
+            </a-entity>
+            <a-entity id="mit-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelMIT;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="color: blue; opacity: 0; side:double;">
+            </a-entity>
+        </a-marker>
+        
+        <a-marker id="hiro-marker-container" preset="hiro">
+            <a-entity id="hiro-rotating-globe"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
-                      position='0 0.5 0'
-                      material='src: #earth-planet-object-texture'></a-entity>
+                      position="0 0.5 0"
+                      material="src: #bodytime-app-icon-texture;">
+            </a-entity>
+            <a-entity id="hiro-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelHIRO;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="color: green; opacity: 0; side:double;">
+            </a-entity>
+        </a-marker>
+        
+        <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
+            <a-entity id="unibeat-rotating-globe"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+                      position="0 0.5 0"
+                      material="src: #hov-office-app-icon-texture;">
+            </a-entity>
+            <a-entity id="unibeat-application-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelUNI;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="color: yellow; opacity: 0; side:double;">
+            </a-entity>
         </a-marker>
         
         <a-entity camera></a-entity>
     </a-scene>
 </body>
-</html>ß
+</html>
