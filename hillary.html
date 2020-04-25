@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.15</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.16</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -113,6 +113,14 @@
 
                                 document.getElementById("nyt-application-panel").emit("showPanelNYT");
                                 document.getElementById("nyt-application-panel").setAttribute("visible",true);
+                                
+                                /*
+                                *   emit events that show the associated content for this application page for the 
+                                *   MIT marker
+                                *   HIRO marker
+                                *   UNI marker
+                                */
+                                
                                 MarkerGridTracker.nyt.active = true;
                                 MarkerGridTracker.repressor.onApplicationPage = 1;
                             }
@@ -155,8 +163,10 @@
                     }
                 }
                 else{
-                    console.log("activating marker\nshow initial content");
-                    MarkerGridTracker.nyt.initiated = true;
+                    if(MarkerGridTracker.repressor.onApplicationPage===0){
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.nyt.initiated = true;
+                    }
                 }
             });
             
@@ -381,6 +391,11 @@
             <img id="bakuas-app-icon-texture" src="./media/img/bakuas-app-icon.png" preload="true" />
             <img id="bodytime-app-icon-texture" src="./media/img/bodytime-app-icon.png" preload="true" />
             <img id="hov-office-app-icon-texture" src="./media/img/hov-office-app-icon.png" preload="true" />
+            
+            <img id="nyt-app-banner-texture" src="./media/img/nyt-app-banner-on-cover-page.png" preload="true" />
+            <img id="nyt-app-secondary-panel-texture" src="./media/img/nyt-app-secondary-panel.png" preload="true" />
+            <img id="back-to-main-page-button-texture" src="./media/img/back-to-main-page-button.png" preload="true" />
+            <img id="onto-to-next-page-button-texture" src="./media/img/onto-to-app-page-button.png" preload="true" />
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
@@ -396,7 +411,7 @@
                       position="0 0.25 0"
                       rotation="-90 0 0"
                       visible="false"
-                      material="color: red; opacity: 0; side: double;">
+                      material="src: #nyt-app-banner-texture; opacity: 0; side: double;">
             </a-entity>
         </a-marker>
         
@@ -415,6 +430,14 @@
                       visible="false"
                       material="color: blue; opacity: 0; side:double;">
             </a-entity>
+            <a-entity id="nyt-application-secondary-panel"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #nyt-app-secondary-panel-texture; opacity: 0; side: double;">
+            </a-entity>
         </a-marker>
         
         <a-marker id="hiro-marker-container" preset="hiro">
@@ -432,6 +455,14 @@
                       visible="false"
                       material="color: green; opacity: 0; side:double;">
             </a-entity>
+            <a-entity id="back-to-previous-page-button-container"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelHIRO;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #back-to-main-page-button-texture; opacity: 0; side:double;">
+            </a-entity>
         </a-marker>
         
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
@@ -448,6 +479,14 @@
                       rotation="-90 0 0"
                       visible="false"
                       material="color: yellow; opacity: 0; side:double;">
+            </a-entity>
+            <a-entity id="next-page-button-container"
+                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelHIRO;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #onto-to-next-page-button-texture; opacity: 0; side:double;">
             </a-entity>
         </a-marker>
         
