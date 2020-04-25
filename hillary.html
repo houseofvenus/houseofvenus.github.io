@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.14</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.15</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
                 tapping: false,
                 counter: 0
             },
-            suppressor: {
+            repressor: {
                 onApplicationPage: 0,   //  0 = menu, 1 = nyt, 2 = mit (bakuas), 3 = hiro (facetime/bodytime), 4 = unibeat (office)
                 onApplicationSection: null
             }
@@ -101,7 +101,7 @@
                         console.log("NYT marker content already activated");
                     }
                     else{
-                        if(MarkerGridTracker.suppressor.onApplicationPage===0){   //   if the user is on the initial main menu page
+                        if(MarkerGridTracker.repressor.onApplicationPage===0){   //   if the user is on the initial main menu page
                             if(timeDiffNYT>=3000 && timeDiffNYT<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
                                                                             (explicitly 3000ms to 6000ms but live unit tests show that the trigger occurs after 4 seconds on average)
                                                                             */
@@ -114,24 +114,40 @@
                                 document.getElementById("nyt-application-panel").emit("showPanelNYT");
                                 document.getElementById("nyt-application-panel").setAttribute("visible",true);
                                 MarkerGridTracker.nyt.active = true;
-                                MarkerGridTracker.suppressor.onApplicationPage = 1;
+                                MarkerGridTracker.repressor.onApplicationPage = 1;
                             }
                             else{
                                 console.log("missed content trigger window\nresetting timer.");
                                 MarkerGridTracker.nyt.counter = 0;
                             }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===1){
-                            console.log("tapped the top button on the NYT app")
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the NYT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===2){
-                            console.log("tapped the top button on the MIT app")
+                        else if(MarkerGridTracker.repressor.onApplicationPage===2){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the MIT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===3){
-                            console.log("tapped the top button on the HIRO app")
+                        else if(MarkerGridTracker.repressor.onApplicationPage===3){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the HIRO app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===4){
-                            console.log("tapped the top button on the UNI app")
+                        else if(MarkerGridTracker.repressor.onApplicationPage===4){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the UNI app");
+                            }
                         }
                         else{
                             console.log("tapped something idk");
@@ -155,7 +171,7 @@
                         console.log("MIT marker content already activated");
                     }
                     else{
-                        if(MarkerGridTracker.suppressor.onApplicationPage===0){   //   if the user is on the initial main menu page
+                        if(MarkerGridTracker.repressor.onApplicationPage===0){   //   if the user is on the initial main menu page
                             if(timeDiffMIT>=3000 && timeDiffMIT<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
                                                                             (explicitly 3000ms to 6000ms but live unit tests show that the trigger occurs after 4 seconds on average)
                                                                             */
@@ -167,24 +183,40 @@
                                 document.getElementById("mit-application-panel").emit("showPanelMIT");
                                 document.getElementById("mit-application-panel").setAttribute("visible",true);
                                 MarkerGridTracker.mit.active = true;
-                                MarkerGridTracker.suppressor.onApplicationPage = 2;
+                                MarkerGridTracker.repressor.onApplicationPage = 2;
                             }
                             else{
                                 console.log("missed content trigger window\nresetting timer.");
                                 MarkerGridTracker.mit.counter = 0;
                             }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===1){    //  if the user has opened the NYT application
-                            console.log("tapped the middle button on the NYT app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1){    //  if the user has opened the NYT application
+                            if(timeDiffMIT>=1000 && timeDiffMIT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the NYT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
-                            console.log("tapped the middle button on the MIT app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
+                            if(timeDiffMIT>=1000 && timeDiffMIT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the MIT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
-                            console.log("tapped the middle button on the HIRO app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
+                            if(timeDiffMIT>=1000 && timeDiffMIT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the HIRO app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
-                            console.log("tapped the middle button on the UNI app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
+                            if(timeDiffMIT>=1000 && timeDiffMIT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the UNI app");
+                            }
                         }
                         else{
                             console.log("tapped something idk");
@@ -208,7 +240,7 @@
                         console.log("show content from HIRO selection");
                     }
                     else{
-                        if(MarkerGridTracker.suppressor.onApplicationPage===0){   //   if the user is on the initial main menu page
+                        if(MarkerGridTracker.repressor.onApplicationPage===0){   //   if the user is on the initial main menu page
                             if(timeDiffHIRO>=3000 && timeDiffHIRO<=6000){/* check if the button is being pressed for at least 4 seconds** 
                                                                             (explicitly 3000ms to 6000ms but live unit tests show that the trigger occurs after 4 seconds on average)
                                                                             */
@@ -220,24 +252,40 @@
                                 document.getElementById("hiro-application-panel").emit("showPanelHIRO");
                                 document.getElementById("hiro-application-panel").setAttribute("visible",true);
                                 MarkerGridTracker.hiro.active = true;
-                                MarkerGridTracker.suppressor.onApplicationPage = 3;
+                                MarkerGridTracker.repressor.onApplicationPage = 3;
                             }
                             else{
                                 console.log("missed content trigger window\nresetting timer.");
                                 MarkerGridTracker.hiro.counter = 0;
                             }   
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===1){    //  if the user has opened the NYT application
-                            console.log("tapped the bottom left button on the NYT app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1){    //  if the user has opened the NYT application
+                            if(timeDiffHIRO>=1000 && timeDiffHIRO<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the bottom left button on the NYT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
-                            console.log("tapped the bottom left button on the MIT app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
+                            if(timeDiffHIRO>=1000 && timeDiffHIRO<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the bottom left button on the MIT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
-                            console.log("tapped the bottom left button on the HIRO app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
+                            if(timeDiffHIRO>=1000 && timeDiffHIRO<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the bottom left button on the HIRO app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
-                            console.log("tapped the bottom left button on the UNI app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
+                            if(timeDiffHIRO>=1000 && timeDiffHIRO<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the bottom left button on the UNI app");
+                            }
                         }
                         else{
                             console.log("tapped something idk");
@@ -261,7 +309,7 @@
                         console.log("show content from UNI selection");
                     }
                     else{
-                        if(MarkerGridTracker.suppressor===0){   //   if the user is on the initial main menu page
+                        if(MarkerGridTracker.repressor.onApplicationPage===0){   //   if the user is on the initial main menu page
                             if(timeDiffUNI>=3000 && timeDiffUNI<=6000){/*       check if the button is being pressed for at least 4 seconds** 
                                                                                 (explicitly 3000ms to 6000ms but live unit tests show that the trigger occurs after 4 seconds on average)
                                                                                 */
@@ -273,24 +321,40 @@
                                 document.getElementById("unibeat-application-panel").emit("showPanelUNI");
                                 document.getElementById("unibeat-application-panel").setAttribute("visible",true);
                                 MarkerGridTracker.unibeat.active = true;
-                                MarkerGridTracker.suppressor.onApplicationPage = 4;
+                                MarkerGridTracker.repressor.onApplicationPage = 4;
                             }
                             else{
                                 console.log("missed content trigger window\nresetting timer.");
                                 MarkerGridTracker.unibeat.counter = 0;
                             }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===1){    //  if the user has opened the NYT application
-                            console.log("tapped the middle button on the NYT app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1){    //  if the user has opened the NYT application
+                            if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the NYT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
-                            console.log("tapped the middle button on the MIT app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
+                            if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the MIT app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
-                            console.log("tapped the middle button on the HIRO app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
+                            if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the HIRO app");
+                            }
                         }
-                        else if(MarkerGridTracker.suppressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
-                            console.log("tapped the middle button on the UNI app");
+                        else if(MarkerGridTracker.repressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
+                            if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the middle button on the UNI app");
+                            }
                         }
                         else{
                             console.log("tapped something idk");
