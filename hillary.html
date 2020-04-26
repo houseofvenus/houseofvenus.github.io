@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.17</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.18</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -120,9 +120,11 @@
                                 *   HIRO marker
                                 *   UNI marker
                                 */
-                                document.getElementById("nyt-rotating-globe").emit("stopRotatingMIT"); //stop rotating middle marker
-                                document.getElementById("nyt-rotating-globe").setAttribute("visible", false); //hide initial middle marker icon
+                                document.getElementById("mit-rotating-globe").emit("stopRotatingMIT"); //stop rotating middle marker
+                                document.getElementById("mit-rotating-globe").setAttribute("visible", false); //hide initial middle marker icon
+                                document.getElementById("nyt-application-secondary-panel").setAttribute("visible", true);
                                 document.getElementById("nyt-application-secondary-panel").emit("showNYTSecondaryPanel");   //show the secondary application panel
+                                
                                 
                                 document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO"); //stop rotating bottom left marker
                                 document.getElementById("hiro-rotating-globe").setAttribute("visible", false); //hide initial bottom left marker icon
@@ -245,8 +247,15 @@
                     }
                 }
                 else{
-                    console.log("activating MIT  marker\nshow initial content");
-                    MarkerGridTracker.mit.initiated = true;
+                    if(MarkerGridTracker.repressor.onApplicationPage===0){
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.mit.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===1){
+                        /*TODO: check for sub sections*/
+                        console.log("on the NYT application page!");
+                        MarkerGridTracker.mit.initiated = true;
+                    }
                 }
             });
             
