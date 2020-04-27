@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.21</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.22</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,18 @@
                                 
                                 MarkerGridTracker.nyt.active = true;
                                 MarkerGridTracker.repressor.onApplicationPage = 1;
+                                
+                                MarkerGridTracker.repressor.onApplicationSection = {
+                                    0: {
+                                        name: "cover"
+                                    },
+                                    1: {
+                                        name: "front-page"
+                                    },
+                                    2: {
+                                        name: "the-daily"
+                                    }
+                                };
                             }
                             else{
                                 console.log("missed content trigger window\nresetting timer.");
@@ -310,7 +322,32 @@
                             if(timeDiffHIRO>=1000 && timeDiffHIRO<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the bottom left button on the NYT app");
+                                console.log("tapped the BACK button on the NYT app");    // user pressed the back arrow on the NYT application cover page to go back to the main menu
+                                
+                                /*
+                                *   emit events that show the main menu content THIS WILL BE DUPLICATED IN THE DRAFT AND SHOULD BE REFACTORED AS SOON AS WE TRANSITION FROM THE CLOSED BETA TO THE PUBLIC BETA
+                                *   MIT marker
+                                *   HIRO marker
+                                *   UNI marker
+                                */
+                                
+                                document.getElementById("mit-rotating-globe").emit("startRotatingMIT"); //start rotating middle marker
+                                document.getElementById("mit-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
+                                document.getElementById("nyt-application-secondary-panel").setAttribute("visible", false); //hide the secondary application panel
+                                
+                                
+                                document.getElementById("hiro-rotating-globe").emit("startRotatingHIRO"); //start rotating bottom left marker
+                                document.getElementById("hiro-rotating-globe").setAttribute("visible", true); //show initial bottom left marker icon
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", false);
+                                // hide the back button for the application cover page
+                                
+                                document.getElementById("unibeat-rotating-globe").emit("startRotatingUNI"); //start rotating bottom right marker
+                                document.getElementById("unibeat-rotating-globe").setAttribute("visible", true); //show initial bottom right marker icon
+                                document.getElementById("next-page-button-container").setAttribute("visible", false); // hide the back button for the application cover page
+                                
+                                MarkerGridTracker.repressor.onApplicationPage = 0; // go back to the main menu page
+                                MarkerGridTracker.repressor.onApplicationSection = null;
+                                MarkerGridTracker.nyt.active = false;
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
@@ -482,7 +519,7 @@
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
             <a-entity id="nyt-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT; startEvents: startRotatingNYT;"
                       position="0 0.5 0"
                       material="src: #nyt-app-icon-texture;">
             </a-entity>
@@ -499,7 +536,7 @@
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             <a-entity id="mit-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT; startEvents: startRotatingMIT;"
                       position="0 0.5 0"
                       material="src: #bakuas-app-icon-texture;">
             </a-entity>
@@ -524,7 +561,7 @@
         <a-marker id="hiro-marker-container" preset="hiro">
             <a-entity id="hiro-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO;"
                       position="0 0.5 0"
                       material="src: #bodytime-app-icon-texture;">
             </a-entity>
@@ -549,7 +586,7 @@
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
             <a-entity id="unibeat-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingUNI; startEvents: startEvents: startRotatingUNI;"
                       position="0 0.5 0"
                       material="src: #hov-office-app-icon-texture;">
             </a-entity>
