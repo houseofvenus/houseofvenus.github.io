@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.23</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.24</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -328,22 +328,29 @@
                                 
                                 /*
                                 *   emit events that show the main menu content THIS WILL BE DUPLICATED IN THE DRAFT AND SHOULD BE REFACTORED AS SOON AS WE TRANSITION FROM THE CLOSED BETA TO THE PUBLIC BETA
+                                *   NYT marker
                                 *   MIT marker
                                 *   HIRO marker
                                 *   UNI marker
                                 */
+                                document.getElementById("nyt-rotating-globe").emit("resumeRotatingNYT"); //resume rotating middle marker
+                                document.getElementById("nyt-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
+                                document.getElementById("nyt-application-panel").setAttribute("visible", false);
+                                document.getElementById("nyt-application-panel").setAttribute("material.opacity", 0);//hide the secondary application panel
                                 
-                                document.getElementById("mit-rotating-globe").emit("startRotatingMIT"); //start rotating middle marker
+                                
+                                document.getElementById("mit-rotating-globe").emit("resumeRotatingMIT"); //resume rotating middle marker
                                 document.getElementById("mit-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
-                                document.getElementById("nyt-application-secondary-panel").setAttribute("visible", false); //hide the secondary application panel
+                                document.getElementById("nyt-application-secondary-panel").setAttribute("visible", false);
+                                document.getElementById("nyt-application-secondary-panel").setAttribute("material.opacity", 0);//hide the secondary application panel
                                 
                                 
-                                document.getElementById("hiro-rotating-globe").emit("startRotatingHIRO"); //start rotating bottom left marker
+                                document.getElementById("hiro-rotating-globe").emit("resumeRotatingHIRO"); //resume rotating bottom left marker
                                 document.getElementById("hiro-rotating-globe").setAttribute("visible", true); //show initial bottom left marker icon
                                 document.getElementById("back-to-previous-page-button-container").setAttribute("visible", false);
                                 // hide the back button for the application cover page
                                 
-                                document.getElementById("unibeat-rotating-globe").emit("startRotatingUNI"); //start rotating bottom right marker
+                                document.getElementById("unibeat-rotating-globe").emit("resumeRotatingUNI"); //resume rotating bottom right marker
                                 document.getElementById("unibeat-rotating-globe").setAttribute("visible", true); //show initial bottom right marker icon
                                 document.getElementById("next-page-button-container").setAttribute("visible", false); // hide the back button for the application cover page
                                 
@@ -522,7 +529,7 @@
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
             <a-entity id="nyt-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT; startEvents: startRotatingNYT;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingNYT; startEvents: startRotatingNYT; resumeEvents: resumeRotatingNYT;"
                       position="0 0.5 0"
                       material="src: #nyt-app-icon-texture;">
             </a-entity>
@@ -539,7 +546,7 @@
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             <a-entity id="mit-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT; startEvents: startRotatingMIT;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT; startEvents: startRotatingMIT; resumeEvents: resumeRotatingMIT;"
                       position="0 0.5 0"
                       material="src: #bakuas-app-icon-texture;">
             </a-entity>
@@ -564,7 +571,7 @@
         <a-marker id="hiro-marker-container" preset="hiro">
             <a-entity id="hiro-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
                       position="0 0.5 0"
                       material="src: #bodytime-app-icon-texture;">
             </a-entity>
@@ -589,13 +596,13 @@
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
             <a-entity id="unibeat-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingUNI; startEvents: startRotatingUNI;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingUNI; startEvents: startRotatingUNI; resumeEvents: resumeRotatingUNI;"
                       position="0 0.5 0"
                       material="src: #hov-office-app-icon-texture;">
             </a-entity>
             <a-entity id="unibeat-application-panel"
                       geometry="primitive: plane; width: 1.5; height: 1.5;"
-                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelUNI; pauseEvents: hidePanelUNI"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelUNI; pauseEvents: hidePanelUNI;"
                       position="0 0.25 0"
                       rotation="-90 0 0"
                       visible="false"
