@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.27</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.28</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -468,7 +468,7 @@
                                 MarkerGridTracker.unibeat.counter = 0;
                             }
                         }
-                        else if(MarkerGridTracker.repressor.onApplicationPage===1&&MarkerGridTracker.repressor.onApplicationSection===0){    //  if the user has opened the NYT application
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1&&MarkerGridTracker.repressor.onApplicationSection.current===0){    //  if the user has opened the NYT application
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
