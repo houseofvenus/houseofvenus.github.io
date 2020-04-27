@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.28</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.29</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,19 +10,22 @@
     <style>
         #go-back-to-app-cover-page-button-container{
             position: absolute;
-            width: 75px;
-            height: 75px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             bottom: 2%;
             left: 50%;
-            margin-left: -37px;
+            margin-left: -50px;
             display: none;
             opacity: 0;
             text-align: center;
-            line-height: 75px;
+            line-height: 100px;
             font-weight: 900;
             cursor: pointer;
             transition: opacity 0.5s;
+            z-index: 200;
+            background-color: white;
+            font-family: monospace;
         }
     </style>
     <script>
@@ -686,6 +689,9 @@
             <img id="venus-planet-object-texture" src="./media/texture/venusmap.jpg" preload="true" />
             <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
             <img id="jupiter-planet-object-texture" src="./media/texture/jupiter2_2k.jpg" preload="true" />-->
+            <img id="nyt-banner" src="./media/img/nyt_banner.png" preload="true" />
+            <img id="the-daily-cover" src="./media/img/the-daily-cover.png" preload="true" />
+            
             
             <img id="nyt-app-icon-texture" src="./media/img/nyt-app-icon.png" preload="true" />
             <img id="bakuas-app-icon-texture" src="./media/img/bakuas-app-icon.png" preload="true" />
@@ -723,6 +729,13 @@
             <img id="sports-section-cover" src="./media/img/coronavirus-athlete-docs.png" preload="true"/>
             <img id="opinion-story-preview" src="./media/img/italy-is-sending-another-warning-cover.png" preload="true"/>
             <img id="opinion-image-cover" src="./media/img/italy-is-sending-story-start.png" preload="true"/>
+            
+            
+            
+            <video id="nyt-main-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/sanders-quit.mp4"></video>
+            <img id="toggle-playback-pause-button-icon" src="./media/img/pause-icon.png" preload="true"/>
+            <img id="play-next-item-button-icon" src="./media/img/play-next-icon.png" preload="true"/>
+            <img id="toggle-volume-button-icon" src="./media/img/volume-on-icon.png" preload="true"/>
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
