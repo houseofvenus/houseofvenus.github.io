@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.22</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.23</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -192,6 +192,7 @@
                 else{
                     if(MarkerGridTracker.repressor.onApplicationPage===0){
                         console.log("activating marker\nshow initial content");
+                        document.getElementById("nyt-rotating-globe").emit("startRotatingNYT");
                         MarkerGridTracker.nyt.initiated = true;
                     }
                 }
@@ -263,6 +264,7 @@
                 else{
                     if(MarkerGridTracker.repressor.onApplicationPage===0){
                         console.log("activating marker\nshow initial content");
+                        document.getElementById("mit-rotating-globe").emit("startRotatingMIT");
                         MarkerGridTracker.mit.initiated = true;
                     }
                     else if(MarkerGridTracker.repressor.onApplicationPage===1){
@@ -379,6 +381,7 @@
                 else{
                     if(MarkerGridTracker.repressor.onApplicationPage===0){
                         console.log("activating marker\nshow initial content");
+                        document.getElementById("hiro-rotating-globe").emit("startRotatingHIRO");
                         MarkerGridTracker.hiro.initiated = true;
                     }
                     else if(MarkerGridTracker.repressor.onApplicationPage===1){
@@ -470,6 +473,7 @@
                 else{
                     if(MarkerGridTracker.repressor.onApplicationPage===0){
                         console.log("activating marker\nshow initial content");
+                        document.getElementById("unibeat-rotating-globe").emit("startRotatingUNI");
                         MarkerGridTracker.unibeat.initiated = true;
                     }
                     else if(MarkerGridTracker.repressor.onApplicationPage===1){
@@ -494,7 +498,6 @@
                     }
                 }
             });
-            
         });
     </script>
 </head>
@@ -586,7 +589,7 @@
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
             <a-entity id="unibeat-rotating-globe"
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingUNI; startEvents: startEvents: startRotatingUNI;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingUNI; startEvents: startRotatingUNI;"
                       position="0 0.5 0"
                       material="src: #hov-office-app-icon-texture;">
             </a-entity>
