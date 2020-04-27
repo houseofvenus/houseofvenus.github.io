@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.25</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.26</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <style>
+        #go-back-to-app-cover-page-button-container{
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            bottom: 2%;
+            left: 50%;
+            margin-left: -37px;
+            display: none;
+            opacity: 0;
+            text-align: center;
+            line-height: 75px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: opacity 0.5s;
+        }
+    </style>
     <script>
         let MarkerGridTracker = {
             nyt : {
@@ -450,7 +468,7 @@
                                 MarkerGridTracker.unibeat.counter = 0;
                             }
                         }
-                        else if(MarkerGridTracker.repressor.onApplicationPage===1){    //  if the user has opened the NYT application
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1&&MarkerGridTracker.repressor.onApplicationSection===0){    //  if the user has opened the NYT application
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
@@ -523,6 +541,14 @@
                                 document.getElementById("front-page-main-cover-7").setAttribute("visible", true);
                                 document.getElementById("front-page-main-cover-8").setAttribute("visible", true);
                                 
+                                
+                                document.getElementById("bottom-half-front-cover-container").setAttribute("visible", true);
+                                document.getElementById("bottom-half-front-cover-action-button-container-0").setAttribute("visible", true);
+                                document.getElementById("bottom-half-front-cover-action-button-container-1").setAttribute("visible", true);
+                                document.getElementById("bottom-half-front-cover-action-button-container-2").setAttribute("visible", true);
+                                
+                                document.getElementById("go-back-to-app-cover-page-button-container").style.display = "block";
+                                document.getElementById("go-back-to-app-cover-page-button-container").style.opacity = 1.0;
                                 /**/
                                 
                                 MarkerGridTracker.repressor.onApplicationSection.current = 1;   // change the app focus to the second page in the directory
@@ -583,10 +609,76 @@
                     }
                 }
             });
+            
+            
+            
+            document.getElementById("go-back-to-app-cover-page-button-container").addEventListener("click", function(){
+                if(MarkerGridTracker.repressor.onApplicationSection.current===1){
+                    /*
+                    *   show the New York Times Immersive Paper Front Page
+                    *
+                    *
+                    *
+                    */
+
+                    document.getElementById("nyt-banner-container").setAttribute("visible", false);
+                    document.getElementById("date-container").setAttribute("visible", false);
+                    document.getElementById("date-container").setAttribute("material.opacity", 0);
+                    //document.getElementById("date-container").emit("showDateContainerPanel");
+
+                    document.getElementById("front-page-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-1").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-2").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-3").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-4").setAttribute("visible", false);
+
+                    document.getElementById("right-side-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("right-side-banner-item-container-1").setAttribute("visible", false);
+                    document.getElementById("right-side-banner-item-container-2").setAttribute("visible", false);
+
+                    document.getElementById("left-side-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("left-side-banner-item-container-1").setAttribute("visible", false);
+
+                    document.getElementById("bottom-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("bottom-banner-item-container-1").setAttribute("visible", false);
+
+                    document.getElementById("other-stories-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("other-stories-banner-item-container-1").setAttribute("visible", false);
+                    document.getElementById("other-stories-banner-item-container-2").setAttribute("visible", false);
+
+                    document.getElementById("front-page-main-cover-0").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-0").emit("showCoverZero");
+
+                    document.getElementById("front-page-main-cover-1").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-2").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-3").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-4").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-5").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-6").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-7").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-8").setAttribute("visible", false);
+
+
+                    document.getElementById("bottom-half-front-cover-container").setAttribute("visible", false);
+                    document.getElementById("bottom-half-front-cover-action-button-container-0").setAttribute("visible", false);
+                    document.getElementById("bottom-half-front-cover-action-button-container-1").setAttribute("visible", false);
+                    document.getElementById("bottom-half-front-cover-action-button-container-2").setAttribute("visible", false);
+
+    
+                    setTimeout(function(){
+                        document.getElementById("go-back-to-app-cover-page-button-container").style.display = "none";
+                    }, 500);
+
+                    document.getElementById("go-back-to-app-cover-page-button-container").style.opacity = 0;
+                    
+                    MarkerGridTracker.repressor.onApplicationSection.current = 0;   // change the app focus 
+                }
+            });
         });
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
+    <div id="go-back-to-app-cover-page-button-container">x</div>
     <a-scene embedded arjs>
         <a-assets timeout="20000">
             <!--<img id="mercury-planet-object-texture" src="./media/texture/mercurymap.jpg" preload="true" />
@@ -999,6 +1091,47 @@
                       rotation="-90 0 0"
                       visible="false"
                       material="src: #back-to-main-page-button-texture; opacity: 0; side:double;">
+            </a-entity>
+            
+            
+            
+            <a-entity id="bottom-half-front-cover-container" class="immersive-component"
+                      geometry="primitive: plane; width: 6.5; height: 5"
+                      position="2 1.2 -2"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #nyt-main-video; side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="bottom-half-front-cover-action-button-container-0" class="immersive-component"
+                      class="immersive-component bottom-half-front-cover-container action-button-container toggle-playback-button"
+                      geometry="primitive: circle; radius: 0.5;"
+                      position="5.5 1.5 -2"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #toggle-playback-pause-button-icon; side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="bottom-half-front-cover-action-button-container-1" class="immersive-component"
+                      class="immersive-component bottom-half-front-cover-container action-button-container play-next-item-button"
+                      geometry="primitive: circle; radius: 0.5"
+                      position="5.5 1.5 -1"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #play-next-item-button-icon; side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="bottom-half-front-cover-action-button-container-2" class="immersive-component"
+                      class="immersive-component bottom-half-front-cover-container action-button-container toggle-volume-button"
+                      geometry="primitive: circle; radius: 0.5;"
+                      position="5.5 1.5 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #toggle-volume-button-icon; side: double;"
+                      >
             </a-entity>
         </a-marker>
         
