@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.20</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.21</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -340,8 +340,30 @@
                     }
                 }
                 else{
-                    console.log("activating HIRO marker\nshow initial content");
-                    MarkerGridTracker.hiro.initiated = true;
+                    if(MarkerGridTracker.repressor.onApplicationPage===0){
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.hiro.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===1){
+                        /*TODO: check for sub sections*/
+                        console.log("on the NYT application page!");
+                        MarkerGridTracker.hiro.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===2){
+                        /*TODO: check for sub sections*/
+                        console.log("on the MIT application page!");
+                        MarkerGridTracker.hiro.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===3){
+                        /*TODO: check for sub sections*/
+                        console.log("on the HIRO application page!");
+                        MarkerGridTracker.hiro.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===4){
+                        /*TODO: check for sub sections*/
+                        console.log("on the UNI application page!");
+                        MarkerGridTracker.hiro.initiated = true;
+                    }
                 }
             });
             
@@ -379,28 +401,28 @@
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the middle button on the NYT app");
+                                console.log("tapped the bottom right button on the NYT app");
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===2){    //  if the user has opened the MIT (BAKUAS) application
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the middle button on the MIT app");
+                                console.log("tapped the bottom right button on the MIT app");
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the middle button on the HIRO app");
+                                console.log("tapped the bottom right button on the HIRO app");
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the middle button on the UNI app");
+                                console.log("tapped the bottom right button on the UNI app");
                             }
                         }
                         else{
@@ -409,8 +431,30 @@
                     }
                 }
                 else{
-                    console.log("activating marker\nshow initial content");
-                    MarkerGridTracker.unibeat.initiated = true;
+                    if(MarkerGridTracker.repressor.onApplicationPage===0){
+                        console.log("activating marker\nshow initial content");
+                        MarkerGridTracker.unibeat.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===1){
+                        /*TODO: check for sub sections*/
+                        console.log("on the NYT application page!");
+                        MarkerGridTracker.unibeat.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===2){
+                        /*TODO: check for sub sections*/
+                        console.log("on the MIT application page!");
+                        MarkerGridTracker.unibeat.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===3){
+                        /*TODO: check for sub sections*/
+                        console.log("on the HIRO application page!");
+                        MarkerGridTracker.unibeat.initiated = true;
+                    }
+                    else if(MarkerGridTracker.repressor.onApplicationPage===4){
+                        /*TODO: check for sub sections*/
+                        console.log("on the UNI application page!");
+                        MarkerGridTracker.unibeat.initiated = true;
+                    }
                 }
             });
             
