@@ -58,12 +58,11 @@
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
         <a-assets timeout="60000">
-            <a-asset-item id="audi-obj" src="./media/model/SPECTER_GT3_.obj" preload="true"></a-asset-item>
-            <a-asset-item id="audi-mtl" src="./media/model/SPECTER_GT3_.mtl" preload="true"></a-asset-item><!---->
+            <a-asset-item id="audi-obj" src="./media/model/scene.gltf" preload="true"></a-asset-item>
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-obj-model src="#audi-obj" mtl="#audi-mtl" scale="0.05 0.05 0.05"></a-obj-model>
+            <a-gltf-model src="#audi-obj" scale="0.5 0.5 0.5"></a-gltf-model>
         </a-marker>
         
         <a-entity camera></a-entity>
