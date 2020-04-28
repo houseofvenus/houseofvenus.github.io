@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.43</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.44</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -98,11 +98,11 @@
     <a-scene embedded arjs>
         <a-assets timeout="60000">
             <!--<img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />-->
-            <a-asset-item id="z3-obj" src="./media/model/ConceptCar.obj" preload="true"></a-asset-item>
+            <a-asset-item id="car-obj" src="./media/model/ConceptCar.obj" preload="true"></a-asset-item>
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-obj-model src="#z3-obj" scale="0.025 0.025 0.025"></a-obj-model>
+            <a-obj-model src="#car-obj" scale="0.5 0.5 0.5"></a-obj-model>
         </a-marker>
         
         <a-entity camera></a-entity>
