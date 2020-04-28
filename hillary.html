@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.34</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.35</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -154,7 +154,7 @@
                                 document.getElementById("mit-rotating-globe").emit("stopRotatingMIT"); //stop rotating middle marker
                                 document.getElementById("mit-rotating-globe").setAttribute("visible", false); //hide initial middle marker icon
                                 document.getElementById("nyt-application-secondary-panel").setAttribute("visible", true);
-                                document.getElementById("nyt-application-secondary-panel").emit("showNYTSecondaryPanel");   //show the secondary application panel
+                                document.getElementById("nyt-application-secondary-panel").emit("showSecondaryPanelNYT");   //show the secondary application panel
                                 
                                 
                                 document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO"); //stop rotating bottom left marker
@@ -783,7 +783,7 @@
                     */
 
                     document.getElementById("nyt-application-secondary-panel").setAttribute("visible", true);
-                    document.getElementById("nyt-application-secondary-panel").emit("showNYTSecondaryPanel");   //show the secondary application panel
+                    document.getElementById("nyt-application-secondary-panel").emit("showSecondaryPanelNYT");   //show the secondary application panel
 
                     document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
                     document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");// show the back button for the application cover page
@@ -1214,8 +1214,8 @@
                       material="src: #bakuas-ticker-video; opacity: 0; side:double;">
             </a-entity>
             <a-entity id="nyt-application-secondary-panel"
-                      geometry="primitive: plane; width: 5; height: 2.0;"
-                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showSecondaryPanelMIT;"
+                      geometry="primitive: plane; width: 5; height: 1.8;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showSecondaryPanelNYT;"
                       position="0 0.25 0"
                       rotation="-90 0 0"
                       visible="false"
