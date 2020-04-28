@@ -1,419 +1,333 @@
-var VirtualJoystick	= function(opts)
-{
-	opts			= opts			|| {};
-	this._container		= opts.container	|| document.body;
-	this._strokeStyle	= opts.strokeStyle	|| 'cyan';
-	this._stickEl		= opts.stickElement	|| this._buildJoystickStick();
-	this._baseEl		= opts.baseElement	|| this._buildJoystickBase();
-	this._mouseSupport	= opts.mouseSupport !== undefined ? opts.mouseSupport : false;
-	this._stationaryBase	= opts.stationaryBase || false;
-	this._baseX		= this._stickX = opts.baseX || 0
-	this._baseY		= this._stickY = opts.baseY || 0
-	this._limitStickTravel	= opts.limitStickTravel || false
-	this._stickRadius	= opts.stickRadius !== undefined ? opts.stickRadius : 100
-	this._useCssTransform	= opts.useCssTransform !== undefined ? opts.useCssTransform : false
-
-	this._container.style.position	= "relative"
-
-	this._container.appendChild(this._baseEl)
-	this._baseEl.style.position	= "absolute"
-	this._baseEl.style.display	= "none"
-	this._container.appendChild(this._stickEl)
-	this._stickEl.style.position	= "absolute"
-	this._stickEl.style.display	= "none"
-
-	this._pressed	= false;
-	this._touchIdx	= null;
-	
-	if(this._stationaryBase === true){
-		this._baseEl.style.display	= "";
-		this._baseEl.style.left		= (this._baseX - this._baseEl.width /2)+"px";
-		this._baseEl.style.top		= (this._baseY - this._baseEl.height/2)+"px";
-	}
-    
-	this._transform	= this._useCssTransform ? this._getTransformProperty() : false;
-	this._has3d	= this._check3D();
-	
-	var __bind	= function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-	this._$onTouchStart	= __bind(this._onTouchStart	, this);
-	this._$onTouchEnd	= __bind(this._onTouchEnd	, this);
-	this._$onTouchMove	= __bind(this._onTouchMove	, this);
-	this._container.addEventListener( 'touchstart'	, this._$onTouchStart	, false );
-	this._container.addEventListener( 'touchend'	, this._$onTouchEnd	, false );
-	this._container.addEventListener( 'touchmove'	, this._$onTouchMove	, false );
-	if( this._mouseSupport ){
-		this._$onMouseDown	= __bind(this._onMouseDown	, this);
-		this._$onMouseUp	= __bind(this._onMouseUp	, this);
-		this._$onMouseMove	= __bind(this._onMouseMove	, this);
-		this._container.addEventListener( 'mousedown'	, this._$onMouseDown	, false );
-		this._container.addEventListener( 'mouseup'	, this._$onMouseUp	, false );
-		this._container.addEventListener( 'mousemove'	, this._$onMouseMove	, false );
-	}
-}
-
-VirtualJoystick.prototype.destroy	= function()
-{
-	this._container.removeChild(this._baseEl);
-	this._container.removeChild(this._stickEl);
-
-	this._container.removeEventListener( 'touchstart'	, this._$onTouchStart	, false );
-	this._container.removeEventListener( 'touchend'		, this._$onTouchEnd	, false );
-	this._container.removeEventListener( 'touchmove'	, this._$onTouchMove	, false );
-	if( this._mouseSupport ){
-		this._container.removeEventListener( 'mouseup'		, this._$onMouseUp	, false );
-		this._container.removeEventListener( 'mousedown'	, this._$onMouseDown	, false );
-		this._container.removeEventListener( 'mousemove'	, this._$onMouseMove	, false );
-	}
-}
-
-/**
- * @returns {Boolean} true if touchscreen is currently available, false otherwise
-*/
-VirtualJoystick.touchScreenAvailable	= function()
-{
-	return 'createTouch' in document ? true : false;
-}
-
-/**
- * microevents.js - https://github.com/jeromeetienne/microevent.js
-*/
-;(function(destObj){
-	destObj.addEventListener	= function(event, fct){
-		if(this._events === undefined) 	this._events	= {};
-		this._events[event] = this._events[event]	|| [];
-		this._events[event].push(fct);
-		return fct;
-	};
-	destObj.removeEventListener	= function(event, fct){
-		if(this._events === undefined) 	this._events	= {};
-		if( event in this._events === false  )	return;
-		this._events[event].splice(this._events[event].indexOf(fct), 1);
-	};
-	destObj.dispatchEvent		= function(event /* , args... */){
-		if(this._events === undefined) 	this._events	= {};
-		if( this._events[event] === undefined )	return;
-		var tmpArray	= this._events[event].slice(); 
-		for(var i = 0; i < tmpArray.length; i++){
-			var result	= tmpArray[i].apply(this, Array.prototype.slice.call(arguments, 1))
-			if( result !== undefined )	return result;
-		}
-		return undefined
-	};
-})(VirtualJoystick.prototype);
-
-//////////////////////////////////////////////////////////////////////////////////
-//										//
-//////////////////////////////////////////////////////////////////////////////////
-
-VirtualJoystick.prototype.deltaX	= function(){ return this._stickX - this._baseX;	}
-VirtualJoystick.prototype.deltaY	= function(){ return this._stickY - this._baseY;	}
-
-VirtualJoystick.prototype.up	= function(){
-	if( this._pressed === false )	return false;
-	var deltaX	= this.deltaX();
-	var deltaY	= this.deltaY();
-	if( deltaY >= 0 )				return false;
-	if( Math.abs(deltaX) > 2*Math.abs(deltaY) )	return false;
-	return true;
-}
-VirtualJoystick.prototype.down	= function(){
-	if( this._pressed === false )	return false;
-	var deltaX	= this.deltaX();
-	var deltaY	= this.deltaY();
-	if( deltaY <= 0 )				return false;
-	if( Math.abs(deltaX) > 2*Math.abs(deltaY) )	return false;
-	return true;	
-}
-VirtualJoystick.prototype.right	= function(){
-	if( this._pressed === false )	return false;
-	var deltaX	= this.deltaX();
-	var deltaY	= this.deltaY();
-	if( deltaX <= 0 )				return false;
-	if( Math.abs(deltaY) > 2*Math.abs(deltaX) )	return false;
-	return true;	
-}
-VirtualJoystick.prototype.left	= function(){
-	if( this._pressed === false )	return false;
-	var deltaX	= this.deltaX();
-	var deltaY	= this.deltaY();
-	if( deltaX >= 0 )				return false;
-	if( Math.abs(deltaY) > 2*Math.abs(deltaX) )	return false;
-	return true;	
-}
-
-//////////////////////////////////////////////////////////////////////////////////
-//										//
-//////////////////////////////////////////////////////////////////////////////////
-
-VirtualJoystick.prototype._onUp	= function()
-{
-	this._pressed	= false; 
-	this._stickEl.style.display	= "none";
-	
-	if(this._stationaryBase == false){	
-		this._baseEl.style.display	= "none";
-	
-		this._baseX	= this._baseY	= 0;
-		this._stickX	= this._stickY	= 0;
-	}
-}
-
-VirtualJoystick.prototype._onDown	= function(x, y)
-{
-	this._pressed	= true; 
-	if(this._stationaryBase == false){
-		this._baseX	= x;
-		this._baseY	= y;
-		this._baseEl.style.display	= "";
-		this._move(this._baseEl.style, (this._baseX - this._baseEl.width /2), (this._baseY - this._baseEl.height/2));
-	}
-	
-	this._stickX	= x;
-	this._stickY	= y;
-	
-	if(this._limitStickTravel === true){
-		var deltaX	= this.deltaX();
-		var deltaY	= this.deltaY();
-		var stickDistance = Math.sqrt( (deltaX * deltaX) + (deltaY * deltaY) );
-		if(stickDistance > this._stickRadius){
-			var stickNormalizedX = deltaX / stickDistance;
-			var stickNormalizedY = deltaY / stickDistance;
-			
-			this._stickX = stickNormalizedX * this._stickRadius + this._baseX;
-			this._stickY = stickNormalizedY * this._stickRadius + this._baseY;
-		} 	
-	}
-	
-	this._stickEl.style.display	= "";
-	this._move(this._stickEl.style, (this._stickX - this._stickEl.width /2), (this._stickY - this._stickEl.height/2));	
-}
-
-VirtualJoystick.prototype._onMove	= function(x, y)
-{
-	if( this._pressed === true ){
-		this._stickX	= x;
-		this._stickY	= y;
-		
-		if(this._limitStickTravel === true){
-			var deltaX	= this.deltaX();
-			var deltaY	= this.deltaY();
-			var stickDistance = Math.sqrt( (deltaX * deltaX) + (deltaY * deltaY) );
-			if(stickDistance > this._stickRadius){
-				var stickNormalizedX = deltaX / stickDistance;
-				var stickNormalizedY = deltaY / stickDistance;
-			
-				this._stickX = stickNormalizedX * this._stickRadius + this._baseX;
-				this._stickY = stickNormalizedY * this._stickRadius + this._baseY;
-			} 		
-		}
-		
-        	this._move(this._stickEl.style, (this._stickX - this._stickEl.width /2), (this._stickY - this._stickEl.height/2));	
-	}	
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////
-//		bind touch events (and mouse events for debug)			//
-//////////////////////////////////////////////////////////////////////////////////
-
-VirtualJoystick.prototype._onMouseUp	= function(event)
-{
-	return this._onUp();
-}
-
-VirtualJoystick.prototype._onMouseDown	= function(event)
-{
-	event.preventDefault();
-	var x	= event.clientX;
-	var y	= event.clientY;
-	return this._onDown(x, y);
-}
-
-VirtualJoystick.prototype._onMouseMove	= function(event)
-{
-	var x	= event.clientX;
-	var y	= event.clientY;
-	return this._onMove(x, y);
-}
-
-//////////////////////////////////////////////////////////////////////////////////
-//		comment								//
-//////////////////////////////////////////////////////////////////////////////////
-
-VirtualJoystick.prototype._onTouchStart	= function(event)
-{
-	// if there is already a touch inprogress do nothing
-	if( this._touchIdx !== null )	return;
-
-	// notify event for validation
-	var isValid	= this.dispatchEvent('touchStartValidation', event);
-	if( isValid === false )	return;
-	
-	// dispatch touchStart
-	this.dispatchEvent('touchStart', event);
-
-	event.preventDefault();
-	// get the first who changed
-	var touch	= event.changedTouches[0];
-	// set the touchIdx of this joystick
-	this._touchIdx	= touch.identifier;
-
-	// forward the action
-	var x		= touch.pageX;
-	var y		= touch.pageY;
-	return this._onDown(x, y)
-}
-
-VirtualJoystick.prototype._onTouchEnd	= function(event)
-{
-	// if there is no touch in progress, do nothing
-	if( this._touchIdx === null )	return;
-
-	// dispatch touchEnd
-	this.dispatchEvent('touchEnd', event);
-
-	// try to find our touch event
-	var touchList	= event.changedTouches;
-	for(var i = 0; i < touchList.length && touchList[i].identifier !== this._touchIdx; i++);
-	// if touch event isnt found, 
-	if( i === touchList.length)	return;
-
-	// reset touchIdx - mark it as no-touch-in-progress
-	this._touchIdx	= null;
-
-//??????
-// no preventDefault to get click event on ios
-event.preventDefault();
-
-	return this._onUp()
-}
-
-VirtualJoystick.prototype._onTouchMove	= function(event)
-{
-	// if there is no touch in progress, do nothing
-	if( this._touchIdx === null )	return;
-
-	// try to find our touch event
-	var touchList	= event.changedTouches;
-	for(var i = 0; i < touchList.length && touchList[i].identifier !== this._touchIdx; i++ );
-	// if touch event with the proper identifier isnt found, do nothing
-	if( i === touchList.length)	return;
-	var touch	= touchList[i];
-
-	event.preventDefault();
-
-	var x		= touch.pageX;
-	var y		= touch.pageY;
-	return this._onMove(x, y)
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////
-//		build default stickEl and baseEl				//
-//////////////////////////////////////////////////////////////////////////////////
-
-/**
- * build the canvas for joystick base
+*
+ * Name          : joy.js
+ * @author       : Roberto D'Amico (Bobboteck)
+ * Last modified : 07.01.2020
+ * Revision      : 1.1.4
+ *
+ * Modification History:
+ * Date         Version     Modified By		Description
+ * 2020-04-20	1.1.5		Roberto D'Amico	Correct: Two sticks in a row, thanks to @liamw9534 for the suggestion
+ * 2020-04-03               Roberto D'Amico Correct: InternalRadius when change the size of canvas, thanks to @vanslipon for the suggestion
+ * 2020-01-07	1.1.4		Roberto D'Amico Close #6 by implementing a new parameter to set the functionality of auto-return to 0 position
+ * 2019-11-18	1.1.3		Roberto D'Amico	Close #5 correct indication of East direction
+ * 2019-11-12   1.1.2       Roberto D'Amico Removed Fix #4 incorrectly introduced and restored operation with touch devices
+ * 2019-11-12   1.1.1       Roberto D'Amico Fixed Issue #4 - Now JoyStick work in any position in the page, not only at 0,0
+ * 
+ * The MIT License (MIT)
+ *
+ *  This file is part of the JoyStick Project (https://github.com/bobboteck/JoyStick).
+ *	Copyright (c) 2015 Roberto D'Amico (Bobboteck).
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
-VirtualJoystick.prototype._buildJoystickBase	= function()
-{
-	var canvas	= document.createElement( 'canvas' );
-	canvas.width	= 126;
-	canvas.height	= 126;
-	
-	var ctx		= canvas.getContext('2d');
-	ctx.beginPath(); 
-	ctx.strokeStyle = this._strokeStyle; 
-	ctx.lineWidth	= 6; 
-	ctx.arc( canvas.width/2, canvas.width/2, 40, 0, Math.PI*2, true); 
-	ctx.stroke();	
-
-	ctx.beginPath(); 
-	ctx.strokeStyle	= this._strokeStyle; 
-	ctx.lineWidth	= 2; 
-	ctx.arc( canvas.width/2, canvas.width/2, 60, 0, Math.PI*2, true); 
-	ctx.stroke();
-	
-	return canvas;
-}
-
+ 
 /**
- * build the canvas for joystick stick
+ * @desc Principal object that draw a joystick, you only need to initialize the object and suggest the HTML container
+ * @costructor
+ * @param container {String} - HTML object that contains the Joystick
+ * @param parameters (optional) - object with following keys:
+ *	title {String} (optional) - The ID of canvas (Default value is 'joystick')
+ * 	width {Int} (optional) - The width of canvas, if not specified is setted at width of container object (Default value is the width of container object)
+ * 	height {Int} (optional) - The height of canvas, if not specified is setted at height of container object (Default value is the height of container object)
+ * 	internalFillColor {String} (optional) - Internal color of Stick (Default value is '#00AA00')
+ * 	internalLineWidth {Int} (optional) - Border width of Stick (Default value is 2)
+ * 	internalStrokeColor {String}(optional) - Border color of Stick (Default value is '#003300')
+ * 	externalLineWidth {Int} (optional) - External reference circonference width (Default value is 2)
+ * 	externalStrokeColor {String} (optional) - External reference circonference color (Default value is '#008000')
+ * 	autoReturnToCenter {Bool} (optional) - Sets the behavior of the stick, whether or not, it should return to zero position when released (Default value is True and return to zero)
  */
-VirtualJoystick.prototype._buildJoystickStick	= function()
+var JoyStick = (function(container, parameters)
 {
-	var canvas	= document.createElement( 'canvas' );
-	canvas.width	= 86;
-	canvas.height	= 86;
-	var ctx		= canvas.getContext('2d');
-	ctx.beginPath(); 
-	ctx.strokeStyle	= this._strokeStyle; 
-	ctx.lineWidth	= 6; 
-	ctx.arc( canvas.width/2, canvas.width/2, 40, 0, Math.PI*2, true); 
-	ctx.stroke();
-	return canvas;
-}
-
-//////////////////////////////////////////////////////////////////////////////////
-//		move using translate3d method with fallback to translate > 'top' and 'left'		
-//      modified from https://github.com/component/translate and dependents
-//////////////////////////////////////////////////////////////////////////////////
-
-VirtualJoystick.prototype._move = function(style, x, y)
-{
-	if (this._transform) {
-		if (this._has3d) {
-			style[this._transform] = 'translate3d(' + x + 'px,' + y + 'px, 0)';
-		} else {
-			style[this._transform] = 'translate(' + x + 'px,' + y + 'px)';
-		}
-	} else {
-		style.left = x + 'px';
-		style.top = y + 'px';
+	parameters = parameters || {};
+	var title = (typeof parameters.title === "undefined" ? "joystick" : parameters.title),
+		width = (typeof parameters.width === "undefined" ? 0 : parameters.width),
+		height = (typeof parameters.height === "undefined" ? 0 : parameters.height),
+		internalFillColor = (typeof parameters.internalFillColor === "undefined" ? "#00AA00" : parameters.internalFillColor),
+		internalLineWidth = (typeof parameters.internalLineWidth === "undefined" ? 2 : parameters.internalLineWidth),
+		internalStrokeColor = (typeof parameters.internalStrokeColor === "undefined" ? "#003300" : parameters.internalStrokeColor),
+		externalLineWidth = (typeof parameters.externalLineWidth === "undefined" ? 2 : parameters.externalLineWidth),
+		externalStrokeColor = (typeof parameters.externalStrokeColor ===  "undefined" ? "#008000" : parameters.externalStrokeColor),
+		autoReturnToCenter = (typeof parameters.autoReturnToCenter === "undefined" ? true : parameters.autoReturnToCenter);
+	
+	// Create Canvas element and add it in the Container object
+	var objContainer = document.getElementById(container);
+	var canvas = document.createElement("canvas");
+	canvas.id = title;
+	if(width === 0) { width = objContainer.clientWidth; }
+	if(height === 0) { height = objContainer.clientHeight; }
+	canvas.width = width;
+	canvas.height = height;
+	objContainer.appendChild(canvas);
+	var context=canvas.getContext("2d");
+	
+	var pressed = 0; // Bool - 1=Yes - 0=No
+    var circumference = 2 * Math.PI;
+    var internalRadius = (canvas.width-((canvas.width/2)+10))/2;
+	var maxMoveStick = internalRadius + 5;
+	var externalRadius = internalRadius + 30;
+	var centerX = canvas.width / 2;
+	var centerY = canvas.height / 2;
+	var directionHorizontalLimitPos = canvas.width / 10;
+	var directionHorizontalLimitNeg = directionHorizontalLimitPos * -1;
+	var directionVerticalLimitPos = canvas.height / 10;
+	var directionVerticalLimitNeg = directionVerticalLimitPos * -1;
+	// Used to save current position of stick
+	var movedX=centerX;
+	var movedY=centerY;
+		
+	// Check if the device support the touch or not
+	if("ontouchstart" in document.documentElement)
+	{
+		canvas.addEventListener("touchstart", onTouchStart, false);
+		canvas.addEventListener("touchmove", onTouchMove, false);
+		canvas.addEventListener("touchend", onTouchEnd, false);
 	}
-}
-
-VirtualJoystick.prototype._getTransformProperty = function() 
-{
-	var styles = [
-		'webkitTransform',
-		'MozTransform',
-		'msTransform',
-		'OTransform',
-		'transform'
-	];
-
-	var el = document.createElement('p');
-	var style;
-
-	for (var i = 0; i < styles.length; i++) {
-		style = styles[i];
-		if (null != el.style[style]) {
-			return style;
+	else
+	{
+		canvas.addEventListener("mousedown", onMouseDown, false);
+		canvas.addEventListener("mousemove", onMouseMove, false);
+		canvas.addEventListener("mouseup", onMouseUp, false);
+	}
+	// Draw the object
+	drawExternal();
+	drawInternal();
+	/******************************************************
+	 * Private methods
+	 *****************************************************/
+	/**
+	 * @desc Draw the external circle used as reference position
+	 */
+	function drawExternal()
+	{
+		context.beginPath();
+		context.arc(centerX, centerY, externalRadius, 0, circumference, false);
+		context.lineWidth = externalLineWidth;
+		context.strokeStyle = externalStrokeColor;
+		context.stroke();
+	}
+	/**
+	 * @desc Draw the internal stick in the current position the user have moved it
+	 */
+	function drawInternal()
+	{
+		context.beginPath();
+		if(movedX<internalRadius) { movedX=maxMoveStick; }
+		if((movedX+internalRadius) > canvas.width) { movedX = canvas.width-(maxMoveStick); }
+		if(movedY<internalRadius) { movedY=maxMoveStick; }
+		if((movedY+internalRadius) > canvas.height) { movedY = canvas.height-(maxMoveStick); }
+		context.arc(movedX, movedY, internalRadius, 0, circumference, false);
+		// create radial gradient
+		var grd = context.createRadialGradient(centerX, centerY, 5, centerX, centerY, 200);
+		// Light color
+		grd.addColorStop(0, internalFillColor);
+		// Dark color
+		grd.addColorStop(1, internalStrokeColor);
+		context.fillStyle = grd;
+		context.fill();
+		context.lineWidth = internalLineWidth;
+		context.strokeStyle = internalStrokeColor;
+		context.stroke();
+	}
+	
+	/**
+	 * @desc Events for manage touch
+	 */
+	function onTouchStart(event) 
+	{
+		pressed = 1;
+	}
+	function onTouchMove(event)
+	{
+		// Prevent the browser from doing its default thing (scroll, zoom)
+		event.preventDefault();
+		if(pressed === 1 && event.targetTouches[0].target === canvas)
+		{
+			movedX = event.targetTouches[0].pageX;
+			movedY = event.targetTouches[0].pageY;
+			// Manage offset
+			movedX -= canvas.offsetLeft;
+			movedY -= canvas.offsetTop;
+			// Delete canvas
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			// Redraw object
+			drawExternal();
+			drawInternal();
 		}
-	}         
-}
-  
-VirtualJoystick.prototype._check3D = function() 
-{        
-	var prop = this._getTransformProperty();
-	// IE8<= doesn't have `getComputedStyle`
-	if (!prop || !window.getComputedStyle) return module.exports = false;
-
-	var map = {
-		webkitTransform: '-webkit-transform',
-		OTransform: '-o-transform',
-		msTransform: '-ms-transform',
-		MozTransform: '-moz-transform',
-		transform: 'transform'
+	} 
+	function onTouchEnd(event) 
+	{
+		pressed = 0;
+		// If required reset position store variable
+		if(autoReturnToCenter)
+		{
+			movedX = centerX;
+			movedY = centerY;
+		}
+		// Delete canvas
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		// Redraw object
+		drawExternal();
+		drawInternal();
+		//canvas.unbind('touchmove');
+	}
+	/**
+	 * @desc Events for manage mouse
+	 */
+	function onMouseDown(event) 
+	{
+		pressed = 1;
+	}
+	function onMouseMove(event) 
+	{
+		if(pressed === 1)
+		{
+			movedX = event.pageX;
+			movedY = event.pageY;
+			// Manage offset
+			movedX -= canvas.offsetLeft;
+			movedY -= canvas.offsetTop;
+			// Delete canvas
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			// Redraw object
+			drawExternal();
+			drawInternal();
+		}
+	}
+	function onMouseUp(event) 
+	{
+		pressed = 0;
+		// If required reset position store variable
+		if(autoReturnToCenter)
+		{
+			movedX = centerX;
+			movedY = centerY;
+		}
+		// Delete canvas
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		// Redraw object
+		drawExternal();
+		drawInternal();
+		//canvas.unbind('mousemove');
+	}
+	/******************************************************
+	 * Public methods
+	 *****************************************************/
+	/**
+	 * @desc The width of canvas
+	 * @return Number of pixel width 
+	 */
+	this.GetWidth = function () 
+	{
+		return canvas.width;
+	};
+	
+	/**
+	 * @desc The height of canvas
+	 * @return Number of pixel height
+	 */
+	this.GetHeight = function () 
+	{
+		return canvas.height;
+	};
+	
+	/**
+	 * @desc The X position of the cursor relative to the canvas that contains it and to its dimensions
+	 * @return Number that indicate relative position
+	 */
+	this.GetPosX = function ()
+	{
+		return movedX;
+	};
+	
+	/**
+	 * @desc The Y position of the cursor relative to the canvas that contains it and to its dimensions
+	 * @return Number that indicate relative position
+	 */
+	this.GetPosY = function ()
+	{
+		return movedY;
+	};
+	
+	/**
+	 * @desc Normalizzed value of X move of stick
+	 * @return Integer from -100 to +100
+	 */
+	this.GetX = function ()
+	{
+		return (100*((movedX - centerX)/maxMoveStick)).toFixed();
 	};
 
-	// from: https://gist.github.com/lorenzopolidori/3794226
-	var el = document.createElement('div');
-	el.style[prop] = 'translate3d(1px,1px,1px)';
-	document.body.insertBefore(el, null);
-	var val = getComputedStyle(el).getPropertyValue(map[prop]);
-	document.body.removeChild(el);
-	var exports = null != val && val.length && 'none' != val;
-	return exports;
-}
+	/**
+	 * @desc Normalizzed value of Y move of stick
+	 * @return Integer from -100 to +100
+	 */
+	this.GetY = function ()
+	{
+		return ((100*((movedY - centerY)/maxMoveStick))*-1).toFixed();
+	};
+	
+	/**
+	 * @desc Get the direction of the cursor as a string that indicates the cardinal points where this is oriented
+	 * @return String of cardinal point N, NE, E, SE, S, SW, W, NW and C when it is placed in the center
+	 */
+	this.GetDir = function()
+	{
+		var result = "";
+		var orizontal = movedX - centerX;
+		var vertical = movedY - centerY;
+		
+		if(vertical >= directionVerticalLimitNeg && vertical <= directionVerticalLimitPos)
+		{
+			result = "C";
+		}
+		if(vertical < directionVerticalLimitNeg)
+		{
+			result = "N";
+		}
+		if(vertical > directionVerticalLimitPos)
+		{
+			result = "S";
+		}
+		
+		if(orizontal < directionHorizontalLimitNeg)
+		{
+			if(result === "C")
+			{ 
+				result = "W";
+			}
+			else
+			{
+				result += "W";
+			}
+		}
+		if(orizontal > directionHorizontalLimitPos)
+		{
+			if(result === "C")
+			{ 
+				result = "E";
+			}
+			else
+			{
+				result += "E";
+			}
+		}
+		
+		return result;
+	};
+});
