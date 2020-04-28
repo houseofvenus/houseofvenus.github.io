@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.35</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <script>
+        let MarkerGridTracker = {
+            nyt : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            mit : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            hiro : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            unibeat : {
+                initiated: false,
+                active: false,
+                tapping: false,
+                counter: 0
+            },
+            repressor: {
+                onApplicationPage: 0,   //  0 = menu, 1 = nyt, 2 = mit (bakuas), 3 = hiro (facetime/bodytime), 4 = unibeat (office)
+                onApplicationSection: null
+            }
+        };
+        
+        let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
+                if(MarkerGridTracker.nyt.initiated){
+                    console.log("start finger counter");
+                    MarkerGridTracker.nyt.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
+            });
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
+                stopTimeNYT = new Date().getTime();
+                timeDiffNYT = stopTimeNYT-MarkerGridTracker.nyt.counter;
+                
+                console.log(`--------------------------\n${timeDiffNYT} has elapsed\n--------------------------`);
+                
+                if(MarkerGridTracker.nyt.initiated){
+                    if(MarkerGridTracker.nyt.active){
+                        console.log("NYT marker content already activated");
+                    }
+                    else{
+                        if(MarkerGridTracker.repressor.onApplicationPage===0){   //   if the user is on the initial main menu page
+                            if(timeDiffNYT>=3000 && timeDiffNYT<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
+                                                                            (explicitly 3000ms to 6000ms but live unit tests show that the trigger occurs after 4 seconds on average)
+                                                                            */
+                                
+                                /*
+                                *
+                                *   emit events that show the associated content for this application page for the
+                                *   NYT marker  THIS HAS BEEN DUPLICATED IN THE GO BACK TO COVER PAGE EVENT LISTENER BELOW | REFACTOR FOR THE BETA VERSION
+                                *
+                                */
+                                
+                                console.log("show NYT content");
+                                
+                                document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
+                                document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
+
+                                document.getElementById("nyt-application-panel").emit("showPanelNYT");
+                                document.getElementById("nyt-application-panel").setAttribute("visible",true);
+                                
+                                /*
+                                *
+                                *   emit events that show the associated content for this application page for the 
+                                *   MIT marker
+                                *   HIRO marker
+                                *   UNI marker
+                                *
+                                */
+                                
+                                document.getElementById("mit-rotating-globe").emit("stopRotatingMIT"); //stop rotating middle marker
+                                document.getElementById("mit-rotating-globe").setAttribute("visible", false); //hide initial middle marker icon
+                                document.getElementById("nyt-application-secondary-panel").setAttribute("visible", true);
+                                document.getElementById("nyt-application-secondary-panel").emit("showSecondaryPanelNYT");   //show the secondary application panel
+                                
+                                
+                                document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO"); //stop rotating bottom left marker
+                                document.getElementById("hiro-rotating-globe").setAttribute("visible", false); //hide initial bottom left marker icon
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
+                                document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");// show the back button for the application cover page
+                                
+                                document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI"); //stop rotating bottom right marker
+                                document.getElementById("unibeat-rotating-globe").setAttribute("visible", false); //hide initial bottom right marker icon
+                                document.getElementById("next-page-button-container").setAttribute("visible", true);
+                                document.getElementById("next-page-button-container").emit("showNextButtonOnCover");// show the back button for the application cover page
+                                
+                                MarkerGridTracker.nyt.active = true;
+                                MarkerGridTracker.repressor.onApplicationPage = 1;
+                                
+                                MarkerGridTracker.repressor.onApplicationSection = {
+                                    current: 0,
+                                    directory: [
+                                        "cover",
+                                        "front-page"
+                                    ]
+                                };
+                            }
+                            else{
+                                console.log("missed content trigger window\nresetting timer.");
+                                MarkerGridTracker.nyt.counter = 0;
+                            }
+                        }
+                        else if(MarkerGridTracker.repressor.onApplicationPage===1){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the NYT app");
+                            }
+                        }
+                        else if(MarkerGridTracker.repressor.onApplicationPage===2){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the MIT app");
+                            }
+                        }
+                        else if(MarkerGridTracker.repressor.onApplicationPage===3){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the HIRO app");
+                            }
+                        }
+                        else if(MarkerGridTracker.repressor.onApplicationPage===4){
+                            if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the top button on the UNI app");
+                            }
+                        }
+                        else{
+                            console.log("tapped something idk");
+                        }
+                    }
+                }
+                else{
+                    if(MarkerGridTracker.repressor.onApplicationPage===0){
+                        console.log("activating marker\nshow initial content");
+                        document.getElementById("nyt-rotating-globe").emit("startRotatingNYT");
+                        MarkerGridTracker.nyt.initiated = true;
+                    }
+                }
+            });
+            
+            document.getElementById("go-back-to-app-cover-page-button-container").addEventListener("click", function(){
+                if(MarkerGridTracker.repressor.onApplicationSection.current===1){
+                    /*
+                    *   show the New York Times Immersive Paper Front Page
+                    *
+                    *
+                    *
+                    */
+
+                    document.getElementById("nyt-banner-container").setAttribute("visible", false);
+                    document.getElementById("date-container").setAttribute("visible", false);
+                    document.getElementById("date-container").setAttribute("material.opacity", 0);
+                    //document.getElementById("date-container").emit("showDateContainerPanel");
+
+                    document.getElementById("front-page-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-1").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-2").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-3").setAttribute("visible", false);
+                    document.getElementById("front-page-banner-item-container-4").setAttribute("visible", false);
+
+                    document.getElementById("right-side-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("right-side-banner-item-container-1").setAttribute("visible", false);
+                    document.getElementById("right-side-banner-item-container-2").setAttribute("visible", false);
+
+                    document.getElementById("left-side-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("left-side-banner-item-container-1").setAttribute("visible", false);
+
+                    document.getElementById("bottom-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("bottom-banner-item-container-1").setAttribute("visible", false);
+
+                    document.getElementById("other-stories-banner-item-container-0").setAttribute("visible", false);
+                    document.getElementById("other-stories-banner-item-container-1").setAttribute("visible", false);
+                    document.getElementById("other-stories-banner-item-container-2").setAttribute("visible", false);
+
+                    document.getElementById("front-page-main-cover-0").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-0").emit("showCoverZero");
+
+                    document.getElementById("front-page-main-cover-1").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-2").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-3").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-4").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-5").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-6").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-7").setAttribute("visible", false);
+                    document.getElementById("front-page-main-cover-8").setAttribute("visible", false);
+
+
+                    document.getElementById("bottom-half-front-cover-container").setAttribute("visible", false);
+                    document.getElementById("bottom-half-front-cover-action-button-container-0").setAttribute("visible", false);
+                    document.getElementById("bottom-half-front-cover-action-button-container-1").setAttribute("visible", false);
+                    document.getElementById("bottom-half-front-cover-action-button-container-2").setAttribute("visible", false);
+
+    
+                    setTimeout(function(){
+                        document.getElementById("go-back-to-app-cover-page-button-container").style.display = "none";
+                    }, 500);
+
+                    document.getElementById("go-back-to-app-cover-page-button-container").style.opacity = 0;
+                    
+                    MarkerGridTracker.repressor.onApplicationSection.current = 0;   // change the app focus 
+                    
+                    
+                    
+                    
+                    
+                    
+                    /*
+                    *   This has been duplicated from the section above | REFACTOR FOR THE BETA VERSION
+                    *
+                    *
+                    */
+                    
+                    console.log("show NYT content");
+
+                    document.getElementById("nyt-application-panel").emit("showPanelNYT");
+                    document.getElementById("nyt-application-panel").setAttribute("visible",true);
+
+                    /*
+                    *
+                    *   emit events that show the associated content for this application page for the 
+                    *   MIT marker
+                    *   HIRO marker
+                    *   UNI marker
+                    *
+                    */
+
+                    document.getElementById("nyt-application-secondary-panel").setAttribute("visible", true);
+                    document.getElementById("nyt-application-secondary-panel").emit("showSecondaryPanelNYT");   //show the secondary application panel
+
+                    document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
+                    document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");// show the back button for the application cover page
+
+                    document.getElementById("next-page-button-container").setAttribute("visible", true);
+                    document.getElementById("next-page-button-container").emit("showNextButtonOnCover");// show the back button for the application cover page
+
+                    // potentially redundant review line below before removing during REFACTOR
+                    MarkerGridTracker.nyt.active = true;
+                }
+            });
+        });
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+        <a-assets timeout="20000">
+            <!--<img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />-->
+            <a-asset-item id="z3-obj" src="./media/model/Z3_OBJ.obj" preload="true"></a-asset-item>
+        </a-assets>
+        
+        <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-obj-model src="#z3-obj" scale="0.5 0.5 0.5"></a-obj-model>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
