@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.51</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.53</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -58,12 +58,12 @@
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
         <a-assets timeout="60000">
-            <a-asset-item id="audi-obj" src="./media/model/scene.gltf" preload="true"></a-asset-item>
+            <a-asset-item id="audi-obj" src="./media/model/SPECTER_GT3_.obj" preload="true"></a-asset-item>
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-entity gtlf-model="#audi-obj" scale="0.5 0.5 0.5"></a-entity>
-        </a-marker>        
+            <a-obj-model src="#audi-obj" material="color: blue;" scale="0.5 0.5 0.5"></a-obj-model>
+        </a-marker>
         
         <a-entity camera></a-entity>
     </a-scene>
