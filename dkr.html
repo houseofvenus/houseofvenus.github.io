@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.35</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.36</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -167,105 +167,6 @@
                 }
             });
             
-            document.getElementById("go-back-to-app-cover-page-button-container").addEventListener("click", function(){
-                if(MarkerGridTracker.repressor.onApplicationSection.current===1){
-                    /*
-                    *   show the New York Times Immersive Paper Front Page
-                    *
-                    *
-                    *
-                    */
-
-                    document.getElementById("nyt-banner-container").setAttribute("visible", false);
-                    document.getElementById("date-container").setAttribute("visible", false);
-                    document.getElementById("date-container").setAttribute("material.opacity", 0);
-                    //document.getElementById("date-container").emit("showDateContainerPanel");
-
-                    document.getElementById("front-page-banner-item-container-0").setAttribute("visible", false);
-                    document.getElementById("front-page-banner-item-container-1").setAttribute("visible", false);
-                    document.getElementById("front-page-banner-item-container-2").setAttribute("visible", false);
-                    document.getElementById("front-page-banner-item-container-3").setAttribute("visible", false);
-                    document.getElementById("front-page-banner-item-container-4").setAttribute("visible", false);
-
-                    document.getElementById("right-side-banner-item-container-0").setAttribute("visible", false);
-                    document.getElementById("right-side-banner-item-container-1").setAttribute("visible", false);
-                    document.getElementById("right-side-banner-item-container-2").setAttribute("visible", false);
-
-                    document.getElementById("left-side-banner-item-container-0").setAttribute("visible", false);
-                    document.getElementById("left-side-banner-item-container-1").setAttribute("visible", false);
-
-                    document.getElementById("bottom-banner-item-container-0").setAttribute("visible", false);
-                    document.getElementById("bottom-banner-item-container-1").setAttribute("visible", false);
-
-                    document.getElementById("other-stories-banner-item-container-0").setAttribute("visible", false);
-                    document.getElementById("other-stories-banner-item-container-1").setAttribute("visible", false);
-                    document.getElementById("other-stories-banner-item-container-2").setAttribute("visible", false);
-
-                    document.getElementById("front-page-main-cover-0").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-0").emit("showCoverZero");
-
-                    document.getElementById("front-page-main-cover-1").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-2").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-3").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-4").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-5").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-6").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-7").setAttribute("visible", false);
-                    document.getElementById("front-page-main-cover-8").setAttribute("visible", false);
-
-
-                    document.getElementById("bottom-half-front-cover-container").setAttribute("visible", false);
-                    document.getElementById("bottom-half-front-cover-action-button-container-0").setAttribute("visible", false);
-                    document.getElementById("bottom-half-front-cover-action-button-container-1").setAttribute("visible", false);
-                    document.getElementById("bottom-half-front-cover-action-button-container-2").setAttribute("visible", false);
-
-    
-                    setTimeout(function(){
-                        document.getElementById("go-back-to-app-cover-page-button-container").style.display = "none";
-                    }, 500);
-
-                    document.getElementById("go-back-to-app-cover-page-button-container").style.opacity = 0;
-                    
-                    MarkerGridTracker.repressor.onApplicationSection.current = 0;   // change the app focus 
-                    
-                    
-                    
-                    
-                    
-                    
-                    /*
-                    *   This has been duplicated from the section above | REFACTOR FOR THE BETA VERSION
-                    *
-                    *
-                    */
-                    
-                    console.log("show NYT content");
-
-                    document.getElementById("nyt-application-panel").emit("showPanelNYT");
-                    document.getElementById("nyt-application-panel").setAttribute("visible",true);
-
-                    /*
-                    *
-                    *   emit events that show the associated content for this application page for the 
-                    *   MIT marker
-                    *   HIRO marker
-                    *   UNI marker
-                    *
-                    */
-
-                    document.getElementById("nyt-application-secondary-panel").setAttribute("visible", true);
-                    document.getElementById("nyt-application-secondary-panel").emit("showSecondaryPanelNYT");   //show the secondary application panel
-
-                    document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
-                    document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");// show the back button for the application cover page
-
-                    document.getElementById("next-page-button-container").setAttribute("visible", true);
-                    document.getElementById("next-page-button-container").emit("showNextButtonOnCover");// show the back button for the application cover page
-
-                    // potentially redundant review line below before removing during REFACTOR
-                    MarkerGridTracker.nyt.active = true;
-                }
-            });
         });
     </script>
 </head>
