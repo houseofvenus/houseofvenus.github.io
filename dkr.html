@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.36</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.38</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <script src="./js/joystick.js"></script>
     <script>
         let MarkerGridTracker = {
             nyt : {
@@ -44,7 +45,7 @@
         document.addEventListener("DOMContentLoaded", function(){
             
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
-          
+                
             });
             
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
@@ -62,7 +63,7 @@
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-obj-model src="#z3-obj" scale="0.05 0.05 0.05"></a-obj-model>
+            <a-obj-model src="#z3-obj" scale="0.025 0.025 0.025"></a-obj-model>
         </a-marker>
         
         <a-entity camera></a-entity>
