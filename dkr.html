@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.38</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.40</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script src="./js/joystick.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #controller-container{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            left: 0;
+        }
+    </style>
     <script>
         let MarkerGridTracker = {
             nyt : {
@@ -43,6 +58,29 @@
         let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
         
         document.addEventListener("DOMContentLoaded", function(){
+            var joystick = new VirtualJoystick({
+				container	: document.getElementById("controller-container"),
+				mouseSupport	: true,
+			});
+            
+            joystick.addEventListener('touchStart', function(){
+				console.log('down')
+			});
+            
+			joystick.addEventListener('touchEnd', function(){
+				console.log('up')
+			});
+
+			setInterval(function(){
+				var outputEl	= document.getElementById('result');
+				outputEl.innerHTML	= '<b>Result:</b> '
+					+ ' dx:'+joystick.deltaX()
+					+ ' dy:'+joystick.deltaY()
+					+ (joystick.right()	? ' right'	: '')
+					+ (joystick.up()	? ' up'		: '')
+					+ (joystick.left()	? ' left'	: '')
+					+ (joystick.down()	? ' down' 	: '')	
+			}, 1/30 * 1000);
             
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
                 
@@ -56,6 +94,7 @@
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
+    <div id="controller-container"></div>
     <a-scene embedded arjs>
         <a-assets timeout="60000">
             <!--<img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />-->
