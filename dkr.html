@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.47</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.49</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -58,6 +58,7 @@
         let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
         
         document.addEventListener("DOMContentLoaded", function(){
+            var joy = new JoyStick('joyDiv');
             /*var joystick = new VirtualJoystick({
 				container	: document.getElementById("controller-container"),
 				mouseSupport	: true,
