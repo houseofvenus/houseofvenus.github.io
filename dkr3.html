@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.54</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.55</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,10 +59,11 @@
     <a-scene embedded arjs>
         <a-assets timeout="60000">
             <a-asset-item id="lambo-obj" src="./media/model/Avent_sport.obj" preload="true"></a-asset-item>
+            <a-asset-item id="lambo-mtl" src="./media/model/Avent_sport.mtl" preload="true"></a-asset-item>
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-obj-model src="#lambo-obj" scale="1 1 1"></a-obj-model>
+            <a-obj-model src="#lambo-obj" mtl="#lambo-mtl" scale="1 1 1"></a-obj-model>
         </a-marker>
         
         <a-entity camera></a-entity>
