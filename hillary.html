@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.30</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.31</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -242,11 +242,52 @@
                                                                             */
                                 console.log("show MIT content (BAKUAS application)");
 
-                                document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
-                                document.getElementById("mit-rotating-globe").setAttribute("visible",false);
+                                document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
+                                document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
 
                                 document.getElementById("mit-application-panel").emit("showPanelMIT");
                                 document.getElementById("mit-application-panel").setAttribute("visible",true);
+                                
+                                
+                                
+                                /*
+                                *
+                                *   emit events that show the associated content for this application page for the 
+                                *   MIT marker
+                                *   HIRO marker
+                                *   UNI marker
+                                *
+                                */
+                                
+                                document.getElementById("mit-rotating-globe").emit("stopRotatingMIT"); //stop rotating middle marker
+                                document.getElementById("mit-rotating-globe").setAttribute("visible", false); //hide initial middle marker icon
+                                
+                                document.getElementById("mit-application-secondary-panel").emit("showSecondaryPanelMIT");
+                                document.getElementById("mit-application-secondary-panel").setAttribute("visible",true);
+                                
+                                
+                                document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO"); //stop rotating bottom left marker
+                                document.getElementById("hiro-rotating-globe").setAttribute("visible", false); //hide initial bottom left marker icon
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
+                                document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");// show the back button for the application cover page
+                                
+                                document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI"); //stop rotating bottom right marker
+                                document.getElementById("unibeat-rotating-globe").setAttribute("visible", false); //hide initial bottom right marker icon
+                                document.getElementById("next-page-button-container").setAttribute("visible", true);
+                                document.getElementById("next-page-button-container").emit("showNextButtonOnCover");// show the back button for the application cover page
+                                
+                                
+                                MarkerGridTracker.repressor.onApplicationSection = {
+                                    current: 0,
+                                    directory: [
+                                        "cover",
+                                        "blackinvestorsmatter-account-page"
+                                    ]
+                                };
+                                
+                                
+                                
+                                
                                 MarkerGridTracker.mit.active = true;
                                 MarkerGridTracker.repressor.onApplicationPage = 2;
                             }
@@ -740,6 +781,11 @@
             <img id="back-to-main-page-button-texture" src="./media/img/back-to-main-page-button.png" preload="true" />
             <img id="onto-to-next-page-button-texture" src="./media/img/onto-to-app-page-button.png" preload="true" />
             
+            
+            
+            <img id="mit-application-panel-texture" src="./media/img/mit-application-panel.png" preload="true" />
+            <img id="mit-application-secondary-panel-texture" src="./media/img/mit-application-secondary-panel.png" preload="true" />
+            
             <!-- NYT application textures -->
             
             <img id="jigsaw-puzzle-cover" src="./media/img/jigsaw-puzzle-story.png" preload="true"/>
@@ -790,6 +836,15 @@
                       visible="false"
                       material="src: #nyt-app-banner-texture; opacity: 0; side: double;">
             </a-entity>
+            <a-entity id="mit-application-panel"
+                      geometry="primitive: plane; width: 4; height: 3;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelMIT;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #mit-application-panel-texture; opacity: 0; side:double;">
+            </a-entity>
+            
             
             
             
@@ -1102,17 +1157,17 @@
                       position="0 0.5 0"
                       material="src: #bakuas-app-icon-texture;">
             </a-entity>
-            <a-entity id="mit-application-panel"
+            <a-entity id="mit-application-secondary-panel"
                       geometry="primitive: plane; width: 5; height: 2.5;"
-                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelMIT;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showSecondaryPanelMIT;"
                       position="0 0.25 0"
                       rotation="-90 0 0"
                       visible="false"
-                      material="color: blue; opacity: 0; side:double;">
+                      material="src: #mit-application-secondary-panel-texture; opacity: 0; side:double;">
             </a-entity>
             <a-entity id="nyt-application-secondary-panel"
                       geometry="primitive: plane; width: 5; height: 2.5;"
-                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showNYTSecondaryPanel;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showSecondaryPanelMIT;"
                       position="0 0.25 0"
                       rotation="-90 0 0"
                       visible="false"
