@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.31</title>
+    <title>Hillary Yeboah | Old Row Maryland | v. 0.2.32</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -285,6 +285,10 @@
                                     ]
                                 };
                                 
+                                document.getElementById("bakuas-ticker-tape-container").setAttribute("visible", true);
+                                document.getElementById("bakuas-ticker-tape-container").emit("revealTicker");
+                                
+                                document.getElementById("bakuas-ticker-video").play();
                                 
                                 
                                 
@@ -431,7 +435,42 @@
                             if(timeDiffHIRO>=1000 && timeDiffHIRO<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the bottom left button on the MIT app");
+                                //console.log("tapped the bottom left button on the MIT app");
+                                
+                                /*
+                                *   emit events that show the main menu content THIS WILL BE DUPLICATED IN THE DRAFT AND SHOULD BE REFACTORED AS SOON AS WE TRANSITION FROM THE CLOSED BETA TO THE PUBLIC BETA
+                                *   NYT marker
+                                *   MIT marker
+                                *   HIRO marker
+                                *   UNI marker
+                                */
+                                document.getElementById("nyt-rotating-globe").emit("resumeRotatingNYT"); //resume rotating middle marker
+                                document.getElementById("nyt-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
+                                document.getElementById("mit-application-panel").setAttribute("visible", false);
+                                document.getElementById("mit-application-panel").setAttribute("material.opacity", 0);//hide the secondary application panel
+                                
+                                
+                                document.getElementById("mit-rotating-globe").emit("resumeRotatingMIT"); //resume rotating middle marker
+                                document.getElementById("mit-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
+                                document.getElementById("mit-application-secondary-panel").setAttribute("visible", false);
+                                document.getElementById("mit-application-secondary-panel").setAttribute("material.opacity", 0);//hide the secondary application panel
+                                
+                                document.getElementById("bakuas-ticker-video").pause();
+                                document.getElementById("bakuas-ticker-tape-container").setAttribute("visible", false);
+                                document.getElementById("bakuas-ticker-tape-container").setAttribute("material.opacity", 0);
+                                
+                                document.getElementById("hiro-rotating-globe").emit("resumeRotatingHIRO"); //resume rotating bottom left marker
+                                document.getElementById("hiro-rotating-globe").setAttribute("visible", true); //show initial bottom left marker icon
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", false);
+                                // hide the back button for the application cover page
+                                
+                                document.getElementById("unibeat-rotating-globe").emit("resumeRotatingUNI"); //resume rotating bottom right marker
+                                document.getElementById("unibeat-rotating-globe").setAttribute("visible", true); //show initial bottom right marker icon
+                                document.getElementById("next-page-button-container").setAttribute("visible", false); // hide the back button for the application cover page
+                                
+                                MarkerGridTracker.repressor.onApplicationPage = 0; // go back to the main menu page
+                                MarkerGridTracker.repressor.onApplicationSection = null;
+                                MarkerGridTracker.mit.active = false;
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
@@ -816,6 +855,7 @@
             
             
             <video id="nyt-main-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/sanders-quit.mp4"></video>
+            <video id="bakuas-ticker-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/ticker-nasdaq.mp4"></video>
             <img id="toggle-playback-pause-button-icon" src="./media/img/pause-icon.png" preload="true"/>
             <img id="play-next-item-button-icon" src="./media/img/play-next-icon.png" preload="true"/>
             <img id="toggle-volume-button-icon" src="./media/img/volume-on-icon.png" preload="true"/>
@@ -1165,8 +1205,16 @@
                       visible="false"
                       material="src: #mit-application-secondary-panel-texture; opacity: 0; side:double;">
             </a-entity>
+            <a-entity id="bakuas-ticker-tape-container"
+                      geometry="primitive: plane; width: 5; height: 1;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: revealTicker;"
+                      position="0 0.3 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #bakuas-ticker-video; opacity: 0; side:double;">
+            </a-entity>
             <a-entity id="nyt-application-secondary-panel"
-                      geometry="primitive: plane; width: 5; height: 2.5;"
+                      geometry="primitive: plane; width: 5; height: 2.0;"
                       animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showSecondaryPanelMIT;"
                       position="0 0.25 0"
                       rotation="-90 0 0"
