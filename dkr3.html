@@ -1,46 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.56</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.57</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script>
-        let MarkerGridTracker = {
-            nyt : {
-                initiated: false,
-                active: false,
-                tapping: false,
-                counter: 0
-            },
-            mit : {
-                initiated: false,
-                active: false,
-                tapping: false,
-                counter: 0
-            },
-            hiro : {
-                initiated: false,
-                active: false,
-                tapping: false,
-                counter: 0
-            },
-            unibeat : {
-                initiated: false,
-                active: false,
-                tapping: false,
-                counter: 0
-            },
-            repressor: {
-                onApplicationPage: 0,   //  0 = menu, 1 = nyt, 2 = mit (bakuas), 3 = hiro (facetime/bodytime), 4 = unibeat (office)
-                onApplicationSection: null
-            }
-        };
-        
-        let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
-        
         document.addEventListener("DOMContentLoaded", function(){
             
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
@@ -57,8 +24,8 @@
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs>
         <a-assets timeout="60000">
-            <a-asset-item id="lambo-obj" src="./media/model/Avent_sport.obj" preload="true"></a-asset-item>
-            <a-asset-item id="lambo-mtl" src="./media/model/Avent_sport.mtl" preload="true"></a-asset-item>
+            <a-asset-item id="lambo-obj" src="./media/model/R8_14blend.obj" preload="true"></a-asset-item>
+            <a-asset-item id="lambo-mtl" src="./media/model/R8_14blend.mtl" preload="true"></a-asset-item>
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
