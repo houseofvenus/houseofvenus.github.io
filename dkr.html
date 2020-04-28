@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.51</title>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.52</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,15 +12,6 @@
         * {
             margin: 0;
             padding: 0;
-        }
-        
-        #controller-container{
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            z-index: 100;
-            top: 0;
-            left: 0;
         }
     </style>
     <script>
@@ -58,55 +49,19 @@
         let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
         
         document.addEventListener("DOMContentLoaded", function(){
-            var joy = new JoyStick('controller-container');
-            /*var joystick = new VirtualJoystick({
-				container	: document.getElementById("controller-container"),
-				mouseSupport	: true,
-			});
-            
-            joystick.addEventListener('touchStart', function(){
-				console.log('down')
-			});
-            
-			joystick.addEventListener('touchEnd', function(){
-				console.log('up')
-			});*/
-
-			/*setInterval(function(){
-				var outputEl	= document.getElementById('result');
-				outputEl.innerHTML	= '<b>Result:</b> '
-					+ ' dx:'+joystick.deltaX()
-					+ ' dy:'+joystick.deltaY()
-					+ (joystick.right()	? ' right'	: '')
-					+ (joystick.up()	? ' up'		: '')
-					+ (joystick.left()	? ' left'	: '')
-					+ (joystick.down()	? ' down' 	: '')	
-			}, 1/30 * 1000);*/
-            
             document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
                 
             });
             
             document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
-                /*var joystick = new VirtualJoystick({
-                    container	: document.getElementById("controller-container"),
-                    mouseSupport	: true,
-                });
-
-                joystick.addEventListener('touchStart', function(){
-                    console.log('down')
-                });
-
-                joystick.addEventListener('touchEnd', function(){
-                    console.log('up')
-                });*/
+       
             });
             
         });
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <div id="controller-container"></div>
+    <div id="controller-container" style="width: 200px; height: 200px; position: absolute; z-index: 100; bottom: 0; left: 0;"></div>
     <a-scene embedded arjs>
         <a-assets timeout="60000">
             <a-asset-item id="audi-obj" src="./media/model/SPECTER_GT3_.obj" preload="true"></a-asset-item>
@@ -118,5 +73,8 @@
         
         <a-entity camera></a-entity>
     </a-scene>
+    <script type="text/javascript">
+        var joy = new JoyStick('controller-container');
+    </script>
 </body>
 </html>
