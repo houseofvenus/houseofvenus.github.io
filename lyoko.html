@@ -1,16 +1,337 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Marco's Generator | v.0.2.0</title>
     <meta charset="utf-8" />
     <style>
-    
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+        }
+        
+        body, html, .page-container{
+            width: 100%;
+            height: 100%;
+        }
+        
+        .page-container{
+            transition: opacity 0.5s;
+        }
+        
+        .option-container{
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            line-height: 150px;
+            color: white;
+            cursor: pointer;
+            display: block;
+            position: relative;
+            transition: height 0.5s;
+        }
+        
+        .title-container{
+            width: 100%;
+            position: absolute;
+            top: 42%;
+            text-align: center;
+            font-size: 60px;
+            font-family: monospace;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+        
+        #option-0-container{
+            background-color: rgba(255, 0, 0, 0.7);
+            background-image: url('./media/img/camera-icon.png');
+            background-size: 50% 50%;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        
+        #option-1-container{
+            background-color: rgba(0, 255, 0, 0.7);
+            background-image: url('./media/img/upload-icon.png');
+            background-size: 45% 45%;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        
+        #page-1-container, #page-2-container{
+            opacity: 0;
+            display: none;
+            position: absolute;
+        }
+        
+        #video {
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width: 100%;
+            height: auto;
+        }
+
+        #photo {
+            border: 1px solid black;
+            box-shadow: 2px 2px 3px black;
+            width: 100%;
+            height: auto;
+        }
+
+        #canvas {
+            display:none;
+        }
+
+        .camera {
+            width: 100%;
+            display:inline-block;
+        }
+
+        .output {
+            width: 100%;
+            display:inline-block;
+        }
+
+        #startbutton {
+            display: block;
+            position: absolute;
+            margin-left: -130px;
+            left: 50%;
+            bottom: 50px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background-color: rgba(0, 150, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            font-family: "Lucida Grande", "Arial", sans-serif;
+            color: rgba(255, 255, 255, 1.0);
+        }
+
+        .contentarea {
+            font-size: 16px;
+            font-family: "Lucida Grande", "Arial", sans-serif;
+            width: 760px;
+        }
+        
+        #add-files-button{
+            
+        }
     </style>
     <script>
+        // The width and height of the captured photo. We will set the
+          
+        // width to the value defined here, but the height will be
+        // calculated based on the aspect ratio of the input stream.
+
+        var width = 320;    // We will scale the photo width to this
+        var height = 0;     // This will be computed based on the input stream
+
+        // |streaming| indicates whether or not we're currently streaming
+        // video from the camera. Obviously, we start at false.
+
+        var streaming = false;
+
+        // The various HTML elements we need to configure or control. These
+        // will be set by the startup() function.
+
+        var video = null;
+        var canvas = null;
+        var photo = null;
+        var startbutton = null;
+
+        function startup() {
+            console.log("BEGIN!!!");
+            
+            video = document.getElementById('video');
+            canvas = document.getElementById('canvas');
+            photo = document.getElementById('photo');
+            startbutton = document.getElementById('startbutton');
+
+            navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
+                video.srcObject = stream;
+                video.play();
+            }).catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
+
+            video.addEventListener('canplay', function(ev){
+                if (!streaming) {
+                    height = video.videoHeight / (video.videoWidth/width);
+      
+                    // Firefox currently has a bug where the height can't be read from
+                    // the video, so we will make assumptions if this happens.
+
+                    if (isNaN(height)) {
+                        height = width / (4/3);
+                    }
+
+                    video.setAttribute('width', width);
+                    video.setAttribute('height', height);
+                    canvas.setAttribute('width', width);
+                    canvas.setAttribute('height', height);
+                    streaming = true;
+                }
+            }, false);
+ 
+            startbutton.addEventListener('click', function(ev){
+                takepicture();
+                ev.preventDefault();
+            }, false);
     
+            clearphoto();
+        }
+
+        // Fill the photo with an indication that none has been
+        // captured.
+  
+        function clearphoto() {
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#AAA";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            var data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        }
+
+        // Capture a photo by fetching the current contents of the video
+        // and drawing it into a canvas, then converting that to a PNG
+        // format data URL. By drawing it on an offscreen canvas and then
+        // drawing that to the screen, we can change its size and/or apply
+        // other changes before drawing it.
+  
+        function takepicture() {
+            var context = canvas.getContext('2d');
+            if (width && height) {
+                canvas.width = width;
+                canvas.height = height;
+                context.drawImage(video, 0, 0, width, height);
+
+                var data = canvas.toDataURL('image/png');
+                photo.setAttribute('src', data);
+            } else {
+                clearphoto();
+            }
+        }
+
+  // Set up our event listener to run the startup process
+  // once loading is complete.
+        document.addEventListener("DOMContentLoaded", function(){
+            
+            document.getElementById("option-0-container").addEventListener("click", function(){
+                startup();
+                
+                this.style.height = "100%";
+                document.getElementById("option-1-container").style.height = 0;
+                
+                setTimeout(function(){
+                    document.getElementById("page-1-container").style.display = "block";
+                    
+                    setTimeout(function(){
+                        document.getElementById("page-0-container").style.opacity = 0;
+                        document.getElementById("page-1-container").style.opacity = 1.0;
+                        
+                        setTimeout(function(){
+                            document.getElementById("page-0-container").style.display = "none";
+                        }, 500);
+                        
+                    }, 50);
+                    
+                }, 500);
+            });
+            
+            document.getElementById("option-1-container").addEventListener("click", function(){
+                this.style.height = "100%";
+                document.getElementById("option-0-container").style.height = 0;
+                
+                setTimeout(function(){
+                    document.getElementById("page-2-container").style.display = "block";
+                    
+                    setTimeout(function(){
+                        document.getElementById("page-0-container").style.opacity = 0;
+                        document.getElementById("page-2-container").style.opacity = 1.0;
+                        
+                        setTimeout(function(){
+                            document.getElementById("page-0-container").style.display = "none";
+                        }, 500);
+                        
+                    }, 50);
+                    
+                }, 500);
+            });
+            
+            document.getElementById("uploadInput").addEventListener("change", handleFiles, false);
+            
+            document.getElementById("add-files-button").addEventListener("click", function(){
+                document.getElementById("uploadInput").click();
+            });
+            
+        });
+        
+        function handleFiles() {
+            console.log("handle Files");
+            if (!this.files.length) {
+                fileList.innerHTML = "<p>No files selected!</p>";
+            }
+            else {
+                fileList.innerHTML = "";
+                const list = document.createElement("ul");
+                fileList.appendChild(list);
+                for (let i = 0; i < this.files.length; i++) {
+                    const li = document.createElement("li");
+                    li.style.display = "inline-block";
+                    list.appendChild(li);
+
+                    const img = document.createElement("img");
+                    img.src = URL.createObjectURL(this.files[i]);
+                    img.height = 250;
+                    img.onload = function() {
+                        URL.revokeObjectURL(this.src);
+                    }
+                    li.appendChild(img);
+                    const info = document.createElement("span");
+                    info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
+                    li.appendChild(info);
+                }
+            }
+        }
+
     </script>
 </head>
 <body>
-    
+    <div id="page-0-container" class="page-container">
+        <div id="option-0-container" class="option-container">
+            <!--<div class="title-container" >Take Photo(s)</div>-->
+        </div>
+        <div id="option-1-container" class="option-container">
+            <!--<div class="title-container">Upload Photo(s)</div>-->
+        </div>
+    </div>
+    <div id="page-1-container" class="page-container">
+        <div class="camera">
+            <video id="video">Video stream not available.</video>
+        </div>
+        <canvas id="canvas">
+        </canvas>
+        <div class="output">
+            <img id="photo" alt="The screen capture will appear in this box.">
+        </div>
+        <button id="startbutton">Take photo</button>
+    </div>
+    <div id="page-2-container" class="page-container">
+        <form name="uploadForm" style="width: 100%; height: 50%;">
+            <input id="uploadInput" type="file" name="myFiles" multiple />
+            <div id="fileList" style="font-size: 60px; text-align: center;">    
+            </div>
+            <div>
+            <input id="add-files-button" type="button" value="add-files" style="font-size: 60px; width: 450px; height: 250px; position: absolute; bottom: 25%; left: 50%; margin-left: -225px; border-radius: 10%; background-color: yellow; color: black; text-align: center;">
+            <input id="generate-model" type="button" value="Send file" style="font-size: 40px; width: 250px; height: 250px; position: absolute; bottom: 5%; left: 50%; margin-left: -125px; border-radius: 50%; background-color: aquamarine; text-align: center;">
+            </div>
+        </form>
+    </div>
+    <div id="page-3-container" class="page-container">
+        
+    </div>
 </body>
 </html>
