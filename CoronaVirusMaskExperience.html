@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dinosaur| Old Row Maryland | v. 0.3.2</title>
+    <title>CoronaVirus Mask Experience | Old Row Maryland | v. 0.3.3</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,21 +26,13 @@
 
         <a-marker type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             <a-entity
-                      geometry="primitive:sphere; radius: 0.5;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
-                      position='0 0.5 0'
-                      material='src: #earth-planet-object-texture'></a-entity>
+                      geometry="primitive:sphere; radius: 1.0;"
+                      animation="property: rotation; to: 90 360 0; loop: true; dur: 10000; easing: linear"
+                      position="0 0.5 0"
+                      rotation="90 0 0"
+                      material="src: #earth-planet-object-texture"></a-entity>
         </a-marker>
-
-        <a-marker preset="hiro">
-            <a-entity
-                      gltf-model="https://raw.githubusercontent.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-                      scale="0.5 0.5 0.5"
-                      position="0 0 0"
-                      rotation="-90 0 0">
-            </a-entity>
-        </a-marker>
-
+        
         <a-entity camera></a-entity>
     </a-scene>
 </body>
