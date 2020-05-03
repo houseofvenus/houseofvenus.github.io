@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diddy Kong Racing | Old Row Maryland | v. 0.2.58</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
+                
+            });
+            
+            document.getElementById("nyt-marker-container").addEventListener("markerFound", function(){
+                
+            });
+            
+        });
+    </script>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+        <a-assets timeout="60000">
+            <a-asset-item id="lambo-obj" src="./media/model/R8_14blend.obj" preload="true"></a-asset-item>
+            <a-asset-item id="lambo-mtl" src="./media/model/R8_14blend.mtl" preload="true"></a-asset-item>
+        </a-assets>
+        
+        <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-obj-model src="#lambo-obj" mtl="#lambo-mtl" scale="1 1 1"></a-obj-model>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
