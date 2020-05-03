@@ -68,10 +68,10 @@ function generateMarkUp(type, name){
 
     // Write data in 'Output.txt' .
     if(fileName==null){
-        fileName = "output-"+ (new Date()).toString();
+        fileName = "./media/exp/output-"+ (new Date()).toString();
     }
     
-    fs.writeFile(fileName+".html", data, (err) => { 
+    fs.writeFile("./media/exp/"+fileName+".html", data, (err) => { 
 
         // In case of a error throw err. 
         if (err) throw err; 
@@ -122,6 +122,9 @@ function handleCommands(name){
     }
     
     switch(bulk){
+        case "non":
+            console.log("skip");
+            break;
         case "html -t":
         case "html --template":
             console.log("<%> Generating HTML Template...");
