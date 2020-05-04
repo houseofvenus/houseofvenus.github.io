@@ -8,9 +8,9 @@
 *   todo:
 *   - add and name templates
 */
+const fs = require('fs');
 
 function generateMarkUp(type, name){
-    const fs = require('fs');
     let data = "";
     let fileName = name;
     console.log("<%> LYOKO HTML GENERATOR DIA \n<%> author: u/starmakeritachi \n<%> pkn: 0.0.2 | Silver Spring");
@@ -78,6 +78,15 @@ function generateMarkUp(type, name){
     });
 }
 
+function deleteExperience(path){
+    fs.unlink("./media/exp/"+path+".html", (err) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+    });
+}
+
 function handleNextLine(lineToRead){
     lineManager.shift();
     if(lineManager.length>1){
@@ -98,6 +107,17 @@ function handleNextLine(lineToRead){
     
 }
 
+/*
+*   sm --> SessionManager : DIA that interprets commands, manages memory, and controls executive function of LYOKO Instance on this LedgerSpace
+*       -d, --delete
+*   html --> LYOKO HTML Generator : DIA that produces markup for experiences rendered via a world wide web browser
+*       -t, --template
+*       -c, --custom
+*       -
+*   
+*
+*/
+
 function handleCommands(name){
     let rawCommandString = name;
     let commandParsedArray = [];
@@ -116,12 +136,28 @@ function handleCommands(name){
         }
         commandParsedArray.push(rawCommandString);
         console.table(commandParsedArray);
-        bulk+=commandParsedArray[0];
-        bulk+=" ";
-        bulk+=commandParsedArray[1];
+        
+        if(commandParsedArray.length>1){
+            bulk+=commandParsedArray[0];
+            bulk+=" ";
+            bulk+=commandParsedArray[1];
+        }
+        else{
+            bulk+=commandParsedArray[0];
+        }
+        
     }
     
     switch(bulk){
+        case "sm -d":
+        case "sm --delete":
+            if(commandParsedArray[2]==null){
+                console.log("<%> ERROR 3 no delete target provided.");
+            }
+            else{
+                deleteExperience(commandParsedArray[2]);
+            }
+            break;
         case "non":
             console.log("skip");
             break;
