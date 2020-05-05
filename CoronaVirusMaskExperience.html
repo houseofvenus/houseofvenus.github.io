@@ -1,37 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CoronaVirus Mask Experience | Old Row Maryland | v. 0.3.4</title>
+    <title>CV Mask Experience | Old Row Maryland | v. 0.4.0</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        .mask-option-button-container{
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            background-color: white;
-            text-align: center;
-            color: black;
-            line-height: 50px;
-        }
-        
-        #mask-view-selector-container{
-            position: absolute;
-            z-index: 100;
-            width: 300px;
-            height: 50px;
-            bottom: 5%;
-            left: 50%;
-            margin-left: -150px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/cv-mask.css" type="text/css" />
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script>
@@ -52,16 +26,22 @@
     <a-scene embedded arjs>
         <a-assets timeout="10000">
             <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
+            <img id="smile-texture" src="./media/img/IMG_4652.png" preload="true" />
 
         </a-assets>
 
         <a-marker type="pattern" url="./media/pattern/pattern-mit-logo.patt">
-            <a-entity
+            <!--<a-entity
                       geometry="primitive:sphere; radius: 1.0;"
                       animation="property: rotation; to: 90 360 0; loop: true; dur: 10000; easing: linear"
                       position="0 0.5 0"
                       rotation="90 0 0"
-                      material="src: #earth-planet-object-texture"></a-entity>
+                      material="src: #earth-planet-object-texture"></a-entity>-->
+            <a-entity
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.5 0"
+                      rotation="90 0 0"
+                      material="src: #smile-texture"></a-entity>
         </a-marker>
         
         <a-entity camera></a-entity>
