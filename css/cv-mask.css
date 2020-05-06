@@ -12,6 +12,7 @@
     text-align: center;
     color: black;
     line-height: 50px;
+    display: inline-block;
 }
 
 #mask-view-selector-container{
@@ -22,4 +23,12 @@
     bottom: 5%;
     left: 50%;
     margin-left: -150px;
+}
+
+#previous-mask-option-button-container{
+    float: left;
+}
+
+#next-mask-option-button-container{
+    float: right;
 }
