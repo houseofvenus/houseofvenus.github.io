@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | Old Row Maryland | v. 0.4.4</title>
+    <title>CV Mask Experience | v. 0.4.5</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -9,8 +9,17 @@
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script>
+        var maskInFocus = 0;
+        var masks = [
+            "smile-texture",
+            "frown-texture",
+            "inquisitive-texture",
+            "exclamation-texture",
+            "exclamation-secondary-texture",
+        ];
+        
         document.addEventListener("DOMContentLoaded", function(){
-
+            
         });
     </script>
 </head>
@@ -20,8 +29,8 @@
         Your browser does not support the audio element.
     </audio>
     <div id="mask-view-selector-container">
-        <div id="previous-mask-option-button-container" class="mask-option-button-container">a</div>
-        <div id="next-mask-option-button-container" class="mask-option-button-container">b</div>
+        <div id="previous-mask-option-button-container" class="mask-option-button-container"><</div>
+        <div id="next-mask-option-button-container" class="mask-option-button-container">></div>
     </div>
     <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
         <a-assets timeout="10000">

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,11 +10,15 @@
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: white;
+    background-color: rgba(255,255,255,0.3);
+    border: 3px white solid;
     text-align: center;
-    color: black;
+    color: white;
     line-height: 50px;
     display: inline-block;
+    font-size: 60px;
+    font-weight: 600;
+    font-family: "IBM Plex Sans", sans-serif;
 }
 
 #mask-view-selector-container{
