@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.4.5</title>
+    <title>CV Mask Experience | v. 0.4.6</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,29 @@
         ];
         
         document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("previous-mask-option-button-container").addEventListener("click", function(){
+                let currentMask = maskInFocus;
+                if(maskInFocus>0){
+                    document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
+                    maskInFocus--;
+                    document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
+                }
+                else{
+                    console.log("reached first item in queue");
+                }
+            });
             
+            document.getElementById("next-mask-option-button-container").addEventListener("click", function(){
+                let currentMask = maskInFocus;
+                if(maskInFocus<4){
+                    document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
+                    maskInFocus++;
+                    document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
+                }
+                else{
+                    console.log("reached last item in queue");
+                }
+            });
         });
     </script>
 </head>
@@ -49,11 +71,40 @@
                       position="0 0.5 0"
                       rotation="90 0 0"
                       material="src: #earth-planet-object-texture"></a-entity>-->
-            <a-entity
+            <a-entity id="mask-view-0"
                       geometry="primitive: plane; height: 3.5; width: 2.5;"
                       position="0 0.5 0"
                       rotation="90 180 0"
+                      visible="true"
                       material="src: #smile-texture; side:double;"></a-entity>
+            
+            <a-entity id="mask-view-1"
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.5 0"
+                      rotation="90 180 0"
+                      visible="false"
+                      material="src: #frown-texture; side:double;"></a-entity>
+            
+            <a-entity id="mask-view-2"
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.5 0"
+                      rotation="90 180 0"
+                      visible="false"
+                      material="src: #inquisitive-texture; side:double;"></a-entity>
+            
+            <a-entity id="mask-view-3"
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.5 0"
+                      rotation="90 180 0"
+                      visible="false"
+                      material="src: #exclamation-texture; side:double;"></a-entity>
+            
+            <a-entity id="mask-view-4"
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.5 0"
+                      rotation="90 180 0"
+                      visible="false"
+                      material="src: #exclamation-secondary-texture; side:double;"></a-entity>
         </a-marker>
         
         <!--<a-marker preset="hiro">
