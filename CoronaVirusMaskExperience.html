@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.5.0</title>
+    <title>CV Mask Experience | v. 0.5.1</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,6 +17,7 @@
             "exclamation-texture",
             "exclamation-secondary-texture",
         ];
+        var maskFeatureVisible = true;
         
         document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("previous-mask-option-button-container").addEventListener("click", function(){
@@ -42,7 +43,28 @@
                     console.log("reached last item in queue");
                 }
             });
+            
+            document.getElementById("toggle-mask-feature-button-container").addEventListener("click", function(){
+                toggleMaskFeatureVisibility();
+            });
         });
+        
+        function toggleMaskFeatureVisibility(){
+            if(maskFeatureVisible){
+                document.getElementById("mask-view-selector-container").style.opacity = 0;
+                setTimeout(function(){
+                    document.getElementById("mask-view-selector-container").style.display = "none";
+                }, 500);
+                
+                maskFeatureVisible = false;
+            }
+            else{
+                document.getElementById("mask-view-selector-container").style.display = "block";
+                document.getElementById("mask-view-selector-container").style.opacity = 1.0;
+                
+                maskFeatureVisible = true;
+            }
+        }
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
@@ -50,6 +72,7 @@
         <source src="./media/audio/trex_low_freq_growl.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <div id="toggle-mask-feature-button-container">m</div>
     <div id="mask-view-selector-container">
         <div id="previous-mask-option-button-container" class="mask-option-button-container"><</div>
         <div id="next-mask-option-button-container" class="mask-option-button-container">></div>

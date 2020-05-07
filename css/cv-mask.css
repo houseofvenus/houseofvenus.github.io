@@ -28,7 +28,9 @@
     height: 100px;
     bottom: 7%;
     left: 50%;
+    opacity: 1.0;
     margin-left: -175px;
+    transition: opacity 0.5s;
 }
 
 #previous-mask-option-button-container{
@@ -37,4 +39,27 @@
 
 #next-mask-option-button-container{
     float: right;
+}
+
+#toggle-mask-feature-button-container{
+    position: absolute;
+    bottom: 7%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(255, 255,255, 0.5);
+    color: rgba(0, 0, 0, 1.0);
+    text-align: center;
+    line-height: 100px;
+    font-size: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 200;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+#toggle-mask-feature-button-container:hover{
+    background-color: rgba(255, 255, 255, 1.0);
+    color: rgba(255, 0, 0, 0.5);
 }
