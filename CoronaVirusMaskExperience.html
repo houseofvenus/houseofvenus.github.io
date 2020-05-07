@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.5.5</title>
+    <title>CV Mask Experience | v. 0.5.6</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -37,7 +37,7 @@
             
             document.getElementById("next-mask-option-button-container").addEventListener("click", function(){
                 let currentMask = maskInFocus;
-                if(maskInFocus<4){
+                if(maskInFocus<masks.length){
                     document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
                     maskInFocus++;
                     document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
