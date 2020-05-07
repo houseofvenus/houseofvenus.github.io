@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.5.1</title>
+    <title>CV Mask Experience | v. 0.5.2</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,6 +52,7 @@
         function toggleMaskFeatureVisibility(){
             if(maskFeatureVisible){
                 document.getElementById("mask-view-selector-container").style.opacity = 0;
+                document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", false);
                 setTimeout(function(){
                     document.getElementById("mask-view-selector-container").style.display = "none";
                 }, 500);
@@ -61,6 +62,7 @@
             else{
                 document.getElementById("mask-view-selector-container").style.display = "block";
                 document.getElementById("mask-view-selector-container").style.opacity = 1.0;
+                document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
                 
                 maskFeatureVisible = true;
             }
