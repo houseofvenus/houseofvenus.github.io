@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.6.0</title>
+    <title>CV Mask Experience | v. 0.6.3</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,11 +22,15 @@
         ];
         var maskFeatureVisible = true;
         var audioFeatureVisible = true;
+        var keyboardFeatureVisible = true;
         
         function toggleMaskFeatureVisibility(){
             if(maskFeatureVisible){
                 document.getElementById("mask-view-selector-container").style.opacity = 0;
                 document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", false);
+                
+                document.getElementById("toggle-mask-feature-button-container").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+                
                 setTimeout(function(){
                     document.getElementById("mask-view-selector-container").style.display = "none";
                 }, 500);
@@ -37,6 +41,7 @@
                 document.getElementById("mask-view-selector-container").style.display = "block";
                 
                 setTimeout(function(){
+                    document.getElementById("toggle-mask-feature-button-container").style.backgroundColor = "rgba(0, 255, 0, 0.7)";
                     document.getElementById("mask-view-selector-container").style.opacity = 1.0;
                 }, 50);
                 
@@ -51,7 +56,9 @@
                 if(!document.getElementById("audio-feature-container").paused){
                     document.getElementById("audio-feature-container").pause();
                 }
+                
                 document.getElementById("audio-feature-container").style.opacity = 0;
+                document.getElementById("toggle-audio-feature-button-container").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
                 
                 setTimeout(function(){
                     document.getElementById("audio-feature-container").style.display = "none";
@@ -61,11 +68,115 @@
             }
             else{
                 document.getElementById("audio-feature-container").style.display = "block";
+                
                 setTimeout(function(){
+                    document.getElementById("toggle-audio-feature-button-container").style.backgroundColor = "rgba(0, 255, 0, 0.7)";
                     document.getElementById("audio-feature-container").style.opacity = 1.0;
                 }, 50);
                 
                 audioFeatureVisible = true;
+            }
+        }
+        
+        function toggleKeyboardFeatureVisibility(){
+            if(keyboardFeatureVisible){
+                document.getElementById("keyboard-feature-container").style.opacity = 0;
+                document.getElementById("toggle-keyboard-feature-button-container").style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+                setTimeout(function(){
+                    document.getElementById("keyboard-feature-container").style.display = "none";
+                }, 500);
+                
+                document.getElementById("keyboard-entity-q-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-w-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-e-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-r-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-t-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-y-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-u-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-i-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-o-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-p-button-container").setAttribute("visible", false);
+                
+                document.getElementById("keyboard-entity-a-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-s-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-d-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-f-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-g-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-h-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-j-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-k-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-l-button-container").setAttribute("visible", false);
+                
+                document.getElementById("keyboard-entity-z-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-x-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-c-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-v-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-b-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-n-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-m-button-container").setAttribute("visible", false);
+                
+                document.getElementById("keyboard-entity-left-ctrl-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-left-opt-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-left-cmd-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-space-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-right-cmd-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-right-opt-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-left-dpad-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-up-dpad-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-down-dpad-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-right-dpad-button-container").setAttribute("visible", false);
+                
+                keyboardFeatureVisible = false;
+            }
+            else{
+                document.getElementById("keyboard-feature-container").style.display = "block";
+                
+                setTimeout(function(){
+                    document.getElementById("toggle-keyboard-feature-button-container").style.backgroundColor = "rgba(0, 255, 0, 0.7)";
+                    document.getElementById("keyboard-feature-container").style.opacity = 1.0;
+                }, 50);
+                
+                document.getElementById("keyboard-entity-q-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-w-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-e-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-r-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-t-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-y-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-u-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-i-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-o-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-p-button-container").setAttribute("visible", true);
+                
+                document.getElementById("keyboard-entity-a-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-s-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-d-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-f-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-g-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-h-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-j-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-k-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-l-button-container").setAttribute("visible", true);
+                
+                document.getElementById("keyboard-entity-z-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-x-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-c-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-v-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-b-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-n-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-m-button-container").setAttribute("visible", true);
+                
+                document.getElementById("keyboard-entity-left-ctrl-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-left-opt-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-left-cmd-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-space-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-right-cmd-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-right-opt-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-left-dpad-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-up-dpad-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-down-dpad-button-container").setAttribute("visible", true);
+                document.getElementById("keyboard-entity-right-dpad-button-container").setAttribute("visible", true);
+                
+                keyboardFeatureVisible = true;
             }
         }
         
@@ -102,9 +213,14 @@
                 toggleAudioFeatureVisibility();
             });
             
+            document.getElementById("toggle-keyboard-feature-button-container").addEventListener("click", function(){
+                toggleKeyboardFeatureVisibility();
+            })
+            
             setTimeout(function(){
                 document.getElementById("toggle-mask-feature-button-container").click();
                 document.getElementById("toggle-audio-feature-button-container").click();
+                document.getElementById("toggle-keyboard-feature-button-container").click();
             }, 4500);
         });
         
@@ -112,12 +228,16 @@
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
+    <div id="keyboard-feature-container">
+        <p>lyoko</p><p>conversational development engine</p><p>v. 0.6.3</p>
+    </div>
     <audio id="audio-feature-container" style="position: absolute; bottom: 0; left: 50%; margin-left: -150px; width: 300px; z-index: 100;" controls loop>
         <source src="./media/audio/trex_low_freq_growl.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div id="toggle-audio-feature-button-container" class="toggle-feature-button-container"></div>
+    <div id="toggle-keyboard-feature-button-container" class="toggle-feature-button-container"></div>
     <div id="toggle-mask-feature-button-container" class="toggle-feature-button-container"></div>
+    <div id="toggle-audio-feature-button-container" class="toggle-feature-button-container"></div>
     <div id="mask-view-selector-container">
         <div id="previous-mask-option-button-container" class="mask-option-button-container"><</div>
         <div id="next-mask-option-button-container" class="mask-option-button-container">></div>
@@ -191,22 +311,234 @@
                       material="shader:gif; src: url(./media/img/rainbow-belch.gif); side:double;"></a-entity>
         </a-marker>
         
-        <!--<a-marker preset="hiro">
-            <a-entity
-                      geometry="primitive:sphere; radius: 0.5;"
-                      animation="property: rotation; to: 90 360 0; loop: true; dur: 10000; easing: linear"
+        <!---->
+        <a-marker preset="hiro">
+            <a-entity id="keyboard-entity-q-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-5 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: q; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-w-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-4 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: w; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-e-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-3 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: e; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-r-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-2 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: r; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-t-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-1 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: t; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-y-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="0 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: y; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-u-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="1 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: u; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-i-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="2 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: i; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-o-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="3 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: o; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-p-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="4 0.5 -2"
+                      rotation="-90 0 0"
+                      text="value: p; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            
+            
+            
+            <a-entity id="keyboard-entity-a-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-4 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: a; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-s-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-3 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: s; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-d-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-2 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: d; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-f-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-1 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: f; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-g-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="0 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: g; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-h-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="1 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: h; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-j-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="2 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: j; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-k-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="3 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: k; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-l-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="4 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: l; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            
+            
+            <a-entity id="keyboard-entity-z-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-3 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: z; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-x-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-2 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: x; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-c-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-1 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: c; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-v-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
                       position="0 0.5 0"
-                      rotation="90 0 0"
-                      material="src: #earth-planet-object-texture"></a-entity>
-            <a-entity
-                      geometry="primitive: plane; height: 3.5; width: 2.5;"
-                      position="0 0.5 0"
-                      rotation="90 0 0"
-                      material="src: #smile-texture;side:double;"></a-entity>
-        </a-marker>-->
+                      rotation="-90 0 0"
+                      text="value: v; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-b-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="1 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: b; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-n-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="2 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: n; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-m-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="3 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: m; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            
+            <a-entity id="keyboard-entity-left-ctrl-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-4 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: control; width: 3; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-left-opt-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-3 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: option; width: 3; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-left-cmd-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="-2 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: command; width: 3; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-space-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 4.0;"
+                      position="0.5 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: space; width: 3; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-right-cmd-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="3 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: command; width: 3; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-right-opt-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="4 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: option; width: 3; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            
+            <a-entity id="keyboard-entity-left-dpad-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="5 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: <; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-up-dpad-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="6 0.5 -1"
+                      rotation="-90 0 0"
+                      text="value: ^; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-down-dpad-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="6 0.5 1"
+                      rotation="-90 0 0"
+                      text="value: V; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+            <a-entity id="keyboard-entity-right-dpad-button-container" class="keyboard-entity-button-container"
+                      geometry="primitive: plane; height: 1.0; width: 1.0;"
+                      position="7 0.5 0"
+                      rotation="-90 0 0"
+                      text="value: >; width: 8; color: white; align: center;"
+                      material="color: rgba(0, 0, 0, 1.0); opacity: 0.7;side:double;"></a-entity>
+        </a-marker>
         
         <a-entity camera></a-entity>
     </a-scene>
 </body>
 </html>
-        
