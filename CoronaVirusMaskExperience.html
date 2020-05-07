@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.5.2</title>
+    <title>CV Mask Experience | v. 0.5.3</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,6 +16,8 @@
             "inquisitive-texture",
             "exclamation-texture",
             "exclamation-secondary-texture",
+            "bantu-mask-texture",
+            "rainbow-belch-texture"
         ];
         var maskFeatureVisible = true;
         
@@ -87,6 +89,8 @@
             <img id="inquisitive-texture" src="./media/img/inquisitive-texture.png" preload="true" />
             <img id="exclamation-texture" src="./media/img/exclamation-texture.png" preload="true" />
             <img id="exclamation-secondary-texture" src="./media/img/exclamation-secondary-texture.png" preload="true" />
+            <img id="bantu-mask-texture" src="./media/img/bantu-mask.png" preload="true" />
+            <img id="rainbow-belch-texture" src="./media/img/rainbow-belch.gif" preload="true" />
         </a-assets>
 
         <a-marker type="pattern" url="./media/pattern/pattern-mit-logo.patt">
@@ -130,6 +134,20 @@
                       rotation="90 180 0"
                       visible="false"
                       material="src: #exclamation-secondary-texture; side:double;"></a-entity>
+            
+            <a-entity id="mask-view-5"
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.1 0"
+                      rotation="90 180 0"
+                      visible="false"
+                      material="src: #bantu-mask-texture; side:double;"></a-entity>
+            
+            <a-entity id="mask-view-6"
+                      geometry="primitive: plane; height: 3.5; width: 2.5;"
+                      position="0 0.1 0"
+                      rotation="90 180 0"
+                      visible="false"
+                      material="shader:gif; src: #rainbow-belch-texture; side:double;"></a-entity>
         </a-marker>
         
         <!--<a-marker preset="hiro">
