@@ -815,7 +815,7 @@ else {*/
 
     app.get('/media/audio/:audio_id', function(req, res){
         var audio_id = req.params.audio_id;
-        res.sendFile(sound_id, {root: dir[7]});
+        res.sendFile(audio_id, {root: dir[7]});
     });
 
     app.get('/media/model/:model_id', function(req, res){

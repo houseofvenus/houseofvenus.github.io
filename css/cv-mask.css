@@ -6,27 +6,33 @@
 }
 
 .mask-option-button-container{
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     cursor: pointer;
     background-color: rgba(255,255,255,0.2);
     border: 0;
     text-align: center;
     color: white;
-    line-height: 100px;
+    line-height: 75px;
     display: inline-block;
-    font-size: 40px;
+    font-size: 24px;
     font-weight: 400;
     font-family: "IBM Plex Sans", sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.mask-option-button-container:hover{
+    color: black;
+    background-color: rgba(255,255,255,1.0);
 }
 
 #mask-view-selector-container{
     position: absolute;
     z-index: 100;
     width: 350px;
-    height: 100px;
-    bottom: 7%;
+    height: 75px;
+    bottom: 10%;
     left: 50%;
     opacity: 1.0;
     margin-left: -175px;
@@ -41,25 +47,56 @@
     float: right;
 }
 
-#toggle-mask-feature-button-container{
+
+#toggle-audio-feature-button-container{
+    background-image: url("../media/img/audio-icon.png");
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center center;
     position: absolute;
-    bottom: 7%;
+    bottom: 10%;
     left: 5%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background-color: rgba(255, 255,255, 0.5);
-    color: rgba(0, 0, 0, 1.0);
     text-align: center;
-    line-height: 100px;
+    line-height: 80px;
     font-size: 40px;
     font-weight: 600;
     cursor: pointer;
     z-index: 200;
-    transition: background-color 0.5s, color 0.5s;
+   /* background-color: rgba(255, 255,255, 0.5);
+    color: rgba(0, 0, 0, 1.0);
+    transition: background-color 0.5s, color 0.5s;*/
 }
 
-#toggle-mask-feature-button-container:hover{
+#toggle-mask-feature-button-container{
+    background-image: url("../media/img/mask-icon.png");
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    bottom: 30%;
+    left: 5%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 80px;
+    font-size: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 200;
+    
+    
+}
+
+.toggle-feature-button-container{
+    color: color: rgba(0, 0, 0, 1.0);
+    background-color: rgba(255, 255,255, 0.5);
+    transition: background-color 0.5s, color 0.5s;
+}
+.toggle-feature-button-container:hover{
     background-color: rgba(255, 255, 255, 1.0);
     color: rgba(255, 0, 0, 0.5);
 }

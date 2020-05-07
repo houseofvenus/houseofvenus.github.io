@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CV Mask Experience | v. 0.5.8</title>
+    <title>CV Mask Experience | v. 0.6.0</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,6 +21,53 @@
             "rainbow-belch-texture"
         ];
         var maskFeatureVisible = true;
+        var audioFeatureVisible = true;
+        
+        function toggleMaskFeatureVisibility(){
+            if(maskFeatureVisible){
+                document.getElementById("mask-view-selector-container").style.opacity = 0;
+                document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", false);
+                setTimeout(function(){
+                    document.getElementById("mask-view-selector-container").style.display = "none";
+                }, 500);
+                
+                maskFeatureVisible = false;
+            }
+            else{
+                document.getElementById("mask-view-selector-container").style.display = "block";
+                
+                setTimeout(function(){
+                    document.getElementById("mask-view-selector-container").style.opacity = 1.0;
+                }, 50);
+                
+                document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
+                
+                maskFeatureVisible = true;
+            }
+        }
+        
+        function toggleAudioFeatureVisibility(){
+            if(audioFeatureVisible){
+                if(!document.getElementById("audio-feature-container").paused){
+                    document.getElementById("audio-feature-container").pause();
+                }
+                document.getElementById("audio-feature-container").style.opacity = 0;
+                
+                setTimeout(function(){
+                    document.getElementById("audio-feature-container").style.display = "none";
+                }, 500);
+                
+                audioFeatureVisible = false;
+            }
+            else{
+                document.getElementById("audio-feature-container").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("audio-feature-container").style.opacity = 1.0;
+                }, 50);
+                
+                audioFeatureVisible = true;
+            }
+        }
         
         document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("previous-mask-option-button-container").addEventListener("click", function(){
@@ -37,7 +84,7 @@
             
             document.getElementById("next-mask-option-button-container").addEventListener("click", function(){
                 let currentMask = maskInFocus;
-                if(maskInFocus<masks.length){
+                if(maskInFocus<masks.length-1){
                     document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
                     maskInFocus++;
                     document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
@@ -50,34 +97,27 @@
             document.getElementById("toggle-mask-feature-button-container").addEventListener("click", function(){
                 toggleMaskFeatureVisibility();
             });
+            
+            document.getElementById("toggle-audio-feature-button-container").addEventListener("click", function(){
+                toggleAudioFeatureVisibility();
+            });
+            
+            setTimeout(function(){
+                document.getElementById("toggle-mask-feature-button-container").click();
+                document.getElementById("toggle-audio-feature-button-container").click();
+            }, 4500);
         });
         
-        function toggleMaskFeatureVisibility(){
-            if(maskFeatureVisible){
-                document.getElementById("mask-view-selector-container").style.opacity = 0;
-                document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", false);
-                setTimeout(function(){
-                    document.getElementById("mask-view-selector-container").style.display = "none";
-                }, 500);
-                
-                maskFeatureVisible = false;
-            }
-            else{
-                document.getElementById("mask-view-selector-container").style.display = "block";
-                document.getElementById("mask-view-selector-container").style.opacity = 1.0;
-                document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
-                
-                maskFeatureVisible = true;
-            }
-        }
+        
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <audio style="position: absolute; bottom: 0; left: 0; z-index: 100;" controls loop>
+    <audio id="audio-feature-container" style="position: absolute; bottom: 0; left: 50%; margin-left: -150px; width: 300px; z-index: 100;" controls loop>
         <source src="./media/audio/trex_low_freq_growl.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div id="toggle-mask-feature-button-container">m</div>
+    <div id="toggle-audio-feature-button-container" class="toggle-feature-button-container"></div>
+    <div id="toggle-mask-feature-button-container" class="toggle-feature-button-container"></div>
     <div id="mask-view-selector-container">
         <div id="previous-mask-option-button-container" class="mask-option-button-container"><</div>
         <div id="next-mask-option-button-container" class="mask-option-button-container">></div>
@@ -103,49 +143,49 @@
                       material="src: #earth-planet-object-texture"></a-entity>-->
             <a-entity id="mask-view-0"
                       geometry="primitive: plane; height: 4; width: 3;"
-                      position="0 0.5 0"
+                      position="0 0.5 -1"
                       rotation="90 180 0"
                       visible="true"
                       material="src: #smile-texture; side:double;"></a-entity>
             
             <a-entity id="mask-view-1"
                       geometry="primitive: plane; height: 4; width: 3;"
-                      position="0 0.4 0"
+                      position="0 0.4 -1"
                       rotation="90 180 0"
                       visible="false"
                       material="src: #frown-texture; side:double;"></a-entity>
             
             <a-entity id="mask-view-2"
-                      geometry="primitive: plane; height: 6 width: 4;"
-                      position="0 0.3 0"
+                      geometry="primitive: plane; height: 4; width: 3;"
+                      position="0 0.3 -1"
                       rotation="90 180 0"
                       visible="false"
                       material="src: #inquisitive-texture; side:double;"></a-entity>
             
             <a-entity id="mask-view-3"
                       geometry="primitive: plane; height: 4; width: 3;"
-                      position="0 0.2 0"
+                      position="0 0.2 -1"
                       rotation="90 180 0"
                       visible="false"
                       material="src: #exclamation-texture; side:double;"></a-entity>
             
             <a-entity id="mask-view-4"
                       geometry="primitive: plane; height: 4; width: 3;"
-                      position="0 0.1 0"
+                      position="0 0.1 -1"
                       rotation="90 180 0"
                       visible="false"
                       material="src: #exclamation-secondary-texture; side:double;"></a-entity>
             
             <a-entity id="mask-view-5"
                       geometry="primitive: plane; height: 6; width: 3.5;"
-                      position="0 0.1 0"
+                      position="0 0.1 -1"
                       rotation="90 180 0"
                       visible="false"
                       material="src: #bantu-mask-texture; side:double;"></a-entity>
             
             <a-entity id="mask-view-6"
-                      geometry="primitive: plane; height: 1.5; width: 3.5;"
-                      position="0 0.1 0"
+                      geometry="primitive: plane; height: 1; width: 3.5;"
+                      position="0 0.1 1"
                       rotation="90 90 0"
                       visible="false"
                       material="shader:gif; src: url(./media/img/rainbow-belch.gif); side:double;"></a-entity>
