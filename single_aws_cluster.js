@@ -25,8 +25,8 @@ var cluster = require('cluster');
     }
 else {*/
   // author(s):  Patrice-Morgan Ongoly
-    // version: 0.2.2
-    // last modified: Saturday, June 29, 2019 14:32 EST
+    // version: 0.5.10
+    // last modified: Wednesday, May 6, 2020 23:32 EST
     // description:
 
     // required modules
@@ -101,6 +101,21 @@ else {*/
         }
 
         res.render('index.html',{root: dir[0]});
+    });
+
+    app.get('/cvm', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('cvmask.html',{root: dir[0]});
     });
 
     app.get('/room', function(req, res){
