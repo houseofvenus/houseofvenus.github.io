@@ -51,20 +51,7 @@
 #toggle-audio-feature-button-container{
     background-image: url("../media/img/audio-icon.png");
     background-size: 60% 60%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
     bottom: 10%;
-    left: 5%;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 80px;
-    font-size: 40px;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 200;
    /* background-color: rgba(255, 255,255, 0.5);
     color: rgba(0, 0, 0, 1.0);
     transition: background-color 0.5s, color 0.5s;*/
@@ -73,10 +60,19 @@
 #toggle-mask-feature-button-container{
     background-image: url("../media/img/mask-icon.png");
     background-size: 60% 60%;
+    bottom: 30%;
+}
+
+#toggle-keyboard-feature-button-container{
+    background-image: url("../media/img/keyboard-icon.png");
+    background-size: 60% 60%;
+    bottom: 50%;
+}
+
+.toggle-feature-button-container{
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
-    bottom: 30%;
     left: 5%;
     width: 80px;
     height: 80px;
@@ -87,11 +83,6 @@
     font-weight: 600;
     cursor: pointer;
     z-index: 200;
-    
-    
-}
-
-.toggle-feature-button-container{
     color: color: rgba(0, 0, 0, 1.0);
     background-color: rgba(255, 255,255, 0.5);
     transition: background-color 0.5s, color 0.5s;

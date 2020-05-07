@@ -23,45 +23,6 @@
         var maskFeatureVisible = true;
         var audioFeatureVisible = true;
         
-        document.addEventListener("DOMContentLoaded", function(){
-            document.getElementById("previous-mask-option-button-container").addEventListener("click", function(){
-                let currentMask = maskInFocus;
-                if(maskInFocus>0){
-                    document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
-                    maskInFocus--;
-                    document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
-                }
-                else{
-                    console.log("reached first item in queue");
-                }
-            });
-            
-            document.getElementById("next-mask-option-button-container").addEventListener("click", function(){
-                let currentMask = maskInFocus;
-                if(maskInFocus<masks.length-1){
-                    document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
-                    maskInFocus++;
-                    document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
-                }
-                else{
-                    console.log("reached last item in queue");
-                }
-            });
-            
-            document.getElementById("toggle-mask-feature-button-container").addEventListener("click", function(){
-                toggleMaskFeatureVisibility();
-            });
-            
-            document.getElementById("toggle-audio-feature-button-container").addEventListener("click", function(){
-                toggleAudioFeatureVisibility();
-            });
-            
-            setTimeout(function(){
-                document.getElementById("toggle-mask-feature-button-container").click();
-                document.getElementById("toggle-audio-feature-button-container").click();
-            }, 4500);
-        });
-        
         function toggleMaskFeatureVisibility(){
             if(maskFeatureVisible){
                 document.getElementById("mask-view-selector-container").style.opacity = 0;
@@ -107,6 +68,102 @@
                 audioFeatureVisible = true;
             }
         }
+        
+        function toggleKeyboardFeatureVisibility(){
+            if(keyboardFeatureVisible){
+                document.getElementById("keyboard-feature-container").style.opacity = 0;
+                document.getElementById("keyboard-entity-q-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-w-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-e-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-r-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-t-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-y-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-u-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-i-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-o-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-p-button-container").setAttribute("visible", false);
+                
+                document.getElementById("keyboard-entity-a-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-s-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-d-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-f-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-g-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-h-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-j-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-k-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-l-button-container").setAttribute("visible", false);
+                
+                document.getElementById("keyboard-entity-z-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-x-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-c-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-v-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-b-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-n-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-m-button-container").setAttribute("visible", false);
+                
+                document.getElementById("keyboard-entity-left-ctrl-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-left-opt-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-left-cmd-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-space-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-right-cmd-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-right-opt-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-left-dpad-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-up-dpad-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-down-dpad-button-container").setAttribute("visible", false);
+                document.getElementById("keyboard-entity-right-dpad-button-container").setAttribute("visible", false);
+                
+                setTimeout(function(){
+                    document.getElementById("keyboard-feature-container").style.display = "none";
+                }, 500);
+                
+                keyboardFeatureVisible = false;
+            }
+            else{
+                
+                keyboardFeatureVisible = true;
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("previous-mask-option-button-container").addEventListener("click", function(){
+                let currentMask = maskInFocus;
+                if(maskInFocus>0){
+                    document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
+                    maskInFocus--;
+                    document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
+                }
+                else{
+                    console.log("reached first item in queue");
+                }
+            });
+            
+            document.getElementById("next-mask-option-button-container").addEventListener("click", function(){
+                let currentMask = maskInFocus;
+                if(maskInFocus<masks.length-1){
+                    document.getElementById(`mask-view-${currentMask}`).setAttribute("visible", false);
+                    maskInFocus++;
+                    document.getElementById(`mask-view-${maskInFocus}`).setAttribute("visible", true);
+                }
+                else{
+                    console.log("reached last item in queue");
+                }
+            });
+            
+            document.getElementById("toggle-mask-feature-button-container").addEventListener("click", function(){
+                toggleMaskFeatureVisibility();
+            });
+            
+            document.getElementById("toggle-audio-feature-button-container").addEventListener("click", function(){
+                toggleAudioFeatureVisibility();
+            });
+            
+            setTimeout(function(){
+                document.getElementById("toggle-mask-feature-button-container").click();
+                document.getElementById("toggle-audio-feature-button-container").click();
+            }, 4500);
+        });
+        
+        
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
@@ -114,8 +171,9 @@
         <source src="./media/audio/trex_low_freq_growl.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div id="toggle-audio-feature-button-container" class="toggle-feature-button-container"></div>
+    <div id="toggle-keyboard-feature-button-container" class="toggle-feature-button-container"></div>
     <div id="toggle-mask-feature-button-container" class="toggle-feature-button-container"></div>
+    <div id="toggle-audio-feature-button-container" class="toggle-feature-button-container"></div>
     <div id="mask-view-selector-container">
         <div id="previous-mask-option-button-container" class="mask-option-button-container"><</div>
         <div id="next-mask-option-button-container" class="mask-option-button-container">></div>
