@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah's cARd | v. 0.2.38</title>
+    <title>Hillary Yeboah's cARd | v. 0.2.44</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" type="text/css"/>
     <style>
+        /*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');*/
         #barrons-go-back-to-app-cover-page-button-container, #go-back-to-app-cover-page-button-container{
             position: absolute;
             width: 100px;
@@ -26,6 +28,62 @@
             z-index: 200;
             background-color: white;
             font-family: monospace;
+        }
+        
+        #open-desktop-page-options-container{
+            z-index: 200;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -175px 0 0 -225px;
+            width: 450px;
+            height: 350px;
+            border-radius: 10px;
+            padding: 15px;
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 0;
+            line-height: 30px;
+            background-color: rgba(255, 255, 255, 0.4);
+            color: white;
+            display: none;
+        }
+        
+        #open-desktop-prompt-container{
+            height: auto;
+            width: 100%;
+            font-size: 24px;
+            text-align: justify;
+        }
+        
+        #open-desktop-options-container{
+            height: 100px;
+            width: 100%;
+        }
+        
+        #cARd-go-back-to-app-cover-page-button-container, #cARd-open-app-cover-page-button-container{
+            width: 48%;
+            line-height: 100px;
+            color: black;
+            text-align: center;
+            font-size: 20px;
+            opacity: 0;
+            display: none;
+            transition: opacity 0.5s, color 0.4s, font-weight 0.5s;
+            cursor: pointer;
+        }
+        
+        #cARd-go-back-to-app-cover-page-button-container:hover, #cARd-open-app-cover-page-button-container:hover{
+            opacity: 0.7;
+            color: white;
+            font-weight: 900;
+        }
+        
+        #cARd-go-back-to-app-cover-page-button-container{
+            background-color: rgba(255, 0, 0, 0.6);
+        }
+        
+        #cARd-open-app-cover-page-button-container{
+            background-color: rgba(127, 255, 212, 0.6);
         }
     </style>
     <script>
@@ -187,28 +245,28 @@
                             if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the top button on the NYT app");
+                                console.log("tapped the top button on the NYT app \n this is the title banner its meta data is as follows:");
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===2){
                             if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the top button on the MIT app");
+                                console.log("tapped the top button on the BAKUAS app\n this is the title banner its meta data is as follows:");
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===3){
                             if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the top button on the HIRO app");
+                                console.log("tapped the top button on the BARRON's app\n this is the title banner its meta data is as follows:");
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===4){
                             if(timeDiffNYT>=1000 && timeDiffNYT<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the top button on the UNI app");
+                                console.log("tapped the top button on the cARd app\n this is the title banner its meta data is as follows:");
                             }
                         }
                         else{
@@ -597,6 +655,32 @@
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
                                 console.log("tapped the bottom left button on the UNI app");
+                                console.log(`on app section ${MarkerGridTracker.repressor.onApplicationSection.current}`);
+                                
+                                document.getElementById("nyt-rotating-globe").emit("resumeRotatingNYT"); //resume rotating middle marker
+                                document.getElementById("nyt-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
+                                document.getElementById("unibeat-application-panel").setAttribute("visible", false);
+                                document.getElementById("unibeat-application-panel").setAttribute("material.opacity", 0);//hide the secondary application panel
+                                
+                                
+                                document.getElementById("mit-rotating-globe").emit("resumeRotatingMIT"); //resume rotating middle marker
+                                document.getElementById("mit-rotating-globe").setAttribute("visible", true); //show initial middle marker icon
+                                document.getElementById("unibeat-application-secondary-panel").setAttribute("visible", false);
+                                document.getElementById("unibeat-application-secondary-panel").setAttribute("material.opacity", 0);//hide the secondary application panel
+                                
+                                document.getElementById("hiro-rotating-globe").emit("resumeRotatingHIRO"); //resume rotating bottom left marker
+                                document.getElementById("hiro-rotating-globe").setAttribute("visible", true); //show initial bottom left marker icon
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", false);
+                                // hide the back button for the application cover page
+                                
+                                document.getElementById("unibeat-rotating-globe").emit("resumeRotatingUNI"); //resume rotating bottom right marker
+                                document.getElementById("unibeat-rotating-globe").setAttribute("visible", true); //show initial bottom right marker icon
+                                document.getElementById("next-page-button-container").setAttribute("visible", false); // hide the back button for the application cover page
+                                
+                                MarkerGridTracker.repressor.onApplicationPage = 0; // go back to the main menu page
+                                MarkerGridTracker.repressor.onApplicationSection = null;
+                                MarkerGridTracker.unibeat.active = false;
+                                
                             }
                         }
                         else{
@@ -641,20 +725,88 @@
                 
                 if(MarkerGridTracker.unibeat.initiated){
                     if(MarkerGridTracker.unibeat.active){
-                        console.log("show content from UNI selection");
+                        
+                        if(timeDiffUNI>=1000 && timeDiffUNI<=4000 && MarkerGridTracker.repressor.onApplicationSection.current===0){ /*  check if the button is being pressed for at least 2 seconds** 
+                                                                            (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
+                                                                            */
+                                console.log("tapped the NEXT button on the UNI app");    // user pressed the back arrow on the NYT application cover page to go back to the main menu
+                                
+                                /*
+                                *   emit events that show the main menu content THIS WILL BE DUPLICATED IN THE DRAFT AND SHOULD BE REFACTORED AS SOON AS WE TRANSITION FROM THE CLOSED BETA TO THE PUBLIC BETA
+                                *   NYT marker
+                                *   MIT marker
+                                *   HIRO marker
+                                *   UNI marker
+                                */
+                            console.log("show content from UNI selection within the bounds of current COVER PAGE 0");
+                            document.getElementById("unibeat-application-panel").setAttribute("visible",false);
+                            document.getElementById("unibeat-application-secondary-panel").setAttribute("visible",false);
+                            
+
+                            document.getElementById("back-to-previous-page-button-container").setAttribute("visible", false);
+                            document.getElementById("back-to-previous-page-button-container").setAttribute("material.opacity", 0);// hide the back button for the application cover page
+                                
+                            document.getElementById("next-page-button-container").setAttribute("visible", false);
+                            document.getElementById("next-page-button-container").setAttribute("material.opacity", 0);   // hide the back button for 
+                                
+                            document.getElementById("cARd-go-back-to-app-cover-page-button-container").style.display = "inline-block";
+                            document.getElementById("cARd-open-app-cover-page-button-container").style.display = "inline-block";
+                            document.getElementById("open-desktop-page-options-container").style.display = "block";
+
+                            setTimeout(function(){
+                                document.getElementById("cARd-go-back-to-app-cover-page-button-container").style.opacity = 1.0;
+                                document.getElementById("cARd-open-app-cover-page-button-container").style.opacity = 1.0;
+                                document.getElementById("open-desktop-page-options-container").style.opacity = 1.0;
+                            }, 50);
+                            
+                            MarkerGridTracker.repressor.onApplicationSection.current = 1; // move onto second page in cARd app
+                        }
+                        
                     }
                     else{
                         if(MarkerGridTracker.repressor.onApplicationPage===0){   //   if the user is on the initial main menu page
                             if(timeDiffUNI>=3000 && timeDiffUNI<=6000){/*       check if the button is being pressed for at least 4 seconds** 
                                                                                 (explicitly 3000ms to 6000ms but live unit tests show that the trigger occurs after 4 seconds on average)
                                                                                 */
-                                console.log("show UNI content from option selection");
+                                console.log("show UNI (creative Augmented Reality desktop) content from option selection");
+
+                                document.getElementById("nyt-rotating-globe").emit("stopRotatingNYT");
+                                document.getElementById("nyt-rotating-globe").setAttribute("visible",false);
+
+                                document.getElementById("mit-rotating-globe").emit("stopRotatingMIT");
+                                document.getElementById("mit-rotating-globe").setAttribute("visible",false);
+
+                                document.getElementById("hiro-rotating-globe").emit("stopRotatingHIRO");
+                                document.getElementById("hiro-rotating-globe").setAttribute("visible",false);
 
                                 document.getElementById("unibeat-rotating-globe").emit("stopRotatingUNI");
                                 document.getElementById("unibeat-rotating-globe").setAttribute("visible",false);
 
+                                
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
+                                document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");
+                                //document.getElementById("back-to-previous-page-button-container").setAttribute("material.opacity", 1.0);// show the back button for the application cover page
+                                
+                                document.getElementById("next-page-button-container").setAttribute("visible", true);
+                                document.getElementById("next-page-button-container").emit("showNextButtonOnCover");
+                                //document.getElementById("next-page-button-container").setAttribute("material.opacity", 1.0);   // show the back button for 
+                                
+                                
                                 document.getElementById("unibeat-application-panel").emit("showPanelUNI");
                                 document.getElementById("unibeat-application-panel").setAttribute("visible",true);
+                                
+                                document.getElementById("unibeat-application-secondary-panel").setAttribute("visible",true);
+                                document.getElementById("unibeat-application-secondary-panel").emit("showSecondaryPanelUNI");
+                                
+                                
+                                MarkerGridTracker.repressor.onApplicationSection = {
+                                    current: 0,
+                                    directory: [
+                                        "cover",
+                                        "link-to-office-app"
+                                    ]
+                                };
+                                
                                 MarkerGridTracker.unibeat.active = true;
                                 MarkerGridTracker.repressor.onApplicationPage = 4;
                             }
@@ -840,15 +992,19 @@
                                 document.getElementById("barrons-go-back-to-app-cover-page-button-container").style.opacity = 1.0;
                                 /**/
                                 
-                                MarkerGridTracker.repressor.onApplicationSection.current = 3;   // change the app focus to the third page in the directory
+                                MarkerGridTracker.repressor.onApplicationSection.current = 1;   // change the app focus to the third page in the directory
                                 // for the Barron's immersive newspaper that is the front page for the day
                             }
                         }
-                        else if(MarkerGridTracker.repressor.onApplicationPage===4){    //  if the user has opened the UNI (OFFICE) application
+                        else if(MarkerGridTracker.repressor.onApplicationPage===4&&MarkerGridTracker.repressor.onApplicationSection.current===0){    //  if the user has opened the UNI (OFFICE) application
                             if(timeDiffUNI>=1000 && timeDiffUNI<=4000){ /*  check if the button is being pressed for at least 2 seconds** 
                                                                             (explicitly 1000ms to 4000ms but live unit tests show that the trigger occurs after 2 seconds on average)
                                                                             */
-                                console.log("tapped the bottom right button on the UNI app");
+                                
+                                
+                                console.log("tapped the bottom right button on the UNI (creative Augmented Reality desktop) app");
+                                /** THIS CANNOT OCCUR BECAUSE BY DEFINITION BEING ON THIS APPLICATION PAGE REQURES BEING ACTIVE **/
+                                
                             }
                         }
                         else{
@@ -989,7 +1145,7 @@
             });
             
             document.getElementById("barrons-go-back-to-app-cover-page-button-container").addEventListener("click", function(){
-                if(MarkerGridTracker.repressor.onApplicationSection.current===3){
+                if(MarkerGridTracker.repressor.onApplicationSection.current===1){
                     /*
                     *   show the New York Times Immersive Paper Front Page
                     *
@@ -1087,12 +1243,51 @@
                     MarkerGridTracker.hiro.active = true;
                 }
             });
+            
+            document.getElementById("cARd-go-back-to-app-cover-page-button-container").addEventListener("click", function(){
+                if(MarkerGridTracker.repressor.onApplicationSection.current===1){
+                    document.getElementById("back-to-previous-page-button-container").setAttribute("visible", true);
+                    document.getElementById("back-to-previous-page-button-container").emit("showBackButtonOnCover");
+                    document.getElementById("back-to-previous-page-button-container").setAttribute("material.opacity", 1.0);// show the back button for the application cover page
+
+                    document.getElementById("next-page-button-container").setAttribute("visible", true);
+                    document.getElementById("next-page-button-container").emit("showNextButtonOnCover");
+                    //document.getElementById("next-page-button-container").setAttribute("material.opacity", 1.0);   // show the back button for 
+
+                    document.getElementById("cARd-go-back-to-app-cover-page-button-container").style.opacity = 0;
+                    document.getElementById("cARd-open-app-cover-page-button-container").style.opacity = 0;
+
+                    document.getElementById("unibeat-application-panel").setAttribute("visible",true);
+                    document.getElementById("unibeat-application-panel").emit("showPanelUNI");
+
+                    document.getElementById("unibeat-application-secondary-panel").emit("showSecondaryPanelUNI");
+                    document.getElementById("unibeat-application-secondary-panel").setAttribute("visible",true);
+
+                    setTimeout(function(){
+                        //document.getElementById("cARd-go-back-to-app-cover-page-button-container").style.display = "none";
+                        document.getElementById("open-desktop-page-options-container").style.display = "none";
+                    }, 500);
+                    
+                    MarkerGridTracker.repressor.onApplicationSection.current = 0; // move onto first page in cARd app
+                    MarkerGridTracker.unibeat.active = true;
+                }
+            });
         });
     </script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <div id="go-back-to-app-cover-page-button-container">x</div>
     <div id="barrons-go-back-to-app-cover-page-button-container">x</div>
+    <div id="open-desktop-page-options-container">
+        <div id="open-desktop-prompt-container">
+            <p>Do you want to access the cARd immersive productivity and office tools?</p>
+            <p>Package includes: Immersive Keyboard Input, Text Documents, Lyoko Programming, Audio Editor, Video Editor.</p>
+        </div>
+        <div id="open-desktop-options-container">
+            <div id="cARd-go-back-to-app-cover-page-button-container">BACK</div>
+            <div id="cARd-open-app-cover-page-button-container">YES</div>
+        </div>
+    </div>
     <a-scene embedded arjs>
         <a-assets timeout="20000">
             <!--<img id="mercury-planet-object-texture" src="./media/texture/mercurymap.jpg" preload="true" />
@@ -1138,6 +1333,7 @@
             <img id="main-cover-image-7" src="./media/img/barcelona-shutdown-story-cover.png" preload="true"/>
             <img id="main-cover-image-8" src="./media/img/french-sailors-coronavirus-story.png" preload="true"/>
             
+            
             <img id="on-tech-with-shira-ovide-cover" src="./media/img/on-tech-with-shira-ovide-story.png" preload="true" />
             <img id="together-apart-cover" src="./media/img/together-apart-story.png" preload="true"/>
             <img id="science-section-cover" src="./media/img/nasa-worm-logo-story.png" preload="true"/>
@@ -1156,6 +1352,35 @@
             <img id="toggle-playback-pause-button-icon" src="./media/img/pause-icon.png" preload="true"/>
             <img id="play-next-item-button-icon" src="./media/img/play-next-icon.png" preload="true"/>
             <img id="toggle-volume-button-icon" src="./media/img/volume-on-icon.png" preload="true"/>
+            
+            
+            
+            
+            <img id="streetwise-cover" src="./media/texture/streetwise-icon.png" preload="true" />
+            <img id="luxury-listings-cover" src="./media/texture/luxury-listing-icon.png" preload="true" />
+            <img id="funds-main-article-cover" src="./media/texture/funds-main-article-cover.png" preload="true" />
+            <img id="100-most-influential-women-cover" src="./media/texture/100-most-influential-women.png" preload="true" />
+            
+            <img id="weeks-best-story-cover" src="./media/texture/weeks-best-story-cover.png" preload="true" />
+            <img id="economy-and-policy-story-cover" src="./media/texture/economy-and-policy-story-cover.png" preload="true" />
+            <img id="high-yield-story-cover" src="./media/texture/high-yield-story-cover.png" preload="true" />
+            <img id="investing-story-cover" src="./media/texture/investing-story-cover.png" preload="true" />
+            <img id="retirement-story-cover" src="./media/texture/retirement-story-cover.png" preload="true" />
+            <img id="income-investing-story-cover" src="./media/texture/income-investing-cover.png" preload="true" />
+            <img id="up-and-down-wall-street-story-cover" src="./media/texture/up-and-down-wall-street-story-cover.png" preload="true" />
+            <img id="market-story-cover" src="./media/texture/market-story-cover.png" preload="true" />
+            <img id="soft-commodities-story-cover" src="./media/texture/soft-commodities-story-cover.png" preload="true" />
+            <img id="penta-story-cover" src="./media/texture/penta-story-cover.png" preload="true" />
+            
+            <img id="barrons-magazine-main-cover-image-0" src="./media/texture/home-prices-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-1" src="./media/texture/value-in-real-estate-stocks-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-2" src="./media/texture/joblessness-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-3" src="./media/texture/laid-off-workers-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-4" src="./media/texture/bank-mergers-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-5" src="./media/texture/gambling-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-6" src="./media/texture/retire-early-movement-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-7" src="./media/texture/chinas-tech-stocks-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-8" src="./media/texture/home-building-stocks-story-cover.png" preload="true" />
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
@@ -1189,6 +1414,14 @@
                       visible="false"
                       material="src: #hiro-application-panel-texture; opacity: 0; side:double;">
             </a-entity>
+            <a-entity id="unibeat-application-panel"
+                      geometry="primitive: plane; width: 1.5; height: 1.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelUNI; pauseEvents: hidePanelUNI;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="color: yellow; opacity: 0; side:double;">
+            </a-entity>
             
             
             
@@ -1209,7 +1442,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Wednesday\nApril 8,\n2020; color: white; width: 6; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Saturday\nMay 9,\n2020; color: white; width: 6; align: center; font: https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       visible="false"
                       animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showDateContainerPanel;"
                       material="transparent: true; opacity: 0;">
@@ -1501,11 +1734,11 @@
             <!-- PANEL 0 -->
             <a-entity id="barrons-banner-container"
                       class="immersive-component"
-                      geometry="primitive: plane; width: 4.5; height: 0.75"
-                      position="0.25 1.2 -5"
+                      geometry="primitive: plane; width: 4.5; height: 3"
+                      position="0.25 1.15 -5.5"
                       rotation="-90 0 0"
                       visible="false"
-                      material="side: double; src: #nyt-banner">
+                      material="side: double; src: #hiro-application-panel-texture">
             </a-entity>
             
             <!-- PANEL 1 -->
@@ -1514,7 +1747,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-2.75 1.2 -4"
                       rotation="-90 0 0"
-                      text="value: Wednesday\nApril 8,\n2020; color: white; width: 6; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      text="value: Saturday\nMay 9,\n2020; color: black; width: 6; align: center; font: 	https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                       visible="false"
                       animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showDateContainerPanel;"
                       material="transparent: true; opacity: 0;">
@@ -1527,7 +1760,7 @@
                       position="-1.5 1.2 -4"
                       rotation="-90 0 0"
                       visible="false"
-                      material="side: double; src: #the-daily-cover;"
+                      material="side: double; src: #streetwise-cover;"
                       animation__selectPanel2MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
                       animation__selectPanel2GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
                       animation__selectPanel2GrowPanelHeight="property: geometry.height; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"><!-- #evening-brief-cover; -->
@@ -1539,7 +1772,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="-0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #together-apart-cover;"
+                      material="side: double; src: #luxury-listings-cover;"
                       visible="false"
                       animation__selectPanel3MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
                       animation__selectPanel3GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
@@ -1552,7 +1785,7 @@
                       geometry="primitive: plane; width: 1; height: 1"
                       position="0.5 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #on-tech-with-shira-ovide-cover;"
+                      material="side: double; src: #funds-main-article-cover;"
                       visible="false"
                       animation__selectPanel4MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
                       animation__selectPanel4GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
@@ -1565,7 +1798,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="1.75 1.2 -4"
                       rotation="-90 0 0"
-                      material="side: double; src: #stock-cover;"
+                      material="side: double; src: #100-most-influential-women-cover;"
                       visible="false"
                       animation__selectPanel5MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1587,7 +1820,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -3"
                       rotation="-90 0 0"
-                      material="side: double; src: #jigsaw-puzzle-cover"
+                      material="side: double; src: #weeks-best-story-cover;"
                       visible="false"
                       animation__selectPanel7MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!--#a-single-gesture-cover #chuck-shumer-coronavirus-cover;-->
             </a-entity>
@@ -1597,7 +1830,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -2"
                       rotation="-90 0 0"
-                      material="side: double; src: #together-apart-cover;"
+                      material="side: double; src: #economy-and-policy-story-cover;"
                       visible="false"
                       animation__selectPanel8MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!-- #virus-stimulus-art-cover;-->
             </a-entity>
@@ -1607,7 +1840,7 @@
                       geometry="primitive: plane; width: 1.5; height: 1"
                       position="3.3 1.2 -1"
                       rotation="-90 0 0"
-                      material="side: double; src: #streaming-pro-cover;"
+                      material="side: double; src: #high-yield-story-cover;"
                       visible="false"
                       animation__selectPanel9MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1617,7 +1850,7 @@
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -2.25"
                       rotation="-90 0 0"
-                      material="side: double; src: #opinion-image-cover;"
+                      material="side: double; src: #investing-story-cover;"
                       visible="false"
                       animation__selectPanel10MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1627,7 +1860,7 @@
                       geometry="primitive: plane; width: 1.5; height: 2"
                       position="-2.8 1.2 -0.25"
                       rotation="-90 0 0"
-                      material="side: double; src: #opinion-story-preview;"
+                      material="side: double; src: #retirement-story-cover;"
                       visible="false"
                       animation__selectPanel11MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1637,7 +1870,7 @@
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="-0.45 1.2 0.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #science-section-cover;"
+                      material="side: double; src: #income-investing-story-cover;"
                       visible="false"
                       animation__selectPanel12MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1647,7 +1880,7 @@
                       geometry="primitive: plane; width: 2.85; height: 1.5"
                       position="2.65 1.2 0.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #technology-section-cover;"
+                      material="side: double; src: #up-and-down-wall-street-story-cover;"
                       visible="false"
                       animation__selectPanel13MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1657,7 +1890,7 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="-1 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #arts-section-cover;"
+                      material="side: double; src: #market-story-cover;"
                       visible="false"
                       animation__selectPanel14MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1667,7 +1900,7 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="1.25 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #business-section-cover;"
+                      material="side: double; src: #soft-commodities-story-cover;"
                       visible="false"
                       animation__selectPanel15MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;">
             </a-entity>
@@ -1677,7 +1910,7 @@
                       geometry="primitive: plane; width: 2; height: 2"
                       position="3.5 1.2 2.5"
                       rotation="-90 0 0"
-                      material="side: double; src: #sports-section-cover;"
+                      material="side: double; src: #penta-story-cover;"
                       visible="false"
                       animation__selectPanel16MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!--#books-section-cover;-->
             </a-entity>
@@ -1688,7 +1921,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-0; opacity: 0; transparent: false;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-0; opacity: 0; transparent: false;"
                       visible="false"
                       animation__hideCoverZeroTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: hideCoverZero;"
                       animation__hideCoverZeroOpa="property: material.opacity; from: 1.0; to: 0; dur: 2000; startEvents: hideCoverZero;"
@@ -1701,7 +1934,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-1; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-1; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverOneOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverOne; easing: linear;"
                       animation__showCoverOneTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverOne; easing: linear;"
@@ -1714,7 +1947,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-2; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-2; opacity: 0; transparent: true;"
                       animation__showCoverTwoOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverTwo; easing: linear;"
                       animation__showCoverTwoTrans="property: material.transparent; from: false; to: true; dur: 50; delay: 2000; startEvents: showCoverTwo; easing: linear;"
                       animation__hideCoverTwoOpa="property: material.opacity; from: 1.0; to : 0; dur: 2000; startEvents: hideCoverTwo; easing: linear;"
@@ -1726,7 +1959,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-3; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-3; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverThreeOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverThree; easing: linear;"
                       animation__showCoverThreeTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverThree; easing: linear;"
@@ -1739,7 +1972,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-4; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-4; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverFourOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFour; easing: linear;"
                       animation__showCoverFourTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFour; easing: linear;"  
@@ -1752,7 +1985,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-5; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-5; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverFiveOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverFive; easing: linear;"
                       animation__showCoverFiveTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverFive; easing: linear;"
@@ -1765,7 +1998,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-6; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-6; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverSixOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSix; easing: linear;"
                       animation__showCoverSixTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSix; easing: linear;"
@@ -1778,7 +2011,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-7; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-7; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverSevenOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverSeven; easing: linear;"
                       animation__showCoverSevenTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverSeven; easing: linear;"
@@ -1791,7 +2024,7 @@
                       geometry="primitive: plane; width: 4.5; height: 3"
                       position="0.25 1.2 -1.9"
                       rotation="-90 0 0"
-                      material="side: double; src: #main-cover-image-8; opacity: 0; transparent: true;"
+                      material="side: double; src: #barrons-magazine-main-cover-image-8; opacity: 0; transparent: true;"
                       visible="false"
                       animation__showCoverEightOpa="property: material.opacity; from: 0; to : 1.0; dur: 2000; startEvents: showCoverEight easing: linear;"
                       animation__showCoverEightTrans="property: material.transparent; from: true; to: false; dur: 50; delay: 2000; startEvents: showCoverEight; easing: linear;"
@@ -1839,6 +2072,14 @@
                       rotation="-90 0 0"
                       visible="false"
                       material="src: #hiro-application-secondary-panel-texture; opacity: 0; side: double;">
+            </a-entity>
+            <a-entity id="unibeat-application-secondary-panel"
+                      geometry="primitive: plane; width: 1.5; height: 1.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showSecondaryPanelUNI; pauseEvents: hidePanelUNI;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="color: yellow; opacity: 0; side:double;">
             </a-entity>
         </a-marker>
         
@@ -1950,14 +2191,6 @@
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingUNI; startEvents: startRotatingUNI; resumeEvents: resumeRotatingUNI;"
                       position="0 0.5 0"
                       material="src: #hov-office-app-icon-texture;">
-            </a-entity>
-            <a-entity id="unibeat-application-panel"
-                      geometry="primitive: plane; width: 1.5; height: 1.5;"
-                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelUNI; pauseEvents: hidePanelUNI;"
-                      position="0 0.25 0"
-                      rotation="-90 0 0"
-                      visible="false"
-                      material="color: yellow; opacity: 0; side:double;">
             </a-entity>
             <a-entity id="next-page-button-container"
                       geometry="primitive: plane; width: 1.5; height: 1.5;"
