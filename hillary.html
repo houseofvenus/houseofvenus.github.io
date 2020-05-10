@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah's cARd | v. 0.2.44</title>
+    <title>Hillary Yeboah's cARd | v. 0.2.45</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1270,7 +1270,16 @@
                     
                     MarkerGridTracker.repressor.onApplicationSection.current = 0; // move onto first page in cARd app
                     MarkerGridTracker.unibeat.active = true;
+                    
+                    timeDiffUNI = new Date().getTime();// MarkerGridTracker.unibeat.counter;
+                    MarkerGridTracker.unibeat.counter = timeDiffUNI;
+                
                 }
+            });
+            
+            document.getElementById("cARd-open-app-cover-page-button-container").addEventListener("click", function(){
+                window.open("./cvm","_blank");
+                document.getElementById("cARd-go-back-to-app-cover-page-button-container").click();
             });
         });
     </script>
