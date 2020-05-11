@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>USER | prototype IB | v. 0.2.45</title>
+    <title>USER | prototype IB | v. 0.2.47</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -908,6 +908,29 @@
                                                                             */
                                 console.log("tapped the bottom right button on the MIT (Bakuas) app");
                                 
+                                document.getElementById("mit-application-panel").setAttribute("visible", false);
+                                document.getElementById("mit-application-panel").setAttribute("material.opacity", 0);   // hide the secondary application panel
+                                
+                                document.getElementById("mit-application-secondary-panel").setAttribute("visible", false);
+                                document.getElementById("mit-application-secondary-panel").setAttribute("material.opacity", 0);   // hide the secondary application panel
+                                
+                                
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("visible", false);
+                                document.getElementById("back-to-previous-page-button-container").setAttribute("material.opacity", 0);// hide the back button for the application cover page
+                                
+                                
+                                document.getElementById("next-page-button-container").setAttribute("visible", false);
+                                document.getElementById("next-page-button-container").setAttribute("material.opacity", 0);   // hide the back button for the application cover page
+                                
+                                document.getElementById("stock-preview-tool-previous-option-button-container").setAttribute("visible", true);
+                                document.getElementById("stock-preview-tool-previous-option-button-container").emit("showPreviousButtonPreviewTool");
+                                
+                                document.getElementById("stock-preview-tool-next-option-button-container").setAttribute("visible", true);
+                                document.getElementById("stock-preview-tool-next-option-button-container").emit("showNextButtonPreviewTool");
+                                
+                                document.getElementById("stock-preview-tool-preview-container").setAttribute("visible", true);
+                                document.getElementById("stock-preview-tool-preview-container").emit("showPreviewTool");
+                                
                             }
                         }
                         else if(MarkerGridTracker.repressor.onApplicationPage===3){    //  if the user has opened the HIRO (BODYTIME) application
@@ -1278,8 +1301,9 @@
             });
             
             document.getElementById("cARd-open-app-cover-page-button-container").addEventListener("click", function(){
-                window.open("./cvm","_blank");
-                document.getElementById("cARd-go-back-to-app-cover-page-button-container").click();
+                window.location.href = "./cvm";
+                //document.getElementById("cARd-go-back-to-app-cover-page-button-container").click();
+                
             });
         });
     </script>
@@ -2090,6 +2114,15 @@
                       visible="false"
                       material="color: yellow; opacity: 0; side:double;">
             </a-entity>
+            
+            <a-entity id="stock-preview-tool-preview-container"
+                      geometry="primitive: box; width: 1.5; height: 1.5; depth: 1.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPreviewTool;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #back-to-main-page-button-texture; opacity: 0; side:double;">
+            </a-entity>
         </a-marker>
         
         <a-marker id="hiro-marker-container" preset="hiro">
@@ -2102,6 +2135,14 @@
             <a-entity id="back-to-previous-page-button-container"
                       geometry="primitive: plane; width: 1.5; height: 1.5;"
                       animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showBackButtonOnCover;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #back-to-main-page-button-texture; opacity: 0; side:double;">
+            </a-entity>
+            <a-entity id="stock-preview-tool-previous-option-button-container"
+                      geometry="primitive: box; width: 1.5; height: 1.5; depth: 1.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPreviousButtonPreviewTool;"
                       position="0 0.25 0"
                       rotation="-90 0 0"
                       visible="false"
@@ -2209,6 +2250,16 @@
                       visible="false"
                       material="src: #onto-to-next-page-button-texture; opacity: 0; side:double;">
             </a-entity>
+            
+            <a-entity id="stock-preview-tool-next-option-button-container"
+                      geometry="primitive: box; width: 1.5; height: 1.5; depth: 1.5;"
+                      animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showNextButtonPreviewTool;"
+                      position="0 0.25 0"
+                      rotation="-90 0 0"
+                      visible="false"
+                      material="src: #back-to-main-page-button-texture; opacity: 0; side:double;">
+            </a-entity>
+            
         </a-marker>
         
         <a-entity camera></a-entity>
