@@ -1,0 +1,265 @@
+/*
+*   ----------------------------------------------
+*   .LYOKO USER INTERFACE STYLE COMPILATION TARGET
+*   DRAFT SPECIFICATION V 0.3.1
+*   AUTHOR: PATRICE-MORGAN ONOLY [@starmaker2130]
+*   ----------------------------------------------
+*   TARGET DETAILS: POSTAR (v.0.2.1)
+*   NAME: postAR-ui.css
+*   CREATION: 15.05.12020
+*   LAST MODIFICATION: 15.05.12020
+*   HOST: @houseofvenus
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body, html, .page-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#application-cover-page-container{
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    background-image: url("../media/img/code-lyoko.png");
+    background-position: center center;
+    background-size: 400px 550px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: height 0.5s;
+}
+
+.page-container{
+    transition: opacity 0.5s;
+}
+
+.option-container{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    line-height: 150px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    transition: height 0.5s;
+}
+
+.title-container{
+    width: 100%;
+    position: absolute;
+    top: 42%;
+    text-align: center;
+    font-size: 60px;
+    font-family: monospace;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+#option-0-container{
+    background-color: rgba(255, 0, 0, 0.7);
+    background-image: url('../media/img/camera-icon.png');
+    background-size: 50% 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#option-1-container{
+    background-color: rgba(0, 255, 0, 0.7);
+    background-image: url('../media/img/upload-icon.png');
+    background-size: 45% 45%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#page-1-container, #page-2-container, #page-3-container, #page-4-container{
+    opacity: 0;
+    display: none;
+    position: absolute;
+}
+
+#video {
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+    width: 100%;
+    height: auto;
+}
+
+#photo {
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+    width: 100%;
+    height: auto;
+}
+
+#canvas {
+    display:none;
+}
+
+.camera {
+    width: 100%;
+    display:inline-block;
+}
+
+.output {
+    width: 100%;
+    display:inline-block;
+}
+
+#startbutton {
+    display: block;
+    position: absolute;
+    margin-left: -130px;
+    left: 50%;
+    bottom: 50px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: rgba(0, 150, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+    font-size: 16px;
+    width: 760px;
+}
+
+#add-files-button{
+    font-size: 120px;
+    font-weight: 900;
+    width: 450px;
+    height: 200px;
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    margin-left: -225px;
+    border-radius: 5%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+}
+
+#generate-model-button{
+    font-size: 60px;
+    font-weight: 400;
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    line-height: 350px;
+    margin-left: -175px;
+    border-radius: 50%;
+    background-color: aquamarine;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#loading-indicator-container{
+    background-image: url("../media/img/loading.gif");
+    background-size: 100% 100%;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+}
+
+#annotation-inputs-container{
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#hashtag-input-container{
+    color: black;
+    display: block;
+    width: 80%;
+    min-height: 200px;
+    height: 50%;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border: 2px black solid;
+    box-shadow: 5px 5px 5px #333333;
+    margin: 10% auto 1% auto;
+    font-size: 20px;
+}
+
+#english-subtitles-input-container{
+    color: black;
+    width: 80%;
+    min-height: 250px;
+    display: block;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    border: 2px black solid;
+    box-shadow: 5px 5px 5px #333333;
+    margin: 3% auto 2% auto;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#french-subtitles-input-container{
+    color: black;
+    width: 80%;
+    min-height: 250px;
+    display: block;
+    border-radius: 10px;
+    border: 2px black solid;
+    box-shadow: 5px 5px 5px #333333;
+    margin: 3% auto 6% auto;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#submit-publication-for-review-button-container{
+    width: 450px;
+    height: 150px;
+    border-radius: 10px;
+    border: 0;
+    background-color: aquamarine;
+    cursor: pointer;
+    z-index: 200;
+    margin-left: -225px;
+    cursor: pointer;
+    font-size: 48px;
+    font-weight: 900;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    line-height: 150px;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    transition: color 0.5s, background-color 0.5s;
+}
+
+#submit-publication-for-review-button-container:hover{
+    color: white;
+    background-color: black;
+    border: 1px black solid;
+}
