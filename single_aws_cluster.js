@@ -133,6 +133,21 @@ else {*/
         res.render('cvmask.html',{root: dir[0]});
     });
 
+    app.get('/md-200', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('Desktop computer accessing DIA: Maryland 200');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('Mobile device accessing DIA: Maryland 200');
+            deviceType = 'mobile';
+        }
+
+        res.render('marco-md-200.html',{root: dir[0]});
+    });
+    
     app.get('/room', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
