@@ -25,8 +25,8 @@ var cluster = require('cluster');
     }
 else {*/
   // author(s):  Patrice-Morgan Ongoly
-    // version: 0.5.10
-    // last modified: Wednesday, May 6, 2020 23:32 EST
+    // version: 0.5.11
+    // last modified: Wednesday, May 20, 2020 23:32 EST
     // description:
 
     // required modules
@@ -161,6 +161,21 @@ else {*/
         }
 
         res.render('gue.html',{root: dir[0]});
+    });
+
+    app.get('/marco', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log("Someone on a desktop computer is checking out Marco's Room!");
+            deviceType = 'desktop';
+        }
+        else{
+            console.log("Someone on a mobile device is checking out Marco's Room!");
+            deviceType = 'mobile';
+        }
+
+        res.render('marco.html',{root: dir[0]});
     });
 
     app.get('/roomvr', function(req, res){
