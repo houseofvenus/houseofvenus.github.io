@@ -1,3 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Balsamiq Sans", cursive;
+}
+
 #controller-cover-container{
     z-index: 100;
     width: 100%;
@@ -15,30 +24,45 @@
     bottom: 5%;
 }
 
-#dpad-up-button-container{
-    margin: 0 auto 10% auto;
-}
-
 .dpad-button-container{
     width: 75px;
     height: 75px;
     border-radius: 50%;
     text-align: center;
     line-height: 75px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    transition: background-color 0.5s;
+}
+
+.dpad-button-container:hover{
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
+#dpad-up-button-container{
+    margin: 0 auto 10% auto;
+    background-position: center center;
+    background-image: url("../media/img/arrow.svg");
 }
 
 #dpad-left-button-container{
     float: left;
+    background-position: 40% center;
+    background-image: url("../media/img/keyboard-left-arrow-button.svg");
 }
 
 #dpad-right-button-container{
     float: right;
+    background-position: 55% center;
+    background-image: url("../media/img/keyboard-right-arrow-button.svg");
 }
 
 #dpad-down-button-container{
     margin: 10% auto 0 auto;
+    background-position: center 60%;
+    background-image: url("../media/img/down-arrow.svg");
 }
 
 #dpad-action-buttons-container{
@@ -51,6 +75,7 @@
     width: 125px;
     height: 125px;
     line-height: 125px;
+    font-size: 28px;
     background-color: aquamarine;
 }
 
@@ -58,13 +83,13 @@
     width: 50px;
     height: 50px;
     line-height: 50px;
+    font-size: 18px;
     background-color: red;
 }
 
 .dpad-action-button-container{
     border-radius: 50%;
     text-align: center;
-    font-size: 20px;
     text-transform: uppercase;
     cursor: pointer;
 }
