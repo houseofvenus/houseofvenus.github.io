@@ -1,3 +1,4 @@
+/*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');*/
 #barrons-go-back-to-app-cover-page-button-container, #go-back-to-app-cover-page-button-container{
     position: absolute;
     width: 100px;
@@ -17,7 +18,6 @@
     background-color: white;
     font-family: monospace;
 }
-
 
 #open-desktop-page-options-container{
     z-index: 200;

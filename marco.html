@@ -1,83 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Marc Anderson Miller   | Old Row Maryland | v. 0.2.35</title>
+    <title>Marc Anderson Miller | Old Row Maryland | v. 0.3.0</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
-    <script src="./js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
-    <link rel="stylesheet" href="./css/marco-profile.css" type="text/css" />
-    <script src="./js/marco-profile-ui.js"></script>
-    <script src="./js/marco-profile-ux.js"></script>
-    <script src="./js/marco-profile-main.js"></script>
-    
-        
-        
+    <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <link rel="stylesheet" href="../css/marco-profile.css" type="text/css" />
+    <script src="../js/marco-profile-ui.js"></script>
+    <script src="../js/marco-profile-ux.js"></script>
+    <script src="../js/marco-profile-main.js"></script>   
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <div id="go-back-to-app-cover-page-button-container">x</div>
     <a-scene embedded arjs id="main-experience-container">
         <a-assets timeout="20000">
-            <!--<img id="mercury-planet-object-texture" src="./media/texture/mercurymap.jpg" preload="true" />
-            <img id="venus-planet-object-texture" src="./media/texture/venusmap.jpg" preload="true" />
-            <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
-            <img id="jupiter-planet-object-texture" src="./media/texture/jupiter2_2k.jpg" preload="true" />-->
-            <img id="nyt-banner" src="./media/img/nyt_banner.png" preload="true" />
-            <img id="the-daily-cover" src="./media/img/the-daily-cover.png" preload="true" />
+            <!--<img id="mercury-planet-object-texture" src="../media/texture/mercurymap.jpg" preload="true" />
+            <img id="venus-planet-object-texture" src="../media/texture/venusmap.jpg" preload="true" />
+            <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true" />
+            <img id="jupiter-planet-object-texture" src="../media/texture/jupiter2_2k.jpg" preload="true" />-->
+            <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
+            <img id="the-daily-cover" src="../media/img/the-daily-cover.png" preload="true" />
             
             
-            <img id="nyt-app-icon-texture" src="./media/img/nyt-app-icon.png" preload="true" />
-            <img id="bakuas-app-icon-texture" src="./media/img/bakuas-app-icon.png" preload="true" />
-            <img id="bodytime-app-icon-texture" src="./media/img/bodytime-app-icon.png" preload="true" />
-            <img id="hov-office-app-icon-texture" src="./media/img/hov-office-app-icon.png" preload="true" />
+            <img id="nyt-app-icon-texture" src="../media/img/nyt-app-icon.png" preload="true" />
+            <img id="bakuas-app-icon-texture" src="../media/img/bakuas-app-icon.png" preload="true" />
+            <img id="bodytime-app-icon-texture" src="../media/img/bodytime-app-icon.png" preload="true" />
+            <img id="hov-office-app-icon-texture" src="../media/img/hov-office-app-icon.png" preload="true" />
             
-            <img id="nyt-app-banner-texture" src="./media/img/nyt-app-banner-on-cover-page.png" preload="true" />
-            <img id="nyt-app-secondary-panel-texture" src="./media/img/nyt-app-secondary-panel.png" preload="true" />
-            <img id="back-to-main-page-button-texture" src="./media/img/back-to-main-page-button.png" preload="true" />
-            <img id="onto-to-next-page-button-texture" src="./media/img/onto-to-app-page-button.png" preload="true" />
+            <img id="nyt-app-banner-texture" src="../media/img/nyt-app-banner-on-cover-page.png" preload="true" />
+            <img id="nyt-app-secondary-panel-texture" src="../media/img/nyt-app-secondary-panel.png" preload="true" />
+            <img id="back-to-main-page-button-texture" src="../media/img/back-to-main-page-button.png" preload="true" />
+            <img id="onto-to-next-page-button-texture" src="../media/img/onto-to-app-page-button.png" preload="true" />
             
             
             
-            <img id="mit-application-panel-texture" src="./media/img/mit-application-panel.png" preload="true" />
-            <img id="mit-application-secondary-panel-texture" src="./media/img/mit-application-secondary-panel.png" preload="true" />
+            <img id="mit-application-panel-texture" src="../media/img/mit-application-panel.png" preload="true" />
+            <img id="mit-application-secondary-panel-texture" src="../media/img/mit-application-secondary-panel.png" preload="true" />
             
             <!-- NYT application textures -->
             
-            <img id="jigsaw-puzzle-cover" src="./media/img/jigsaw-puzzle-story.png" preload="true"/>
-            <img id="streaming-pro-cover" src="./media/img/streaming-pro-story.png" preload="true"/>
-            <img id="stock-cover" src="./media/img/stock-cover-wed1530.png" preload="true" />
-            <img id="weather-preview-cover" src="./media/img/weather-preview-cover-wed1530.png" preload="true" />
-            <img id="main-cover-image-0" src="./media/img/sanders-out.png" preload="true"/>
-            <img id="main-cover-image-1" src="./media/img/joe-lingeman-puzzle-painting.png" preload="true"/>
-            <img id="main-cover-image-2" src="./media/img/quibi-story-cover.png" preload="true"/>
-            <img id="main-cover-image-3" src="./media/img/tedros-who-story-cover.png" preload="true"/>
-            <img id="main-cover-image-4" src="./media/img/saudi-highway-story-cover.png" preload="true"/>
-            <img id="main-cover-image-5" src="./media/img/health-code-ticket-check-story.png" preload="true"/>
-            <img id="main-cover-image-6" src="./media/img/wuhan-ends-lockdown-story-cover.png" preload="true"/>
-            <img id="main-cover-image-7" src="./media/img/barcelona-shutdown-story-cover.png" preload="true"/>
-            <img id="main-cover-image-8" src="./media/img/french-sailors-coronavirus-story.png" preload="true"/>
+            <img id="jigsaw-puzzle-cover" src="../media/img/jigsaw-puzzle-story.png" preload="true"/>
+            <img id="streaming-pro-cover" src="../media/img/streaming-pro-story.png" preload="true"/>
+            <img id="stock-cover" src="../media/img/stock-cover-wed1530.png" preload="true" />
+            <img id="weather-preview-cover" src="../media/img/weather-preview-cover-wed1530.png" preload="true" />
+            <img id="main-cover-image-0" src="../media/img/sanders-out.png" preload="true"/>
+            <img id="main-cover-image-1" src="../media/img/joe-lingeman-puzzle-painting.png" preload="true"/>
+            <img id="main-cover-image-2" src="../media/img/quibi-story-cover.png" preload="true"/>
+            <img id="main-cover-image-3" src="../media/img/tedros-who-story-cover.png" preload="true"/>
+            <img id="main-cover-image-4" src="../media/img/saudi-highway-story-cover.png" preload="true"/>
+            <img id="main-cover-image-5" src="../media/img/health-code-ticket-check-story.png" preload="true"/>
+            <img id="main-cover-image-6" src="../media/img/wuhan-ends-lockdown-story-cover.png" preload="true"/>
+            <img id="main-cover-image-7" src="../media/img/barcelona-shutdown-story-cover.png" preload="true"/>
+            <img id="main-cover-image-8" src="../media/img/french-sailors-coronavirus-story.png" preload="true"/>
             
-            <img id="on-tech-with-shira-ovide-cover" src="./media/img/on-tech-with-shira-ovide-story.png" preload="true" />
-            <img id="together-apart-cover" src="./media/img/together-apart-story.png" preload="true"/>
-            <img id="science-section-cover" src="./media/img/nasa-worm-logo-story.png" preload="true"/>
-            <img id="technology-section-cover" src="./media/img/stadia-controller-story.png" preload="true"/>
-            <img id="business-section-cover" src="./media/img/tech-flix-story.png" preload="true"/>
-            <img id="arts-section-cover" src="./media/img/arts-coronavirus-refund-story-cover.png" preload="true"/>
-            <img id="books-section-cover" src="./media/img/notes-from-an-apocolypse-story-image.png" preload="true"/>
-            <img id="sports-section-cover" src="./media/img/coronavirus-athlete-docs.png" preload="true"/>
-            <img id="opinion-story-preview" src="./media/img/italy-is-sending-another-warning-cover.png" preload="true"/>
-            <img id="opinion-image-cover" src="./media/img/italy-is-sending-story-start.png" preload="true"/>
+            <img id="on-tech-with-shira-ovide-cover" src="../media/img/on-tech-with-shira-ovide-story.png" preload="true" />
+            <img id="together-apart-cover" src="../media/img/together-apart-story.png" preload="true"/>
+            <img id="science-section-cover" src="../media/img/nasa-worm-logo-story.png" preload="true"/>
+            <img id="technology-section-cover" src="../media/img/stadia-controller-story.png" preload="true"/>
+            <img id="business-section-cover" src="../media/img/tech-flix-story.png" preload="true"/>
+            <img id="arts-section-cover" src="../media/img/arts-coronavirus-refund-story-cover.png" preload="true"/>
+            <img id="books-section-cover" src="../media/img/notes-from-an-apocolypse-story-image.png" preload="true"/>
+            <img id="sports-section-cover" src="../media/img/coronavirus-athlete-docs.png" preload="true"/>
+            <img id="opinion-story-preview" src="../media/img/italy-is-sending-another-warning-cover.png" preload="true"/>
+            <img id="opinion-image-cover" src="../media/img/italy-is-sending-story-start.png" preload="true"/>
             
             
             
-            <video id="nyt-main-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/sanders-quit.mp4"></video>
-            <video id="bakuas-ticker-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/ticker-nasdaq.mp4"></video>
-            <img id="toggle-playback-pause-button-icon" src="./media/img/pause-icon.png" preload="true"/>
-            <img id="play-next-item-button-icon" src="./media/img/play-next-icon.png" preload="true"/>
-            <img id="toggle-volume-button-icon" src="./media/img/volume-on-icon.png" preload="true"/>
+            <video id="nyt-main-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="../media/vid/sanders-quit.mp4"></video>
+            <video id="bakuas-ticker-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="../media/vid/ticker-nasdaq.mp4"></video>
+            <img id="toggle-playback-pause-button-icon" src="../media/img/pause-icon.png" preload="true"/>
+            <img id="play-next-item-button-icon" src="../media/img/play-next-icon.png" preload="true"/>
+            <img id="toggle-volume-button-icon" src="../media/img/volume-on-icon.png" preload="true"/>
         </a-assets>
-
     </a-scene>
 </body>
 </html>

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Marc Anderson Miller | Old Row Maryland | v. 0.4.0</title>
-    <!-- disjointed marker icon appearance bug -->
+    <title>Hillary Yeboah's cARd | v. 0.4.0</title>
+    <!-- Version standard:
+        new york times application flow works all the way in and out back to main menu; assets load in a timely fashion; stability is 60% optimal;
+        bakuas application flows works in to the cover page and back; assets load in .a time ly basis; stability i s 70% optimal
+        barron's application flow works all the way in and out back to main menu; assets load in a timely fashion; stability is 60% optimal;
+        hov office application opens in to the cover page and back; no textures define one page; template defaults in place;
+    -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="../css/marco-profile.css" type="text/css" />
-    <script src="../js/marco-profile-ui.js"></script>
-    <script src="../js/marco-profile-ux.js"></script>
-    <script src="../js/marco-profile-main.js"></script>   
+    <link rel="stylesheet" href="../css/hillary-profile.css" type="text/css"/>
+    <script src="../js/hillary-profile-ui.js"></script>
+    <script src="../js/hillary-profile-ux.js"></script>
+    <script src="../js/hillary-profile-main.js"></script>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <div id="barrons-go-back-to-app-cover-page-button-container">x</div>
     <div id="go-back-to-app-cover-page-button-container">x</div>
+    <div id="barrons-go-back-to-app-cover-page-button-container">x</div>
     <div id="open-desktop-page-options-container">
         <div id="open-desktop-prompt-container">
             <p>Do you want to access the cARd immersive productivity and office tools?</p>
@@ -121,6 +126,7 @@
             <img id="barrons-magazine-main-cover-image-7" src="./media/texture/chinas-tech-stocks-story-cover.png" preload="true" />
             <img id="barrons-magazine-main-cover-image-8" src="./media/texture/home-building-stocks-story-cover.png" preload="true" />
         </a-assets>
+        <a-entity camera></a-entity>
     </a-scene>
 </body>
 </html>

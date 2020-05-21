@@ -167,15 +167,30 @@ else {*/
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
         if(result.isType('desktop')){
-            console.log("Someone on a desktop computer is checking out Marco's Room!");
+            console.log("Someone on a desktop computer is checking out Marco's Channel!");
             deviceType = 'desktop';
         }
         else{
-            console.log("Someone on a mobile device is checking out Marco's Room!");
+            console.log("Someone on a mobile device is checking out Marco's Channel!");
             deviceType = 'mobile';
         }
 
         res.render('marco.html',{root: dir[0]});
+    });
+
+    app.get('/hillary', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log("Someone on a desktop computer is checking out Hillary's Channel!");
+            deviceType = 'desktop';
+        }
+        else{
+            console.log("Someone on a mobile device is checking out Hillary's Channel!");
+            deviceType = 'mobile';
+        }
+
+        res.render('hillary.html',{root: dir[0]});
     });
 
     app.get('/roomvr', function(req, res){
