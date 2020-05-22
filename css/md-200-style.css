@@ -93,3 +93,57 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+#main-app-cover-page-container{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    line-height: 50px;
+    position: absolute;
+    color: white;
+    transition: height 0.5s, opacity 0.5s;
+}
+
+#app-cover-image-container{
+    width: 250px;
+    height: 200px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    margin: 10% auto;
+    background-image: url("../media/img/md-route-200.svg");
+}
+
+.text-descriptor{
+    width: 350px;
+    font-size: 24px;
+    text-align: justify;
+    margin: 10% auto;
+}
+
+#directions-0-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 200px;
+    margin: -325px 0 0 -200px;
+    z-index: 200;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    line-height: 35px;
+    font-size: 20px;
+}
+
+ol{
+    width: 85%;
+    display: block;
+    margin: 0 auto;
+}
