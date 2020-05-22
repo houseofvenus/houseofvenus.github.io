@@ -29,6 +29,50 @@ let MarkerGridTracker = {
     }
 };
 
+let CarPhysics = {
+    Position: {
+        x: 0,
+        y: 0,
+        z: 0,
+        lat: 0,
+        long: 0,
+        alt: 0
+    },
+    Acceleration: {
+        x: 0,
+        y: 0,
+        z: 0,
+        lat: 0,
+        long: 0,
+        alt: 0
+    },
+    Controller: {
+        POV: 3, //third person view, i.e. gamepad controller visible and active, 1 = first person immersive view
+        Meta: {
+            House: "Venus",
+            Developer: "@starmakeritachi",
+            Version: "0.2.62"
+        }
+    },
+    Engine: {
+        accelerate: function(vector){
+            let self = this;
+            let movementVector = vector;
+            if(movementVector.x>0){
+                CarPhysics.Acceleration.x++;
+                console.log("new x acceleration", CarPhysics.Acceleration.x);
+                self.movementThreads.x = setInterval(function(){
+                    CarPhysics.Position.x+=CarPhysics.Acceleration;
+                    console.log("new x position", CarPhysics.Position.x);
+                }, 100);
+            }
+            
+        },
+        movementThreads: {}
+    }
+};
+
+let chosenCar;
 let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
 let locationModeOn = false;
 
@@ -148,7 +192,22 @@ function attachImmersiveButtonListeners(){
     });
     
     document.getElementById("dpad-alpha-action-button-container").addEventListener("click", function(event){
-        console.log("clicked the alpha action button. \n toggle vehicle size."); 
+        console.log("clicked the alpha action button. \n toggle vehicle size.");
+        if(directionPhase===1){
+            chosenCar = carInFocus;
+            directionPhase = 2;
+            for(var y=0; y<selectionArray.length; y++){
+                (function(){
+                    document.getElementById(`location-object-container-${y}`).emit("stopRotatingCar");
+                })();
+            }
+            
+            document.getElementById(`location-object-container-${chosenCar}`).emit("moveCarToStartingPosition");
+            document.getElementById("directions-0-container").style.opacity = 0;
+            setTimeout(function(){
+                document.getElementById("directions-0-container").style.display = "block";
+            }, 500);
+        }
     });
     
     document.getElementById("dpad-beta-action-button-container").addEventListener("click", function(event){

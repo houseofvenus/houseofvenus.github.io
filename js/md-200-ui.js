@@ -7,18 +7,21 @@ let selectionArray = [
         mtl: "#bugatti-mtl",
         scale: "0.03 0.03 0.03",
         visible: false,
+        rotation: "0 180 0"
     },
     {
         obj: "#lambo-obj",
         mtl: "#lambo-mtl",
         scale: "3 3 3",
         visible: false,
+        rotation: "0 270 0"
     },
     {
         obj: "#audi-obj",
         color: "red",
         scale: "6 6 6",
         visible: false,
+        rotation: "0 180 0"
     }
 ];
 
@@ -64,7 +67,8 @@ function addCarToCurrentLocation(lat, long){
         src="${selectionArray[carInFocus].obj}" mtl="${selectionArray[carInFocus].mtl}"
         scale="${selectionArray[carInFocus].scale}"
         visible="${selectionArray[carInFocus].visible}"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear; pauseEvents: stopRotatingCar;"
+        animation__moveCarToStart="property: rotation; to: ${selectionArray[carInFocus].rotation}; loop: false; dur: 5000; startEvents: moveCarToStartingPosition;"
         gps-entity-place="latitude: ${lat}; longitude: ${long};">
         </a-obj-model>
         `);
@@ -75,7 +79,8 @@ function addCarToCurrentLocation(lat, long){
         src="${selectionArray[carInFocus].obj}" material="color: ${selectionArray[carInFocus].color};"
         scale="${selectionArray[carInFocus].scale}"
         visible="${selectionArray[carInFocus].visible}"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear; pauseEvents: stopRotatingCar;"
+        animation__moveCarToStart="property: rotation; to: ${selectionArray[carInFocus].rotation}; loop: false; dur: 5000; startEvents: moveCarToStartingPosition;"
         gps-entity-place="latitude: ${lat}; longitude: ${long};">
         </a-obj-model>
         `); 
@@ -98,7 +103,7 @@ lambo-obj" mtl="#lambo-mtl
 
 <a-sphere id="location-object-container"
 radius="1"
-animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear"
+animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear; pauseEvents: stopRotatingCar;"
 position="3 0 0"
 material="src: #earth-planet-object-texture"
 ;"></a-sphere>
@@ -122,7 +127,7 @@ function buildMarkup(){
     document.getElementById("main-app-container").insertAdjacentHTML("afterbegin", `
 <div id="main-app-cover-page-container">
     <div id="app-cover-image-container"></div>
-    <p class="text-descriptor">a DIA for exploring global roadways in pursuit of the mantle of greatest driver</p>
+    <p class="text-descriptor">Explore global roadways in pursuit of the mantle of greatest driver</p>
     <p class="text-descriptor" style="text-align: center; text-transform: uppercase;">Tap to open DIA</p>
 </div>
 <div id="directions-0-container" class="directions-container">
