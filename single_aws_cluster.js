@@ -718,6 +718,21 @@ else {*/
         res.render('lyoko.html',{root: dir[0]});
     });
 
+    app.get('/armoir', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('Desktop computer accessing DIA: ARmoir');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('Mobile device accessing DIA: ARmoir');
+            deviceType = 'mobile';
+        }
+
+        res.render('armoir.html',{root: dir[0]});
+    });
+
     app.get('/nyt', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -882,6 +897,36 @@ else {*/
         var model_id = req.params.model_id;
         res.sendFile(model_id, {root: dir[8]});
     });
+
+    app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
+        var model_id0 = req.params.model_id0;
+        res.sendFile(model_id0, {root: dir[8]+"/NewZealandPoloWithShorts"});
+    });
+
+    app.get('/media/model/NewZealandPoloWithShorts/:model_id1', function(req, res){
+        var model_id1 = req.params.model_id1;
+        res.sendFile(model_id1, {root: dir[8]+"/NewZealandPoloWithShorts"});
+    });
+
+    app.get('/media/model/PSGDBFEWSExeterHat/:model_id2', function(req, res){
+        var model_id2 = req.params.model_id2;
+        res.sendFile(model_id2, {root: dir[8]+"/PSGDBFEWSExeterHat"});
+    });/*
+
+    app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
+        var model_id3 = req.params.model_id3;
+        res.sendFile(model_id0, {root: dir[8]+"/NewZealandPoloWithShorts"});
+    });
+
+    app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
+        var model_id4 = req.params.model_id4;
+        res.sendFile(model_id0, {root: dir[8]+"/NewZealandPoloWithShorts"});
+    });
+
+app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
+        var model_id5 = req.params.model_id5;
+        res.sendFile(model_id0, {root: dir[8]+"/NewZealandPoloWithShorts"});
+    });*/
 
     app.get('/media/uploads/:upload_id', function(req, res){
         var upload_id = req.params.upload_id;

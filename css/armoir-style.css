@@ -1,0 +1,151 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Balsamiq Sans", cursive;
+}
+
+#controller-cover-container{
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+#dpad-buttons-container{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+}
+
+.dpad-button-container{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 75px;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    transition: background-color 0.5s;
+}
+
+.dpad-button-container:hover{
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
+#dpad-up-button-container{
+    margin: 0 auto 10% auto;
+    background-position: center center;
+    background-image: url("../media/img/arrow.svg");
+}
+
+#dpad-left-button-container{
+    float: left;
+    background-position: 40% center;
+    background-image: url("../media/img/keyboard-left-arrow-button.svg");
+}
+
+#dpad-right-button-container{
+    float: right;
+    background-position: 55% center;
+    background-image: url("../media/img/keyboard-right-arrow-button.svg");
+}
+
+#dpad-down-button-container{
+    margin: 10% auto 0 auto;
+    background-position: center 60%;
+    background-image: url("../media/img/down-arrow.svg");
+}
+
+#dpad-action-buttons-container{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+#dpad-alpha-action-button-container{
+    width: 125px;
+    height: 125px;
+    line-height: 125px;
+    font-size: 28px;
+    background-color: aquamarine;
+}
+
+#dpad-beta-action-button-container{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    background-color: red;
+}
+
+.dpad-action-button-container{
+    border-radius: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#main-app-cover-page-container{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+    line-height: 50px;
+    position: absolute;
+    color: white;
+    transition: height 0.5s, opacity 0.5s;
+}
+
+#app-cover-image-container{
+    width: 250px;
+    height: 200px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    margin: 10% auto;
+    background-image: url("../media/img/armoir.png");
+}
+
+.text-descriptor{
+    width: 350px;
+    font-size: 24px;
+    text-align: justify;
+    margin: 10% auto;
+}
+
+#directions-0-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 200px;
+    margin: -325px 0 0 -200px;
+    z-index: 200;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    line-height: 35px;
+    font-size: 20px;
+    opacity: 1.0;
+    transition: opacity 0.5s;
+}
+
+ol{
+    width: 85%;
+    display: block;
+    margin: 0 auto;
+}
