@@ -13,7 +13,11 @@ let selectionArray = [
             initial: "-90 360 0",
             target: "-90 0 0",
         },
-        materialOptions: "usePNG"
+        materialOptions: "usePNG",
+        meta: {
+            title: "SUMMER20",
+            description: ""
+        }
     },
     {
         obj: "#lambo-obj",
@@ -26,7 +30,11 @@ let selectionArray = [
             initial: "-90 360 0",
             target: "-90 0 0",
         },
-        materialOptions: "usePNG"
+        materialOptions: "usePNG",
+        meta: {
+            title: "READY TO WEAR",
+            description: ""
+        }
     },
     {
         obj: "#audi-obj",
@@ -38,6 +46,10 @@ let selectionArray = [
             initial: "0 0 0",
             target: "0 180 0",
         },
+        meta: {
+            title: "BAGS",
+            description: ""
+        }
     }
 ];
 
@@ -65,6 +77,8 @@ function revealCarAtCurrentLocation(lat, long){
         previousCarInFocus = carInFocus;
     }
     document.getElementById(`location-object-container-${carInFocus}`).setAttribute("visible", selectionArray[carInFocus].visible);
+    document.getElementById(`directions-0-container`).innerHTML = `<p>${selectionArray[carInFocus].meta.title}</p>`;
+
     setTimeout(function(){
         document.getElementById(`location-object-container-${carInFocus}`).setAttribute("scale", selectionArray[carInFocus].scale);
     }, 500);
