@@ -38,10 +38,17 @@ let CarPhysics = {
         long: 0,
         alt: 0
     },
+    Velocity: {
+        path: 0,
+        turn: 0,
+        lat: 0,
+        long: 0,
+        alt: 0
+    },
     Acceleration: {
-        x: 0,
-        y: 0,
-        z: 0,
+        path: 1,
+        turn: 0,
+        decel: -0.2,
         lat: 0,
         long: 0,
         alt: 0
@@ -54,21 +61,78 @@ let CarPhysics = {
             Version: "0.2.62"
         }
     },
-    Engine: {
+    Engine: {   //x is left to right
         accelerate: function(vector){
             let self = this;
             let movementVector = vector;
-            if(movementVector.x>0){
-                CarPhysics.Acceleration.x++;
-                console.log("new x acceleration", CarPhysics.Acceleration.x);
-                self.movementThreads.x = setInterval(function(){
-                    CarPhysics.Position.x+=CarPhysics.Acceleration;
-                    console.log("new x position", CarPhysics.Position.x);
-                }, 100);
-            }
             
+            if(movementVector.z<0){
+                let counter = 0;
+                console.log("new z acceleration", CarPhysics.Acceleration.path);
+                let additive = 0;
+                
+                if(self.movementThreads.z==null){
+                    
+                    self.movementThreads.z = setInterval(function(){
+                        
+                        additive = CarPhysics.Acceleration.path + counter*CarPhysics.Acceleration.decel;
+                        CarPhysics.Position.z -= additive;
+                        console.log("new z position", CarPhysics.Position.z);
+                        
+                        document.getElementById(`location-object-container-${carInFocus}`).object3D.position.z = CarPhysics.Position.z;
+                        counter++;
+
+                        if(additive===0){
+                            clearInterval(self.movementThreads.z);
+                            console.log("slowed to a stop!");
+                            self.movementThreads.z = null;
+                        }
+                        
+                    }, 100);  
+                }
+            }
+            else if(movementVector.z>0){
+                let counterForward = 0;
+                console.log("new z acceleration", CarPhysics.Acceleration.path);
+                let additiveForward = 0;
+
+                if(self.movementThreads.z==null){
+
+                    self.movementThreads.z = setInterval(function(){
+
+                        additiveForward = CarPhysics.Acceleration.path + counterForward*CarPhysics.Acceleration.decel;
+                        CarPhysics.Position.z += additiveForward;
+                        console.log("new z position", CarPhysics.Position.z);
+
+                        document.getElementById(`location-object-container-${carInFocus}`).object3D.position.z = CarPhysics.Position.z;
+                        counterForward++;
+
+                        if(additiveForward===0){
+                            clearInterval(self.movementThreads.z);
+                            console.log("slowed to a stop!");
+                            self.movementThreads.z = null;
+                        }
+
+                    }, 100);  
+                }
+            }
+            else{
+                counter = 0;
+                counterForward = 0;
+            }
         },
-        movementThreads: {}
+        movementThreads: {
+            x: null,
+            y: null,
+            z: null
+        },
+        turn: function(angle){
+            let currentRotation = document.getElementById(`location-object-container-${carInFocus}`).getAttribute("rotation");
+            
+            //currentRotation = currentRotation.substring(currentRotation.indexOf(" ")+1, currentRotation.lastIndexOf(" "));
+            
+            console.log(currentRotation.y);
+        }
     }
 };
 
@@ -94,7 +158,8 @@ function attachImmersiveButtonListeners(){
                 console.log("still nothing to do");
                 break;
             case 2:
-                console.log("pressing the forward button. \n accelerate vehicle in forward direction.");
+                console.log("pressing the forward button.\naccelerate vehicle in forward direction.");
+                CarPhysics.Engine.accelerate({x: 0, y: 0, z: -1});
                 break;
             default:
                 break;
@@ -117,7 +182,8 @@ function attachImmersiveButtonListeners(){
                 console.log("still nothing to do");
                 break;
             case 2:
-                console.log("pressing the back button. \n accelerate vehicle in reverse direction."); 
+                console.log("pressing the back button. \n accelerate vehicle in reverse direction.");
+                CarPhysics.Engine.accelerate({x: 0, y: 0, z: 1});
                 break;
             default:
                 break;
@@ -147,7 +213,8 @@ function attachImmersiveButtonListeners(){
                 }
                 break;
             case 2:
-                console.log("pressing the left button. \n turn vehicle counter clockwise."); 
+                console.log("pressing the left button. \n turn vehicle counter clockwise.");
+                CarPhysics.Engine.turn(90);
                 break;
             default:
             break;
@@ -177,7 +244,8 @@ function attachImmersiveButtonListeners(){
                 }
                 break;
             case 2:
-                console.log("pressing the right button. \n turn vehicle clockwise."); 
+                console.log("pressing the right button. \n turn vehicle clockwise.");
+                CarPhysics.Engine.turn(90);
                 break;
             default:
             break;
@@ -218,7 +286,8 @@ function attachImmersiveButtonListeners(){
                 removeCarFromCurrentLocation();
             }
             locationModeOn = false;
-        }else{
+        }
+        else{
             if(directionPhase===0){
                 directionPhase = 1;
                 revealCarAtCurrentLocation(39.080962, -76.979481);

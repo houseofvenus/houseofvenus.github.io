@@ -7,21 +7,36 @@ let selectionArray = [
         mtl: "#bugatti-mtl",
         scale: "0.03 0.03 0.03",
         visible: false,
-        rotation: "0 180 0"
+        rotation: "0 180 0",
+        position: {
+            x: 0,
+            y: -1,
+            z: 0
+        }
     },
     {
         obj: "#lambo-obj",
         mtl: "#lambo-mtl",
         scale: "3 3 3",
         visible: false,
-        rotation: "0 270 0"
+        rotation: "0 270 0",
+        position: {
+            x: 0,
+            y: -1,
+            z: 0
+        }
     },
     {
         obj: "#audi-obj",
         color: "red",
         scale: "6 6 6",
         visible: false,
-        rotation: "0 180 0"
+        rotation: "0 180 0",
+        position: {
+            x: 3,
+            y: -1,
+            z: 0
+        }
     }
 ];
 
@@ -67,6 +82,7 @@ function addCarToCurrentLocation(lat, long){
         src="${selectionArray[carInFocus].obj}" mtl="${selectionArray[carInFocus].mtl}"
         scale="${selectionArray[carInFocus].scale}"
         visible="${selectionArray[carInFocus].visible}"
+        position="${selectionArray[carInFocus].position.x} ${selectionArray[carInFocus].position.y} ${selectionArray[carInFocus].position.z}"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear; pauseEvents: stopRotatingCar;"
         animation__moveCarToStart="property: rotation; to: ${selectionArray[carInFocus].rotation}; loop: false; dur: 5000; startEvents: moveCarToStartingPosition;"
         gps-entity-place="latitude: ${lat}; longitude: ${long};">
@@ -79,6 +95,7 @@ function addCarToCurrentLocation(lat, long){
         src="${selectionArray[carInFocus].obj}" material="color: ${selectionArray[carInFocus].color};"
         scale="${selectionArray[carInFocus].scale}"
         visible="${selectionArray[carInFocus].visible}"
+        position="${selectionArray[carInFocus].position.x} ${selectionArray[carInFocus].position.y} ${selectionArray[carInFocus].position.z}"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 30000; easing: linear; pauseEvents: stopRotatingCar;"
         animation__moveCarToStart="property: rotation; to: ${selectionArray[carInFocus].rotation}; loop: false; dur: 5000; startEvents: moveCarToStartingPosition;"
         gps-entity-place="latitude: ${lat}; longitude: ${long};">
