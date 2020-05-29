@@ -163,6 +163,22 @@ else {*/
         
         res.render('trailer.html',{root: dir[0]});
     });
+
+    app.get('/clavier', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        
+        if(result.isType('desktop')){
+            console.log('Desktop computer accessing DIA: Trailer');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('Mobile device accessing DIA: Trailer');
+            deviceType = 'mobile';
+        }
+        
+        res.render('keyboard.html',{root: dir[0]});
+    });
     
     app.get('/room', function(req, res){
         var result = new WhichBrowser(req.headers);
