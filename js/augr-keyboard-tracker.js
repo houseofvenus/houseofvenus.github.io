@@ -826,6 +826,7 @@ var initScene = function () {
   }, 150);
 };
 
+
 Leap.loop({background: true}, {
     hand: function (hand) {
         hand.fingers.forEach(function (finger) {
@@ -1180,11 +1181,11 @@ Leap.loop({background: true}, {
                       }
                     }
                     if(sessionManager.pressCount>75){
-                      console.log("long pressed W");
-                      document.getElementById("letter-w-container").setAttribute("material", "color", "orange");
-                      document.getElementById("letter-w-container").setAttribute("text", "color", "black");
+                        console.log("long pressed W");
+                        document.getElementById("letter-w-container").setAttribute("material", "color", "orange");
+                        document.getElementById("letter-w-container").setAttribute("text", "color", "black");
                     }
-                  }
+                }
               }
             }
             else if(indexPos[0]>-155&&indexPos[0]<-135&&indexPos[1]>190&&indexPos[1]<220){
@@ -2181,7 +2182,7 @@ Leap.loop({background: true}, {
             //  console.log("SPCE");
               sessionManager.pressed.push("SPCE");
               if(sessionManager.pressed.indexOf("SPCE")>-1){
-                  document.getElementById("space-bar-container").setAttribute("material", "color", "white");
+                  document.getElementById("space-bar-container").setAttribute("material", "color", "white"); //change the space bar
                   document.getElementById("space-bar-container").setAttribute("text", "color", "black");
                   console.log("holding down SPCE");
                   if(sessionManager.pressCount==null){
