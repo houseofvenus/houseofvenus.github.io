@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>O.F.F.I.C.E. | </title>
+    <title>O.F.F.I.C.E. | v2</title>
     <link rel="stylesheet" href="./css/AugR.css" type="text/css" />
     <!--<script src="./js/socket.io.js"></script>-->
     <script src="./js/aframe100.js"></script>
@@ -18,6 +18,29 @@
             height: 350px;
             z-index: 500;
             margin: -175px 0 0 -125px;
+        }
+        
+        .object-line-item-container{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #object-line-item-0-container{
+            background-image: url("../media/img/tree.png");
+        }
+        
+        #object-line-item-1-container{
+            background-image: url("../media/img/car.png");   
+        }
+        
+        #object-line-item-2-container{
+            background-image: url("../media/img/me.png");
         }
         
         .office-function-button-container{
@@ -145,6 +168,14 @@
                 models: []
             }
         };
+        
+        var captures = 0;
+        
+        var capturePhotos = [
+            "./media/img/tree.png",
+            "./media/img/car.png",
+            "./media/img/me.png",
+        ];
         
         document.addEventListener("DOMContentLoaded", function(){
             
@@ -306,8 +337,7 @@
                 document.getElementById("lyoko-eye").style.height = "140px";
                 document.getElementById("lyoko-eye").style.margin = "-70px 0 0 -50px";
             }, 1250);
-            
-            
+                
             setTimeout(function(){
                 document.getElementById("lyoko-eye").style.width = "150px";
                 document.getElementById("lyoko-eye").style.height = "175px";
@@ -318,6 +348,18 @@
                 document.getElementById("lyoko-eye").style.width = "150px";
                 document.getElementById("lyoko-eye").style.height = "175px";
                 document.getElementById("lyoko-eye").style.margin = "-75px 0 0 -87px";
+                
+                document.getElementById("lyoko-object-line-container").style.display = "block";
+                
+                let captureElement = document.createElement("div");
+                captureElement.setAttribute("id", `object-line-item-${captures}-container`);
+                captureElement.classList.add("object-line-item-container");
+                
+                document.getElementById("lyoko-object-line-container").appendChild(captureElement);
+                
+                setTimeout(function(){
+                    document.getElementById("lyoko-object-line-container").style.opacity = 1.0;
+                }, 50);
             }, 1000);
         }
         
@@ -405,6 +447,7 @@
         </div>
         
         <div id="lyoko-eye"></div>
+        <div id="lyoko-object-line-container"></div>
         <div id="load-indicator-container">
             <div id="load-indicator-icon"></div>
             <div id="load-indicator-label"></div>
