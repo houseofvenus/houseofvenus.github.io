@@ -169,15 +169,31 @@ else {*/
         console.log(result.toString());
         
         if(result.isType('desktop')){
-            console.log('Desktop computer accessing DIA: Trailer');
+            console.log('Desktop computer accessing DIA: KEYBOARD');
             deviceType = 'desktop';
         }
         else{
-            console.log('Mobile device accessing DIA: Trailer');
+            console.log('Mobile device accessing DIA: KEYBOARD');
             deviceType = 'mobile';
         }
         
         res.render('keyboard.html',{root: dir[0]});
+    });
+
+    app.get('/office', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        
+        if(result.isType('desktop')){
+            console.log('Desktop computer accessing DIA: OFFICE');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('Mobile device accessing DIA: OFFICE');
+            deviceType = 'mobile';
+        }
+        
+        res.render('office.html',{root: dir[0]});
     });
     
     app.get('/room', function(req, res){
@@ -1139,7 +1155,13 @@ app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
     var DecentralizedImmersiveApplications = {
         "New York Times": {
             type: "immersive",
-            viewTarget: ["Chrome v 0.0.0", "Safari v 0.0.0", "Safari on iOS v 0.0.0", "Chrome on Android v 0.0.0", "Firefox on Android v 0.0.0"],
+            viewTarget: [
+                "Chrome v 0.0.0", 
+                "Safari v 0.0.0",
+                "Safari on iOS v 0.0.0",
+                "Chrome on Android v 0.0.0",
+                "Firefox on Android v 0.0.0"
+            ],
             origin: "In the pARk, there is a newspaper called the 'New York Times' sourced from the eponymous paper published in New York City and beyond since 1851. Readers of the immersive newspaper have access to a daily selection of premium content for $15.99 a month. Subscribers qualify for autonomous home delivery and can upgrade their delivery specifications as they see fit.",
             object: {
                 divRender: {
@@ -1268,6 +1290,27 @@ app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
                         },
                     ],
                 }
+            }
+        },
+        "HOV Office": {
+            type: "immersive",
+            viewTarget: ["Chrome v 0.0.0", "Safari v 0.0.0", "Safari on iOS v 0.0.0", "Chrome on Android v 0.0.0", "Firefox on Android v 0.0.0"],
+            origin: "",
+            object: {
+                divRender: {
+                    
+                },
+                aframeRender: {
+                    
+                },
+                dataSource: {
+                    
+                }
+            },
+            data: {
+                active: false,
+                currentDocumentName: "Untitled",
+                currentDocumentText: ""
             }
         }
     };
@@ -1413,6 +1456,30 @@ app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
                             break;
                     }
                 }
+            }
+        });
+        
+        socket.on("CLIENTconnectToHOVOfficeKeyboardModuleOnSERVER", function(data){
+            if(data.status){
+                DecentralizedImmersiveApplications["HOV Office"].data.active = true;
+                
+                console.log(DecentralizedImmersiveApplications["HOV Office"]);
+                socket.emit("SERVERconnectedToHOVOfficeKeyboardModuleOnCLIENT", {status: DecentralizedImmersiveApplications["HOV Office"].data.active});
+            }
+        });
+        
+        socket.on("CLIENTsendCurrentTranscriptToSERVER", function(data){
+            if(data.status){
+                DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText += data.transcript;
+                console.log(DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText);
+            }
+        });
+        
+        socket.on("CLIENTconnectToHOVOfficeMainModuleOnSERVER", function(data){
+            if(data.status){
+                console.log("SERVERconnectedToHOVOfficeMainModuleOnCLIENT");
+                socket.emit("SERVERconnectedToHOVOfficeMainModuleOnCLIENT", {status: true, title: DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentName, content: DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText});
+                
             }
         });
         
