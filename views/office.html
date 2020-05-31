@@ -80,6 +80,20 @@
         #successful-load-button{
             
         }
+        
+        #keyboard-menu-button{
+            background-image: url("../media/img/keyboard-icon.png");
+            background-size: 75% 75%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0);
+            cursor: pointer;
+            transition: background-color 0.25s;
+        }
+        
+        #keyboard-menu-button:hover{
+            background-color: rgba(255, 255, 255, 1.0);
+        }
     </style>
     <script>
         var sessionManager = {
@@ -93,9 +107,15 @@
             attachImmersiveButtonListeners();
             
             document.getElementById("connect-to-rfid-menu-button").addEventListener("click", function(){
-                
                 toggleOfficeFunctions();
-                
+            });
+            
+            document.getElementById("connect-to-rfid-menu-button").addEventListener("click", function(){
+                toggleOfficeFunctions();
+            });
+            
+            document.getElementById("connect-to-rfid-menu-button").addEventListener("click", function(){
+                toggleOfficeFunctions();
             });
             
             document.getElementById("load-eye-button").addEventListener("click", function(){
@@ -111,6 +131,22 @@
             
             document.getElementById("lyoko-eye").addEventListener("click", function(){
                 lyokoEyeAnimation();
+            });
+            
+            document.getElementById("keyboard-menu-button").addEventListener("click", function(){
+                window.location.href = "./clavier";
+            });
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
+                
+                
+                
+            });
+            
+            document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
+                
+                
+                
             });
         });
         
@@ -200,7 +236,8 @@
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
                       position="0 0.5 0"
-                      material="src: #hov-office-app-icon-texture;">
+                      visible="false"
+                      material="src: #hov-office-app-icon-texture; opacity: 0;">
             </a-entity>
         </a-marker>
         
@@ -209,16 +246,17 @@
                       geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                       animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
                       position="0 0.5 0"
-                      material="src: #hov-office-app-icon-texture;">
+                      visible="false"
+                      material="src: #hov-office-app-icon-texture; opacity: 0;">
             </a-entity>
         </a-marker>
         
     </a-scene>
     <div class="menu-container">
-            <div id="link-to-new-rfid-menu-button" class="menu-button">paste</div>
+            <div id="paste-menu-button" class="menu-button">paste</div>
             <div id="copy-menu-button" class="menu-button">copy</div>
             <div id="cut-menu-button" class="menu-button">cut</div>
-            <!--<div id="-menu-button" class="menu-button"></div>-->
+            <div id="keyboard-menu-button" class="menu-button"></div>
         </div>
         <div id="connect-to-rfid-menu-button" class="menu-button"></div>
         <div id="office-functions-container">

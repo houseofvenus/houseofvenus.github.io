@@ -28,11 +28,11 @@
 
 }
 
-#link-to-new-rfid-menu-button{
+#link-to-new-rfid-menu-button, #paste-menu-button{
     background-color: rgba(127, 255, 212, 0.2);
 }
 
-#link-to-new-rfid-menu-button:hover{
+#link-to-new-rfid-menu-button:hover, #paste-menu-button:hover{
     background-color: rgba(127, 255, 212, 1.0);
 }
 
