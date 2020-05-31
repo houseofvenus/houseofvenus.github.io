@@ -98,17 +98,17 @@
         var sessionManager = {
             connection: io.connect(location.host)
         };
+        
         var officeFunctionsVisible = false;
-        //sessionManager.connection = ;
         
         var markersInView = {
             hiro: {
                 Found: false,
-                focusOn: ""
+                focusOn: "hiro-rotating-globe"
             },
             mit: {
                 Found: false,
-                focusOn: ""
+                focusOn: "mit-rotating-globe"
             }
         };
         
@@ -140,35 +140,36 @@
                         console.log("The clipboard is empty!");
                     }
                     else{
+                        console.log("clipboard loaded!");
                         CurrentDocument.clipboard.text = data.content;
+                        document.getElementById("mit-text-plane").setAttribute("value", CurrentDocument.clipboard.text);
+                        document.getElementById("hiro-text-plane").setAttribute("value", CurrentDocument.clipboard.text);
                     }
-                    
                 }
             });
             
             document.getElementById("paste-menu-button").addEventListener("click", function(){
                 if(markersInView.mit.Found){
-                    document.getElementById("mit-rotating-globe").setAttribute("visible", true);
-                    document.getElementById("mit-rotating-globe").emit("showMITGlobe");
+                    document.getElementById(markersInView.mit.focusOn).setAttribute("visible", true);
+                    document.getElementById(markersInView.mit.focusOn).emit("showMITGlobe");
                 }
                 
                 if(markersInView.hiro.Found){
-                    document.getElementById("hiro-rotating-globe").setAttribute("visible", true);
-                    document.getElementById("hiro-rotating-globe").emit("showHIROGlobe");
+                    document.getElementById(markersInView.hiro.focusOn).setAttribute("visible", true);
+                    document.getElementById(markersInView.hiro.focusOn).emit("showHIROGlobe");
                 }
             });
             
             document.getElementById("cut-menu-button").addEventListener("click", function(){
                 if(markersInView.mit.Found){
-                    document.getElementById("mit-rotating-globe").setAttribute("visible", false);
-                    document.getElementById("mit-rotating-globe").setAttribute("material","opacity", 0);
+                    document.getElementById(markersInView.mit.focusOn).setAttribute("visible", false);
+                    document.getElementById(markersInView.mit.focusOn).setAttribute("material","opacity", 0);
                 }
                 
                 if(markersInView.hiro.Found){
-                    document.getElementById("hiro-rotating-globe").setAttribute("visible", false);
-                    document.getElementById("hiro-rotating-globe").setAttribute("material", "opacity", 0);
+                    document.getElementById(markersInView.hiro.focusOn).setAttribute("visible", false);
+                    document.getElementById(markersInView.hiro.focusOn).setAttribute("material", "opacity", 0);
                 }
-                
             });
             
             document.getElementById("load-eye-button").addEventListener("click", function(){
@@ -273,12 +274,7 @@
                     officeFunctionsVisible = true;
                 }, 50);
             }
-            
         }
-        /*  
-        *   press button to load clipboard
-        *   if the text is not null
-        */
         
         function attachImmersiveButtonListeners(){
             sessionManager.connection.on("SERVERconnectedToHOVOfficeMainModuleOnCLIENT", function(data){
@@ -311,6 +307,8 @@
                           visible="false"
                           material="src: #hov-office-app-icon-texture; opacity: 0;">
                 </a-entity>
+                
+                <a-text id="mit-text-plane" visible="true" value="default" rotation="-90 0 0" align="center" geometry="primitive:plane;" width="5"></a-text>
             </a-marker>
 
             <a-marker id="hiro-marker-container" preset="hiro">
@@ -322,6 +320,8 @@
                           visible="false"
                           material="src: #hov-office-app-icon-texture; opacity: 0;">
                 </a-entity>
+                
+                <a-text id="hiro-text-plane" visible="false" value="default" rotation="-90 0 0" align="center" geometry="primitive:plane;" width="5"></a-text>
             </a-marker>
 
         </a-scene>
