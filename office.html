@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>O.F.F.I.C.E. | </title>
-    <link rel="stylesheet" href="../css/AugR.css" type="text/css" />
-    <script src="../js/socket.io.js"></script>
-    <script src="../js/aframe100.js"></script>
-    <script src="../js/aframe-ar.js"></script>
+    <link rel="stylesheet" href="./css/AugR.css" type="text/css" />
+    <!--<script src="./js/socket.io.js"></script>-->
+    <script src="./js/aframe100.js"></script>
+    <script src="./js/aframe-ar.js"></script>
     <style>
         #office-functions-container{
             display: none;
@@ -39,7 +39,7 @@
         }
         
         #load-clipboard-button{
-            background-image: url("../media/img/clipboard-icon.png");
+            background-image: url("./media/img/clipboard-icon.png");
             background-size: 100px 100px;
             background-color: rgba(255, 0, 0, 0.5);
             border-radius: 10px 10px 0 0;
@@ -50,7 +50,7 @@
         }
         
         #load-eye-button{
-            background-image: url("../media/img/eye-icon.png");
+            background-image: url("./media/img/eye-icon.png");
             background-size: 100px 100px;
             background-color: rgba(0, 255, 0, 0.5);
             border-radius: 0 0 10px 10px;
@@ -63,7 +63,7 @@
             width: 100px;
             height: 140px;
             margin: -70px 0 0 -50px;
-            background-image: url("../media/img/code-lyoko.png");
+            background-image: url("./media/img/code-lyoko.png");
             background-size: 100% 100%;
             background-repeat: no-repeat;
             display: none;
@@ -90,7 +90,7 @@
         #load-indicator-icon{
             width: 100%;
             height: 300px;
-            background-image: url("../media/img/success.png");
+            background-image: url("./media/img/success.png");
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -105,7 +105,7 @@
         }
         
         #keyboard-menu-button{
-            background-image: url("../media/img/keyboard-icon.png");
+            background-image: url("./media/img/keyboard-icon.png");
             background-size: 75% 75%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -156,10 +156,10 @@
             
             document.getElementById("load-clipboard-button").addEventListener("click", function(){
                 toggleOfficeFunctions();
-                sessionManager.connection.emit("CLIENTrequestClipBoardContentsFromSERVER", {status: true});
+                //sessionManager.connection.emit("CLIENTrequestClipBoardContentsFromSERVER", {status: true});
             });
             
-            sessionManager.connection.on("SERVERsendClipBoardContentToCLIENT", function(data){
+          /*  sessionManager.connection.on("SERVERsendClipBoardContentToCLIENT", function(data){
                 if(data.status){
                     if(data.content===""){
                         console.log("The clipboard is empty!");
@@ -180,7 +180,7 @@
                             
                         }, 50);
                         
-                        document.getElementById("load-indicator-icon").style.backgroundImage = `url("../media/img/load-failure-icon.png")`;
+                        document.getElementById("load-indicator-icon").style.backgroundImage = `url("./media/img/load-failure-icon.png")`;
                         document.getElementById("load-indicator-label").innerHTML = "<p>Clipboard is empty.</p>"
                     }
                     else{
@@ -202,7 +202,7 @@
                             
                         }, 50);
                         
-                        document.getElementById("load-indicator-icon").style.backgroundImage = `url("../media/img/success.png")`;
+                        document.getElementById("load-indicator-icon").style.backgroundImage = `url("./media/img/success.png")`;
                         document.getElementById("load-indicator-label").innerHTML = "<p>Clipboard loaded successfully!</p>"
                         
                         CurrentDocument.clipboard.text = data.content;
@@ -210,7 +210,7 @@
                         document.getElementById("hiro-text-plane").setAttribute("text", "value", CurrentDocument.clipboard.text);
                     }
                 }
-            });
+            });*/
             
             document.getElementById("paste-menu-button").addEventListener("click", function(){
                 if(markersInView.mit.Found){
@@ -341,15 +341,15 @@
         }
         
         function attachImmersiveButtonListeners(){
-            sessionManager.connection.on("SERVERconnectedToHOVOfficeMainModuleOnCLIENT", function(data){
+           /* sessionManager.connection.on("SERVERconnectedToHOVOfficeMainModuleOnCLIENT", function(data){
                 if(data.status){
                     CurrentDocument.title = data.title;
                     console.log("Title: ", CurrentDocument.title);
                     console.log("Content: ", data.content);
                 } 
-            });
+            });*/
             
-            sessionManager.connection.emit("CLIENTconnectToHOVOfficeMainModuleOnSERVER", {status: true});
+            //sessionManager.connection.emit("CLIENTconnectToHOVOfficeMainModuleOnSERVER", {status: true});
         }
     </script>
 </head>
@@ -359,10 +359,10 @@
         <a-scene  vr-mode-ui="enabled: false;" embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
             
             <a-assets timeout="20000">
-                <img id="hov-office-app-icon-texture" src="../media/img/hov-office-app-icon.png" preload="true" />
+                <img id="hov-office-app-icon-texture" src="./media/img/hov-office-app-icon.png" preload="true" />
             </a-assets>
 
-            <a-marker id="mit-marker-container" type="pattern" url="../media/pattern/pattern-mit-logo.patt">
+            <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
                 <a-entity id="mit-rotating-globe"
                           geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
                           animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
