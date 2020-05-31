@@ -1461,24 +1461,41 @@ app.get('/media/model/NewZealandPoloWithShorts/:model_id0', function(req, res){
         
         socket.on("CLIENTconnectToHOVOfficeKeyboardModuleOnSERVER", function(data){
             if(data.status){
+                
                 DecentralizedImmersiveApplications["HOV Office"].data.active = true;
                 
                 console.log(DecentralizedImmersiveApplications["HOV Office"]);
                 socket.emit("SERVERconnectedToHOVOfficeKeyboardModuleOnCLIENT", {status: DecentralizedImmersiveApplications["HOV Office"].data.active});
+                
             }
         });
         
         socket.on("CLIENTsendCurrentTranscriptToSERVER", function(data){
             if(data.status){
+                
                 DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText += data.transcript;
+                
                 console.log(DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText);
+                
             }
         });
         
         socket.on("CLIENTconnectToHOVOfficeMainModuleOnSERVER", function(data){
             if(data.status){
+                
                 console.log("SERVERconnectedToHOVOfficeMainModuleOnCLIENT");
+                
                 socket.emit("SERVERconnectedToHOVOfficeMainModuleOnCLIENT", {status: true, title: DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentName, content: DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText});
+                
+            }
+        });
+        
+        socket.on("CLIENTrequestClipBoardContentsFromSERVER", function(data){
+            if(data.status){
+                
+                console.log("CLIENTrequestClipBoardContentsFromSERVER");
+                
+                socket.emit("SERVERsendClipBoardContentToCLIENT", {status: true, title: DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentName, content: DecentralizedImmersiveApplications["HOV Office"].data.currentDocumentText});
                 
             }
         });

@@ -59,7 +59,6 @@
             border-radius: 0 0 10px 10px;
         }
         
-        
         #lyoko-eye{
             position: absolute;
             top: 50%;
@@ -99,8 +98,29 @@
         var sessionManager = {
             connection: io.connect(location.host)
         };
-         var officeFunctionsVisible = false;
+        var officeFunctionsVisible = false;
         //sessionManager.connection = ;
+        
+        var markersInView = {
+            hiro: {
+                Found: false,
+                focusOn: ""
+            },
+            mit: {
+                Found: false,
+                focusOn: ""
+            }
+        };
+        
+        var CurrentDocument = {
+            title: "",
+            content: "",
+            clipboard: {
+                text: "",
+                images: [],
+                models: []
+            }
+        };
         
         document.addEventListener("DOMContentLoaded", function(){
             
@@ -110,12 +130,45 @@
                 toggleOfficeFunctions();
             });
             
-            document.getElementById("connect-to-rfid-menu-button").addEventListener("click", function(){
-                toggleOfficeFunctions();
+            document.getElementById("load-clipboard-button").addEventListener("click", function(){
+                sessionManager.connection.emit("CLIENTrequestClipBoardContentsFromSERVER", {status: true});
             });
             
-            document.getElementById("connect-to-rfid-menu-button").addEventListener("click", function(){
-                toggleOfficeFunctions();
+            sessionManager.connection.on("SERVERsendClipBoardContentToCLIENT", function(data){
+                if(data.status){
+                    if(data.content===""){
+                        console.log("The clipboard is empty!");
+                    }
+                    else{
+                        CurrentDocument.clipboard.text = data.content;
+                    }
+                    
+                }
+            });
+            
+            document.getElementById("paste-menu-button").addEventListener("click", function(){
+                if(markersInView.mit.Found){
+                    document.getElementById("mit-rotating-globe").setAttribute("visible", true);
+                    document.getElementById("mit-rotating-globe").emit("showMITGlobe");
+                }
+                
+                if(markersInView.hiro.Found){
+                    document.getElementById("hiro-rotating-globe").setAttribute("visible", true);
+                    document.getElementById("hiro-rotating-globe").emit("showHIROGlobe");
+                }
+            });
+            
+            document.getElementById("cut-menu-button").addEventListener("click", function(){
+                if(markersInView.mit.Found){
+                    document.getElementById("mit-rotating-globe").setAttribute("visible", false);
+                    document.getElementById("mit-rotating-globe").setAttribute("material","opacity", 0);
+                }
+                
+                if(markersInView.hiro.Found){
+                    document.getElementById("hiro-rotating-globe").setAttribute("visible", false);
+                    document.getElementById("hiro-rotating-globe").setAttribute("material", "opacity", 0);
+                }
+                
             });
             
             document.getElementById("load-eye-button").addEventListener("click", function(){
@@ -139,13 +192,29 @@
             
             document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
                 
-                
+                markersInView.hiro.Found = true;
+                console.log("hiro found");
                 
             });
             
             document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
                 
+                markersInView.mit.Found = true;
+                console.log("mit found");
                 
+            });
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerLost", function(){
+                
+                markersInView.hiro.Found = false;
+                console.log("hiro lost");
+                
+            });
+            
+            document.getElementById("mit-marker-container").addEventListener("markerLost", function(){
+                
+                markersInView.mit.Found = false;
+                console.log("mit lost");
                 
             });
         });
@@ -214,7 +283,8 @@
         function attachImmersiveButtonListeners(){
             sessionManager.connection.on("SERVERconnectedToHOVOfficeMainModuleOnCLIENT", function(data){
                 if(data.status){
-                    console.log("Title: ", data.title);
+                    CurrentDocument.title = data.title;
+                    console.log("Title: ", CurrentDocument.title);
                     console.log("Content: ", data.content);
                 } 
             });
@@ -226,33 +296,36 @@
 <body>
 </body>
     <div id="main-app-container" style="width: 100%; height: 100%; overflow-y: scroll; background-color: rgba(0, 0, 0, 0.05)">
-    <a-scene  vr-mode-ui="enabled: false;" embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
-        <a-assets timeout="20000">
-            <img id="hov-office-app-icon-texture" src="../media/img/hov-office-app-icon.png" preload="true" />
-        </a-assets>
-        
-        <a-marker id="mit-marker-container" type="pattern" url="../media/pattern/pattern-mit-logo.patt">
-            <a-entity id="mit-rotating-globe"
-                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
-                      position="0 0.5 0"
-                      visible="false"
-                      material="src: #hov-office-app-icon-texture; opacity: 0;">
-            </a-entity>
-        </a-marker>
-        
-        <a-marker id="hiro-marker-container" preset="hiro">
-            <a-entity id="hiro-rotating-globe"
-                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
-                      position="0 0.5 0"
-                      visible="false"
-                      material="src: #hov-office-app-icon-texture; opacity: 0;">
-            </a-entity>
-        </a-marker>
-        
-    </a-scene>
-    <div class="menu-container">
+        <a-scene  vr-mode-ui="enabled: false;" embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+            
+            <a-assets timeout="20000">
+                <img id="hov-office-app-icon-texture" src="../media/img/hov-office-app-icon.png" preload="true" />
+            </a-assets>
+
+            <a-marker id="mit-marker-container" type="pattern" url="../media/pattern/pattern-mit-logo.patt">
+                <a-entity id="mit-rotating-globe"
+                          geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
+                          animation__showMGlobe="property: material.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showMITGlobe;"
+                          position="0 0 -1.5"
+                          visible="false"
+                          material="src: #hov-office-app-icon-texture; opacity: 0;">
+                </a-entity>
+            </a-marker>
+
+            <a-marker id="hiro-marker-container" preset="hiro">
+                <a-entity id="hiro-rotating-globe"
+                          geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
+                          animation__showHGlobe="property: material.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showHIROGlobe;"
+                          position="0 0 -1.5"
+                          visible="false"
+                          material="src: #hov-office-app-icon-texture; opacity: 0;">
+                </a-entity>
+            </a-marker>
+
+        </a-scene>
+        <div class="menu-container">
             <div id="paste-menu-button" class="menu-button">paste</div>
             <div id="copy-menu-button" class="menu-button">copy</div>
             <div id="cut-menu-button" class="menu-button">cut</div>
