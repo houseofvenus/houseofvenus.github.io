@@ -256,11 +256,14 @@
                 if(markersInView.mit.Found){
                     document.getElementById(markersInView.mit.focusOn).setAttribute("visible", true);
                     document.getElementById(markersInView.mit.focusOn).emit("showMITGlobe");
+                    document.getElementById(markersInView.mit.focusOn).emit("startRotatingMIT");
+                    document.getElementById("mit-text-plane").setAttribute("visible", true);
                 }
                 
                 if(markersInView.hiro.Found){
                     document.getElementById(markersInView.hiro.focusOn).setAttribute("visible", true);
                     document.getElementById(markersInView.hiro.focusOn).emit("showHIROGlobe");
+                    document.getElementById(markersInView.hiro.focusOn).emit("startRotatingHIRO");
                 }                
             });
             
@@ -419,14 +422,14 @@
             <a-marker id="mit-marker-container" type="pattern" url="../media/pattern/pattern-mit-logo.patt">
                 <a-entity id="mit-rotating-globe"
                           geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
-                          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingHIRO; startEvents: startRotatingHIRO; resumeEvents: resumeRotatingHIRO;"
+                          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingMIT; startEvents: startRotatingMIT; resumeEvents: resumeRotatingMIT;"
                           animation__showMGlobe="property: material.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showMITGlobe;"
                           position="0 0 -1.5"
                           visible="false"
                           material="src: #hov-office-app-icon-texture; opacity: 0;">
                 </a-entity>
-                
-                <a-entity id="mit-text-plane" visible="true" text="value: default; width: 5" rotation="-90 0 0" align="center" geometry="primitive:plane;" material="opacity: 0; transparent: true;"></a-entity>
+                <!--<a-entity id="mit-cover" visible="true" rotation="-90 0 0" align="center" geometry="primitive:plane; width: 1; height: 1;" material="color: white;" position="0 0 -1.5"></a-entity>-->
+                <a-entity id="mit-text-plane" visible="false" text="value: default; width: 5" rotation="-90 0 0" align="center" geometry="primitive:plane;" material="opacity: 0; transparent: true;"></a-entity>
             </a-marker>
 
             <a-marker id="hiro-marker-container" preset="hiro">
