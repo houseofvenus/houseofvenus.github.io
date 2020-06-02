@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classroom | v. 0.0.9</title>
+    <title>Classroom | v. 0.0.12</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -140,7 +140,7 @@
                                 console.log("application moved to page", Classroom.onApplicationPage);
                             }
                         }
-                        else if(Classroom.onApplicationPage===1){   //   if the student is just starting
+                        else if(Classroom.onApplicationPage===0){   //   if the student is just starting
                             if(timeDiffUNI>=3000 && timeDiffUNI<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
                                                                             (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
                                                                             */
@@ -182,9 +182,12 @@
             
             <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true"/>
             
-            <video id="chapter-overview-video" autoplay="false" preload="true" loop="false" src="../media/vid/vertical-test.mp4"></video>
-            <video id="introduction-video" autoplay="false" preload="true" loop="false" src="../media/vid/temple.mp4"></video>
+            <video id="chapter-overview-video" autoplay="false" preload="true" loop="false" src="../media/vid/broll.mp4"></video>
+            <video id="introduction-video" autoplay="false" preload="true" loop="false" src="../media/vid/letstalk.mp4"></video>
             
+            <!--<a-asset-item id="flowering-plant" src="../media/model/Monstera%20Deliciosa%20Plant.obj"></a-asset-item>-->
+            <a-asset-item id="flowering-plant-mtl" src="../media/model/3d-model.mtl"></a-asset-item>
+            <a-asset-item id="flowering-plant-obj" src="../media/model/3d-model.obj"></a-asset-item>
         </a-assets>
         
         <a-marker preset="hiro" id="hiro-marker-container">
@@ -193,16 +196,25 @@
         
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             
-            <a-entity id="concept-check-title"
+            <a-obj-model src="#flowering-plant-obj" mtl="#flowering-plant-mtl" scale="0.005 0.005 0.005"></a-obj-model>
+            <a-entity id="actual-concept-check-label"
                       geometry="primitive: plane; height: 1; width: 1;"
                       position="0 0.5 0.5;"
-                      text="value: INTRODUCTION; width: 8; align: center; opacity: 0;"
+                      text="value: CONCEPT CHECK; width: 8; align: center; opacity: 0;"
                       visible="false"
                       material="opacity: 0; transparent: true;"
                       rotation="-90 0 0"
-                      animation="property: text.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showIntroductionTitle;">
+                      animation="property: text.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showQuestionLabel;">
             </a-entity>
-            
+            <a-entity id="actual-concept-check-label"
+                      geometry="primitive: plane; height: 1; width: 1;"
+                      position="0 0.5 0.5;"
+                      text="value: Describe the various parts of the shoot system for this plant?; width: 4; align: center; opacity: 0;"
+                      visible="false"
+                      material="opacity: 0; transparent: true;"
+                      rotation="-90 0 0"
+                      animation="property: text.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showQuestionLabel;">
+            </a-entity>
         </a-marker>
         
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
