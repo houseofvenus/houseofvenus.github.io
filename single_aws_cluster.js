@@ -856,7 +856,7 @@ else {*/
         res.render('subscribe.html',{root: dir[0]});
     });
 
-    app.get('/classroom', function(req, res){
+    app.get('/class', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
         if(result.isType('desktop')){
@@ -868,7 +868,7 @@ else {*/
             deviceType = 'mobile';
         }
 
-        res.render('classroom.html',{root: dir[0]});
+        res.render('class.html',{root: dir[0]});
     });
 
     app.get('/annesflowershop', function(req, res){
