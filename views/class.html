@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classroom | v. 0.0.19</title>
+    <title>Classroom | v. 0.0.22</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -118,18 +118,26 @@
                                 console.log("application moved to page", Classroom.onApplicationPage);
                             }
                         }
-                        else if(Classroom.onApplicationPage===0){   //   if the student is just starting
+                        else if(Classroom.onApplicationPage===1){   //   if the student is just starting
                             if(timeDiffUNI>=3000 && timeDiffUNI<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
                                                                             (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
                                                                             */
                                 //document.getElementById("play-button-container").click();
-                                let introVideo = document.getElementById("introduction-video");
-                                introVideo.play();
-
-                                introVideo.addEventListener('ended', (event) => {
-                                    console.log('Introduction video is over! start speech recognition button when ready');    
-                                });
                                 
+                                if(AppInFocus===0){
+                                    console.log("clicked on HOV application");
+                                }
+                                else if(AppInFocus===1){
+                                    document.getElementById("main-app-loading-box-0").setAttribute("visible", true);
+                                    document.getElementById("main-app-loading-box-0").emit("showAppLoadingBox");
+                                    
+                                    setTimeout(function(){
+                                        document.getElementById("main-app-loading-box-0").emit("loadingBoxWidth");
+                                        document.getElementById("main-app-loading-box-0").emit("loadingBoxHeight");
+                                        document.getElementById("main-app-loading-box-0").emit("loadingBoxDepth");
+                                    }, 5000);
+                                    
+                                }
                                 
                                 Classroom.onApplicationPage++;
                                 console.log("application moved to page", Classroom.onApplicationPage);
@@ -318,6 +326,32 @@
             <a-asset-item id="flowering-plant-obj" src="../media/model/3d-model.obj"></a-asset-item>-->
         </a-assets>
         
+        <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-entity id="instructional-panel-0-container"
+                      geometry="primitive: plane; width: 2.5; height: 5.0;"
+                      position="0 0.5 0"
+                      visible="true"
+                      rotation="-90 0 0"
+                      material="color: red;">
+            </a-entity>
+            
+            <a-entity id="instructional-panel-1-container"
+                      geometry="primitive: plane; width: 2.5; height: 5.0;"
+                      position="0 0.5 0"
+                      visible="false"
+                      rotation="-90 0 0"
+                      material="color: blue;">
+            </a-entity>
+            
+            <a-entity id="instructional-panel-2-container"
+                      geometry="primitive: plane; width: 2.5; height: 5.0;"
+                      position="0 0.5 0"
+                      visible="false"
+                      rotation="-90 0 0"
+                      material="color: green;">
+            </a-entity>
+        </a-marker>
+        
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             
             <a-entity id="load-option-rotating-globe"
@@ -370,6 +404,18 @@
                       animation="property: position; to: 0 0.5 0; loop: false; dur: 5000; easing: easeInQuad; startEvents: showIntroductionVideo;"
                       material="src: #hov-app-texture; side: double;"
                       >
+            </a-entity>
+            
+            <a-entity id="main-app-loading-box-0"
+                      geometry="primitive: box; width: 1; height: 1; depth: 1;"
+                      position="0 -1 0"
+                      rotation="0 0 0"
+                      visible="false"
+                      material="src: #bakuas-app-texture; side: double;"
+                      animation="property: position; to: 0 1 0; loop: false; dur: 5000; easing: linear; startEvents: showAppLoadingBox;"
+                      animation__loadingBoxAnimationW="property: geometry.width; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxWidth;"
+                      animation__loadingBoxAnimationH="property: geometry.height; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxHeight;"
+                      animation__loadingBoxAnimationD="property: geometry.depth; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxDepth;">
             </a-entity>
         </a-marker>
         

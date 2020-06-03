@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classroom | v. 0.0.9</title>
+    <title>Classroom | v. 0.0.22</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="./css/armoir-style.css" type="text/css" />
     <script src="./js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
     <script src="./js/aframe-ar.js"></script>
@@ -29,7 +29,7 @@
             left: 50%;
             margin-left: -38px;
             z-index: 500;
-            background-image: url("./media/img/hov_ig_logo.png");
+            background-image: url("../media/img/hov_ig_logo.png");
             background-size: 100% 100%;
             color: black;
             line-height: 75px;
@@ -65,35 +65,19 @@
                 counter: 0
             },
         };
-        
+
         let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHIRO, stopTimeUNI, timeDiffUNI;
         
         document.addEventListener("DOMContentLoaded", function(){
             
             document.getElementById("unibeat-marker-container").addEventListener("markerLost", function(){
                 if(Classroom.unibeat.initiated){
-                    console.log("start finger counter on MIT marker");
+                    console.log("start finger counter on UNIBEAT marker");
                     Classroom.unibeat.counter = new Date().getTime();
                 }
                 else{
                     console.log("probably just a camera issue");
                 }
-            });
-            
-            document.getElementById("play-button-container").addEventListener("click", function(){
-                let video = document.getElementById("chapter-overview-video");
-                video.play();
-                
-                video.addEventListener('ended', (event) => {
-                    console.log('Video is over!');
-                    Classroom.onApplicationPage++;
-                    document.getElementById("concept-check-title").setAttribute("visible", true);
-                    document.getElementById("concept-check-title").emit("showIntroductionTitle");
-                    
-                    document.getElementById("intro-video-container").setAttribute("visible", true);
-                    document.getElementById("intro-video-container").emit("showIntroductionVideo");
-                    console.log("application moved to page", Classroom.onApplicationPage);
-                });
             });
             
             document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
@@ -116,14 +100,16 @@
                                 //document.getElementById("play-button-container").click();
                                 let video = document.getElementById("chapter-overview-video");
                                 video.play();
-
+                                document.getElementById("concept-check-title").setAttribute("visible", true);
+                                document.getElementById("concept-check-title").emit("showIntroductionTitle");
+                                
+                                document.getElementById("load-option-rotating-globe").emit("startRotatingLoadOption");
+                                document.getElementById("search-option-rotating-globe").emit("startRotatingSearchOption");
+                                
                                 video.addEventListener('ended', (event) => {
-                                    console.log('Video is over!');
-                                    document.getElementById("concept-check-title").setAttribute("visible", true);
-                                    document.getElementById("concept-check-title").emit("showIntroductionTitle");
-                                    
-                                    document.getElementById("intro-video-container").setAttribute("visible", true);
-                                    document.getElementById("intro-video-container").emit("showIntroductionVideo");
+                                    console.log('Welcome video has ended.');
+                                   // document.getElementById("intro-video-container").setAttribute("visible", true);
+                                    //document.getElementById("intro-video-container").emit("showIntroductionVideo");
                                 });
                                 
                                 console.log("clicking on the video player");
@@ -137,13 +123,21 @@
                                                                             (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
                                                                             */
                                 //document.getElementById("play-button-container").click();
-                                let introVideo = document.getElementById("introduction-video");
-                                introVideo.play();
-
-                                introVideo.addEventListener('ended', (event) => {
-                                    console.log('Introduction video is over! start speech recognition button when ready');    
-                                });
                                 
+                                if(AppInFocus===0){
+                                    console.log("clicked on HOV application");
+                                }
+                                else if(AppInFocus===1){
+                                    document.getElementById("main-app-loading-box-0").setAttribute("visible", true);
+                                    document.getElementById("main-app-loading-box-0").emit("showAppLoadingBox");
+                                    
+                                    setTimeout(function(){
+                                        document.getElementById("main-app-loading-box-0").emit("loadingBoxWidth");
+                                        document.getElementById("main-app-loading-box-0").emit("loadingBoxHeight");
+                                        document.getElementById("main-app-loading-box-0").emit("loadingBoxDepth");
+                                    }, 5000);
+                                    
+                                }
                                 
                                 Classroom.onApplicationPage++;
                                 console.log("application moved to page", Classroom.onApplicationPage);
@@ -153,16 +147,155 @@
                 }
                 else{
                     Classroom.unibeat.initiated = true;
-                    console.log("unibeat initiated!")
+                    console.log("UNIBEAT initiated!")
+                }
+            });
+
+            function hideInitialItems(){
+                
+                
+                document.getElementById("load-option-rotating-globe").emit("stopRotatingLoadOption");
+                document.getElementById("search-option-rotating-globe").emit("stopRotatingSearchOption");
+                
+                document.getElementById("search-option-rotating-globe").emit("hideRotatingSearchOption");
+                document.getElementById("load-option-rotating-globe").emit("hideRotatingLoadOption");
+                
+                document.getElementById("welcome-video-container").emit("hideWelcomeVideo");
+                
+            }
+            
+            function revealSearchOptions(){
+                document.getElementById("intro-video-container").setAttribute("visible", true);
+                document.getElementById("intro-video-container").emit("showIntroductionVideo");
+                
+                document.getElementById("previous-app-preview-button-container").setAttribute("visible", true);
+                document.getElementById("next-app-preview-button-container").setAttribute("visible", true);
+                
+                document.getElementById("previous-app-preview-button-container").emit("showPreviousAppButtonOption");
+                document.getElementById("next-app-preview-button-container").emit("showNextAppButtonOption");
+            }
+            
+            var ApplicationList = ["hov","bakuas"];
+            var AppInFocus = 0;
+            
+            document.getElementById("hiro-marker-container").addEventListener("markerFound", function(){
+                console.log("found HIRO marker!");
+                
+                stopTimeHIRO = new Date().getTime();
+                timeDiffHIRO = stopTimeHIRO-Classroom.hiro.counter;
+                
+                console.log(`--------------------------\n${timeDiffHIRO} has elapsed\n--------------------------`);
+                
+                if(Classroom.hiro.initiated){
+                    if(Classroom.hiro.active){
+                        console.log("already active!");
+                    }
+                    else{
+                        if(Classroom.onApplicationPage===0){   //   if the student is just starting
+                            if(timeDiffHIRO>=3000 && timeDiffHIRO<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
+                                                                            (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
+                                                                            */
+                                //document.getElementById("play-button-container").click();
+                                
+                                console.log("clicked on the SEARCH option");
+                                hideInitialItems();
+                                revealSearchOptions();
+                                Classroom.onApplicationPage++;
+                                console.log("application moved to page", Classroom.onApplicationPage);
+                            }
+                        }
+                        else if(Classroom.onApplicationPage===1){   //   if the student is just starting
+                            if(timeDiffHIRO>=1000 && timeDiffHIRO<=3000){ /*  check if the button is being pressed for at least 4 seconds** 
+                                                                            (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
+                                                                            */
+                                //document.getElementById("play-button-container").click();
+                                if(AppInFocus<ApplicationList.length-1){
+                                    console.log("clicked on the NEXT button.\nShow next item in Application list.");
+                                    AppInFocus++;
+                                    console.log(`previewing the ${ApplicationList[AppInFocus]} application`);
+                                    document.getElementById("intro-video-container").setAttribute("material","src",`#${ApplicationList[AppInFocus]}-app-texture`);
+                                }
+                                else{
+                                    console.log(`reached the end of the list!\n still on the ${ApplicationList[AppInFocus]}`);
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                else{
+                    Classroom.hiro.initiated = true;
+                    console.log("HIRO initiated!")
                 }
             });
 
             document.getElementById("hiro-marker-container").addEventListener("markerLost", function(){
-                console.log("found HIRO marker!");
+                if(Classroom.hiro.initiated){
+                    console.log("start finger counter on HIRO marker");
+                    Classroom.hiro.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
             });
-
-            document.getElementById("mit-marker-container").addEventListener("markerLost", function(){
+            
+            document.getElementById("mit-marker-container").addEventListener("markerFound", function(){
                 console.log("found MIT marker!");
+                
+                stopTimeMIT = new Date().getTime();
+                timeDiffMIT = stopTimeMIT-Classroom.hiro.counter;
+                
+                console.log(`--------------------------\n${timeDiffMIT} has elapsed\n--------------------------`);
+                
+                if(Classroom.mit.initiated){
+                    if(Classroom.mit.active){
+                        console.log("already active!");
+                    }
+                    else{
+                        if(Classroom.onApplicationPage===0){   //   if the student is just starting
+                            if(timeDiffMIT>=3000 && timeDiffMIT<=6000){ /*  check if the button is being pressed for at least 4 seconds** 
+                                                                            (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
+                                                                            */
+                                //document.getElementById("play-button-container").click();
+                                
+                                console.log("clicked on the LOAD option");
+                                
+                                Classroom.onApplicationPage++;
+                                console.log("application moved to page", Classroom.onApplicationPage);
+                            }
+                        }
+                        else if(Classroom.onApplicationPage===1){   //   if the student is just starting
+                            if(timeDiffHIRO>=1000 && timeDiffHIRO<=3000){ /*  check if the button is being pressed for at least 4 seconds** 
+                                                                            (explicitly 3000ms to 6000ms but live MITt tests show that the trigger occurs after 4 seconds on average)
+                                                                            */
+                                if(AppInFocus>0){
+                                    console.log("clicked on the PREVIOUS button.\nShow previous item in Application list.");
+                                    AppInFocus--;
+                                    console.log(`previewing the ${ApplicationList[AppInFocus]} application`);
+                                    document.getElementById("intro-video-container").setAttribute("material","src",`#${ApplicationList[AppInFocus]}-app-texture`);
+                                }
+                                else{
+                                    console.log(`reached the start of the list!\n still on the ${ApplicationList[AppInFocus]}`);
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                else{
+                    Classroom.mit.initiated = true;
+                    console.log("MIT initiated!")
+                }
+            });
+            
+            document.getElementById("mit-marker-container").addEventListener("markerLost", function(){
+                if(Classroom.mit.initiated){
+                    console.log("start finger counter on MIT marker");
+                    Classroom.mit.counter = new Date().getTime();
+                }
+                else{
+                    console.log("probably just a camera issue");
+                }
             });
             
         });
@@ -172,54 +305,140 @@
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" id="main-experience-container">
         <a-assets timeout="20000" id="main-experience-container">
             
-            <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true"/>
+            <img id="earth-planet-object-texture" src="../media/texture/earthmap1k.jpg" preload="true"/>
+            <img id="load-icon-texture" src="../media/img/load-icon.png" preload="true"/>
+            <img id="search-icon-texture" src="../media/img/search-icon.png" preload="true"/>
             
-            <video id="chapter-overview-video" autoplay="false" preload="true" loop="false" src="./media/vid/vertical-test.mp4"></video>
-            <video id="introduction-video" autoplay="false" preload="true" loop="false" src="./media/vid/temple.mp4"></video>            
+            <img id="load-icon-panel-texture" src="../media/img/load-icon-panel.png" preload="true"/>
+            <img id="search-icon-panel-texture" src="../media/img/search-icon-panel.png" preload="true"/>
             
-            <a-asset-item id="flowering-plant" src="horse.obj"></a-asset-item>
+            <video id="chapter-overview-video" autoplay="false" preload="true" loop="false" src="../media/vid/welcome-to-the-IC.mp4"></video>
+            <!--<video id="introduction-video" autoplay="false" preload="true" loop="false" src="../media/vid/letstalk.mp4"></video>-->
             
+            <img id="bakuas-app-texture" src="../media/img/bakuas-app-icon.png" preload="true"/>
+            <img id="hov-app-texture" src="../media/img/hov-office-app-icon.png" preload="true"/>
+            
+            <img id="next-app-button-texture" src="../media/img/next-app-preview.png" preload="true"/>
+            <img id="previous-app-button-texture" src="../media/img/previous-app-preview.png" preload="true"/>
+            
+            <!--<a-asset-item id="flowering-plant" src="../media/model/Monstera%20Deliciosa%20Plant.obj"></a-asset-item>
+            <a-asset-item id="flowering-plant-mtl" src="../media/model/3d-model.mtl"></a-asset-item>
+            <a-asset-item id="flowering-plant-obj" src="../media/model/3d-model.obj"></a-asset-item>-->
         </a-assets>
         
-        <a-marker preset="hiro" id="hiro-marker-container">
+        <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-entity id="instructional-panel-0-container"
+                      geometry="primitive: plane; width: 2.5; height: 5.0;"
+                      position="0 0.5 0"
+                      visible="true"
+                      rotation="-90 0 0"
+                      material="color: red;">
+            </a-entity>
             
+            <a-entity id="instructional-panel-1-container"
+                      geometry="primitive: plane; width: 2.5; height: 5.0;"
+                      position="0 0.5 0"
+                      visible="false"
+                      rotation="-90 0 0"
+                      material="color: blue;">
+            </a-entity>
+            
+            <a-entity id="instructional-panel-2-container"
+                      geometry="primitive: plane; width: 2.5; height: 5.0;"
+                      position="0 0.5 0"
+                      visible="false"
+                      rotation="-90 0 0"
+                      material="color: green;">
+            </a-entity>
         </a-marker>
         
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
             
-            <a-entity id="concept-check-title"
-                      geometry="primitive: plane; height: 1; width: 1;"
-                      position="0 0.5 0.5;"
-                      text="value: INTRODUCTION; width: 8; align: center; opacity: 0;"
+            <a-entity id="load-option-rotating-globe"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingLoadOption; startEvents: startRotatingLoadOption; resumeEvents: resumeRotatingLoadOption;"
+                      animation__hideLoadButton="property: material.opacity; to: 0; loop: false; dur: 1000; easing: linear; startEvents: hideRotatingLoadOption;"
+                      position="0 0.5 0"
+                      visible="true;"
+                      material="src: #load-icon-panel-texture; opacity: 1.0;">
+            </a-entity>
+            
+            <a-entity id="previous-app-preview-button-container"
+                      geometry="primitive: plane; width: 1.0; height: 1.0;"
+                      animation__showPreviousAppButton="property: material.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showPreviousAppButtonOption;"
+                      position="0 0.5 0"
                       visible="false"
-                      material="opacity: 0; transparent: true;"
                       rotation="-90 0 0"
-                      animation="property: text.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showIntroductionTitle;">
+                      material="src: #previous-app-button-texture; opacity: 0;">
             </a-entity>
             
         </a-marker>
         
         <a-marker id="unibeat-marker-container" type="pattern" url="./media/pattern/pattern-unibeat.patt">
-            <a-video src="#chapter-overview-video" width="3" height="5" position="0 0.5 -2" rotation="-90 0 0"></a-video>
+            <a-video id="welcome-video-container"
+                     src="#chapter-overview-video"
+                     width="4"
+                     height="3"
+                     position="0 0.5 0"
+                     rotation="-90 0 0"
+                     visible="true"
+                     material="opacity: 1.0;"
+                     animation__hideWelcome="property: material.opacity; to: 0; loop: false; dur: 3000; easing: easeInQuad; startEvents: hideWelcomeVideo;"></a-video>
+            
             <a-entity id="concept-check-title"
                       geometry="primitive: plane; height: 1; width: 1;"
-                      position="0 0.5 0.5;"
-                      text="value: INTRODUCTION; width: 8; align: center; opacity: 0;"
+                      position="0 0.6 1;"
+                      text="value: Immersive Classroom; width: 8; align: center; opacity: 0; font: mozillavr;"
                       visible="false"
                       material="opacity: 0; transparent: true;"
                       rotation="-90 0 0"
-                      animation="property: text.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showIntroductionTitle;">
+                      animation="property: text.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showIntroductionTitle;"
+                      animation__hideWelcomeLabel="property: text.opacity; to: 0; loop: false; dur: 1000; easing: linear; startEvents: hideIntroductionTitle;">
             </a-entity>
-            <a-video id="intro-video-container"
-                     src="#introduction-video"
-                     width="3"
-                     height="2"
-                     position="0 0.5 -1"
-                     rotation="-90 0 0"
-                     visible="false"
-                     animation="property: position; to: 0 0.5 2; loop: false; dur: 2000; easing: easeInQuad; startEvents: showIntroductionVideo;"
-                     >
-            </a-video>
+            
+            <a-entity id="intro-video-container"
+                      geometry="primitive: plane; width: 3; height: 3"
+                      position="0 0.5 4"
+                      rotation="-90 0 0"
+                      visible="false"
+                      animation="property: position; to: 0 0.5 0; loop: false; dur: 5000; easing: easeInQuad; startEvents: showIntroductionVideo;"
+                      material="src: #hov-app-texture; side: double;"
+                      >
+            </a-entity>
+            
+            <a-entity id="main-app-loading-box-0"
+                      geometry="primitive: box; width: 1; height: 1; depth: 1;"
+                      position="0 -1 0"
+                      rotation="0 0 0"
+                      visible="false"
+                      material="src: #bakuas-app-texture; side: double;"
+                      animation="property: position; to: 0 1 0; loop: false; dur: 5000; easing: linear; startEvents: showAppLoadingBox;"
+                      animation__loadingBoxAnimationW="property: geometry.width; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxWidth;"
+                      animation__loadingBoxAnimationH="property: geometry.height; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxHeight;"
+                      animation__loadingBoxAnimationD="property: geometry.depth; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxDepth;">
+            </a-entity>
+        </a-marker>
+        
+        <a-marker preset="hiro" id="hiro-marker-container">
+            
+            <a-entity id="search-option-rotating-globe"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; pauseEvents: stopRotatingSearchOption; startEvents: startRotatingSearchOption; resumeEvents: resumeRotatingSearchOption;"
+                      animation__hideSearchButton="property: material.opacity; to: 0; loop: false; dur: 1000; easing: linear; startEvents: hideRotatingSearchOption;"
+                      position="0 0.5 0"
+                      visible="true"
+                      material="src: #search-icon-panel-texture; opacity: 1.0;">
+            </a-entity>
+            
+            <a-entity id="next-app-preview-button-container"
+                      geometry="primitive: plane; width: 1.0; height: 1.0;"
+                      animation__showNextAppButton="property: material.opacity; to: 1.0; loop: false; dur: 1000; easing: linear; startEvents: showNextAppButtonOption;"
+                      position="0 0.5 0"
+                      visible="false"
+                      rotation="-90 0 0"
+                      material="src: #next-app-button-texture; opacity: 0;">
+            </a-entity>
+            
         </a-marker>
         
         <a-entity camera look-controls>
@@ -229,8 +448,6 @@
                     material="color: black; shader: flat">
           </a-entity>-->
         </a-entity>
-
-        <!--<a-camera></a-camera>-->
     </a-scene>
     <div id="play-button-container">
     </div>
