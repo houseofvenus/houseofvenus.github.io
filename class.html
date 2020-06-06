@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classroom | v. 0.0.22</title>
+    <title>Classroom | v. 0.0.23</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -135,6 +135,30 @@
                                         document.getElementById("main-app-loading-box-0").emit("loadingBoxWidth");
                                         document.getElementById("main-app-loading-box-0").emit("loadingBoxHeight");
                                         document.getElementById("main-app-loading-box-0").emit("loadingBoxDepth");
+                                        
+                                        setTimeout(function(){
+                                            console.log("hide 1");
+                                            document.getElementById("next-app-preview-button-container").setAttribute("visible", false);
+                                            
+                                            setTimeout(function(){
+                                                console.log("hide 2");
+                                                document.getElementById("previous-app-preview-button-container").setAttribute("visible", false);
+                                                
+                                                setTimeout(function(){
+                                                    console.log("hide 3");
+                                                    document.getElementById("intro-video-container").setAttribute("visible", false);
+                                                    
+                                                    setTimeout(function(){
+                                                        console.log("hide 4");
+                                                        document.getElementById("main-app-loading-box-0").emit("hideLoadingBoxContainer");
+                                                    }, 2000);
+                                                    
+                                                }, 2000);
+                                                
+                                            }, 2000);
+                                            
+                                        }, 10000);
+                                        
                                     }, 5000);
                                     
                                 }
@@ -411,11 +435,12 @@
                       position="0 -1 0"
                       rotation="0 0 0"
                       visible="false"
-                      material="src: #bakuas-app-texture; side: double;"
+                      material="src: #bakuas-app-texture; side: double; opacity: 1.0;"
                       animation="property: position; to: 0 1 0; loop: false; dur: 5000; easing: linear; startEvents: showAppLoadingBox;"
-                      animation__loadingBoxAnimationW="property: geometry.width; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxWidth;"
-                      animation__loadingBoxAnimationH="property: geometry.height; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxHeight;"
-                      animation__loadingBoxAnimationD="property: geometry.depth; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxDepth;">
+                      animation__loadingBoxAnimationW="property: geometry.width; to: 30; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxWidth;"
+                      animation__loadingBoxAnimationH="property: geometry.height; to: 30; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxHeight;"
+                      animation__loadingBoxAnimationD="property: geometry.depth; to: 30; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxDepth;"
+                      animation__hideLoadingBox="property: material.opacity; to: 0; loop: false; dur: 2000; easing: easeInQuad; startEvents: hideLoadingBoxContainer;">
             </a-entity>
         </a-marker>
         

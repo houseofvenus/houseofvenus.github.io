@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classroom | v. 0.0.22</title>
+    <title>Classroom | v. 0.0.28</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,6 +70,8 @@
         
         document.addEventListener("DOMContentLoaded", function(){
             
+           
+            
             document.getElementById("unibeat-marker-container").addEventListener("markerLost", function(){
                 if(Classroom.unibeat.initiated){
                     console.log("start finger counter on UNIBEAT marker");
@@ -78,6 +80,15 @@
                 else{
                     console.log("probably just a camera issue");
                 }
+            });
+            
+            document.getElementById("play-button-container").addEventListener("click", function(){
+             /*    document.getElementById("rotating-apple-cube").emit("rotateAppleCube");
+            document.getElementById("rotating-disney-cube").emit("rotateDisneyCube");
+            document.getElementById("rotating-spacex-cube").emit("rotateSpaceXCube");*/
+                
+                let video = document.getElementById("spacex-panel-video");
+                video.play();/**/
             });
             
             document.getElementById("unibeat-marker-container").addEventListener("markerFound", function(){
@@ -135,6 +146,30 @@
                                         document.getElementById("main-app-loading-box-0").emit("loadingBoxWidth");
                                         document.getElementById("main-app-loading-box-0").emit("loadingBoxHeight");
                                         document.getElementById("main-app-loading-box-0").emit("loadingBoxDepth");
+                                        
+                                        setTimeout(function(){
+                                            console.log("hide 1");
+                                            document.getElementById("next-app-preview-button-container").setAttribute("visible", false);
+                                            
+                                            setTimeout(function(){
+                                                console.log("hide 2");
+                                                document.getElementById("previous-app-preview-button-container").setAttribute("visible", false);
+                                                
+                                                setTimeout(function(){
+                                                    console.log("hide 3");
+                                                    document.getElementById("intro-video-container").setAttribute("visible", false);
+                                                    
+                                                    setTimeout(function(){
+                                                        console.log("hide 4");
+                                                        document.getElementById("main-app-loading-box-0").emit("hideLoadingBoxContainer");
+                                                    }, 2000);
+                                                    
+                                                }, 2000);
+                                                
+                                            }, 2000);
+                                            
+                                        }, 10000);
+                                        
                                     }, 5000);
                                     
                                 }
@@ -313,7 +348,7 @@
             <img id="search-icon-panel-texture" src="../media/img/search-icon-panel.png" preload="true"/>
             
             <video id="chapter-overview-video" autoplay="false" preload="true" loop="false" src="../media/vid/welcome-to-the-IC.mp4"></video>
-            <!--<video id="introduction-video" autoplay="false" preload="true" loop="false" src="../media/vid/letstalk.mp4"></video>-->
+            <video id="spacex-panel-video" autoplay="false" preload="true" loop="false" src="../media/vid/spacex.mp4"></video>
             
             <img id="bakuas-app-texture" src="../media/img/bakuas-app-icon.png" preload="true"/>
             <img id="hov-app-texture" src="../media/img/hov-office-app-icon.png" preload="true"/>
@@ -321,21 +356,59 @@
             <img id="next-app-button-texture" src="../media/img/next-app-preview.png" preload="true"/>
             <img id="previous-app-button-texture" src="../media/img/previous-app-preview.png" preload="true"/>
             
-            <!--<a-asset-item id="flowering-plant" src="../media/model/Monstera%20Deliciosa%20Plant.obj"></a-asset-item>
-            <a-asset-item id="flowering-plant-mtl" src="../media/model/3d-model.mtl"></a-asset-item>
-            <a-asset-item id="flowering-plant-obj" src="../media/model/3d-model.obj"></a-asset-item>-->
+            <img id="apple-texture" src="../media/img/apple-stock-icon.png" preload="true"/>
+            <img id="disney-texture" src="../media/img/disney-icon.png" preload="true"/>
+            <img id="spacex-texture" src="../media/img/spacex-icon.png" preload="true"/>
+            
         </a-assets>
         
         <a-marker id="nyt-marker-container" type="pattern" url="./media/pattern/pattern-nyt-marker-candidate.patt">
-            <a-entity id="instructional-panel-0-container"
-                      geometry="primitive: plane; width: 2.5; height: 5.0;"
-                      position="0 0.5 0"
+            
+           <a-entity id="stonks-title"
+                      geometry="primitive: plane; height: 1; width: 1;"
+                      position="0 0.6 -2;"
+                      text="value: SPACEX; width: 8; align: center; opacity: 1.0; font: mozillavr;"
                       visible="true"
-                      rotation="-90 0 0"
-                      material="color: red;">
+                      material="opacity: 0; transparent: true;"
+                      rotation="-90 0 0">
             </a-entity>
             
-            <a-entity id="instructional-panel-1-container"
+            <!-- <a-entity id="rotating-apple-cube"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; startEvents: rotateAppleCube;"
+                      position="0 0.5 0"
+                      rotation="0 0 0"
+                      visible="true;"
+                      material="src: #apple-texture; opacity: 1.0;">
+            </a-entity>
+            
+            <a-entity id="rotating-disney-cube"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; startEvents: rotateDisneyCube;"
+                      position="-1.5 0.5 0"
+                        rotation="0 0 0"
+                      visible="true;"
+                      material="src: #disney-texture; opacity: 1.0;">
+            </a-entity>
+            
+            <a-entity id="rotating-spacex-cube"
+                      geometry="primitive: box; width: 1.0; height: 1.0; depth: 1.0;"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear; startEvents: rotateSpaceXCube;"
+                      position="1.5 0.5 0"
+                      visible="true;"
+                      rotation="0 0 0"
+                      material="src: #spacex-texture; opacity: 1.0;">
+            </a-entity>-->
+            <a-video id="instructional-panel-0-container"
+                     width="4"
+                     height="3"
+                     position="0 0.5 0"
+                     visible="true"
+                     rotation="-90 0 0"
+                     src="#spacex-panel-video">
+            </a-video>
+            
+           <!-- <a-entity id="instructional-panel-1-container"
                       geometry="primitive: plane; width: 2.5; height: 5.0;"
                       position="0 0.5 0"
                       visible="false"
@@ -349,7 +422,7 @@
                       visible="false"
                       rotation="-90 0 0"
                       material="color: green;">
-            </a-entity>
+            </a-entity>-->
         </a-marker>
         
         <a-marker id="mit-marker-container" type="pattern" url="./media/pattern/pattern-mit-logo.patt">
@@ -411,11 +484,12 @@
                       position="0 -1 0"
                       rotation="0 0 0"
                       visible="false"
-                      material="src: #bakuas-app-texture; side: double;"
+                      material="src: #bakuas-app-texture; side: double; opacity: 1.0;"
                       animation="property: position; to: 0 1 0; loop: false; dur: 5000; easing: linear; startEvents: showAppLoadingBox;"
-                      animation__loadingBoxAnimationW="property: geometry.width; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxWidth;"
-                      animation__loadingBoxAnimationH="property: geometry.height; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxHeight;"
-                      animation__loadingBoxAnimationD="property: geometry.depth; to: 20; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxDepth;">
+                      animation__loadingBoxAnimationW="property: geometry.width; to: 30; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxWidth;"
+                      animation__loadingBoxAnimationH="property: geometry.height; to: 30; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxHeight;"
+                      animation__loadingBoxAnimationD="property: geometry.depth; to: 30; loop: false; dur: 10000; easing: easeInQuad; startEvents: loadingBoxDepth;"
+                      animation__hideLoadingBox="property: material.opacity; to: 0; loop: false; dur: 10000; easing: easeInQuad; startEvents: hideLoadingBoxContainer;">
             </a-entity>
         </a-marker>
         
