@@ -856,6 +856,21 @@ else {*/
         res.render('subscribe.html',{root: dir[0]});
     });
 
+    app.get('/gta', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('gta.html',{root: dir[0]});
+    });
+
     app.get('/class', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());

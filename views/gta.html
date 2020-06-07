@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        body, html, .page-container{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #lyoko-generate-button{
+            width: 150px;
+            height: 200px;
+            background-size: 100% 100%;
+            background-image: url("../media/img/code-lyoko.png");
+            cursor: pointer;
+            z-index: 100;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -100px 0 0 -75px;
+            transition: margin 0.25s, width 0.25s, height 0.25s;
+        }
+        
+        #loader-container{
+            opacity: 0;
+            width: 5px;
+            height: 25px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            margin-left: -125px;
+            background-color: red;
+            transition: width 15s, background-color 1s;
+        }
+    </style>
+    <script src="../js/aframe100.js"></script>
+    <script src="../js/aframe-ar.js"></script>
+    <script>
+        function isEven(value) {
+            if (value%2 == 0)
+                return true;
+            else
+                return false;
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            let loaderVisible = false;
+            
+            document.getElementById("lyoko-generate-button").addEventListener("click", function(){
+                let counter = 60;
+                let button = this;
+                let targetOne = ["200px", "266px", "-133px 0 0 -100px"];
+                let targetTwo = ["150px", "200px", "-100px 0 0 -75px"];
+                let loader = document.getElementById("loader-container");
+                
+                let jumpInterval = setInterval(function(){
+                    
+                    if(!loaderVisible){
+                        loaderVisible = true;
+                        loader.style.opacity = 1.0;
+                        loader.style.width = "250px";
+                    }
+                    
+                    if(isEven(counter)){
+                        button.style.width = targetOne[0];
+                        button.style.height = targetOne[1];
+                        button.style.margin = targetOne[2];
+                    }
+                    else{
+                        button.style.width = targetTwo[0];
+                        button.style.height = targetTwo[1];
+                        button.style.margin = targetTwo[2];
+                    }
+                    
+                    counter--;
+                    
+                    if(counter===0){
+                        clearInterval(jumpInterval);
+                        loader.style.backgroundColor = "aquamarine";
+                        
+                        setTimeout(function(){
+                            loader.style.opacity = 0;
+                            loader.style.width = "5px";
+                            loader.style.backgroundColor = "red";
+                        }, 2000);
+                        
+                    }
+                    
+                }, 250);
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="lyoko-generate-button">
+    
+    </div>
+    <div id="loader-container">
+    
+    </div>
+    <a-scene embedded arjs>
+        
+    </a-scene>
+</body>
+</html>
