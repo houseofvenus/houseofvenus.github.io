@@ -119,6 +119,36 @@ else {*/
         res.render('modelTest.html',{root: dir[0]});
     });
 
+    app.get('/imageproc', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('classify.html',{root: dir[0]});
+    });
+
+    app.get('/tin', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('tindex.html',{root: dir[0]});
+    });
+
     app.get('/user', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
