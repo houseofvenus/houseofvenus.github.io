@@ -75,6 +75,7 @@ else {*/
             "./media/fonts",     /* 10 */
             "./media/ico",  /* 11 */
             "./media/vid",  /* 12 */
+            "./media/tf-models",  /* 13 */
         ]
     };
 
@@ -101,6 +102,21 @@ else {*/
         }
 
         res.render('index.html',{root: dir[0]});
+    });
+
+    app.get('/tfm', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('modelTest.html',{root: dir[0]});
     });
 
     app.get('/user', function(req, res){
@@ -959,6 +975,11 @@ else {*/
     app.get('/media/texture/:texture_id', function(req, res){
         var texture_id = req.params.texture_id;
         res.sendFile(texture_id, {root: dir[3]});
+    });
+
+    app.get('/media/tf-models/:tfm_id', function(req, res){
+        var tfm_id = req.params.tfm_id;
+        res.sendFile(tfm_id, {root: dir[13]});
     });
 
     app.get('/media/gifs/:gif_id', function(req, res){
