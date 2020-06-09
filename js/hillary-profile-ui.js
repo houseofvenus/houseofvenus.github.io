@@ -58,9 +58,9 @@ function buildMarkup(){
                   geometry="primitive: plane; width: 1; height: 1"
                   position="-2.75 1.2 -4"
                   rotation="-90 0 0"
-                  text="value: Saturday\nMay 9,\n2020; color: white; width: 6; align: center; font: https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                  text="value: Monday\nJune 8,\n2020; color: white; opacity: 0; width: 6; align: center; font: https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
                   visible="false"
-                  animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showDateContainerPanel;"
+                  animation="property: text.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showDateContainerPanel;"
                   material="transparent: true; opacity: 0;">
         </a-entity>
 
@@ -96,7 +96,7 @@ function buildMarkup(){
                   geometry="primitive: plane; width: 1; height: 1"
                   position="0.5 1.2 -4"
                   rotation="-90 0 0"
-                  material="side: double; src: #on-tech-with-shira-ovide-cover;"
+                  material="side: double; src: #dealbook-cover;"
                   visible="false"
                   animation__selectPanel4MoveToCenter="startEvents: selectPanel; property: position; to: 0 1.5 -2; easing: linear; dur: 3000;"
                   animation__selectPanel4GrowPanelWidth="property: geometry.width; to: 5; easing: linear; dur: 3000; startEvents: selectPanel;"
@@ -224,6 +224,16 @@ function buildMarkup(){
                   material="side: double; src: #sports-section-cover;"
                   visible="false"
                   animation__selectPanel16MoveToCenter="property: position; to: 0 1.5 -5.5; easing: linear; dur: 3000; startEvents: selectPanel;"><!--#books-section-cover;-->
+        </a-entity>
+
+<!---this is where the fuse container video is--->
+        <a-entity id="fuse-container-video-container" class="immersive-component"
+                  geometry="primitive: plane; width: 4.5; height: 3"
+                  position="0.25 0.5 -1.9"
+                  rotation="-90 0 0"
+                  material="side: double; color: black; opacity: 1.0; transparent: false;"
+                  visible="false"
+                  animation__fuseVideo="property: position; to: 0.25 1.4 -1.9; dur: 2500; easing: linear; startEvents: showFuseContainerVideo;">
         </a-entity>
 
         <!-- start of the photo gallery -->

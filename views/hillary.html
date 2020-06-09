@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hillary Yeboah's cARd | v. 0.4.0</title>
+    <title>Hillary Yeboah's cARd | v. 0.4.2</title>
     <!-- Version standard:
         new york times application flow works all the way in and out back to main menu; assets load in a timely fashion; stability is 60% optimal;
         bakuas application flows works in to the cover page and back; assets load in .a time ly basis; stability i s 70% optimal
@@ -21,6 +21,12 @@
 </head>
 <body style='margin : 0px; overflow: hidden;'>
     <div id="go-back-to-app-cover-page-button-container">x</div>
+    <div id="fuse-container"></div>
+    <!--<div id="keyboard-container"></div>-->
+    <video id="excessive-force-video">
+        <source src="../media/vid/democrat-excessive-force-speeches-short.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
     <div id="barrons-go-back-to-app-cover-page-button-container">x</div>
     <div id="open-desktop-page-options-container">
         <div id="open-desktop-prompt-container">
@@ -40,7 +46,6 @@
             <img id="jupiter-planet-object-texture" src="./media/texture/jupiter2_2k.jpg" preload="true" />-->
             <img id="nyt-banner" src="./media/img/nyt_banner.png" preload="true" />
             <img id="the-daily-cover" src="./media/img/the-daily-cover.png" preload="true" />
-            
             
             <img id="nyt-app-icon-texture" src="./media/img/nyt-app-icon.png" preload="true" />
             <img id="bakuas-app-icon-texture" src="./media/img/bakuas-app-icon.png" preload="true" />
@@ -65,9 +70,9 @@
             
             <img id="jigsaw-puzzle-cover" src="./media/img/jigsaw-puzzle-story.png" preload="true"/>
             <img id="streaming-pro-cover" src="./media/img/streaming-pro-story.png" preload="true"/>
-            <img id="stock-cover" src="./media/img/stock-cover-wed1530.png" preload="true" />
-            <img id="weather-preview-cover" src="./media/img/weather-preview-cover-wed1530.png" preload="true" />
-            <img id="main-cover-image-0" src="./media/img/sanders-out.png" preload="true"/>
+            <img id="stock-cover" src="./media/img/stock-cover-monday-june8.png" preload="true" />
+            <img id="weather-preview-cover" src="./media/img/weather-cover-monday-june8.png" preload="true" />
+            <img id="main-cover-image-0" src="./media/img/blm-cover.png" preload="true"/>
             <img id="main-cover-image-1" src="./media/img/joe-lingeman-puzzle-painting.png" preload="true"/>
             <img id="main-cover-image-2" src="./media/img/quibi-story-cover.png" preload="true"/>
             <img id="main-cover-image-3" src="./media/img/tedros-who-story-cover.png" preload="true"/>
@@ -78,16 +83,16 @@
             <img id="main-cover-image-8" src="./media/img/french-sailors-coronavirus-story.png" preload="true"/>
             
             
-            <img id="on-tech-with-shira-ovide-cover" src="./media/img/on-tech-with-shira-ovide-story.png" preload="true" />
+            <img id="dealbook-cover" src="./media/img/dealbook-square.png" preload="true" />
             <img id="together-apart-cover" src="./media/img/together-apart-story.png" preload="true"/>
-            <img id="science-section-cover" src="./media/img/nasa-worm-logo-story.png" preload="true"/>
-            <img id="technology-section-cover" src="./media/img/stadia-controller-story.png" preload="true"/>
-            <img id="business-section-cover" src="./media/img/tech-flix-story.png" preload="true"/>
-            <img id="arts-section-cover" src="./media/img/arts-coronavirus-refund-story-cover.png" preload="true"/>
-            <img id="books-section-cover" src="./media/img/notes-from-an-apocolypse-story-image.png" preload="true"/>
-            <img id="sports-section-cover" src="./media/img/coronavirus-athlete-docs.png" preload="true"/>
-            <img id="opinion-story-preview" src="./media/img/italy-is-sending-another-warning-cover.png" preload="true"/>
-            <img id="opinion-image-cover" src="./media/img/italy-is-sending-story-start.png" preload="true"/>
+            <img id="science-section-cover" src="./media/img/virus-genes-science-cover.png" preload="true"/>
+            <img id="technology-section-cover" src="./media/img/milky-way-technology-cover.png" preload="true"/>
+            <img id="business-section-cover" src="./media/img/retiring-business-cover.png" preload="true"/>
+            <img id="arts-section-cover" src="./media/img/floyd-art-cover.png" preload="true"/>
+            <img id="books-section-cover" src="./media/img/guibert-book-cover.png" preload="true"/>
+            <img id="sports-section-cover" src="./media/img/underdog-bundesliga-sports-cover.png" preload="true"/>
+            <img id="opinion-story-preview" src="./media/img/opinion-story-preview.png" preload="true"/>
+            <img id="opinion-image-cover" src="./media/img/opinion-story-image-cover.png" preload="true"/>
             
             
             
@@ -96,7 +101,6 @@
             <img id="toggle-playback-pause-button-icon" src="./media/img/pause-icon.png" preload="true"/>
             <img id="play-next-item-button-icon" src="./media/img/play-next-icon.png" preload="true"/>
             <img id="toggle-volume-button-icon" src="./media/img/volume-on-icon.png" preload="true"/>
-            
             
             
             

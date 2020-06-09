@@ -37,6 +37,16 @@ let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHI
 
 
 function attachImmersiveButtonListeners(){
+    document.getElementById("fuse-container").addEventListener("click", function(){
+        document.getElementById("fuse-container-video-container").emit("showFuseContainerVideo");
+        
+        setTimeout(function(){
+            document.getElementById("excessive-force-video").style.display = "block";
+            document.getElementById("excessive-force-video").play();
+        }, 3000);
+        
+    });
+    
     document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
         if(MarkerGridTracker.nyt.initiated){
             console.log("start finger counter");
@@ -787,6 +797,8 @@ function attachImmersiveButtonListeners(){
                         document.getElementById("other-stories-banner-item-container-2").setAttribute("visible", true);
 
                         document.getElementById("front-page-main-cover-0").setAttribute("visible", true);
+                        document.getElementById("fuse-container-video-container").setAttribute("visible", true);
+                        
                         document.getElementById("front-page-main-cover-0").emit("showCoverZero");
 
                         document.getElementById("front-page-main-cover-1").setAttribute("visible", true);
@@ -805,6 +817,7 @@ function attachImmersiveButtonListeners(){
                         document.getElementById("bottom-half-front-cover-action-button-container-2").setAttribute("visible", true);
 
                         document.getElementById("go-back-to-app-cover-page-button-container").style.display = "block";
+                        document.getElementById("fuse-container").style.display = "block";
                         document.getElementById("go-back-to-app-cover-page-button-container").style.opacity = 1.0;
                         /**/
 
@@ -899,6 +912,7 @@ function attachImmersiveButtonListeners(){
                         document.getElementById("barrons-bottom-half-front-cover-action-button-container-2").setAttribute("visible", true);
 
                         document.getElementById("barrons-go-back-to-app-cover-page-button-container").style.display = "block";
+                        document.getElementById("fuse-container").style.display = "block";
                         document.getElementById("barrons-go-back-to-app-cover-page-button-container").style.opacity = 1.0;
                         /**/
 
@@ -989,6 +1003,8 @@ function attachImmersiveButtonListeners(){
             document.getElementById("other-stories-banner-item-container-2").setAttribute("visible", false);
 
             document.getElementById("front-page-main-cover-0").setAttribute("visible", false);
+            document.getElementById("fuse-container-video-container").setAttribute("visible", false);
+            
             document.getElementById("front-page-main-cover-0").emit("showCoverZero");
 
             document.getElementById("front-page-main-cover-1").setAttribute("visible", false);
@@ -1009,6 +1025,7 @@ function attachImmersiveButtonListeners(){
 
             setTimeout(function(){
                 document.getElementById("go-back-to-app-cover-page-button-container").style.display = "none";
+                document.getElementById("fuse-container").style.display = "none";
             }, 500);
 
             document.getElementById("go-back-to-app-cover-page-button-container").style.opacity = 0;
@@ -1109,6 +1126,7 @@ function attachImmersiveButtonListeners(){
 
             setTimeout(function(){
                 document.getElementById("barrons-go-back-to-app-cover-page-button-container").style.display = "none";
+                document.getElementById("fuse-container").style.display = "none";
             }, 500);
 
             document.getElementById("barrons-go-back-to-app-cover-page-button-container").style.opacity = 0;
@@ -1176,6 +1194,7 @@ function attachImmersiveButtonListeners(){
             setTimeout(function(){
                 //document.getElementById("cARd-go-back-to-app-cover-page-button-container").style.display = "none";
                 document.getElementById("open-desktop-page-options-container").style.display = "none";
+                document.getElementById("fuse-container").style.display = "none";
             }, 500);
 
             MarkerGridTracker.repressor.onApplicationSection.current = 0; // move onto first page in cARd app
