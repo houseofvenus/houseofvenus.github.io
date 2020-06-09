@@ -39,11 +39,11 @@ let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHI
 function attachImmersiveButtonListeners(){
     document.getElementById("fuse-container").addEventListener("click", function(){
         document.getElementById("fuse-container-video-container").emit("showFuseContainerVideo");
-        
+        document.getElementById("excessive-force-video").style.display = "block";
+        document.getElementById("excessive-force-video").play();
         setTimeout(function(){
-            document.getElementById("excessive-force-video").style.display = "block";
-            document.getElementById("excessive-force-video").play();
-        }, 3000);
+            document.getElementById("excessive-force-video").style.opacity = 1.0;
+        }, 50);
         
     });
     
