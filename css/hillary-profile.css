@@ -58,6 +58,8 @@
     display: none;
     margin: -225px 0 0 -300px;
     z-index: 300;
+    opacity: 1;
+    transition: opacity 2s;
 }
 
 #open-desktop-page-options-container{

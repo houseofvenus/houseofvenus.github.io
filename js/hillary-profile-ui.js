@@ -233,7 +233,8 @@ function buildMarkup(){
                   rotation="-90 0 0"
                   material="side: double; color: black; opacity: 1.0; transparent: false;"
                   visible="false"
-                  animation__fuseVideo="property: position; to: 0.25 1.4 -1.9; dur: 2500; easing: linear; startEvents: showFuseContainerVideo;">
+                  animation__fuseVideo="property: position; to: 0.25 1.4 -1.9; dur: 2500; easing: linear; startEvents: showFuseContainerVideo;"
+                  animation__hideFuseVideo="property: position; from: 0.25 1.4 -1.9; to: 0.25 0.5 -1.9; dur: 2500; easing: linear; startEvents: hideFuseContainerVideo;">
         </a-entity>
 
         <!-- start of the photo gallery -->

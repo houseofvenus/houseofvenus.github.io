@@ -47,6 +47,16 @@ function attachImmersiveButtonListeners(){
         
     });
     
+    document.getElementById("excessive-force-video").onended = function(){
+        document.getElementById("excessive-force-video").style.opacity = 0;
+        document.getElementById("fuse-container-video-container").emit("hideFuseContainerVideo");
+
+        setTimeout(function(){
+            document.getElementById("excessive-force-video").style.display = "none";
+            document.getElementById("excessive-force-video").style.opacity = 1.0;
+        }, 2000);
+    }
+    
     document.getElementById("nyt-marker-container").addEventListener("markerLost", function(){
         if(MarkerGridTracker.nyt.initiated){
             console.log("start finger counter");
