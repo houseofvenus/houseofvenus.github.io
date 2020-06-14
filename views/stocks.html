@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stocks | Integrating Apps | v 0.0.1</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="../js/aframe100.js"></script><!--https://aframe.io/releases/1.0.0/-->
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" type="text/css"/>
+</head>
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs id="main-experience-container">
+        <a-assets timeout="20000">
+            <img id="mit-application-panel-texture" src="../media/img/mit-application-panel.png" preload="true" />
+            <img id="mit-application-secondary-panel-texture" src="../media/img/mit-application-secondary-panel.png" preload="true" />
+            
+            <img id="hiro-application-panel-texture" src="../media/img/barrons-banner-logo.png" preload="true" />
+            <img id="hiro-application-secondary-panel-texture" src="../media/img/barrons-description-panel.png" preload="true" />
+            
+            <!--<video id="nyt-main-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/sanders-quit.mp4"></video>
+            <video id="bakuas-ticker-video" autoplay="false" webkit-playsinline="true" playsinline="true" loop="false" src="./media/vid/ticker-nasdaq.mp4"></video>-->
+            
+            <img id="barrons-magazine-main-cover-image-0" src="../media/texture/home-prices-story-cover.png" preload="true" />
+            <img id="barrons-magazine-main-cover-image-1" src="../media/texture/value-in-real-estate-stocks-story-cover.png" preload="true" />
+        </a-assets>
+        
+        <a-marker id="nyt-marker-container" type="pattern" url="../media/pattern/pattern-nyt-marker-candidate.patt">
+            <a-entity id="stocks-panel-0"
+                  geometry="primitive: plane; width: 1.5; height: 1.5;"
+                  animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
+                  position="0 0.25 0"
+                  rotation="-90 0 0"
+                  visible="true"
+                  material="color: red; opacity: 1.0; side: double;">
+            </a-entity>
+            
+            <a-entity id="stocks-panel-1"
+                  geometry="primitive: plane; width: 1.5; height: 1.5;"
+                  animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
+                  position="1.55 0.25 0"
+                  rotation="-90 0 0"
+                  visible="true"
+                  material="color: green; opacity: 1.0; side: double;">
+            </a-entity>
+            
+            <a-entity id="stocks-panel-2"
+                  geometry="primitive: plane; width: 1.5; height: 1.5;"
+                  animation="property: material.opacity; to: 1.0; dur: 1000; easing: linear; startEvents: showPanelNYT;"
+                  position="-1.55 0.25 0"
+                  rotation="-90 0 0"
+                  visible="true"
+                  material="color: blue; opacity: 1.0; side: double;">
+            </a-entity>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>

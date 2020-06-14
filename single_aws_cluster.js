@@ -149,6 +149,36 @@ else {*/
         res.render('tindex.html',{root: dir[0]});
     });
 
+    app.get('/stocks', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('stocks.html',{root: dir[0]});
+    });
+
+    app.get('/vd', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('venusiandynamics.html',{root: dir[0]});
+    });
+
     app.get('/user', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());

@@ -38,12 +38,22 @@ let stopTimeNYT, timeDiffNYT, stopTimeMIT, timeDiffMIT, stopTimeHIRO, timeDiffHI
 
 function attachImmersiveButtonListeners(){
     document.getElementById("fuse-container").addEventListener("click", function(){
+        /* if looking at the main Video panel play  the main video
+        
         document.getElementById("fuse-container-video-container").emit("showFuseContainerVideo");
         document.getElementById("excessive-force-video").style.display = "block";
         document.getElementById("excessive-force-video").play();
         setTimeout(function(){
             document.getElementById("excessive-force-video").style.opacity = 1.0;
         }, 50);
+        */
+        
+        /* if looking at the stock counter open the stock page */
+        
+        document.getElementById("front-page-banner-item-container-3").emit("selectPanel");
+        setTimeout(function(){
+            
+        })
         
     });
     
