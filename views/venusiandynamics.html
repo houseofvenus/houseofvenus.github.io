@@ -88,6 +88,22 @@
             opacity: 0;
             transition: opacity 0.5s;
         }
+        
+        #last-line-container{
+            position: absolute;
+            bottom: 25%;
+            right: 5%;
+            width: 700px;
+            font-size: 24px;
+            color: black;
+            text-align: right;
+        }
+        
+        #last-line-0-container, #last-line-1-container{
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 1s;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
@@ -121,6 +137,16 @@
                         setTimeout(function(){
                             document.getElementById("lambda-plug-container").style.opacity = 1.0;
                             document.getElementById("lambda-plug-container").style.top = "36%";
+                            
+                            setTimeout(function(){
+                                document.getElementById("last-line-0-container").style.opacity = 1.0;
+                                
+                                setTimeout(function(){
+                                    document.getElementById("last-line-1-container").style.opacity = 1.0;
+                                }, 1000);
+                                
+                            }, 1000);
+                            
                         }, 1000);
                         
                     }, 1000);
@@ -142,6 +168,9 @@
         <div id="vd-title-container-0">venusiΛn</div>
         <div id="vd-title-container-1">dynamics</div>
         <div id="lambda-plug-container"></div>
+    </div>
+    <div id="last-line-container">
+        <div id="last-line-0-container">If you die in your sleep,&nbsp;</div><div id="last-line-1-container">it won't be because of a bullet.</div>
     </div>
 </body>
 </html>
