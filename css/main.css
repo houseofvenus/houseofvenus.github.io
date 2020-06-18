@@ -182,6 +182,16 @@ body, html{
     margin-left: -150px;
 }
 
+@media only screen and (max-width: 768px){
+    #page-1-content-wrapper{
+        width: 275px !important;
+        margin-left: -137px !important;
+        margin-top: -250px !important;
+        font-size: 18px !important;
+        line-height: 30px !important;
+        text-align: justify !important;
+    }
+}
 /* iPHONE 11 - 1792x828px at 326ppi */
 @media only screen 
     and (device-width: 414px) 
@@ -213,6 +223,8 @@ body, html{
             width: 300px;
             margin-left: -150px;
             margin-top: -220px;
+            font-size: 20px;
+            line-height: 36px;
         }
 }
 
