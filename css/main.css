@@ -191,6 +191,12 @@ body, html{
             background-position: 0% -35%;
             animation: mymovePhones 60s linear 0s infinite normal;/**/
         }
+        
+        #page-1-content-wrapper{
+            width: 300px;
+            margin-left: -150px;
+            margin-top: -220px;
+        }
 }
 
 /* iPHONE 11 PRO - 2436x1125px at 458ppi */
@@ -201,6 +207,12 @@ body, html{
         #page-0-container{
             background-position: 0% -35%;
             animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #page-1-content-wrapper{
+            width: 300px;
+            margin-left: -150px;
+            margin-top: -220px;
         }
 }
 
