@@ -23,11 +23,11 @@
                 
             }
             
-           /* document.getElementById("subscribe-button-container").addEventListener("click", function(){
+            document.getElementById("subscribe-button-container").addEventListener("click", function(){
                 window.location.href = "./subscribe";
             });
             
-            document.getElementById("annes-flower-shop-button-container").addEventListener("click", function(){
+            /*document.getElementById("annes-flower-shop-button-container").addEventListener("click", function(){
                 window.location.href = "http://annesflowershop.com";
             });
             
@@ -40,6 +40,7 @@
             });
             */
             document.getElementById("next-page-container").addEventListener("click", function(){
+                this.style.display = "none";
                 let overlay = document.getElementById("page-overlay-container");
                 overlay.style.display = "block";
                 $(overlay).animate({
@@ -60,9 +61,11 @@
             </div>
             <div id="next-page-container"></div>
             <div id="page-overlay-container">
-                <div id="services-button-container" class="service-select-button-container">
+                <div id='company-header-button'>house of venus</div>
+                <div id="second-company-logo-container"></div>
+                <!--<div id="services-button-container" class="service-select-button-container">
                     services
-                </div>
+                </div>-->
                 <div id="page-1-content-wrapper">
                     <!--<div id="annes-flower-shop-button-container" class="service-option-container"></div>
                     <div id="foodid-button-container" class="service-option-container"></div>
@@ -70,8 +73,12 @@
                     <p>We are a City-as-a-Service company developing immersive internet technologies for public and private organizations alike who seek to provide their respective communities with a resource as valuable as clean water: affordable access to open internets.</p>
                 </div>
                 <div id="subscribe-button-container" class="service-select-button-container">
-                    register
+                    learn more
                 </div>
+                <div id="social-media-button-bar-container">
+                <div id="instagram-social-button-container" class="social-button-container"></div>
+                <div id="youtube-social-button-container" class="social-button-container"></div>
+            </div>
             </div>
         </div>
     </div>
