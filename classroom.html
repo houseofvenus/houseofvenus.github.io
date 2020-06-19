@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="./js/aframe100.js"></script>
+    <script src="../js/aframe-ar.js"></script><!-- https://raw.githack.com/jeromeetienne/AR.js/2.2.0/aframe/build/-->
     <script src="./js/build.js"></script>
 </head>
 <body>
@@ -23,6 +24,7 @@
             
             <img id="wall-texture" src="./media/texture/white-painted-wall-texture.png" preload="true" />
         </a-assets>
+        <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 </body>
 </html>

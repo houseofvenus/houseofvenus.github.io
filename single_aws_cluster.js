@@ -104,6 +104,20 @@ else {*/
         res.render('index.html',{root: dir[0]});
     });
 
+    app.get('/haarcascade_frontalface_default.xml', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.sendFile(path.join(__dirname, '../../../../../opencv/data/haarcascades', 'haarcascade_frontalface_default.xml'));
+    });
     app.get('/tfm', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -1065,6 +1079,36 @@ else {*/
         }
 
         res.render('cvvidloader.html',{root: dir[0]});
+    });
+    
+    app.get('/cvface', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('cvfacetracking.html',{root: dir[0]});
+    });
+
+    app.get('/cvhand', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('cvhandtracking.html',{root: dir[0]});
     });
 
     app.get('/foodid', function(req, res){
