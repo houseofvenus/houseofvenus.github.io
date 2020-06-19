@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", function(){
     console.log(seat);
     let userHeight = 1.9;
     buildMarkup(true, function(){
-        document.getElementById("rig").setAttribute("position", {x: seat.x, y: userHeight, z: seat.z});
+        setTimeout(function(){
+            console.log("ohoh")
+            document.getElementById("rig").setAttribute("position", {x: seat.x, y: userHeight, z: seat.z});
+        }, 500);
     });
-    
 });
+
 var seatingPositions = [
     {
         x: -3 ,
