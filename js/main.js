@@ -8,16 +8,51 @@ const modelParams = {
 };
 
 function searchForHands() {
-    model.detect(video).then(predictions => {
-        console.log("Predictions: ", predictions);
+    model.detect(video).then(function(predictions){
+        //console.log("Predictions: ", predictions);
         model.renderPredictions(predictions, canvas, context, video);
+        predictionHandler(predictions)
         if (isVideo) {
             requestAnimationFrame(searchForHands);
         }
     });
 }
 
+function predictionHandler(predictions){
+    let boundaryBox = predictions;
+    if(boundaryBox["0"]){
+        let score = boundaryBox["0"].score; 
+        let uLeft = boundaryBox["0"].bbox["0"]; 
+        let uRight = boundaryBox["0"].bbox["1"]; 
+        let lLeft = boundaryBox["0"].bbox["2"];
+        let lRight = boundaryBox["0"].bbox["3"];
+        
+        if(uLeft<50 && uRight<100){
+            console.log("left screen panel selected");
+            ImmersiveAudio.jumpTo(0);
+        }
+        else if(uLeft>150 && uLeft<275 && uRight<50){
+            console.log("middle screen panel selected");
+            ImmersiveAudio.jumpTo(1);
+        }
+        else if(uLeft>375 && uLeft<500 && uRight<50){
+            console.log("right screen panel selected");
+            ImmersiveAudio.jumpTo(2);
+        }
+        else{
+            console.log(`score: ${score}`);
+            console.log(`upper left: ${uLeft}`);
+            console.log(`upper right: ${uRight}`);
+            console.log(`lower left: ${lLeft}`);
+            console.log(`lower right: ${lRight}`);
+            
+            //console.log("left screen panel selected");
+        }
+    }
+}
+
 function openMyEyes() {
+    stopDormantVisualStream();
     handTrack.startVideo(video).then(function (status) {
         console.log("video started", status);
         if (status) {
@@ -32,8 +67,38 @@ function openMyEyes() {
     });
 }
 
+function stopDormantVisualStream(e) {
+    var stream = video.srcObject;
+    var tracks = stream.getTracks();
+
+    for (var i = 0; i < tracks.length; i++) {
+        var track = tracks[i];
+        track.stop();
+    }
+
+    video.srcObject = null;
+    video.style.display = "none";
+    canvas.style.display = "block";
+}
+
+function startDormantVisualStream(e){
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function (stream) {
+          video.srcObject = stream;
+          //
+            video.style.display = "block";
+            canvas.style.display = "none";
+        })
+        .catch(function (err0r) {
+          console.log("Something went wrong!");
+        });
+    }
+}
+
 function closeMyEyes(){
-    handTrack.stopVideo(video)
+    handTrack.stopVideo(video);
+    startDormantVisualStream();
     toggleEyeLidsButton.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
     isVideo = false;
     console.log(`Closing my eyes... \nVisual stream dormant. AugR engaged: ${isVideo}`);
@@ -58,6 +123,7 @@ function init(){
     imgindex = 1
     isVideo = false;
     model = null;
+    startDormantVisualStream();
 }
 
 function addButtonListeners(){
