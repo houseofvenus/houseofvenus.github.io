@@ -1,3 +1,9 @@
+@font-face{
+    font-family:"AuraRegular W05 Regular";
+    src: url("../css/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix");
+    src: url("../css/d83d08da-5e79-48df-a9b1-6f5acf78cb00.eot?#iefix") format("eot"),url("../css/92d5ad9f-b979-4d9b-8608-e7bef993c281.woff2") format("woff2"),url("../css/48665d19-aff2-4022-aa29-5f4afa40c8af.woff") format("woff"),url("../css/27cf9724-1c32-4032-b145-f082ef3ddb21.ttf") format("truetype");
+}
+
 html, body{
     width: 100%;
     height: 100%;
@@ -11,6 +17,15 @@ html, body{
     width: 720px;
     height: 540px;
     z-index: 50;
+}
+
+#Tulse-Audio-application-header{
+    display: block;
+    margin: 2% auto 1% auto;
+    font-size: 44px;
+    text-align: center;
+    width: 300px;
+    font-family: "AuraRegular W05 Regular", Fallback, sans-serif;
 }
 
 #native-audio-controller{
