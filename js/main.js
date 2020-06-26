@@ -1,4 +1,4 @@
-var video, canvas, imgindex, context, trackButton, isVideo, model;
+var video, canvas, imgindex, context, toggleEyeLidsButton, isVideo, model;
 
 const modelParams = {
     flipHorizontal: true,   // flip e.g for video  
@@ -24,7 +24,7 @@ function openMyEyes() {
             //updateNote.innerText = "Video started. Now tracking"
             isVideo = true;
             console.log(`Visual stream live! \nNow searching for hands.\nAugR engaged: ${isVideo}`);
-            trackButton.style.backgroundColor = "rgba(255, 0, 0, 1.0)";
+            toggleEyeLidsButton.style.backgroundColor = "rgba(255, 0, 0, 1.0)";
             searchForHands();
         } else {
             console.log("Visual stream dormant. \nWaiting...");
@@ -34,7 +34,7 @@ function openMyEyes() {
 
 function closeMyEyes(){
     handTrack.stopVideo(video)
-    trackButton.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+    toggleEyeLidsButton.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
     isVideo = false;
     console.log(`Closing my eyes... \nVisual stream dormant. AugR engaged: ${isVideo}`);
 }
@@ -53,7 +53,7 @@ function init(){
     video = document.getElementById("myvideo");
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
-    trackButton = document.getElementById("trackbutton");
+    toggleEyeLidsButton = document.getElementById("move-my-eyelids-button-container");
 
     imgindex = 1
     isVideo = false;
@@ -61,7 +61,7 @@ function init(){
 }
 
 function addButtonListeners(){
-    trackButton.addEventListener("click", function(){
+    toggleEyeLidsButton.addEventListener("click", function(){
         moveMyEyelids();
         
         handTrack.load(modelParams).then(function(lmodel){
