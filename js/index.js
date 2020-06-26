@@ -1,10 +1,10 @@
 const video = document.getElementById("myvideo");
-const handimg = document.getElementById("handimage");
+//const handimg = document.getElementById("handimage");
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 let trackButton = document.getElementById("trackbutton");
-let nextImageButton = document.getElementById("nextimagebutton");
-let updateNote = document.getElementById("updatenote");
+//let nextImageButton = document.getElementById("nextimagebutton");
+//let updateNote = document.getElementById("updatenote");
 
 let imgindex = 1
 let isVideo = false;
@@ -24,46 +24,48 @@ function startVideo() {
     handTrack.startVideo(video).then(function (status) {
         console.log("video started", status);
         if (status) {
-            updateNote.innerText = "Video started. Now tracking"
-            isVideo = true
-            runDetection()
+            //updateNote.innerText = "Video started. Now tracking"
+            isVideo = true;
+            console.log(`Video started. Now tracking, ${isVideo}`);
+            runDetection();
         } else {
-            updateNote.innerText = "Please enable video"
+            //updateNote.innerText = "Please enable video"
+            console.log("Please enable video");
         }
     });
 }
 
-function toggleVideo() {
+function toggleVideoStream() {
     if (!isVideo) {
-        updateNote.innerText = "Starting video"
+        //updateNote.innerText = "Starting video"
+        console.log("Starting video");
         startVideo();
     } else {
-        updateNote.innerText = "Stopping video"
+        //updateNote.innerText = "Stopping video"
         handTrack.stopVideo(video)
         isVideo = false;
-        updateNote.innerText = "Video stopped"
+        console.log(`Stopping video. ${isVideo} \n Video stopped.`);
+        //updateNote.innerText = "Video stopped"
     }
 }
 
 
 
-nextImageButton.addEventListener("click", function(){
+/*nextImageButton.addEventListener("click", function(){
     nextImage();
-});
+});*/
 
 trackButton.addEventListener("click", function(){
-    toggleVideo();
+    toggleVideoStream();
 });
 
-function nextImage() {
+/*function nextImage() {
 
     imgindex++;
     handimg.src = "images/" + imgindex % 15 + ".jpg"
     // alert(handimg.src)
     runDetectionImage(handimg)
-}
-
-
+}*/
 
 function runDetection() {
     model.detect(video).then(predictions => {
@@ -86,8 +88,14 @@ function runDetectionImage(img) {
 handTrack.load(modelParams).then(lmodel => {
     // detect objects in the image.
     model = lmodel
-    updateNote.innerText = "Loaded Model!"
-    runDetectionImage(handimg)
-    trackButton.disabled = false
-    nextImageButton.disabled = false
+    //updateNote.innerText = "Loaded Model!"
+    console.log("Loaded Model!");
+    
+    let seed = document.createElement("img");
+    seed.setAttribute("src", "../media/img/1.png");
+    
+    //runDetectionImage()
+    //handimg
+    //trackButton.disabled = false
+    //nextImageButton.disabled = false
 });

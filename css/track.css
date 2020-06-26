@@ -2,24 +2,36 @@ body {
     padding: 20px;
 }
 
-.p20 {
-    padding: 20px;
+#trackbutton{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    text-align: center;
+    display: block;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    margin-left: -75px;
 }
 
 .canvasbox {
+    display: block;
     border-radius: 3px;
-    margin-right: 10px;
-    width: 450px;
-    height: 338px;
+    margin: 10px auto;
+    width: 720px;
+    height: 540px;
     border-bottom: 3px solid #0063FF;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 #00000030;
-
 }
 
 .block {
     display: block;
 }
-
+#myvideo{
+    display: none;
+}
 .hidden {
     display: none;
 }
