@@ -189,8 +189,17 @@ body, html{
         margin-top: -250px !important;
         font-size: 18px !important;
         line-height: 30px !important;
-        text-align: left!important;
+        text-align: center!important;
     }
+    
+    .option-label-container{
+        margin-bottom: 15%;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 700;
+        display: block;
+    }
+
 }
 /* iPHONE 11 - 1792x828px at 326ppi */
 @media only screen 
@@ -298,6 +307,12 @@ body, html{
 
 #why-option-button-container:hover{
     color: yellow;
+}
+
+.option-label-container{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 #page-1-content-wrapper{
