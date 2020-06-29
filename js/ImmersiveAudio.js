@@ -38,6 +38,19 @@ var ImmersiveAudio = {
                     entityID: "had-enough-remix-immersive-entity-container"
                 }
             }
+        },
+        {
+            audio: "../media/audio/RainbowInTheDark.mp3",
+            image: "../media/img/rainbow-in-the-dark-cover.png" ,
+            title: "Rainbow In The Dark",
+            author: "Das Racist",
+            registration: {
+                author: "starmakeritachi",
+                lyokoin: 02250410219612023,
+                ledgerspace: {
+                    entityID: "rainbow-in-the-dark-immersive-entity-container"
+                }
+            }
         }
     ],
     focus: 0,

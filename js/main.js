@@ -28,16 +28,20 @@ function predictionHandler(predictions){
         let lRight = boundaryBox["0"].bbox["3"];
         
         if(uLeft<50 && uRight<100){
-            console.log("left screen panel selected");
+            console.log("left screen top panel selected");
             ImmersiveAudio.jumpTo(0);
         }
         else if(uLeft>150 && uLeft<275 && uRight<50){
-            console.log("middle screen panel selected");
+            console.log("middle screen top panel selected");
             ImmersiveAudio.jumpTo(1);
         }
         else if(uLeft>375 && uLeft<500 && uRight<50){
-            console.log("right screen panel selected");
+            console.log("right screen top panel selected");
             ImmersiveAudio.jumpTo(2);
+        }
+        else if(uLeft<50 && uRight>150 && uRight<250){
+            console.log("left screen bottom panel selected");
+            ImmersiveAudio.jumpTo(3);
         }
         else{
             console.log(`score: ${score}`);
