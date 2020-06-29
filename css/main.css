@@ -189,7 +189,7 @@ body, html{
         margin-top: -250px !important;
         font-size: 18px !important;
         line-height: 30px !important;
-        text-align: justify !important;
+        text-align: left!important;
     }
 }
 /* iPHONE 11 - 1792x828px at 326ppi */
@@ -279,17 +279,38 @@ body, html{
     background-image: url("../media/img/talk-show-host.png");
 }
 
+.bold-text-option-button-container{
+    text-transform: uppercase;
+    font-size: 50px;
+    font-weight: 900;
+    color: white;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+#we-are-option-button-container:hover{
+    color: red;
+}
+
+#we-make-option-button-container:hover{
+    color: blue;
+}
+
+#why-option-button-container:hover{
+    color: yellow;
+}
+
 #page-1-content-wrapper{
     opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 500px;
-    margin-left: -250px;
-    margin-top: -200px;
-    text-align: justify;
+    width: 600px;
+    margin-left: -300px;
+    margin-top: -195px;
+    text-align: left;
     transition: opacity 0.5s;
     font-size: 24px;
-    line-height: 40px;
+    line-height: 75px;
     color: white;
 }

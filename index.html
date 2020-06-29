@@ -23,10 +23,6 @@
                 
             }
             
-            document.getElementById("subscribe-button-container").addEventListener("click", function(){
-                window.location.href = "./subscribe";
-            });
-            
             document.getElementById("instagram-social-button-container").addEventListener("click", function(){
                 window.location.href = "https://instagram.com/ceo.hov"
             });
@@ -64,11 +60,20 @@
                 <div id='company-header-button'>house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="page-1-content-wrapper">
-                    <p>We are a City-as-a-Service company that designs immersive internets to offer affordable next-generation open internet access.</p>
+                    <p>
+                        <span id="we-are-option-button-container" class="bold-text-option-button-container">We are.</span>
+                        a<span style="text-transform: uppercase; font-size: 20px; font-weight: 700;"> City-as-a-Service</span>
+                    </p>
+                    <p>
+                        <span id="we-make-option-button-container" class="bold-text-option-button-container">We make.</span>
+                        <span style="text-transform: uppercase; font-size: 20px; font-weight: 700;">immersive internets</span>
+                    </p>
+                    <p>
+                        <span id="why-option-button-container" class="bold-text-option-button-container">why?</span>
+                        <span style="text-transform: uppercase; font-size: 20px; font-weight: 700;">affordable open internet access</span>
+                    </p>
                 </div>
-                <div id="subscribe-button-container" class="service-select-button-container">
-                    learn more
-                </div>
+                <div style="width: 350px; height: 100px; position: absolute; left: 50%; bottom: 20%; font-size: 20px; font-weight: 200; margin-left: -175px; line-height: 100px; text-align: center;">[ Click on <span style="text-transform: uppercase;font-weight: 900;">bold text</span> to learn more ]</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
