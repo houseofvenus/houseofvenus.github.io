@@ -145,6 +145,23 @@ body, html{
     animation: blinkButton 2s linear 0s infinite normal;/**/
 }
 
+#next-product-button-container{
+    position: fixed;
+    bottom: 25%;
+    right: 25%;
+    width: 150px;
+    height: 150px;
+    /*margin-left: -25px;*/
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 900;
+    background-image: url("../media/img/down-arrow.png");
+    background-size: 100% 100%;
+    opacity: 1.0;
+    transition: opacity 0.5s;
+    animation: blinkButton 2s linear 0s infinite normal;/**/
+}
+
 @keyframes blinkButton {
   50% {opacity: 0;}
 }
@@ -386,12 +403,17 @@ body, html{
     color: yellow;
 }
 
-#office-product-image-container{
+#office-product-image-container, #OfficeProductImageContainer{
     background-image: url("../media/img/office-bantxr-fill-in-logo.png");
     background-size: 100% 100%;
 }
 
-#classroom-product-image-container{
+#classroom-product-image-container, #ClassroomProductImageContainer{
+    background-image: url("../media/img/classroom-bantxr-fill-in-logo.png");
+    background-size: 100% 100%;
+}
+
+#pARk-product-image-container, #pARkProductImageContainer{
     background-image: url("../media/img/classroom-bantxr-fill-in-logo.png");
     background-size: 100% 100%;
 }

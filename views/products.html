@@ -7,7 +7,45 @@
     <link rel="stylesheet" href="./css/main.css" type="text/css" />
     <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
+        
         document.addEventListener("DOMContentLoaded", function(){
+            $(function() {
+                $('a[href*="#"]')
+                  // Remove links that don't actually link to anything
+                    .not('[href="#"]')
+                    .not('[href="#0"]')
+                    .click(function(event) {
+                    console.log("CLICKCINCE")
+                        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                            var target = $(this.hash);
+                            var productsWrapperOffset = $('#products-content-wrapper').offset().top;
+                            var productsWrapperHeight = $('#products-content-wrapper').height();
+                            
+                            console.log(target[0].getAttribute("id"));
+                            //console.log(target.length);
+                            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                            
+                            let finalOffset = target.offset().top-productsWrapperOffset;
+                            
+                            currentFocus++;
+                            if(currentFocus>2) currentFocus=0;
+                            
+                            console.log("currentFocus", currentFocus);
+                            
+                            if(target[0].getAttribute("id")==="pARkProductLabelContainer"){
+                                console.log("last item");
+                                finalOffset = productsWrapperHeight+$("#pARkProductImageContainer").height()+$("#pARkProductLabelContainer").height();
+                            }
+                            if (target.length) {
+                                $('#products-content-wrapper').animate({
+                                scrollTop: finalOffset
+                                }, 1000);
+                                return false;
+                            }
+                        }
+                    });
+            });
+            
             let servicesVisible = false;
             
             function transitionToActions(){
@@ -35,6 +73,14 @@
             document.getElementById("company-header-button").addEventListener("click", function(){
                 window.location.href = "./";
             });
+            
+            let currentFocus = 0;
+            let scrollOptions = ["OfficeProductImageContainer", "ClassroomProductImageContainer","pARkProductImageContainer"]
+           
+            document.getElementById("next-product-button-container").addEventListener("click", function(){
+                console.log(scrollOptions[currentFocus]);
+                document.getElementById(scrollOptions[currentFocus]).click();
+            });
            
             let overlay = document.getElementById("page-overlay-container");
             overlay.style.display = "block";
@@ -53,21 +99,36 @@
                 <div id='company-header-button'>house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="products-content-wrapper">
+                    <div id="next-product-button-container"></div>
                     <p>
                         <span id="we-make-option-button-container" class="bold-text-option-button-container">We make.</span>
                     </p>
-                    <div id="office-product-image-container" class="product-image-container">bxr</div>
-                    <p>
-                        <span class="product-label-container">Office Bantxr</span>
-                    </p>
-                    <div id="classroom-product-image-container" class="product-image-container">bxr</div>
-                    <p>
-                        <span class="product-label-container" >Classroom Bantxr</span>
-                    </p>
-                    <div class="product-image-container">p</div>
-                    <p>
-                        <span class="product-label-container" >pARk</span>
-                    </p>
+                    
+                    <a href="#ClassroomProductImageContainer">
+                        <div id="OfficeProductImageContainer" class="product-image-container">
+                            bxr
+                        </div>
+                    </a>
+                    <div id="office-product-label-container" class="product-label-container">
+                        Office Bantxr
+                    </div>
+                    
+                    
+                    <a href="#pARkProductLabelContainer">
+                        <div id="ClassroomProductImageContainer" class="product-image-container">
+                            bxr
+                        </div>
+                    </a>
+                    <div id="classroom-product-label-container" class="product-label-container" >Classroom Bantxr</div>
+                    
+                    
+                    <a href="#OfficeProductImageContainer">
+                        <div id="pARkProductImageContainer" class="product-image-container">
+                            p
+                        </div>
+                    </a>
+                    <div id="pARkProductLabelContainer" class="product-label-container">pARk</div>
+                    
                 </div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
