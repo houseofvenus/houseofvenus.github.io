@@ -447,6 +447,48 @@ body, html{
     background-color: blueviolet;
 }
 
+#lyoko-page-container{
+    background-color: yellow;
+}
+
+#vantage-page-container{
+    background-color: blue;
+}
+
+#lyoko-more-button-container{
+    color: black;
+    border: 2px black solid;
+}
+
+#lyoko-more-button-container:hover{
+    border: 2px white solid;
+}
+
+.more-button-container{
+    font-size: 24px;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    margin-left: -100px;
+    cursor: pointer;
+    color: white;
+    font-weight: 200;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px white solid;
+    text-align: center;
+    text-transform: uppercase;
+    transition: font-weight 0.25s, background-color: 0.25s;
+}
+
+.more-button-container:hover{
+    background-color: rgba(255, 255, 255, 1.0);
+    color: black;
+    font-weight: 700;
+}
 #page-0-container{
     background-image: url("../media/img/venus_bg.jpg");
     background-repeat: repeat-x;
@@ -506,6 +548,15 @@ body, html{
     transition: color 0.5s;
     cursor: pointer;
     text-decoration: none;
+}
+
+.bold-text-title-container{
+    width: 300px;
+    position: absolute;
+    top: 9%;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
 }
 
 #we-are-option-button-container:hover{
