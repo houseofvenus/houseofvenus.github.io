@@ -20,15 +20,36 @@
                             var target = $(this.hash);
                             var productsWrapperOffset = $('#products-content-wrapper').offset().top;
                             var productsWrapperHeight = $('#products-content-wrapper').height();
-                            
+                            let prevCurrentFocus = currentFocus;
                             console.log(target[0].getAttribute("id"));
                             //console.log(target.length);
                             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                             
                             let finalOffset = target.offset().top-productsWrapperOffset;
                             
+                            $("#product-overlay-container").css("display", "block").animate({
+                                opacity: 1.0
+                            }, 1000);
+                            
+                            $(".product-description-container").animate({
+                                opacity: 0,
+                            }, 500, function(){
+                                $(this).css("display", "none");
+                                if(`product-description-container-${prevCurrentFocus}`==$(this).attr("id")){
+                                    $(`#product-description-container-${prevCurrentFocus}`).css("display", "block").animate({
+                                        opacity: 1.0
+                                    }, 500);
+                                }
+                            });
+                            
+                            $(`#product-description-container-${currentFocus}`).css("display", "block").animate({
+                                opacity: 1.0
+                            }, 500);
+                            
                             currentFocus++;
                             if(currentFocus>2) currentFocus=0;
+                            
+                            
                             
                             console.log("currentFocus", currentFocus);
                             
@@ -44,6 +65,15 @@
                             }
                         }
                     });
+            });
+            
+            
+            $(".back-to-main-products-page-button-container").click(function(){
+                $("#product-overlay-container").animate({
+                    opacity: 0
+                }, 1000, function(){
+                    $(this).css("display", "none");
+                });
             });
             
             let servicesVisible = false;
@@ -95,6 +125,44 @@
 <body>
     <div id="main-app-container">
         <div id="page-0-container" class="page-container">
+            <div id="product-overlay-container">
+                <div id="office-product-preview-container">
+                    <div id="product-description-container-0" class="product-description-container office-product-description-container">
+                        <object class="video-container" data="https://www.youtube.com/embed/e8ZoGgTVVc8" width="480" height="360"></object>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <div class="back-to-main-products-page-button-container">ax</div>
+                    </div>
+                    <div id="office-product-price-container">
+                        $1299.99
+                    </div>
+                </div>
+                <div id="classroom-product-preview-container">
+                    <div id="product-description-container-1" class="product-description-container classroom-product-description-container">
+                        <object class="video-container" data="https://www.youtube.com/embed/e8ZoGgTVVc8" width="480" height="360"></object>
+                        <p>
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <div class="back-to-main-products-page-button-container">bx</div>
+                    </div>
+                    <div id="classroom-product-price-container">
+                        $124.99
+                    </div>
+                </div>
+                <div id="pARk-product-preview-container">
+                    <div id="product-description-container-2" class="product-description-container pARk-product-description-container">
+                        <object class="video-container" data="https://www.youtube.com/embed/e8ZoGgTVVc8" width="480" height="360"></object>
+                        <p>
+                            Lorem ipsum dolor sit amet tempor incididunt ut labore et dolore magna  laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <div class="back-to-main-products-page-button-container">cx</div>
+                    </div>
+                    <div id="pARk-product-price-container">
+                        FREE
+                    </div>
+                </div>
+            </div>
             <div id="page-overlay-container">
                 <div id='company-header-button'>house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
