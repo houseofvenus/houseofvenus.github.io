@@ -36,24 +36,6 @@
                 window.location.href = "./";
             });
             
-            document.getElementById("we-are-option-button-container").addEventListener("click", function(){
-                setTimeout(function(){
-                    window.open("./origin", "_blank");  
-                },1050);
-            });
-            
-            document.getElementById("we-make-option-button-container").addEventListener("click", function(){
-                setTimeout(function(){
-                    window.open("./products", "_blank");  
-                },1050);
-            });
-            
-            document.getElementById("why-option-button-container").addEventListener("click", function(){
-                setTimeout(function(){
-                    window.open("./vision", "_blank");  
-                },1050);
-            });
-            
             document.getElementById("next-page-container").addEventListener("click", function(){
                 this.style.display = "none";
                 let overlay = document.getElementById("page-overlay-container");
@@ -80,8 +62,8 @@
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="page-1-content-wrapper">
                     <p>
-                        <span id="we-are-option-button-container" class="bold-text-option-button-container">We are.</span>
-                        <span class="option-label-container"> City-as-a-Service</span>
+                        <a href="./origin" target="_blank" id="we-are-option-button-container" class="bold-text-option-button-container"> We are</a>
+                        <span class="option-label-container" >City-as-a-Service</span>
                     </p>
                     <p>
                         <span id="we-make-option-button-container" class="bold-text-option-button-container">We make.</span>
