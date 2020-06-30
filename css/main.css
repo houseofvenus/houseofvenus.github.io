@@ -273,6 +273,11 @@ body, html{
         right: 50% !important;
         margin-right: -75px !important;
     }
+    
+    .bold-text-title-container{
+        text-align: center;
+    }
+
 
 }
 /* iPHONE 11 - 1792x828px at 326ppi */
@@ -347,6 +352,11 @@ body, html{
             right: 50% !important;
             margin-right: -75px !important;
         }
+        
+        .bold-text-title-container{
+            text-align: center;
+        }
+
 }
 
 /* iPHONE 11 PRO - 2436x1125px at 458ppi */
@@ -426,6 +436,15 @@ body, html{
             right: 50% !important;
             margin-right: -75px !important;
         }
+        
+        .bold-text-title-container{
+            text-align: center;
+        }
+
+}
+
+#bantxr-page-container{
+    background-color: blueviolet;
 }
 
 #page-0-container{
@@ -479,7 +498,7 @@ body, html{
     background-image: url("../media/img/talk-show-host.png");
 }
 
-.bold-text-option-button-container{
+.bold-text-option-button-container, .bold-text-title-container{
     text-transform: uppercase;
     font-size: 50px;
     font-weight: 900;
