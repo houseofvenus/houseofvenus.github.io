@@ -429,14 +429,178 @@ body, html{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 600px;
-    margin-left: -300px;
+    width: 650px;
+    margin-left: -325px;
     margin-top: -195px;
     text-align: left;
     transition: opacity 0.5s;
     font-size: 24px;
     line-height: 75px;
     color: white;
+}
+
+.hover-color-0:hover{
+    font-size: 30px;
+    color: yellow;
+    cursor: pointer;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.hover-color-1:hover{
+    font-size: 30px;
+    color: blue;
+    text-shadow: 2px 2px white;
+    cursor: pointer;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.hover-color-2:hover, .hover-color-3:hover, .hover-color-5:hover{
+    font-size: 30px;
+    color: red;
+    cursor: pointer;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.hover-color-pre0:hover{
+    font-size: 60px;
+    color: red;
+    cursor: pointer;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.hover-color-pre1:hover{
+    font-size: 60px;
+    color: black;
+    cursor: pointer;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.hover-color-4:hover{
+    font-size: 30px;
+    color: black;
+    text-shadow: 2px 2px 2px white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-6:hover{
+    font-size: 30px;
+    color: lawngreen;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-7a:hover{
+    font-size: 60px;
+    color: yellow;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-7b:hover{
+    font-size: 60px;
+    color: blue;
+    text-shadow: 2px 2px white;
+    cursor: pointer;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.hover-color-8:hover{
+    font-size: 30px;
+    color: violet;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-9:hover{
+    font-size: 30px;
+    color: aqua;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-10:hover{
+    font-size: 30px;
+    color: aquamarine;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-11:hover{
+    font-size: 30px;
+    color: greenyellow;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-12:hover{
+    font-size: 30px;
+    color: #d61b5d;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-13:hover{
+    font-size: 30px;
+    color: #c6ccff;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-14:hover{
+    font-size: 30px;
+    color: #5b56bc;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-15:hover{
+    font-size: 30px;
+    color: #b0fdfa;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-16:hover{
+    font-size: 30px;
+    color: red;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-17:hover{
+    font-size: 30px;
+    font-style: italic;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
+}
+
+.hover-color-18:hover{
+    font-size: 30px;
+    color: blue;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #fff;
+    cursor: pointer;
 }
 
 #products-content-wrapper{
