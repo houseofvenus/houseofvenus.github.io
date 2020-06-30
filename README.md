@@ -1,7 +1,7 @@
 # House of Venus
 ## a City-as-a-Service Company dedicated to providing affordable immersive internet service to communities and organizations at the forefront of human development and imagination
 ### Board
-#### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130) {ceo/chair}, Beatrice GOMA [@bgoma] 
+#### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130), Beatrice GOMA [@bgoma](https://github.com/bgoma)
 
 ### Getting Started
 #### Connect to our main shop online | v. 0.1.0.13
