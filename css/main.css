@@ -10,6 +10,7 @@ body, html{
     height: 100%;
     font-family: "Helvetica Neue", sans-serif;
     /*font-family: "IBM Plex Sans", sans-serif;*/
+    overflow: hidden;
 }
 
 #main-app-container{
@@ -192,12 +193,27 @@ body, html{
         text-align: center!important;
     }
     
+    #origin-content-wrapper{
+        width: 275px !important;
+        margin-left: -137px !important;
+        margin-top: -250px !important;
+        font-size: 18px !important;
+        line-height: 30px !important;
+    }
+    
     .option-label-container{
         margin-bottom: 15%;
         text-transform: uppercase;
-        font-size: 20px;
+        font-size: 28px;
         font-weight: 700;
         display: block;
+        text-align: center;
+    }
+    
+    .option-label-container-prime{
+        line-height: 50px !important;
+        margin-bottom: 30% !important;
+        text-align: center;
     }
 
 }
@@ -211,11 +227,12 @@ body, html{
             animation: mymovePhones 60s linear 0s infinite normal;/**/
         }
         
-        #page-1-content-wrapper{
+        #page-1-content-wrapper, #origin-content-wrapper{
             width: 300px;
             margin-left: -150px;
             margin-top: -220px;
         }
+        
 }
 
 /* iPHONE 11 PRO - 2436x1125px at 458ppi */
@@ -228,12 +245,16 @@ body, html{
             animation: mymovePhones 60s linear 0s infinite normal;/**/
         }
         
-        #page-1-content-wrapper{
+        #page-1-content-wrapper, #origin-content-wrapper{
             width: 300px;
             margin-left: -150px;
             margin-top: -220px;
             font-size: 20px;
             line-height: 36px;
+        }
+        
+        #origin-content-wrapper{
+            overflow-y: scroll;
         }
 }
 
@@ -315,7 +336,12 @@ body, html{
     font-weight: 700;
 }
 
-#page-1-content-wrapper{
+.option-label-container-prime{
+    /*line-height: 50px;*/
+    margin-bottom: 15%;
+}
+
+#page-1-content-wrapper, #origin-content-wrapper{
     opacity: 0;
     position: absolute;
     top: 50%;
@@ -328,4 +354,15 @@ body, html{
     font-size: 24px;
     line-height: 75px;
     color: white;
+}
+
+#origin-content-wrapper{
+    opacity: 1.0 !important;
+    line-height: 50px !important;
+}
+
+#origin-content-wrapper{
+    overflow-y: scroll;
+    height: 500px;
+    margin-top: -250px;
 }
