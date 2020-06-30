@@ -36,60 +36,35 @@
                 window.location.href = "./";
             });
             
-            document.getElementById("we-are-option-button-container").addEventListener("click", function(){
-                setTimeout(function(){
-                    window.open("./origin", "_blank");  
-                },1050);
-            });
+            document.getElementById("next-page-container").style.display = "none";
+            let overlay = document.getElementById("page-overlay-container");
+            overlay.style.display = "block";
+            $(overlay).animate({
+                height: "100%",
+                opacity: 1.0
+            }, 500, "swing", transitionToActions());
             
-            document.getElementById("we-make-option-button-container").addEventListener("click", function(){
-                setTimeout(function(){
-                    window.open("./products", "_blank");  
-                },1050);
-            });
-            
-            document.getElementById("why-option-button-container").addEventListener("click", function(){
-                setTimeout(function(){
-                    window.open("./vision", "_blank");  
-                },1050);
-            });
-            
-            document.getElementById("next-page-container").addEventListener("click", function(){
-                this.style.display = "none";
-                let overlay = document.getElementById("page-overlay-container");
-                overlay.style.display = "block";
-                $(overlay).animate({
-                    height: "100%",
-                    opacity: 1.0
-                }, 500, "swing", transitionToActions());
-            });
         });
     </script>
 </head>
 <body>
     <div id="main-app-container">
         <div id="page-0-container" class="page-container">
-            <div id="page-0-content-wrapper">
-                <div id="company-logo-container"></div>
-                <div id="company-title-container">House of Venus</div>
-                <div id="company-slogan-container">The world is your desktop</div>
-            </div>
-            <div id="next-page-container"></div>
             <div id="page-overlay-container">
                 <div id='company-header-button'>house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="page-1-content-wrapper">
                     <p>
-                        <span id="we-are-option-button-container" class="bold-text-option-button-container">We are.</span>
-                        <span class="option-label-container"> City-as-a-Service</span>
+                        <span class="bold-text-option-button-container">We are.</span>
+                        <span class="option-label-container"> a City-as-a-Service company dedicated to providing affordable immersive internet service to communities and organizations at the forefront of human development and imagination</span>
                     </p>
                     <p>
-                        <span id="we-make-option-button-container" class="bold-text-option-button-container">We make.</span>
-                        <span class="option-label-container" >immersive internets</span>
+                        <span class="bold-text-option-button-container">MD-MA</span>
+                        <span class="option-label-container"> influenced by our formative years in Maryland and Massachussets spent on leafy campuses brilling with intellectual, spiritual, and economic potential -- our own Edens -- we want to preserve the beauty of the environment everywhere we can while simultaneously spearheading the progress of industry. To us progress and tradition are not mutually exculsive especially when the American tradition is simply put a pursuit of excellence be it in life, liberty, and property. We pursue these principles in how we treat members of our communities and in the development of our technologies.</span>
                     </p>
                     <p>
-                        <span id="why-option-button-container" class="bold-text-option-button-container">why?</span>
-                        <span class="option-label-container">affordable open internet access</span>
+                        <span class="bold-text-option-button-container">join</span>
+                        <span class="option-label-container">To learn more contact someone on our team by tapping the House of Venus globe logo in the upper right.</span>
                     </p>
                 </div>
                 <div style="width: 350px; height: 100px; position: absolute; left: 50%; bottom: 20%; font-size: 20px; font-weight: 200; margin-left: -175px; line-height: 100px; text-align: center;">[ Click on <span style="text-transform: uppercase;font-weight: 900;">bold text</span> to learn more ]</div>
