@@ -46,8 +46,14 @@
                                 opacity: 1.0
                             }, 500);
                             
-                            currentFocus++;
-                            if(currentFocus>2) currentFocus=0;
+                            
+                            if(target[0].getAttribute("id")==="ClassroomProductImageContainer"){
+                                currentFocus=1;  
+                            }
+                            else if(target[0].getAttribute("id")==="OfficeProductImageContainer"){
+                                currentFocus=0;
+                            }
+                            
                             
                             
                             
@@ -56,6 +62,7 @@
                             if(target[0].getAttribute("id")==="pARkProductLabelContainer"){
                                 console.log("last item");
                                 finalOffset = productsWrapperHeight+$("#pARkProductImageContainer").height()+$("#pARkProductLabelContainer").height();
+                                currentFocus=2;
                             }
                             if (target.length) {
                                 $('#products-content-wrapper').animate({
