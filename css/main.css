@@ -455,6 +455,10 @@ body, html{
     background-color: blue;
 }
 
+#caas-page-container{
+    background-color: red;
+}
+
 #lyoko-more-button-container{
     color: black;
     border: 2px black solid;
@@ -471,7 +475,7 @@ body, html{
     line-height: 50px;
     border-radius: 5px;
     position: absolute;
-    bottom: 5%;
+    bottom: 7%;
     left: 50%;
     margin-left: -100px;
     cursor: pointer;
