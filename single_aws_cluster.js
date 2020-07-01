@@ -134,6 +134,36 @@ else {*/
         res.render('bantxr.html',{root: dir[0]});
     });
 
+    app.get('/weare/atown', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('atown.html',{root: dir[0]});
+    });
+
+    app.get('/weare/safe', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('safe.html',{root: dir[0]});
+    });
+
     app.get('/lyoko', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());

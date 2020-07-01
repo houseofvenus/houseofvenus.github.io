@@ -443,6 +443,14 @@ body, html{
 
 }
 
+#safe-page-container{
+    background-color: #93a5fb;
+}
+
+#atown-page-container{
+    background-color: indigo;
+}
+
 #bantxr-page-container{
     background-color: blueviolet;
 }
