@@ -602,8 +602,12 @@ body, html{
 }*/
 
 .pARk-coloring, .we-are-a-community-coloring, .orgs-coloring, .we-are-human-coloring{
+    color: blue !important;
+    border-color: blue !important;
+   /* 
     color: rgba(30, 30, 255, 0.8) !important;
     border-color: rgba(30, 30, 255, 0.8) !important;
+    */
 }
 
 .campus-coloring, .nature-coloring, .man-coloring, .pledge-coloring{
