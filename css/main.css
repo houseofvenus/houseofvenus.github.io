@@ -779,7 +779,7 @@ body, html{
 
 .hover-color-5:hover, .hover-color-6:hover, .hover-color-8:hover, .hover-color-9:hover, .hover-color-10:hover{
     font-size: 30px;
-    color: lawngreen;
+    color: rgba(124, 252, 0, 1.0);/*lawngreen;*/
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
     cursor: pointer;
