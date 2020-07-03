@@ -577,6 +577,11 @@ body, html{
     border-color: blue !important;
 }
 
+.main-we-are-human-coloring{
+    color: black !important;
+    border-color: black !important;
+}
+
 .bold-text-title-container{
     width: 300px;
     position: absolute;
