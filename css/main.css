@@ -452,6 +452,10 @@ body, html{
     color: black;
 }
 
+#maryland-coloring{
+    color: black !important;
+}
+
 #massachusetts-page-container{
     background-color: rgba(122, 182, 255, 1.0);
 }
@@ -615,6 +619,10 @@ body, html{
     text-align: center;
 }
 
+#massachusetts-title-container{
+    width: 100% !important;
+    left: 0 !important;
+}
 #we-are-option-button-container:hover{
     color: red;
 }
@@ -897,6 +905,16 @@ body, html{
 }
 
 #products-content-wrapper, .generic-content-wrapper{
+    width: 80%;
+    height: 500px;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#massachusetts-content-wrapper{
     width: 80%;
     height: 500px;
     position: absolute;
