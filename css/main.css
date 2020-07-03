@@ -476,7 +476,7 @@ body, html{
     background-color: blue;
 }
 
-#caas-page-container{
+#caas-page-container, #pARk-page-container{
     background-color: rgba(255, 207, 204, 1.0);
     color: blue;
 }
@@ -725,7 +725,7 @@ body, html{
     -webkit-text-stroke-color: #fff;
 }
 
-.hover-color-1:hover{
+.hover-color-1:hover, .hover-color-2:hover{
     font-size: 30px;
     color: blue;
     text-shadow: 2px 2px white;
@@ -734,7 +734,7 @@ body, html{
     -webkit-text-stroke-color: #fff;
 }
 
-.hover-color-2:hover, .hover-color-3:hover, .hover-color-5:hover{
+.hover-color-3:hover, .hover-color-5:hover{
     font-size: 30px;
     color: blue;
     cursor: pointer;
