@@ -623,6 +623,7 @@ body, html{
 #massachusetts-title-container{
     width: 100% !important;
     left: 0 !important;
+    text-align: center;
 }
 #we-are-option-button-container:hover{
     color: red;
