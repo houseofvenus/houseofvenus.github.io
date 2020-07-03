@@ -477,8 +477,13 @@ body, html{
 }
 
 #caas-page-container, #pARk-page-container{
-    background-color: rgba(255, 207, 204, 1.0);
+    background-color: rgba(255, 255, 255, 1.0);
     color: rgba(30, 30, 255, 0.8);
+}
+
+#campus-page-container{
+    background-color: rgba(0, 255, 0, 0.7);
+    color: white;
 }
 
 #we-are-human-page-container{
@@ -722,7 +727,7 @@ body, html{
     color: white;
 }
 
-.hover-color-0:hover, .hover-color-1:hover{
+.hover-color-0:hover, .hover-color-1:hover, .hover-color-2:hover, .hover-color-3:hover, .hover-color-4:hover{
     font-size: 30px;
     color: red;
     cursor: pointer;
@@ -730,14 +735,14 @@ body, html{
     -webkit-text-stroke-color: #fff;
 }
 
-.hover-color-2:hover, .hover-color-3:hover{
+/*.hover-color-2:hover, .hover-color-3:hover{
     font-size: 30px;
     color: blue;
     text-shadow: 2px 2px white;
     cursor: pointer;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
-}
+}*/
 
 .hover-color-5:hover{
     font-size: 30px;
@@ -763,14 +768,14 @@ body, html{
     -webkit-text-stroke-color: #fff;
 }
 
-.hover-color-4:hover{
+/*.hover-color-4:hover{
     font-size: 30px;
     color: yellow;
     text-shadow: 2px 2px 2px white;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
     cursor: pointer;
-}
+}*/
 
 .hover-color-6:hover{
     font-size: 30px;
