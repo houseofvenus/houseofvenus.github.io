@@ -591,12 +591,12 @@ body, html{
     border-color: blue !important;
 }
 
-.we-are-human-coloring{
+/*.we-are-human-coloring{
     color: black !important;
     border-color: black !important;
-}
+}*/
 
-.pARk-coloring{
+.pARk-coloring, .we-are-a-community-coloring, .orgs-coloring, .we-are-human-coloring{
     color: rgba(30, 30, 255, 0.8) !important;
     border-color: rgba(30, 30, 255, 0.8) !important;
 }
@@ -742,7 +742,7 @@ body, html{
     cursor: pointer;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
-}*/
+}
 
 .hover-color-5:hover{
     font-size: 30px;
@@ -750,7 +750,7 @@ body, html{
     cursor: pointer;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
-}
+}*/
 
 .hover-color-pre0:hover{
     font-size: 60px;
@@ -777,7 +777,7 @@ body, html{
     cursor: pointer;
 }*/
 
-.hover-color-6:hover, .hover-color-8:hover, .hover-color-9:hover, .hover-color-10:hover{
+.hover-color-5:hover, .hover-color-6:hover, .hover-color-8:hover, .hover-color-9:hover, .hover-color-10:hover{
     font-size: 30px;
     color: lawngreen;
     -webkit-text-stroke-width: 2px;
