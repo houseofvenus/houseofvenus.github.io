@@ -447,6 +447,15 @@ body, html{
     background-color: blue;
 }
 
+#maryland-page-container{
+    background-color: yellow;
+    color: black;
+}
+
+#massachusetts-page-container{
+    background-color: rgba(122, 182, 255, 1.0);
+}
+
 #safe-page-container{
     background-color: #93a5fb;
 }
