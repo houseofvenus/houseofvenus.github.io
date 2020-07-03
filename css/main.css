@@ -591,6 +591,11 @@ body, html{
     border-color: black !important;
 }
 
+.pARk-coloring{
+    color: rgba(30, 30, 255, 0.8) !important;
+    border-color: rgba(30, 30, 255, 0.8) !important;
+}
+
 .bold-text-title-container{
     width: 300px;
     position: absolute;
@@ -717,7 +722,7 @@ body, html{
     color: white;
 }
 
-.hover-color-0:hover, .hover-color-1:hover,{
+.hover-color-0:hover, .hover-color-1:hover{
     font-size: 30px;
     color: red;
     cursor: pointer;
