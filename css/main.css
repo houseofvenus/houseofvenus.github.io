@@ -815,7 +815,7 @@ body, html{
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
 }
-
+/*
 .hover-color-8:hover{
     font-size: 30px;
     color: violet;
