@@ -744,6 +744,7 @@ body, html{
 .hover-color{
     text-decoration: none;
     color: white;
+    transition: font-size 0.25s;
 }
 
 .hover-color-0:hover, .hover-color-1:hover, .hover-color-2:hover, .hover-color-3:hover, .hover-color-4:hover{
