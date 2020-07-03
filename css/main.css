@@ -486,7 +486,7 @@ body, html{
     color: rgba(30, 30, 255, 0.8);
 }
 
-#campus-page-container, #nature-page-container, #man-page-container{
+#campus-page-container, #nature-page-container, #man-page-container, #pledge-page-container{
     background-color: rgba(178, 255, 229, 1.0);
     color: rgba(30, 30, 255, 0.8);
 }
@@ -606,9 +606,9 @@ body, html{
     border-color: rgba(30, 30, 255, 0.8) !important;
 }
 
-.campus-coloring, .nature-coloring, .man-coloring{
-    color: rgba(30, 30, 255, 0.8);
-    border-color: rgba(30, 30, 255, 0.8);
+.campus-coloring, .nature-coloring, .man-coloring, .pledge-coloring{
+    color: rgba(30, 30, 255, 0.8) !important;
+    border-color: rgba(30, 30, 255, 0.8) !important;
 }
 
 .bold-text-title-container{
