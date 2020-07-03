@@ -478,7 +478,7 @@ body, html{
 
 #caas-page-container, #pARk-page-container{
     background-color: rgba(255, 207, 204, 1.0);
-    color: blue;
+    color: rgba(30, 30, 255, 0.8);
 }
 
 #we-are-human-page-container{
