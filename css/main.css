@@ -717,7 +717,7 @@ body, html{
     color: white;
 }
 
-.hover-color-0:hover{
+.hover-color-0:hover, .hover-color-1:hover,{
     font-size: 30px;
     color: red;
     cursor: pointer;
@@ -725,7 +725,7 @@ body, html{
     -webkit-text-stroke-color: #fff;
 }
 
-.hover-color-1:hover, .hover-color-2:hover{
+.hover-color-2:hover, .hover-color-3:hover{
     font-size: 30px;
     color: blue;
     text-shadow: 2px 2px white;
@@ -734,7 +734,7 @@ body, html{
     -webkit-text-stroke-color: #fff;
 }
 
-.hover-color-3:hover, .hover-color-5:hover{
+.hover-color-5:hover{
     font-size: 30px;
     color: blue;
     cursor: pointer;
