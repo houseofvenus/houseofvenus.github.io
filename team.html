@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- VERSION 0.1.0.10 -->
-    <title>House of Venus | City as a Service</title>
+    <!-- VERSION 0.1.0.15 -->
+    <title>House of Venus | City as a Service | We Are...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="../css/main.css" type="text/css" />
-    <script src="../js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
-        
         document.addEventListener("DOMContentLoaded", function(){
             let servicesVisible = false;
             
@@ -34,32 +33,29 @@
             });
             
             document.getElementById("company-header-button").addEventListener("click", function(){
-                window.location.href = "../";
+                window.location.href = "./";
             });
-           
+            
             let overlay = document.getElementById("page-overlay-container");
             overlay.style.display = "block";
             $(overlay).animate({
                 height: "100%",
                 opacity: 1.0
             }, 500, "swing", transitionToActions());
-
+            
         });
     </script>
 </head>
 <body>
     <div id="main-app-container">
-        <div id="nature-page-container" class="page-container">
-            <div id="page-overlay-container" class="nature-coloring">
-                <div id='company-header-button' class="nature-coloring">house of venus</div>
+        <div id="team-page-container" class="page-container">
+            <div id="team-overlay-container">
+                <div id='company-header-button' class="team-coloring">house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
-                <div id="caas-title-container" class="bold-text-title-container nature-coloring">nature</div>
-                <div id="nature-content-wrapper" class="generic-content-wrapper">
-                    <p style="font-size: 24px; line-height: 30px; margin-top: 20%; font-weight: 200;">
-                        Why <span style="font-weight: 700;">do</span>?<p>
-                    </p>
+                <span class="bold-text-title-container">team</span>
+                <div id="team-content-wrapper" class="generic-content-wrapper">
+                    
                 </div>
-                <div class="more-button-container nature-coloring">learn more</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
