@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- VERSION 0.1.0.10 -->
+    <title>House of Venus | City as a Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            let servicesVisible = false;
+            
+            function transitionToActions(){
+                let page0wrapper = document.getElementById("page-0-content-wrapper");
+                let page1wrapper = document.getElementById("page-1-content-wrapper");
+                
+                $(page0wrapper).animate({
+                    opacity: 0
+                }, 500, "swing");
+                
+                $(page1wrapper).animate({
+                    opacity: 1.0
+                }, 500, "swing");
+                
+            }
+            
+            document.getElementById("instagram-social-button-container").addEventListener("click", function(){
+                window.location.href = "https://instagram.com/ceo.hov"
+            });
+            
+            document.getElementById("youtube-social-button-container").addEventListener("click", function(){
+                window.location.href = "https://www.youtube.com/channel/UCGbhZq-wHMPHgg-Zdt9hfWw";
+            });
+            
+            document.getElementById("company-header-button").addEventListener("click", function(){
+                window.location.href = "./";
+            });
+           
+            let overlay = document.getElementById("page-overlay-container");
+            overlay.style.display = "block";
+            $(overlay).animate({
+                height: "100%",
+                opacity: 1.0
+            }, 500, "swing", transitionToActions());
+
+        });
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+        <div id="caas-page-container" class="page-container">
+            <div id="page-overlay-container">
+                <div id='company-header-button'>house of venus</div>
+                <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
+                <div id="caas-title-container" class="bold-text-title-container">community</div>
+                <div id="products-content-wrapper">
+                    <p style="font-size: 24px; line-height: 30px; margin-top: 20%; font-weight: 200;">
+                        The core inspiration behind the House of Venus and our <span style="font-weight: 700;">public Augmented Reality kinectome</span>. Our formative years spent in <span style="font-weight: 700;">New England</span> and the <span style="font-weight: 700;">Mid-Atlantic</span> shaped our appreciation for <span style="font-weight: 700;">communal values</span>, <span style="font-weight: 700;">respect for nature</span> and <span style="font-weight: 700;">its beauty</span>, and a responsibility to <span style="font-weight: 700;">excel for the sake of others</span>. This commitment to community and our ambition to share it with others is a major inspiration for all of our products and services.
+                    </p>
+                </div>
+                <div class="more-button-container">learn more</div>
+                <div id="social-media-button-bar-container">
+                    <div id="instagram-social-button-container" class="social-button-container"></div>
+                    <div id="youtube-social-button-container" class="social-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
