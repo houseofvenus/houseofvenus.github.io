@@ -572,6 +572,11 @@ body, html{
     text-decoration: none;
 }
 
+.caas-main-coloring{
+    color: blue !important;
+    border-color: blue !important;
+}
+
 .bold-text-title-container{
     width: 300px;
     position: absolute;
