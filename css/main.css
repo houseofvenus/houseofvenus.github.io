@@ -729,7 +729,7 @@ body, html{
 
 .hover-color-0:hover, .hover-color-1:hover, .hover-color-2:hover, .hover-color-3:hover, .hover-color-4:hover{
     font-size: 30px;
-    color: red;
+    color: rgba(30, 30, 255, 0.8);/*red;*/
     cursor: pointer;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
