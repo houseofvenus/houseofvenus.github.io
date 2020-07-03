@@ -482,7 +482,7 @@ body, html{
 }
 
 #campus-page-container, #nature-page-container, #man-page-container{
-    background-color: rgba(124, 252, 0, 0.7);
+    background-color: rgba(178, 255, 229, 1.0);
     color: white;
 }
 
@@ -792,13 +792,13 @@ body, html{
 
 .hover-color-7a:hover, .hover-color-7b:hover{
     font-size: 60px;
-    color: blue;/*yellow;*/
+    color: yellow;/*blue;*/
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #fff;
     cursor: pointer;
 }
 
-/*.hover-color-7b:hover{
+.hover-color-7b:hover{
     font-size: 60px;
     color: blue;
     text-shadow: 2px 2px white;
