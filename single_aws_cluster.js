@@ -118,6 +118,21 @@ else {*/
 
         res.render('products.html',{root: dir[0]});
     });
+
+    app.get('/team', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('team.html',{root: dir[0]});
+    });
     
     app.get('/bantxr', function(req, res){
         var result = new WhichBrowser(req.headers);
@@ -207,6 +222,36 @@ else {*/
         }
 
         res.render('safe.html',{root: dir[0]});
+    });
+
+    app.get('/oldrow/maryland', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('maryland.html',{root: dir[0]});
+    });
+
+    app.get('/oldrow/massachusetts', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('massachusetts.html',{root: dir[0]});
     });
 
     app.get('/lyoko', function(req, res){
