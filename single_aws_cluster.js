@@ -149,6 +149,36 @@ else {*/
         res.render('atown.html',{root: dir[0]});
     });
 
+    app.get('/weare/human', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('human.html',{root: dir[0]});
+    });
+
+    app.get('/weare/orgs', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('orgs.html',{root: dir[0]});
+    });
+
     app.get('/weare/acommunity', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
