@@ -149,6 +149,21 @@ else {*/
         res.render('atown.html',{root: dir[0]});
     });
 
+    app.get('/weare/acommunity', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('acommunity.html',{root: dir[0]});
+    });
+
     app.get('/weare/safe', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -207,6 +222,21 @@ else {*/
         }
 
         res.render('vantage.html',{root: dir[0]});
+    });
+
+    app.get('/pARk', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('pARk.html',{root: dir[0]});
     });
 
     app.get('/origin', function(req, res){
