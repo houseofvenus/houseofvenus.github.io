@@ -104,6 +104,52 @@ else {*/
         res.render('index.html',{root: dir[0]});
     });
 
+    app.get('/dock', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('dock.html',{root: dir[0]});
+    });
+
+
+    app.get('/dock/en', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('en.html',{root: dir[0]});
+    });
+
+    app.get('/dock/replace', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('replace.html',{root: dir[0]});
+    });
+
     app.get('/pARk/connect', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
