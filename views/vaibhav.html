@@ -44,6 +44,13 @@
                 opacity: 1.0
             }, 500, "swing", transitionToActions());
 
+            document.getElementById("vaibhav-connect-button-container").addEventListener("click", function(){
+                $("#server-maintenance-overlay-container").css("display", "block");
+                $("#server-maintenance-overlay-container").animate({
+                    opacity: 1.0,
+                    height: "100%"
+                }, 500);
+            });
         });
     </script>
 </head>
@@ -65,11 +72,17 @@
                         <div id="vaibhav-social-ig-icon-container" class="social-icon-container" style="background-image: url(../media/img/instagram-texture.png);"></div>
                     </div>
                 </div>
-                <div class="more-button-container pARk-coloring">connect</div>
+                <div id="vaibhav-connect-button-container" class="more-button-container pARk-coloring">connect</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
                 </div>
+            </div>
+            <div id="server-maintenance-overlay-container">
+                
+                <p style="margin-top: 5%; currently width: 100%; text-align: center; font-size: 18px;">[Amazon Web Services EB Code 05478lgh91293]</p>
+                <p id="server-maintenance-message-container">
+                    The DLT server is undergoing maintenance. Please close this window and try to reconnect after 00:00:00 (UTC-0500) on Monday, July 20, 2020. </p>
             </div>
         </div>
     </div>
