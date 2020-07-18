@@ -179,6 +179,21 @@ else {*/
 
         res.render('vaibhav.html',{root: dir[0]});
     });
+    
+    app.get('/pARk/adam', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('adam.html',{root: dir[0]});
+    });
 
     app.get('/products', function(req, res){
         var result = new WhichBrowser(req.headers);
