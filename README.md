@@ -1,5 +1,5 @@
 # House of Venus
-## a City-as-a-Service Company dedicated to providing affordable immersive internet service to communities and organizations at the forefront of human development and imagination
+## a City-as-a-Service Company promoting innovation through our affordable immersive internet service for communities and public institutions
 ### Board
 #### Patrice-Morgan ONGOLY [@starmaker2130](https://github.com/starmaker2130), Beatrice GOMA [@bgoma](https://github.com/bgoma)
 
