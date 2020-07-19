@@ -37,6 +37,10 @@
                 window.location.href = "../";
             });
            
+            document.getElementById("open-space-door-button-container").addEventListener("click", function(){
+                window.location.href = "../pARk/rooms/space";
+            });
+            
             let overlay = document.getElementById("page-overlay-container");
             overlay.style.display = "block";
             $(overlay).animate({
@@ -65,7 +69,7 @@
                         <span style="font-weight: 700;">capital</span>.
                     </p>
                 </div>
-                <div class="more-button-container in-space-coloring">open</div>
+                <div id="open-space-door-button-container" class="more-button-container in-space-coloring">open</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
