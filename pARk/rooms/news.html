@@ -36,10 +36,6 @@
             document.getElementById("company-header-button").addEventListener("click", function(){
                 window.location.href = "../";
             });
-            
-            document.getElementById("pledge-learn-more-button-container").addEventListener("click", function(){
-                window.location.href = "./pledge/demo";
-            });
            
             let overlay = document.getElementById("page-overlay-container");
             overlay.style.display = "block";
@@ -53,17 +49,17 @@
 </head>
 <body>
     <div id="main-app-container">
-        <div id="pledge-page-container" class="page-container">
+        <div id="news-page-container" class="page-container">
             <div id="page-overlay-container">
-                <div id='company-header-button' class="pledge-coloring">house of venus</div>
+                <div id='company-header-button'>house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
-                <div id="pledge-title-container" class="bold-text-title-container pledge-coloring">pledge</div>
-                <div id="pledge-content-wrapper" class="pledge-coloring generic-content-wrapper">
+                <div id="news-title-container" class="bold-text-title-container news-coloring">news</div>
+                <div id="news-content-wrapper" class="news-coloring">
                     <p style="font-size: 24px; line-height: 30px; margin-top: 20%; font-weight: 200;">
-                        Pledge <span style="font-weight: 700;">tasks</span>?<p>
+                        Why <span style="font-weight: 700;">do</span>?<p>
                     </p>
                 </div>
-                <div id="pledge-learn-more-button-container" class="more-button-container pledge-coloring">learn more</div>
+                <div class="more-button-container news-coloring">open</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>

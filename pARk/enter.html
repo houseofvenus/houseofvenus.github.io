@@ -2,7 +2,7 @@
 <html>
 <head>
     <!-- VERSION 0.1.0.15 -->
-    <title>House of Venus | City as a Service | We Are A Community</title>
+    <title>House of Venus | City as a Service | pARk</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" />
     <script src="../js/jquery-3.2.1.min.js"></script>
@@ -37,10 +37,6 @@
                 window.location.href = "../";
             });
            
-            document.getElementById("community-learn-more-button-container").addEventListener("click", function(){
-                window.location.href = "./acommunity/demo"; 
-            });
-            
             let overlay = document.getElementById("page-overlay-container");
             overlay.style.display = "block";
             $(overlay).animate({
@@ -48,26 +44,45 @@
                 opacity: 1.0
             }, 500, "swing", transitionToActions());
 
+            document.getElementById("vaibhav-connect-button-container").addEventListener("click", function(){
+                $("#server-maintenance-overlay-container").css("display", "block");
+                $("#server-maintenance-overlay-container").animate({
+                    opacity: 1.0,
+                    height: "100%"
+                }, 500);
+            });
         });
     </script>
 </head>
 <body>
     <div id="main-app-container">
-        <div id="we-are-a-community-page-container" class="page-container">
+        <div id="pARk-page-container" class="page-container">
             <div id="page-overlay-container">
-                <div id='company-header-button' class="we-are-a-community-coloring">house of venus</div>
+                <div id='company-header-button' class="pARk-coloring">house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
-                <div id="we-are-a-community-title-container" class="bold-text-title-container we-are-a-community-coloring">community</div>
-                <div id="we-are-a-community-content-wrapper" class="generic-content-wrapper we-are-a-community-coloring">
-                     <p style="font-size: 24px; line-height: 30px; top: 20%; position: absolute; left: 10%; width: 80%; font-weight: 200;">
-                        The core inspiration behind the House of Venus and our <span style="font-weight: 700;">public Augmented Reality kinectome</span>. Our formative years spent in <span style="font-weight: 700;">New England</span> and the <span style="font-weight: 700;">Mid-Atlantic</span> shaped our appreciation for <span style="font-weight: 700;">communal values</span>, <span style="font-weight: 700;">respect for nature</span> and <span style="font-weight: 700;">its beauty</span>, and a responsibility to <span style="font-weight: 700;">excel for the sake of others</span>. This commitment to community and our ambition to share it with others is a major inspiration for all of our products and services.
+                <div id="pARk-title-container" class="bold-text-title-container pARk-coloring" style="text-transform: lowercase;">@vaibhav</div>
+                <div id="pARk-content-wrapper" class="profile-content-wrapper">
+                    <div id="vaibhav-profile-image-container" class="user-profile-image-container"></div>
+                    <p style="font-size: 24px; line-height: 30px; width: 100%; text-align: center;font-weight: 200;">
+                        <span style="font-weight: 700;">Vaibhav Ponnuri</span>
                     </p>
+                    <div id="vaibhav-social-profile-icon-banner-container" class="social-profile-icon-banner-container">
+                        <div id="vaibhav-social-facebook-icon-container" class="social-icon-container" style="background-image: url(../media/img/facebook-icon.png);"></div>
+                        <div id="vaibhav-social-linkedin-icon-container" class="social-icon-container" style="background-image: url(../media/img/linkedin-icon.png);"></div>
+                        <div id="vaibhav-social-ig-icon-container" class="social-icon-container" style="background-image: url(../media/img/instagram-texture.png);"></div>
+                    </div>
                 </div>
-                <div id="community-learn-more-button-container" class="more-button-container we-are-a-community-coloring">learn more</div>
+                <div id="vaibhav-connect-button-container" class="more-button-container pARk-coloring">connect</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
                 </div>
+            </div>
+            <div id="server-maintenance-overlay-container">
+                
+                <p style="margin-top: 5%; currently width: 100%; text-align: center; font-size: 18px;">[Amazon Web Services EB Code 05478lgh91293]</p>
+                <p id="server-maintenance-message-container">
+                    The DLT server is undergoing maintenance. Please close this window and try to reconnect after 00:00:00 (UTC-0500) on Monday, July 20, 2020. </p>
             </div>
         </div>
     </div>
