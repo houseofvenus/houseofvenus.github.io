@@ -165,6 +165,36 @@ else {*/
         res.render('connect.html',{root: dir[0]});
     });
 
+    app.get('/pARk/pamo', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('patricemorgan.html',{root: dir[0]});
+    });
+
+    app.get('/pARk/cameron', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('cameron.html',{root: dir[0]});
+    });
+
     app.get('/pARk/vaibhav', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -178,6 +208,50 @@ else {*/
         }
 
         res.render('vaibhav.html',{root: dir[0]});
+    });
+
+    app.get('/pARk/louis', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('louis.html',{root: dir[0]});
+    });
+    app.get('/pARk/eric', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('eric.html',{root: dir[0]});
+    });
+
+    app.get('/pARk/roger', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('roger.html',{root: dir[0]});
     });
     
     app.get('/pARk/adam', function(req, res){

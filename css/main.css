@@ -37,6 +37,26 @@ body, html{
     #vaibhav-profile-image-container{
         width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
     }
+    
+    #cameron-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/cameron-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #eric-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/eric-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #louis-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/louis-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #guedalia-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/guedalia-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #patrice-morgan-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -53,6 +73,26 @@ body, html{
     }
     
     #vaibhav-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #cameron-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/cameron-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #eric-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/eric-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #louis-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/louis-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #guedalia-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/guedalia-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #patrice-morgan-profile-image-container{
         width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
     }
 }
