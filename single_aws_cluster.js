@@ -119,7 +119,6 @@ else {*/
         res.render('dock.html',{root: dir[0]});
     });
 
-
     app.get('/dock/en', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -810,7 +809,6 @@ else {*/
         res.render('vision.html',{root: dir[0]});
     });
 
-
     app.get('/clavier', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -843,21 +841,6 @@ else {*/
         res.render('office.html',{root: dir[0]});
     });
     
-    app.get('/rooms', function(req, res){
-        var result = new WhichBrowser(req.headers);
-        console.log(result.toString());
-        if(result.isType('desktop')){
-            console.log('This is a desktop computer.');
-            deviceType = 'desktop';
-        }
-        else{
-            console.log('This is a mobile device.');
-            deviceType = 'mobile';
-        }
-
-        res.render('rooms.html',{root: dir[0]});
-    });
-
     app.get('/rooms', function(req, res){
        var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -961,8 +944,7 @@ else {*/
         }
 
         res.render('ai.html',{root: dir[0]});
-    });
-    
+    });   
 
     app.get('/class', function(req, res){
         var result = new WhichBrowser(req.headers);
