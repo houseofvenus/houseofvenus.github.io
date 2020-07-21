@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+    <title>AugR Hand Tracking Library v. 0.1.1.3</title>
+    <link rel="stylesheet" href="./css/handtracking.css">
+    <!--<script src="./js/aframe.min.js.map"></script>-->
+    <script src="./js/aframe100.js"></script>
+    <script src="./js/augr-hand-tracking.js"> </script>
+    <script src="./js/ImmersiveClassroom.js"></script>
+    <script src="./js/WorkRoom.js"></script>
+</head>
+<body>
+    <h2 id="Immersive-Classroom-application-header" class="rooms-auto-generated-application-header">Immersive Classroom</h2>
+     <!--<audio id="native-audio-controller" controls>
+       <source id="native-audio-stream-controller" src="./media/audio/MenorQueTres.mp3" />
+    </audio>-->
+    <div id="Immersive-Classroom-application-console">
+        ...
+    </div>
+    <a-scene embedded id="immersive-layer-container">
+        <a-assets>
+            <img id="alleluia-cover-texture" src="./media/img/alleluia-cover.png" />
+            <img id="menor-que-tres-cover-texture" src="./media/img/menor-que-tres-cover.png" />
+            <img id="had-enough-remix-cover-texture" src="./media/img/had-enough-remix-cover.png" />
+            <img id="rainbow-in-the-dark-cover-texture" src="./media/img/rainbow-in-the-dark-cover.png" />
+            
+            <img id="left-hand-button-cover-texture" src="./media/img/left-hand-icon.png" />
+            <img id="right-hand-button-cover-texture" src="./media/img/right-hand-icon.png" />
+        </a-assets>
+        
+        <a-entity id="left-hand-raised-button-immersive-entity-container"
+                  geometry="primitive: plane; width: 3; height: 3;"
+                  material="src: #left-hand-button-cover-texture; opacity: 0.3;"
+                  position="-5 4 -6">
+        </a-entity>
+        
+        <a-entity id="right-hand-raised-button-immersive-entity-container"
+                  geometry="primitive: plane; width: 3; height: 3;"
+                  material="src: #right-hand-button-cover-texture; opacity: 0.3;"
+                  position="5 4 -6">
+        </a-entity>
+        
+        <a-entity camera position="0 1.9 0"></a-entity><!-- look-controls wasd-controls-->
+    </a-scene>
+    <div>
+        <button  id="move-my-eyelids-button-container" type="button"></button><!-- disabled-->
+    </div>
+    <video class="videobox lens" autoplay="autoplay" id="myvideo"></video>
+    <canvas id="canvas" class="lens"></canvas>  
+</body>
+</html>

@@ -9,6 +9,20 @@ html, body{
     height: 100%;
 }
 
+#Immersive-Classroom-application-console{
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    z-index: 500;
+    font-family: "AuraRegular W05 Regular", Fallback, sans-serif;
+    font-size: 24px;
+}
+
 #immersive-layer-container{
     position: absolute;
     top: 50%;
@@ -25,6 +39,16 @@ html, body{
     font-size: 44px;
     text-align: center;
     width: 300px;
+    font-family: "AuraRegular W05 Regular", Fallback, sans-serif;
+}
+
+.rooms-auto-generated-application-header{
+    display: block;
+    margin: 2% auto 1% auto;
+    font-size: 44px;
+    text-align: center;
+    width: 100%;
+    text-align: center;
     font-family: "AuraRegular W05 Regular", Fallback, sans-serif;
 }
 
