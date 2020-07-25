@@ -229,21 +229,36 @@
                 hideCorrespondingDescriptionContainer("pARk");
                 hideCorrespondingDescriptionContainer("tulse-1");
                 
-                //document.getElementById("echelearn-product-description-container").
-                
-                
                 document.getElementById("echelearn-product-description-container").onmouseout = function(){
                     hideCorrespondingDescriptionContainer("echelearn");
                 };
-                /*
-                document.getElementById("echelearn-product-description-container").style.opacity = 0;
-                document.getElementById("foodid-product-description-container").style.opacity = 0;
-                document.getElementById("rushmore-product-description-container").style.opacity = 0;
-                document.getElementById("honeycomb-product-description-container").style.opacity = 0;
-                document.getElementById("pARk-product-description-container").style.opacity = 0;
-                document.getElementById("tulse-1-product-description-container").style.opacity = 0;
-                */
             }, 1000);
+            
+            document.getElementById("echelearn-product-icon-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/class";
+            });
+            
+            document.getElementById("foodid-product-icon-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/foodid";
+            });
+            
+            document.getElementById("rushmore-product-icon-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/rushmore";
+            });
+            
+            document.getElementById("honeycomb-product-icon-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/honeycomb";
+            });
+            
+            document.getElementById("pARk-product-icon-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/class";
+            });
+            
+            document.getElementById("tulse-product-icon-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/tulse";
+            });
+            
+            
         });
         
         function showCorrespondingDescriptionContainer(productName){
