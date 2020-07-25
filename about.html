@@ -50,6 +50,7 @@
             line-height: 100px;
             text-align: center;
             cursor: pointer;
+            z-index: 50;
         }
         
         #navigation-menu-container{
@@ -59,6 +60,7 @@
             width: 300px;
             font-size: 0;
             height: 100px;
+            z-index: 50;
         }
         
         .menu-option-container{
@@ -80,10 +82,13 @@
             height: 100px;
             border-radius: 50%;
             cursor: pointer;
-            background-image: url(../media/img/play-button.png);
+            background-image: url(./media/img/play-button.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
+            z-index: 100;
+            opacity: 1.0;
+            transition: opacity 0.5s;
         }
         
         #start-video-button-container:hover{
@@ -93,7 +98,7 @@
         #hov-logo-container{
             width: 50px;
             height: 50px;
-            background-image: url(../media/img/hov-logo.png);
+            background-image: url(./media/img/hov-logo.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -102,6 +107,7 @@
             left: 50%;
             margin-left: -25px;
             cursor: pointer;
+            z-index: 50;
         }
         
         #about-us-menu-option-container{
@@ -112,8 +118,14 @@
         #about-us-menu-option-container:hover, #products-menu-option-container:hover,{
             font-style: italic;
         }
+        
+        #video-container{
+            margin: 4% auto 0 auto;
+            display: block;
+            z-index: 0;
+        }
     </style>
-    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("hov-logo-container").addEventListener("click", function(){
@@ -131,6 +143,27 @@
             document.getElementById("products-menu-option-container").addEventListener("click", function(){
                 window.location.href = "./products";
             });
+            
+            document.getElementById("start-video-button-container").addEventListener("click", function(){
+                let self = this;
+                let video = document.getElementById("video-container");
+                
+                self.style.opacity = 0;
+                video.play();
+                
+                setTimeout(function(){
+                    self.style.display = "none";
+                    
+                    video.onended = function(){
+                        //console.log("video ended!");
+                        self.style.display = "block";
+                        setTimeout(function(){
+                            self.style.opacity = 1.0;
+                        }, 50);
+                    };
+                    
+                }, 550)
+            })
         });
     </script>
 </head>
@@ -142,6 +175,7 @@
             <div id="about-us-menu-option-container" class="menu-option-container">about</div>
             <div id="products-menu-option-container" class="menu-option-container">products</div>            
         </div>
+        <video id="video-container" width="1080" height="720" src="./media/vid/placeholder-intro.mp4"></video>
         <div id="start-video-button-container"></div>
     </div>
 </body>
