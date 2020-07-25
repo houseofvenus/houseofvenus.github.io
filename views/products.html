@@ -1,213 +1,309 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- VERSION 0.1.0.10 -->
-    <title>House of Venus | City as a Service</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="./css/main.css" type="text/css" />
-    <script src="./js/jquery-3.2.1.min.js"></script>
-    <script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>House of Venus | The world is your desktop</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
         
-        document.addEventListener("DOMContentLoaded", function(){
-            $(function() {
-                $('a[href*="#"]')
-                  // Remove links that don't actually link to anything
-                    .not('[href="#"]')
-                    .not('[href="#0"]')
-                    .click(function(event) {
-                    console.log("CLICKCINCE")
-                        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                            var target = $(this.hash);
-                            var productsWrapperOffset = $('#products-content-wrapper').offset().top;
-                            var productsWrapperHeight = $('#products-content-wrapper').height();
-                            let prevCurrentFocus = currentFocus;
-                            console.log(target[0].getAttribute("id"));
-                            //console.log(target.length);
-                            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                            
-                            let finalOffset = target.offset().top-productsWrapperOffset;
-                            
-                            $("#product-overlay-container").css("display", "block").animate({
-                                opacity: 1.0
-                            }, 1000);
-                            
-                            $(".product-description-container").animate({
-                                opacity: 0,
-                            }, 500, function(){
-                                $(this).css("display", "none");
-                                if(`product-description-container-${prevCurrentFocus}`==$(this).attr("id")){
-                                    $(`#product-description-container-${prevCurrentFocus}`).css("display", "block").animate({
-                                        opacity: 1.0
-                                    }, 500);
-                                }
-                            });
-                            
-                            $(`#product-description-container-${currentFocus}`).css("display", "block").animate({
-                                opacity: 1.0
-                            }, 500);
-                            
-                            
-                            if(target[0].getAttribute("id")==="ClassroomProductImageContainer"){
-                                currentFocus=1;  
-                            }
-                            else if(target[0].getAttribute("id")==="OfficeProductImageContainer"){
-                                currentFocus=0;
-                            }
-                            
-                            
-                            
-                            
-                            console.log("currentFocus", currentFocus);
-                            
-                            if(target[0].getAttribute("id")==="pARkProductLabelContainer"){
-                                console.log("last item");
-                                finalOffset = productsWrapperHeight+$("#pARkProductImageContainer").height()+$("#pARkProductLabelContainer").height();
-                                currentFocus=2;
-                            }
-                            if (target.length) {
-                                $('#products-content-wrapper').animate({
-                                scrollTop: finalOffset
-                                }, 1000);
-                                return false;
-                            }
-                        }
-                    });
-            });
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #main-app-container{
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-family: "IBM Plex Sans", sans-serif;
+        }
             
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
             
-            $(".back-to-main-products-page-button-container").click(function(){
-                $("#product-overlay-container").animate({
-                    opacity: 0
-                }, 1000, function(){
-                    $(this).css("display", "none");
-                });
-            });
-            
-            let servicesVisible = false;
-            
-            function transitionToActions(){
-                let page0wrapper = document.getElementById("page-0-content-wrapper");
-                let page1wrapper = document.getElementById("page-1-content-wrapper");
-                
-                $(page0wrapper).animate({
-                    opacity: 0
-                }, 500, "swing");
-                
-                $(page1wrapper).animate({
-                    opacity: 1.0
-                }, 500, "swing");
-                
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
             }
+        }
+        
+        #house-of-venus-title-container{
+            text-transform: uppercase;
+            position: absolute;
+            top: 2%;
+            left: 3%;
+            font-size: 24px;
+            height: 100px;
+            width: 250px;
+            line-height: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        #navigation-menu-container{
+            position: absolute;
+            top: 2%;
+            right: 3%;
+            width: 300px;
+            font-size: 0;
+            height: 100px;
+        }
+        
+        .menu-option-container{
+            width: 150px;
+            height: 100%;
+            display: inline-block;
+            font-size: 24px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        
+        #start-video-button-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-image: url(../media/img/play-button.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        #start-video-button-container:hover{
             
-            document.getElementById("instagram-social-button-container").addEventListener("click", function(){
-                window.location.href = "https://instagram.com/ceo.hov"
+        }
+        
+        #hov-logo-container{
+            width: 50px;
+            height: 50px;
+            background-image: url(../media/img/hov-logo.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            margin-left: -25px;
+            cursor: pointer;
+        }
+        
+        #products-menu-option-container{
+            font-weight: 900;
+            font-style: italic;
+        }
+        
+        #about-us-menu-option-container:hover, #products-menu-option-container:hover,{
+            font-style: italic;
+        }
+        
+        .product-icon-container{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px white solid;
+            text-align: center;
+            line-height: 300px;
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 1% 25px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        #echelearn-product-icon-container{
+            background-color: blue;
+        }
+        
+        #foodid-product-icon-container{
+            background-color: black;
+        }
+        
+        #rushmore-product-icon-container, #tulse-1-product-icon-container{
+            background-color: red;
+            
+        }
+        
+        #honeycomb-product-icon-container{
+            background-color: blue;
+        }
+        
+        #rooms-product-icon-container, #arnoir-product-icon-container{
+            background-color: black;
+        }
+        
+        #product-line-container{
+            width: 775px;
+            display: block;
+            margin: 10% auto 0 auto;
+        }
+        
+        .product-line-header-container{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin-top: 5%;
+            text-align: left;
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: lowercase;
+        }
+        
+        .product-description-container{
+            width: 31%;
+            height: 100%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            margin: 0 1%;
+            opacity: 1.0;
+            transition: opacity 0.5s;
+        }
+    </style>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("hov-logo-container").addEventListener("click", function(){
+                window.location.href = "./en";
             });
             
-            document.getElementById("youtube-social-button-container").addEventListener("click", function(){
-                window.location.href = "https://www.youtube.com/channel/UCGbhZq-wHMPHgg-Zdt9hfWw";
+            document.getElementById("house-of-venus-title-container").addEventListener("click", function(){
+                window.location.href = "./en";
             });
             
-            document.getElementById("company-header-button").addEventListener("click", function(){
-                window.location.href = "./";
+            document.getElementById("about-us-menu-option-container").addEventListener("click", function(){
+                window.location.href = "./about";
             });
             
-            let currentFocus = 0;
-            let scrollOptions = ["OfficeProductImageContainer", "ClassroomProductImageContainer","pARkProductImageContainer"]
-           
-            document.getElementById("next-product-button-container").addEventListener("click", function(){
-                console.log(scrollOptions[currentFocus]);
-                document.getElementById(scrollOptions[currentFocus]).click();
+            document.getElementById("products-menu-option-container").addEventListener("click", function(){
+                window.location.href = "./products";
             });
-           
-            let overlay = document.getElementById("page-overlay-container");
-            overlay.style.display = "block";
-            $(overlay).animate({
-                height: "100%",
-                opacity: 1.0
-            }, 500, "swing", transitionToActions());
-
+            
+            setTimeout(function(){
+                document.getElementById("echelearn-product-icon-container").style.opacity = 1.0;
+            }, 600);
+            
+            setTimeout(function(){
+                document.getElementById("foodid-product-icon-container").style.opacity = 1.0;
+            }, 750);
+            
+            setTimeout(function(){
+                document.getElementById("rushmore-product-icon-container").style.opacity = 1.0;
+            }, 500);
+            
+            setTimeout(function(){
+                document.getElementById("honeycomb-product-icon-container").style.opacity = 1.0;
+            }, 250);
+            
+            setTimeout(function(){
+                document.getElementById("rooms-product-icon-container").style.opacity = 1.0;
+            }, 350);
+            
+            setTimeout(function(){
+                document.getElementById("tulse-1-product-icon-container").style.opacity = 1.0;
+            }, 125);
+            
+            setTimeout(function(){
+                hideCorrespondingDescriptionContainer("echelearn");
+                hideCorrespondingDescriptionContainer("foodid");
+                hideCorrespondingDescriptionContainer("rushmore");
+                hideCorrespondingDescriptionContainer("honeycomb");
+                hideCorrespondingDescriptionContainer("rooms");
+                hideCorrespondingDescriptionContainer("tulse-1");
+                
+                //document.getElementById("echelearn-product-description-container").
+                
+                
+                document.getElementById("echelearn-product-description-container").onmouseout = function(){
+                    hideCorrespondingDescriptionContainer("echelearn");
+                };
+                /*
+                document.getElementById("echelearn-product-description-container").style.opacity = 0;
+                document.getElementById("foodid-product-description-container").style.opacity = 0;
+                document.getElementById("rushmore-product-description-container").style.opacity = 0;
+                document.getElementById("honeycomb-product-description-container").style.opacity = 0;
+                document.getElementById("rooms-product-description-container").style.opacity = 0;
+                document.getElementById("tulse-1-product-description-container").style.opacity = 0;
+                */
+            }, 1000);
         });
+        
+        function showCorrespondingDescriptionContainer(productName){
+            document.getElementById(`${productName}-product-description-container`).style.opacity = 1.0;
+        }
+        
+        function hideCorrespondingDescriptionContainer(productName){
+            /*console.log(productName);
+            console.log(`#${productName}-product-description-container`);*/
+            document.getElementById(`${productName}-product-description-container`).style.opacity = 0;
+        }
     </script>
 </head>
 <body>
     <div id="main-app-container">
-        <div id="page-0-container" class="page-container">
-            <div id="product-overlay-container">
-                <div id="office-product-preview-container">
-                    <div id="product-description-container-0" class="product-description-container office-product-description-container">
-                        <object class="video-container" data="https://www.youtube.com/embed/e8ZoGgTVVc8" width="480" height="360"></object>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                        <div class="back-to-main-products-page-button-container">ax</div>
-                    </div>
-                    <div id="office-product-price-container">
-                        $1299.99
-                    </div>
+        <div id="hov-logo-container"></div>
+        <div id="house-of-venus-title-container">house of venus</div>
+        <div id="navigation-menu-container">
+            <div id="about-us-menu-option-container" class="menu-option-container">about</div>
+            <div id="products-menu-option-container" class="menu-option-container">products</div>            
+        </div>
+        <div id="product-line-container">
+            <div id="home-product-line-container">
+                <div id="home-product-line-header-container" class="product-line-header-container">for homes</div>
+                <div id="echelearn-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('echelearn');" onmouseout="hideCorrespondingDescriptionContainer('echelearn');">EcheLearn</div>
+                <div id="foodid-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('foodid');" onmouseout="hideCorrespondingDescriptionContainer('foodid');">Foodid</div>
+                <div id="rushmore-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rushmore');" onmouseout="hideCorrespondingDescriptionContainer('rushmore');">Rushmore</div>
+            </div>
+            <div id="home-product-line-descriptions-container">
+                <div id="echelearn-product-description-container" class="product-description-container">Learn in the best environment possible with teachers you know and love</div>
+                <div id="foodid-product-description-container" class="product-description-container">Groceries, subscribed. Define your meals and deitrary restrictions, then let the ingredients come to you.</div>
+                <div id="rushmore-product-description-container" class="product-description-container">Name your top four, go out and explore.</div>
+            </div>
+            <div id="organization-product-line-container">
+                <div id="organization-product-line-header-container" class="product-line-header-container">
+                    for organizations
                 </div>
-                <div id="classroom-product-preview-container">
-                    <div id="product-description-container-1" class="product-description-container classroom-product-description-container">
-                        <object class="video-container" data="https://www.youtube.com/embed/e8ZoGgTVVc8" width="480" height="360"></object>
-                        <p>
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="back-to-main-products-page-button-container">bx</div>
-                    </div>
-                    <div id="classroom-product-price-container">
-                        $124.99
-                    </div>
+                <div id="honeycomb-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('honeycomb');" onmouseout="hideCorrespondingDescriptionContainer('honeycomb');">
+                    HoneyComb
                 </div>
-                <div id="pARk-product-preview-container">
-                    <div id="product-description-container-2" class="product-description-container pARk-product-description-container">
-                        <object class="video-container" data="https://www.youtube.com/embed/e8ZoGgTVVc8" width="480" height="360"></object>
-                        <p>
-                            Lorem ipsum dolor sit amet tempor incididunt ut labore et dolore magna  laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="back-to-main-products-page-button-container">cx</div>
-                    </div>
-                    <div id="pARk-product-price-container">
-                        FREE
-                    </div>
+                <!--<div id="arnoir-product-icon-container" class="product-icon-container">ARnoir</div>-->
+                <div id="rooms-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rooms');" onmouseout="hideCorrespondingDescriptionContainer('rooms');">
+                    Rooms
+                </div>
+                <div id="tulse-1-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('tulse-1');" onmouseout="hideCorrespondingDescriptionContainer('tulse-1');">
+                    Tulse
                 </div>
             </div>
-            <div id="page-overlay-container">
-                <div id='company-header-button'>house of venus</div>
-                <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
-                <div id="products-content-wrapper">
-                    <div id="next-product-button-container"></div>
-                    <p>
-                        <span id="we-make-option-button-container" class="bold-text-option-button-container">We make.</span>
-                    </p>
-                    
-                    <a href="#ClassroomProductImageContainer">
-                        <div id="OfficeProductImageContainer" class="product-image-container">
-                            bxr
-                        </div>
-                    </a>
-                    <div id="office-product-label-container" class="product-label-container">
-                        Work Rooms
-                    </div>
-                    
-                    
-                    <a href="#pARkProductLabelContainer">
-                        <div id="ClassroomProductImageContainer" class="product-image-container">
-                            bxr
-                        </div>
-                    </a>
-                    <div id="classroom-product-label-container" class="product-label-container" >Class Rooms</div>
-                    
-                    
-                    <a href="#OfficeProductImageContainer">
-                        <div id="pARkProductImageContainer" class="product-image-container">
-                            p
-                        </div>
-                    </a>
-                    <div id="pARkProductLabelContainer" class="product-label-container">pARk</div>
-                    
+            <div id="organization-product-line-descriptions-container">
+                <div id="honeycomb-product-description-container" class="product-description-container">
+                    Autonomous aerial security for residential and business properties
                 </div>
-                <div id="social-media-button-bar-container">
-                    <div id="instagram-social-button-container" class="social-button-container"></div>
-                    <div id="youtube-social-button-container" class="social-button-container"></div>
+                <div id="rooms-product-description-container" class="product-description-container">
+                    Merge digital content with physical items to share immersive experiences and drive trends
+                </div>
+                <!--<div id="arnoir-product-description-container" class="product-description-container">
+                    Merge digital metadata with physical accessories to drive trends
+                </div>-->
+                <div id="tulse-1-product-description-container" class="product-description-container">
+                    Machine-augmented content distribution with additional tools for digital business management
                 </div>
             </div>
         </div>

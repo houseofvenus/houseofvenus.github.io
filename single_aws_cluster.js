@@ -104,6 +104,36 @@ else {*/
         res.render('index.html',{root: dir[0]});
     });
 
+    app.get('/en', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('en.html',{root: dir[0]});
+    });
+
+    app.get('/about', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('about.html',{root: dir[0]});
+    });
+
     app.get('/hands', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
@@ -162,7 +192,7 @@ else {*/
             deviceType = 'mobile';
         }
 
-        res.render('en.html',{root: dir[0]});
+        res.render('dock_en.html',{root: dir[0]});
     });
 
     app.get('/dock/replace', function(req, res){

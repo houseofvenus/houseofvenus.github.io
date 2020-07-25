@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- VERSION 0.1.0.9 -->
+    <title>House of Venus | City as a Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            let servicesVisible = false;
+            
+            function transitionToActions(){
+                let page0wrapper = document.getElementById("page-0-content-wrapper");
+                let page1wrapper = document.getElementById("page-1-content-wrapper");
+                
+                $(page0wrapper).animate({
+                    opacity: 0
+                }, 500, "swing");
+                
+                $(page1wrapper).animate({
+                    opacity: 1.0
+                }, 500, "swing");
+                
+            }
+            
+            document.getElementById("instagram-social-button-container").addEventListener("click", function(){
+                window.location.href = "https://instagram.com/ceo.hov"
+            });
+            
+            document.getElementById("youtube-social-button-container").addEventListener("click", function(){
+                window.location.href = "https://www.youtube.com/channel/UCGbhZq-wHMPHgg-Zdt9hfWw";
+            });
+            
+            document.getElementById("company-header-button").addEventListener("click", function(){
+                window.location.href = "./";
+            });
+            
+            document.getElementById("next-page-container").addEventListener("click", function(){
+                this.style.display = "none";
+                let overlay = document.getElementById("page-overlay-container");
+                overlay.style.display = "block";
+                $(overlay).animate({
+                    height: "100%",
+                    opacity: 1.0
+                }, 500, "swing", transitionToActions());
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+        <div id="page-0-container" class="page-container">
+            <div id="page-0-content-wrapper">
+                <div id="company-logo-container"></div>
+                <div id="company-title-container">House of Venus</div>
+                <div id="company-slogan-container">The world is your desktop</div>
+            </div>
+            <div id="next-page-container"></div>
+            <div id="page-overlay-container">
+                <div id='company-header-button'>house of venus</div>
+                <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
+                <div id="page-1-content-wrapper">
+                    <p>
+                        <a href="./origin" target="_blank" id="we-are-option-button-container" class="bold-text-option-button-container">We are.</a>
+                        <span class="option-label-container" >City-as-a-Service</span>
+                    </p>
+                    <p>
+                        <a href="./products" target="_blank" id="we-make-option-button-container" class="bold-text-option-button-container">We make.</a>
+                        <span class="option-label-container" >immersive internets</span>
+                    </p>
+                    <p>
+                        <a href="./vision" target="_blank" id="why-option-button-container" class="bold-text-option-button-container">why?</a>
+                        <span class="option-label-container">21st century internet freedom</span><!--affordable open internet access-->
+                    </p>
+                </div>
+                <div style="width: 350px; height: 100px; position: absolute; left: 50%; bottom: 20%; font-size: 20px; font-weight: 200; margin-left: -175px; line-height: 100px; text-align: center;">[ Click on <span style="text-transform: uppercase;font-weight: 900;">bold text</span> to learn more ]</div>
+                <div id="social-media-button-bar-container">
+                    <div id="instagram-social-button-container" class="social-button-container"></div>
+                    <div id="youtube-social-button-container" class="social-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
