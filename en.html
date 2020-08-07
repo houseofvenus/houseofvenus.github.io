@@ -19,24 +19,35 @@
         }
         
         #main-app-container{
-            width: 100%;
-            height: 100%;
-            z-index: 0;
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            
+            background-color: rgba(255, 255, 255, 0);
             font-family: "IBM Plex Sans", sans-serif;
+            color: black;
+            
+            transition: color 0.5s;
         }
+        
+        #background-layer-container{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -50;
             
-        @media only screen and (max-width: 600px) { 
-            /*#main-app-container {
-                background-color: lightblue;
-            }*/
+            background-image: url(./media/img/ar-bg-src.gif);
+            background-size: 120% 120%;
+            background-position: center center;
+            background-repeat: no-repeat;
             
-            #go-to-mobile-container{
-                z-index: -100;
-                display: none;
-            }
+            opacity: 0;
+            transition: opacity 2s;
         }
         
         #house-of-venus-title-container{
@@ -61,6 +72,9 @@
             width: 300px;
             font-size: 0;
             height: 100px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
         
         .menu-option-container{
@@ -75,10 +89,82 @@
             transition: opacity 0.5s;
         }
         
-        .menu-option-container:hvoer{
+        .menu-option-container:hover{
             font-style: italic;
         }
         
+        #mobile-menu-toggle-button-container{
+            display: none;
+        }
+        
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+            
+            #background-layer-container{
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            
+            #house-of-venus-title-container, #navigation-menu-container{
+                display: none;
+            }
+            
+            #navigation-menu-container{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                font-size: 0;
+                height: 100%;
+            }
+            
+            #mobile-menu-toggle-button-container{
+                display: block;
+                position: absolute;
+                z-index: 200;
+                right: 3%;
+                top: 5%;
+                border-radius: 10px;
+                width: 50px;
+                height: 50px;
+                background-image: url(./media/img/mobile-menu-icon.png);
+                background-size: 150% 150%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                cursor: pointer;
+                background-color: white;
+            }
+            
+            .menu-option-container{
+                width: 100%;
+                height: 49%;
+                display: inline-block;
+                font-size: 36px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-align: center;
+                line-height: 280px;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.5s;
+                background-color: rgba(0, 0, 0, 0.6);
+            }
+            
+            #about-us-menu-option-container{
+                border-bottom: 3px white solid;
+            }
+
+        }
+                
         #tag-line-container{
             width: 600px;
             height: 350px;
@@ -132,7 +218,8 @@
         #hov-logo-container{
             width: 50px;
             height: 50px;
-            background-image: url(../media/img/hov-logo.png);
+            border-radius: 50%;
+            background-image: url(./media/img/hov-logo.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -149,9 +236,9 @@
             font-style: italic;
         }
     </style>
-    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
+        function loadUI(){
             setTimeout(function(){
                 document.getElementById("build-your-own-button-container").style.opacity = 1.0;
             }, 750);
@@ -176,6 +263,18 @@
                 document.getElementById("about-us-menu-option-container").style.opacity = 1.0;
             }, 625);    //1250
             
+            setTimeout(function(){
+                document.getElementById("background-layer-container").style.opacity = 0.8;
+                document.getElementById("main-app-container").style.color = "white";
+                /*
+                document.getElementById("background-layer-container").style.opacity = 0.4;
+                */
+            }, 1000);    //1250
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            loadUI();
+            
             document.getElementById("hov-logo-container").addEventListener("click", function(){
                 window.location.href = "./en";
             });
@@ -192,12 +291,81 @@
                 window.location.href = "./products";
             });
             
+            document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
+                toggleMobileMenuView();
+            });
             
+            toggleMobileMenuView();
+            
+            window.addEventListener("resize", function(){
+                toggleMobileMenuView();
+            });
         });
+        
+        var mobileNavIsVisible = true;
+        var isDesktop = false;
+        
+        function checkWindowWidth(){
+            let winWidth = window.innerWidth;
+            console.log("window width");
+            console.log(winWidth);
+            
+            if(winWidth<601){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        function toggleMobileMenuView(){
+            let isMobile = checkWindowWidth();
+            if(isMobile){
+                if(mobileNavIsVisible){
+                    document.getElementById("navigation-menu-container").style.opacity = 0;
+                    setTimeout(function(){
+                        document.getElementById("navigation-menu-container").style.display = "none";
+                    }, 550);
+                                        
+                    mobileNavIsVisible = false;
+                }
+                else{
+                    if(isDesktop){
+                        document.getElementById("navigation-menu-container").style.opacity = 0;
+                        setTimeout(function(){
+                            document.getElementById("navigation-menu-container").style.display = "none";
+                        }, 550);
+
+                        mobileNavIsVisible = false;
+                    }
+                    else{
+                        document.getElementById("navigation-menu-container").style.display = "block";
+                        setTimeout(function(){
+                            document.getElementById("navigation-menu-container").style.opacity = 1.0;    
+                        }, 50);
+                        
+                        mobileNavIsVisible = true;
+                    }
+                }
+                isDesktop = false;
+            }
+            else{
+                isDesktop = true;
+                mobileNavIsVisible = false;
+                document.getElementById("navigation-menu-container").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("navigation-menu-container").style.opacity = 1.0;    
+                }, 50);
+            }
+            console.log(mobileNavIsVisible);
+            console.log('toggle oy');
+        }
     </script>
 </head>
 <body>
+    <div id="background-layer-container"></div>
     <div id="main-app-container">
+        <div id="mobile-menu-toggle-button-container"></div>
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
         <div id="navigation-menu-container">
