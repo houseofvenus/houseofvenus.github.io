@@ -26,30 +26,31 @@
             top: 0;
             left: 0;
             font-family: "IBM Plex Sans", sans-serif;
+            background-color: black;
+            color: white;
         }
-            
-        @media only screen and (max-width: 600px) { 
-            /*#main-app-container {
-                background-color: lightblue;
-            }*/
-            
-            #go-to-mobile-container{
-                z-index: -100;
-                display: none;
-            }
+        
+        
+        #mobile-menu-toggle-button-container{
+            display: none;
         }
         
         #house-of-venus-title-container{
-            text-transform: uppercase;
+            display: block;
             position: absolute;
             top: 2%;
             left: 3%;
             font-size: 24px;
             height: 100px;
             width: 250px;
+            
+            text-transform: uppercase;
             line-height: 100px;
             text-align: center;
             cursor: pointer;
+            
+            opacity: 0;
+            transition: opacity 0.5s;
         }
         
         #navigation-menu-container{
@@ -59,6 +60,9 @@
             width: 300px;
             font-size: 0;
             height: 100px;
+            z-index: 150;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
         
         .menu-option-container{
@@ -69,6 +73,8 @@
             text-align: center;
             line-height: 100px;
             cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
         
         #start-video-button-container{
@@ -80,10 +86,93 @@
             height: 100px;
             border-radius: 50%;
             cursor: pointer;
-            background-image: url(../media/img/play-button.png);
+            background-image: url(./media/img/play-button.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
+            z-index: 100;
+            opacity: 1.0;
+            transition: opacity 0.5s;
+        }
+        
+        
+        #about-us-menu-option-container{
+            font-weight: 900;
+            color: white;
+            background-color: red;
+        }
+        
+        #about-us-menu-option-container:hover, #products-menu-option-container:hover,{
+            font-style: italic;
+        }
+        
+        #video-container{
+            margin: 4% auto 0 auto;
+            display: none;
+            opacity:0 ;
+            z-index: 0;
+            transition: opacity 0.5s;
+        }
+        
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+            
+            #house-of-venus-title-container, #navigation-menu-container{
+                display: none;
+            }
+            
+            #navigation-menu-container{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                font-size: 0;
+                height: 100%;
+            }
+            
+            #mobile-menu-toggle-button-container{
+                display: block;
+                position: absolute;
+                z-index: 200;
+                right: 3%;
+                top: 5%;
+                border-radius: 10px;
+                width: 50px;
+                height: 50px;
+                background-image: url(../media/img/mobile-menu-icon.png);
+                background-size: 150% 150%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                cursor: pointer;
+                background-color: white;
+            }
+            
+            .menu-option-container{
+                width: 100%;
+                height: 49%;
+                display: inline-block;
+                font-size: 36px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-align: center;
+                line-height: 280px;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.5s;
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+            
+            #about-us-menu-option-container{
+                border-bottom: 3px white solid;
+            }
+
         }
         
         #start-video-button-container:hover{
@@ -91,31 +180,48 @@
         }
         
         #hov-logo-container{
-            width: 50px;
-            height: 50px;
-            background-image: url(../media/img/hov-logo.png);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center center;
             position: absolute;
             top: 5%;
             left: 50%;
             margin-left: -25px;
+            width: 50px;
+            height: 50px;
+            
+            background-image: url(./media/img/hov-logo.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 50%;
+            
             cursor: pointer;
+            z-index: 50;
         }
         
-        #about-us-menu-option-container{
-            font-weight: 900;
-            font-style: italic;
-        }
-        
-        #about-us-menu-option-container:hover, #products-menu-option-container:hover,{
-            font-style: italic;
-        }
     </style>
-    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
+        function loadUI(){
+            setTimeout(function(){
+                document.getElementById("hov-logo-container").style.opacity = 1.0;
+            }, 250);    //500
+            
+            setTimeout(function(){
+                document.getElementById("house-of-venus-title-container").style.opacity = 1.0;
+            }, 375);    //750
+            
+            setTimeout(function(){
+                document.getElementById("products-menu-option-container").style.opacity = 1.0;
+            }, 500);    //100
+            
+            setTimeout(function(){
+                document.getElementById("about-us-menu-option-container").style.opacity = 1.0;
+            }, 625);    //1250
+            
+        }
+        
         document.addEventListener("DOMContentLoaded", function(){
+            loadUI();
+            
             document.getElementById("hov-logo-container").addEventListener("click", function(){
                 window.location.href = "./en";
             });
@@ -131,17 +237,116 @@
             document.getElementById("products-menu-option-container").addEventListener("click", function(){
                 window.location.href = "./products";
             });
+            
+            document.getElementById("start-video-button-container").addEventListener("click", function(){
+                let self = this;
+                let video = document.getElementById("video-container");
+                
+                video.style.display = "block";
+                
+                setTimeout(function(){
+                    video.style.opacity = 1.0
+                }, 50);
+                
+                self.style.opacity = 0;
+                video.play();
+                
+                setTimeout(function(){
+                    self.style.display = "none";
+                    
+                    video.onended = function(){
+                        //console.log("video ended!");
+                        self.style.display = "block";
+                        setTimeout(function(){
+                            self.style.opacity = 1.0;
+                        }, 50);
+                    };
+                    
+                }, 550)
+            });
+            
+            document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
+                toggleMobileMenuView();
+            });
+            
+            toggleMobileMenuView();
+            
+            window.addEventListener("resize", function(){
+                toggleMobileMenuView();
+            });
+        
         });
+        
+        var mobileNavIsVisible = true;
+        var isDesktop = false;
+        
+        function checkWindowWidth(){
+            let winWidth = window.innerWidth;
+            console.log("window width");
+            console.log(winWidth);
+            
+            if(winWidth<601){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        function toggleMobileMenuView(){
+            let isMobile = checkWindowWidth();
+            if(isMobile){
+                if(mobileNavIsVisible){
+                    document.getElementById("navigation-menu-container").style.opacity = 0;
+                    setTimeout(function(){
+                        document.getElementById("navigation-menu-container").style.display = "none";
+                    }, 550);
+                                        
+                    mobileNavIsVisible = false;
+                }
+                else{
+                    if(isDesktop){
+                        document.getElementById("navigation-menu-container").style.opacity = 0;
+                        setTimeout(function(){
+                            document.getElementById("navigation-menu-container").style.display = "none";
+                        }, 550);
+
+                        mobileNavIsVisible = false;
+                    }
+                    else{
+                        document.getElementById("navigation-menu-container").style.display = "block";
+                        setTimeout(function(){
+                            document.getElementById("navigation-menu-container").style.opacity = 1.0;    
+                        }, 50);
+                        
+                        mobileNavIsVisible = true;
+                    }
+                }
+                isDesktop = false;
+            }
+            else{
+                isDesktop = true;
+                mobileNavIsVisible = false;
+                document.getElementById("navigation-menu-container").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("navigation-menu-container").style.opacity = 1.0;    
+                }, 50);
+            }
+            console.log(mobileNavIsVisible);
+            console.log('toggle oy');
+        }
     </script>
 </head>
 <body>
     <div id="main-app-container">
+        <div id="mobile-menu-toggle-button-container"></div>
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
         <div id="navigation-menu-container">
             <div id="about-us-menu-option-container" class="menu-option-container">about</div>
             <div id="products-menu-option-container" class="menu-option-container">products</div>            
         </div>
+        <video id="video-container" width="1080" height="720" src="./media/vid/placeholder-intro.mp4"></video>
         <div id="start-video-button-container"></div>
     </div>
 </body>

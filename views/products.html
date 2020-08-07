@@ -27,17 +27,6 @@
             left: 0;
             font-family: "IBM Plex Sans", sans-serif;
         }
-            
-        @media only screen and (max-width: 600px) { 
-            /*#main-app-container {
-                background-color: lightblue;
-            }*/
-            
-            #go-to-mobile-container{
-                z-index: -100;
-                display: none;
-            }
-        }
         
         #house-of-venus-title-container{
             text-transform: uppercase;
@@ -91,16 +80,19 @@
         }
         
         #hov-logo-container{
+            position: absolute;
+            top: 5%;
+            left: 50%;
             width: 50px;
             height: 50px;
+            margin-left: -25px;
+            
+            border-radius: 50%;
             background-image: url(../media/img/hov-logo.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
-            position: absolute;
-            top: 5%;
-            left: 50%;
-            margin-left: -25px;
+            
             cursor: pointer;
         }
         
@@ -177,6 +169,70 @@
             opacity: 1.0;
             transition: opacity 0.5s;
         }
+        
+        #mobile-menu-toggle-button-container{
+            display: none;
+        }
+        
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+            
+            #house-of-venus-title-container, #navigation-menu-container{
+                display: none;
+            }
+            
+            #product-line-container{
+                width: 100%;
+            }
+            
+            #home-product-line-container{
+                margin-top: 25%;
+            }
+            .product-icon-container{
+                width: 250px;
+                height: 250px;
+                display: block;
+                margin: 1% auto 10% auto;
+            }
+            
+            .product-line-header-container{
+                width: 100%;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+
+            .product-line-descriptions-container{
+                display: none;
+            }
+            
+            #mobile-menu-toggle-button-container{
+                display: block;
+                position: absolute;
+                z-index: 200;
+                right: 3%;
+                top: 5%;
+                border-radius: 10px;
+                width: 50px;
+                height: 50px;
+                background-image: url(../media/img/mobile-menu-icon.png);
+                background-size: 150% 150%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                cursor: pointer;
+                background-color: white;
+            }
+        }        
     </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script>
@@ -259,6 +315,7 @@
 </head>
 <body>
     <div id="main-app-container">
+        <div id="mobile-menu-toggle-button-container"></div>
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
         <div id="navigation-menu-container">
@@ -272,7 +329,7 @@
                 <div id="foodid-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('foodid');" onmouseout="hideCorrespondingDescriptionContainer('foodid');">Foodid</div>
                 <div id="rushmore-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rushmore');" onmouseout="hideCorrespondingDescriptionContainer('rushmore');">Rushmore</div>
             </div>
-            <div id="home-product-line-descriptions-container">
+            <div id="home-product-line-descriptions-container" class="product-line-descriptions-container">
                 <div id="echelearn-product-description-container" class="product-description-container">Learn in the best environment possible with teachers you know and love</div>
                 <div id="foodid-product-description-container" class="product-description-container">Groceries, subscribed. Define your meals and deitrary restrictions, then let the ingredients come to you.</div>
                 <div id="rushmore-product-description-container" class="product-description-container">Name your top four, go out and explore.</div>
@@ -292,7 +349,7 @@
                     Tulse
                 </div>
             </div>
-            <div id="organization-product-line-descriptions-container">
+            <div id="organization-product-line-descriptions-container" class="product-line-descriptions-container">
                 <div id="honeycomb-product-description-container" class="product-description-container">
                     Autonomous aerial security for residential and business properties
                 </div>
