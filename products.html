@@ -27,17 +27,6 @@
             left: 0;
             font-family: "IBM Plex Sans", sans-serif;
         }
-            
-        @media only screen and (max-width: 600px) { 
-            /*#main-app-container {
-                background-color: lightblue;
-            }*/
-            
-            #go-to-mobile-container{
-                z-index: -100;
-                display: none;
-            }
-        }
         
         #house-of-venus-title-container{
             text-transform: uppercase;
@@ -80,7 +69,7 @@
             height: 100px;
             border-radius: 50%;
             cursor: pointer;
-            background-image: url(../media/img/play-button.png);
+            background-image: url(./media/img/play-button.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -91,16 +80,19 @@
         }
         
         #hov-logo-container{
-            width: 50px;
-            height: 50px;
-            background-image: url(../media/img/hov-logo.png);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center center;
             position: absolute;
             top: 5%;
             left: 50%;
+            width: 50px;
+            height: 50px;
             margin-left: -25px;
+            
+            border-radius: 50%;
+            background-image: url(./media/img/hov-logo.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            
             cursor: pointer;
         }
         
@@ -127,7 +119,6 @@
             margin: 1% 25px;
             opacity: 0;
             transition: opacity 0.5s;
-            cursor: pointer;
         }
         
         #echelearn-product-icon-container{
@@ -138,7 +129,7 @@
             background-color: black;
         }
         
-        #rushmore-product-icon-container, #tulse-product-icon-container{
+        #rushmore-product-icon-container, #tulse-1-product-icon-container{
             background-color: red;
             
         }
@@ -147,7 +138,7 @@
             background-color: blue;
         }
         
-        #pARk-product-icon-container, #arnoir-product-icon-container{
+        #rooms-product-icon-container, #arnoir-product-icon-container{
             background-color: black;
         }
         
@@ -178,8 +169,72 @@
             opacity: 1.0;
             transition: opacity 0.5s;
         }
+        
+        #mobile-menu-toggle-button-container{
+            display: none;
+        }
+        
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+            
+            #house-of-venus-title-container, #navigation-menu-container{
+                display: none;
+            }
+            
+            #product-line-container{
+                width: 100%;
+            }
+            
+            #home-product-line-container{
+                margin-top: 25%;
+            }
+            .product-icon-container{
+                width: 250px;
+                height: 250px;
+                display: block;
+                margin: 1% auto 10% auto;
+            }
+            
+            .product-line-header-container{
+                width: 100%;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+
+            .product-line-descriptions-container{
+                display: none;
+            }
+            
+            #mobile-menu-toggle-button-container{
+                display: block;
+                position: absolute;
+                z-index: 200;
+                right: 3%;
+                top: 5%;
+                border-radius: 10px;
+                width: 50px;
+                height: 50px;
+                background-image: url(./media/img/mobile-menu-icon.png);
+                background-size: 150% 150%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                cursor: pointer;
+                background-color: white;
+            }
+        }        
     </style>
-    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("hov-logo-container").addEventListener("click", function(){
@@ -215,11 +270,11 @@
             }, 250);
             
             setTimeout(function(){
-                document.getElementById("pARk-product-icon-container").style.opacity = 1.0;
+                document.getElementById("rooms-product-icon-container").style.opacity = 1.0;
             }, 350);
             
             setTimeout(function(){
-                document.getElementById("tulse-product-icon-container").style.opacity = 1.0;
+                document.getElementById("tulse-1-product-icon-container").style.opacity = 1.0;
             }, 125);
             
             setTimeout(function(){
@@ -227,39 +282,24 @@
                 hideCorrespondingDescriptionContainer("foodid");
                 hideCorrespondingDescriptionContainer("rushmore");
                 hideCorrespondingDescriptionContainer("honeycomb");
-                hideCorrespondingDescriptionContainer("pARk");
-                hideCorrespondingDescriptionContainer("tulse");
+                hideCorrespondingDescriptionContainer("rooms");
+                hideCorrespondingDescriptionContainer("tulse-1");
+                
+                //document.getElementById("echelearn-product-description-container").
+                
                 
                 document.getElementById("echelearn-product-description-container").onmouseout = function(){
                     hideCorrespondingDescriptionContainer("echelearn");
                 };
+                /*
+                document.getElementById("echelearn-product-description-container").style.opacity = 0;
+                document.getElementById("foodid-product-description-container").style.opacity = 0;
+                document.getElementById("rushmore-product-description-container").style.opacity = 0;
+                document.getElementById("honeycomb-product-description-container").style.opacity = 0;
+                document.getElementById("rooms-product-description-container").style.opacity = 0;
+                document.getElementById("tulse-1-product-description-container").style.opacity = 0;
+                */
             }, 1000);
-            
-            document.getElementById("echelearn-product-icon-container").addEventListener("click", function(){
-                window.location.href = "./pARk/rooms/class";
-            });
-            
-            document.getElementById("foodid-product-icon-container").addEventListener("click", function(){
-                window.location.href = "./pARk/rooms/foodid";
-            });
-            
-            document.getElementById("rushmore-product-icon-container").addEventListener("click", function(){
-                window.location.href = "./pARk/rooms/rushmore";
-            });
-            
-            document.getElementById("honeycomb-product-icon-container").addEventListener("click", function(){
-                window.location.href = "./pARk/rooms/honeycomb";
-            });
-            
-            document.getElementById("pARk-product-icon-container").addEventListener("click", function(){
-                window.location.href = "./pARk/rooms/class";
-            });
-            
-            document.getElementById("tulse-product-icon-container").addEventListener("click", function(){
-                window.location.href = "./pARk/rooms/tulse";
-            });
-            
-            
         });
         
         function showCorrespondingDescriptionContainer(productName){
@@ -275,6 +315,7 @@
 </head>
 <body>
     <div id="main-app-container">
+        <div id="mobile-menu-toggle-button-container"></div>
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
         <div id="navigation-menu-container">
@@ -288,7 +329,7 @@
                 <div id="foodid-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('foodid');" onmouseout="hideCorrespondingDescriptionContainer('foodid');">Foodid</div>
                 <div id="rushmore-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rushmore');" onmouseout="hideCorrespondingDescriptionContainer('rushmore');">Rushmore</div>
             </div>
-            <div id="home-product-line-descriptions-container">
+            <div id="home-product-line-descriptions-container" class="product-line-descriptions-container">
                 <div id="echelearn-product-description-container" class="product-description-container">Learn in the best environment possible with teachers you know and love</div>
                 <div id="foodid-product-description-container" class="product-description-container">Groceries, subscribed. Define your meals and deitrary restrictions, then let the ingredients come to you.</div>
                 <div id="rushmore-product-description-container" class="product-description-container">Name your top four, go out and explore.</div>
@@ -301,24 +342,24 @@
                     HoneyComb
                 </div>
                 <!--<div id="arnoir-product-icon-container" class="product-icon-container">ARnoir</div>-->
-                <div id="pARk-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('pARk');" onmouseout="hideCorrespondingDescriptionContainer('pARk');">
-                    pARk
+                <div id="rooms-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rooms');" onmouseout="hideCorrespondingDescriptionContainer('rooms');">
+                    Rooms
                 </div>
-                <div id="tulse-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('tulse');" onmouseout="hideCorrespondingDescriptionContainer('tulse');">
+                <div id="tulse-1-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('tulse-1');" onmouseout="hideCorrespondingDescriptionContainer('tulse-1');">
                     Tulse
                 </div>
             </div>
-            <div id="organization-product-line-descriptions-container">
+            <div id="organization-product-line-descriptions-container" class="product-line-descriptions-container">
                 <div id="honeycomb-product-description-container" class="product-description-container">
                     Autonomous aerial security for residential and business properties
                 </div>
-                <div id="pARk-product-description-container" class="product-description-container">
+                <div id="rooms-product-description-container" class="product-description-container">
                     Merge digital content with physical items to share immersive experiences and drive trends
                 </div>
                 <!--<div id="arnoir-product-description-container" class="product-description-container">
                     Merge digital metadata with physical accessories to drive trends
                 </div>-->
-                <div id="tulse-product-description-container" class="product-description-container">
+                <div id="tulse-1-product-description-container" class="product-description-container">
                     Machine-augmented content distribution with additional tools for digital business management
                 </div>
             </div>
