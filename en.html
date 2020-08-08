@@ -240,6 +240,9 @@
     </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script>
+        var mobileNavIsVisible = true;
+        var isDesktop = false;
+        
         function loadUI(){
             setTimeout(function(){
                 document.getElementById("build-your-own-button-container").style.opacity = 1.0;
@@ -274,38 +277,43 @@
             }, 1000);    //1250
         }
         
-        document.addEventListener("DOMContentLoaded", function(){
-            loadUI();
+        function goToDoor(){
+            setTimeout(function(){
+                document.getElementById("build-your-own-button-container").style.opacity = 0;
+            }, 750);
             
-            document.getElementById("hov-logo-container").addEventListener("click", function(){
-                window.location.href = "./en";
-            });
+            setTimeout(function(){
+                document.getElementById("tag-line-container").style.opacity = 0;
+            }, 125);    //250
             
-            document.getElementById("house-of-venus-title-container").addEventListener("click", function(){
-                window.location.href = "./en";
-            });
+            setTimeout(function(){
+                document.getElementById("hov-logo-container").style.opacity = 0;
+            }, 250);    //500
             
-            document.getElementById("about-us-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./about";
-            });
+            setTimeout(function(){
+                document.getElementById("house-of-venus-title-container").style.opacity = 0;
+            }, 375);    //750
             
-            document.getElementById("products-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./products";
-            });
+            setTimeout(function(){
+                document.getElementById("products-menu-option-container").style.opacity = 0;
+            }, 500);    //100
             
-            document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
-                toggleMobileMenuView();
-            });
+            setTimeout(function(){
+                document.getElementById("about-us-menu-option-container").style.opacity = 0;
+            }, 625);    //1250
             
-            toggleMobileMenuView();
+            setTimeout(function(){
+                document.getElementById("background-layer-container").style.opacity = 0;
+                document.getElementById("main-app-container").style.color = "black";
+                /*
+                document.getElementById("background-layer-container").style.opacity = 0.4;
+                */
+            }, 1000);    //1250
             
-            window.addEventListener("resize", function(){
-                toggleMobileMenuView();
-            });
-        });
-        
-        var mobileNavIsVisible = true;
-        var isDesktop = false;
+            setTimeout(function(){
+                window.location.href = "./door";
+            }, 1500);
+        }
         
         function checkWindowWidth(){
             let winWidth = window.innerWidth;
@@ -368,6 +376,40 @@
             console.log(mobileNavIsVisible);
             console.log('toggle oy');
         }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            loadUI();
+            
+            toggleMobileMenuView();
+            
+            document.getElementById("hov-logo-container").addEventListener("click", function(){
+                window.location.href = "./en";
+            });
+            
+            document.getElementById("house-of-venus-title-container").addEventListener("click", function(){
+                window.location.href = "./en";
+            });
+            
+            document.getElementById("about-us-menu-option-container").addEventListener("click", function(){
+                window.location.href = "./about";
+            });
+            
+            document.getElementById("products-menu-option-container").addEventListener("click", function(){
+                window.location.href = "./products";
+            });
+            
+            document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
+                toggleMobileMenuView();
+            });        
+            
+            document.getElementById("build-your-own-button-container").addEventListener("click", function(){
+                goToDoor();
+            });
+            
+            window.addEventListener("resize", function(){
+                toggleMobileMenuView();
+            });
+        });
     </script>
 </head>
 <body>

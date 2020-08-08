@@ -35,18 +35,6 @@
             overflow: hidden;
         }
         
-        @media only screen and (max-width: 600px) { 
-            /*#main-app-container {
-                background-color: lightblue;
-            }*/
-            
-            #go-to-mobile-container{
-                z-index: -100;
-                display: none;
-            }
-            
-        }
-
         #hov-logo-container{
             width: 50px;
             height: 50px;
@@ -64,16 +52,168 @@
             transition: opacity 0.5s;
         }
         
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+            
+            #house-of-venus-title-container{
+                display: none;
+            }
+            
+            .format-option-button-container{
+                display: inline-block;
+                width: 100%;
+                height: 250px;
+                line-height: 400px;
+                text-align: center;
+                border-radius: 0 0 5px 5px;
+                border-bottom: 2px white solid;
+                font-size: 24px;
+                text-transform: uppercase;
+                background-repeat: no-repeat;
+                transition: color 0.25s, background-color 0.25s;
+            }
+            
+            .format-option-button-container:hover{
+                background-color: black;
+                color: white;
+            }
+            
+            #ar-format-option-button-container{
+                /*background-color: blue;*/
+                margin-top: 10%;
+                background-size: 150px 125px;
+                background-position: center center;
+                background-image: url(../media/img/ar-icon.png);
+            }
+            
+            #ar-format-option-button-container:hover{
+                background-image: url(../media/img/ar-icon-hover.png);
+            }
+            
+            #vr-format-option-button-container:hover{
+                background-image: url(../media/img/vr-icon-hover.png);
+            }
+            
+            #traditional-format-option-button-container:hover{
+                border-top: 25px black solid;
+                background-image: url(../media/img/traditional-icon-hover.png);
+            }
+            
+            #vr-format-option-button-container{
+                /*background-color: greenyellow;*/
+                background-size: 150px 150px;
+                background-position: center top;
+                background-image: url(../media/img/vr-icon.png);
+            }
+            
+            #traditional-format-option-button-container{
+                /*background-color: red;*/
+                background-size: 125px 150px;
+                background-position: center top;
+                background-image: url(../media/img/traditional-icon.png);
+            }
+            
+            #door-title-container{
+                width: 60%;
+                height: 40%;
+                z-index: 200;
+                cursor: pointer;
+                border-radius: 10px;
+                line-height: 100px;
+                font-size: 40px;
+                font-weight: 900;
+                text-align: center;
+                position: absolute;
+                top: 30%;
+                left: 20%;
+                opacity: 0;
+                text-transform: uppercase;
+                color: white;
+                transition: opacity 0.5s;
+                display: block;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        }
+        
     </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script>
+        function loadUI(){
+            document.getElementById("hov-logo-container").style.display = "block";
+            
+            setTimeout(function(){
+                document.getElementById("house-of-venus-title-container").style.opacity = 1.0;
+            }, 550);
+            
+            setTimeout(function(){
+                document.getElementById("hov-logo-container").style.opacity = 1.0;
+            }, 50);
+            
+            setTimeout(function(){
+                document.getElementById("door-title-container").style.opacity = 1.0;
+            }, 50);
+            
+            setTimeout(function(){
+                document.getElementById("ar-format-option-button-container").style.opacity = 1.0;
+            }, 1000);
+            
+            setTimeout(function(){
+                document.getElementById("door-title-container").style.opacity = 0;
+                
+                setTimeout(function(){
+                    document.getElementById("door-title-container").style.display = "none";
+                }, 550);
+            }, 2500);
+            
+            setTimeout(function(){
+                document.getElementById("vr-format-option-button-container").style.opacity = 1.0;
+            }, 250);
+            
+            setTimeout(function(){
+                document.getElementById("traditional-format-option-button-container").style.opacity = 1.0;
+            }, 750);
+            
+            
+        }
+        
         document.addEventListener("DOMContentLoaded", function(){
+            loadUI();
+            
             document.getElementById("hov-logo-container").addEventListener("click", function(){
                 window.location.href = "./en";
             });
             
             document.getElementById("house-of-venus-title-container").addEventListener("click", function(){
                 window.location.href = "./en";
+            });
+            
+            document.getElementById("ar-format-option-button-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/getting/started/ar";
+            });
+            
+            document.getElementById("vr-format-option-button-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/getting/started/vr";
+            });
+            
+            document.getElementById("traditional-format-option-button-container").addEventListener("click", function(){
+                window.location.href = "./pARk/rooms/getting/started/tr";
+            });
+            
+            document.getElementById("door-title-container").addEventListener("click", function(){
+                let self = this;
+                
+                self.style.opacity = 0;
+                
+                setTimeout(function(){
+                    self.style.display = "none";
+                }, 550);
             });
         });
     </script>
@@ -84,7 +224,9 @@
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
         <div id="door-title-container" class="title-container">
-            select a format
+            <p>select</p>
+            <p>a</p>
+            <p>format</p>
         </div>
         <div id="ar-format-option-button-container" class="format-option-button-container">
             augmented
@@ -97,4 +239,5 @@
         </div>
     </div>
 </body>
+</html>
 </html>

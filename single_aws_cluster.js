@@ -104,6 +104,65 @@ else {*/
         res.render('index.html',{root: dir[0]});
     });
 
+    app.get('/', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('index.html',{root: dir[0]});
+    });
+
+    app.get('/pArk/rooms/getting/started/ar', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('ar.html',{root: dir[0]});
+    });
+
+    app.get('/pArk/rooms/getting/started/vr', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('vr.html',{root: dir[0]});
+    });
+
+    app.get('/pArk/rooms/getting/started/tr', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('tr.html',{root: dir[0]});
+    });
     app.get('/door', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
