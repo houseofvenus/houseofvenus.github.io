@@ -274,9 +274,45 @@
             }, 1000);    //1250
         }
         
-        document.addEventListener("DOMContentLoaded", function(){
-            loadUI();
+        function goToDoor(){
+            setTimeout(function(){
+                document.getElementById("build-your-own-button-container").style.opacity = 0;
+            }, 750);
             
+            setTimeout(function(){
+                document.getElementById("tag-line-container").style.opacity = 0;
+            }, 125);    //250
+            
+            setTimeout(function(){
+                document.getElementById("hov-logo-container").style.opacity = 0;
+            }, 250);    //500
+            
+            setTimeout(function(){
+                document.getElementById("house-of-venus-title-container").style.opacity = 0;
+            }, 375);    //750
+            
+            setTimeout(function(){
+                document.getElementById("products-menu-option-container").style.opacity = 0;
+            }, 500);    //100
+            
+            setTimeout(function(){
+                document.getElementById("about-us-menu-option-container").style.opacity = 0;
+            }, 625);    //1250
+            
+            setTimeout(function(){
+                document.getElementById("background-layer-container").style.opacity = 0;
+                document.getElementById("main-app-container").style.color = "black";
+                /*
+                document.getElementById("background-layer-container").style.opacity = 0.4;
+                */
+            }, 1000);    //1250
+            
+            setTimeout(function(){
+                window.location.href = "./door";
+            }, 1500);
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("hov-logo-container").addEventListener("click", function(){
                 window.location.href = "./en";
             });
@@ -284,108 +320,26 @@
             document.getElementById("house-of-venus-title-container").addEventListener("click", function(){
                 window.location.href = "./en";
             });
-            
-            document.getElementById("about-us-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./about";
-            });
-            
-            document.getElementById("products-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./products";
-            });
-            
-            document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
-                toggleMobileMenuView();
-            });
-            
-            toggleMobileMenuView();
-            
-            window.addEventListener("resize", function(){
-                toggleMobileMenuView();
-            });
         });
-        
-        var mobileNavIsVisible = true;
-        var isDesktop = false;
-        
-        function checkWindowWidth(){
-            let winWidth = window.innerWidth;
-            console.log("window width");
-            console.log(winWidth);
-            
-            if(winWidth<601){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        
-        function toggleMobileMenuView(){
-            let isMobile = checkWindowWidth();
-            if(isMobile){
-                if(mobileNavIsVisible){
-                    document.getElementById("navigation-menu-container").style.opacity = 0;
-                    document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/mobile-menu-icon.png)";
-                    
-                    setTimeout(function(){
-                        document.getElementById("navigation-menu-container").style.display = "none";
-                    }, 550);
-                                        
-                    mobileNavIsVisible = false;
-                }
-                else{
-                    if(isDesktop){
-                        document.getElementById("navigation-menu-container").style.opacity = 0;
-                        document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/mobile-menu-icon.png)";
-                        
-                        setTimeout(function(){
-                            document.getElementById("navigation-menu-container").style.display = "none";
-                        }, 550);
-
-                        mobileNavIsVisible = false;
-                    }
-                    else{
-                        document.getElementById("navigation-menu-container").style.display = "block";
-                        document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/exit-menu-button-icon.png)";
-                        
-                        setTimeout(function(){
-                            document.getElementById("navigation-menu-container").style.opacity = 1.0;    
-                        }, 50);
-                        
-                        mobileNavIsVisible = true;
-                    }
-                }
-                isDesktop = false;
-            }
-            else{
-                isDesktop = true;
-                mobileNavIsVisible = false;
-                document.getElementById("navigation-menu-container").style.display = "block";
-                setTimeout(function(){
-                    document.getElementById("navigation-menu-container").style.opacity = 1.0;    
-                }, 50);
-            }
-            console.log(mobileNavIsVisible);
-            console.log('toggle oy');
-        }
     </script>
 </head>
 <body>
     <div id="background-layer-container"></div>
     <div id="main-app-container">
-        <div id="mobile-menu-toggle-button-container"></div>
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
-        <div id="navigation-menu-container">
-            <div id="about-us-menu-option-container" class="menu-option-container">about</div>
-            <div id="products-menu-option-container" class="menu-option-container">products</div>            
+        <div id="door-title-container" class="title-container">
+            select a format
         </div>
-        <div id="tag-line-container">
-            <div id="house-of-venus-tag-line-0-container">Shape Reality</div>
-            <div id="house-of-venus-tag-line-1-container">The world is your desktop</div>
+        <div id="ar-format-option-button-container" class="format-option-button-container">
+            augmented
         </div>
-        <div id="build-your-own-button-container">start building</div>
-        
+        <div id="vr-format-option-button-container" class="format-option-button-container">
+            virtual
+        </div>
+        <div id="traditional-format-option-button-container" class="format-option-button-container">
+            traditional/flat
+        </div>
     </div>
 </body>
 </html>

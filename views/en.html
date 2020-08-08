@@ -31,6 +31,8 @@
             color: black;
             
             transition: color 0.5s;
+            
+            overflow: hidden;
         }
         
         #background-layer-container{
@@ -48,6 +50,7 @@
             
             opacity: 0;
             transition: opacity 2s;
+            
         }
         
         #house-of-venus-title-container{
@@ -148,15 +151,15 @@
                 width: 100%;
                 height: 49%;
                 display: inline-block;
-                font-size: 36px;
+                font-size: 40px;
                 font-weight: 700;
                 text-transform: uppercase;
                 text-align: center;
-                line-height: 280px;
+                line-height: 315px;
                 cursor: pointer;
                 opacity: 0;
                 transition: opacity 0.5s;
-                background-color: rgba(0, 0, 0, 0.6);
+                background-color: rgba(0, 0, 0, 0.7);
             }
             
             #about-us-menu-option-container{
@@ -272,6 +275,44 @@
             }, 1000);    //1250
         }
         
+        function goToDoor(){
+            setTimeout(function(){
+                document.getElementById("build-your-own-button-container").style.opacity = 0;
+            }, 750);
+            
+            setTimeout(function(){
+                document.getElementById("tag-line-container").style.opacity = 0;
+            }, 125);    //250
+            
+            setTimeout(function(){
+                document.getElementById("hov-logo-container").style.opacity = 0;
+            }, 250);    //500
+            
+            setTimeout(function(){
+                document.getElementById("house-of-venus-title-container").style.opacity = 0;
+            }, 375);    //750
+            
+            setTimeout(function(){
+                document.getElementById("products-menu-option-container").style.opacity = 0;
+            }, 500);    //100
+            
+            setTimeout(function(){
+                document.getElementById("about-us-menu-option-container").style.opacity = 0;
+            }, 625);    //1250
+            
+            setTimeout(function(){
+                document.getElementById("background-layer-container").style.opacity = 0;
+                document.getElementById("main-app-container").style.color = "black";
+                /*
+                document.getElementById("background-layer-container").style.opacity = 0.4;
+                */
+            }, 1000);    //1250
+            
+            setTimeout(function(){
+                window.location.href = "./door";
+            }, 1500);
+        }
+        
         document.addEventListener("DOMContentLoaded", function(){
             loadUI();
             
@@ -300,6 +341,10 @@
             window.addEventListener("resize", function(){
                 toggleMobileMenuView();
             });
+            
+            document.getElementById("build-your-own-button-container").addEventListener("click", function(){
+                goToDoor();
+            });
         });
         
         var mobileNavIsVisible = true;
@@ -323,6 +368,8 @@
             if(isMobile){
                 if(mobileNavIsVisible){
                     document.getElementById("navigation-menu-container").style.opacity = 0;
+                    document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/mobile-menu-icon.png)";
+                    
                     setTimeout(function(){
                         document.getElementById("navigation-menu-container").style.display = "none";
                     }, 550);
@@ -332,6 +379,8 @@
                 else{
                     if(isDesktop){
                         document.getElementById("navigation-menu-container").style.opacity = 0;
+                        document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/mobile-menu-icon.png)";
+                        
                         setTimeout(function(){
                             document.getElementById("navigation-menu-container").style.display = "none";
                         }, 550);
@@ -340,6 +389,8 @@
                     }
                     else{
                         document.getElementById("navigation-menu-container").style.display = "block";
+                        document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/exit-menu-button-icon.png)";
+                        
                         setTimeout(function(){
                             document.getElementById("navigation-menu-container").style.opacity = 1.0;    
                         }, 50);
