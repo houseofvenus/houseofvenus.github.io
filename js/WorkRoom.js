@@ -1,4 +1,4 @@
-var video, canvas, imgindex, context, toggleEyeLidsButton, isVideo, model;
+var video, canvas, imgindex, context, toggleEyeLidsButton, isVideo, model, toggleKeyboardViewButton, toggleSessionHighlightButton, activeButton, inactiveButton, selectSessionButton, loginButton;
 
 const modelParams = {
     flipHorizontal: true,   // flip e.g for video  
@@ -123,14 +123,157 @@ function init(){
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
     toggleEyeLidsButton = document.getElementById("move-my-eyelids-button-container");
-
+    toggleKeyboardViewButton = document.getElementById("toggle-keyboard-view-button-container");
+    
+    if(pageInFocus==="select"){
+        toggleSessionHighlightButton = document.getElementById("toggle-session-highlight-button-container");
+        inactiveButton = document.getElementById("inactive-sessions-option-button-immersive-entity-container");
+        activeButton = document.getElementById("active-sessions-option-button-immersive-entity-container");
+        selectSessionButton = document.getElementById("select-session-button-container");
+    }
+    
+    if(pageInFocus==="login"){
+        loginButton = document.getElementById("login-button-container");
+    }
+    
     imgindex = 1
     isVideo = false;
     model = null;
     startDormantVisualStream();
 }
 
+var keyboardVisible = false;
+
+function toggleKeyboardModule(){
+    if(keyboardVisible){
+        keyboardVisible = false;
+        console.log("keyboard hidden");
+        document.getElementById("keyboard-immersive-entity-container").emit("hideKeyboard");
+        document.getElementById("rig").emit("lookAwayFromKeyboard");
+    }
+    else{
+        sessionHighlightsOn = false;
+        if(pageInFocus==="select"){
+            inactiveButton.setAttribute("material", "color", "white");
+            inactiveButton.setAttribute("text", "color", "black");
+            activeButton.setAttribute("material", "color", "white");
+            activeButton.setAttribute("text", "color", "black");
+        }
+        
+        keyboardVisible = true;
+        console.log("keyboard visible");
+        document.getElementById("keyboard-immersive-entity-container").emit("revealKeyboard");
+        document.getElementById("rig").emit("lookDownAtKeyboard");
+    }
+}
+
+var sessionHighlightsOn = false;
+var sessionCategoryInFocus = null;
+
+function toggleSessionHighlights(){
+    
+    
+    //console.log(inactiveButton);
+    
+    if(sessionHighlightsOn){
+        if(sessionCategoryInFocus==="inactive"){
+            sessionCategoryInFocus="active";
+            
+            activeButton.setAttribute("material", "color", "black");
+            activeButton.setAttribute("text", "color", "white");
+            
+            inactiveButton.setAttribute("material", "color", "white");
+            inactiveButton.setAttribute("text", "color", "black");
+        }
+        else if(sessionCategoryInFocus==="active"){
+            sessionCategoryInFocus="inactive";
+            inactiveButton.setAttribute("material", "color", "black");
+            inactiveButton.setAttribute("text", "color", "white");
+            
+            activeButton.setAttribute("material", "color", "white");
+            activeButton.setAttribute("text", "color", "black");
+        }
+    }
+    else{
+        sessionHighlightsOn = true;
+        sessionCategoryInFocus = "inactive";
+        
+        inactiveButton.setAttribute("material", "color", "black");
+        inactiveButton.setAttribute("text", "color", "white");
+    }
+    console.log(sessionCategoryInFocus);
+}
+
+function selectSessionCategory(){
+    if(sessionHighlightsOn){
+        switch(sessionCategoryInFocus){
+            case "inactive":
+                inactiveButton.setAttribute("material", "color", "green");
+                revealSessionCategoryOptions("inactive");
+                break;
+            case "active":
+                activeButton.setAttribute("material", "color", "green");
+                revealSessionCategoryOptions("active");
+                break;
+            default:
+                console.log("no available session category action");
+                break;
+        }
+    }
+    else{
+        console.log("make a category selection first");
+    }
+}
+
+function hideMainMenuComponents(){
+    document.getElementById("welcome-title-container").setAttribute("visible", false);
+    document.getElementById("welcome-subtitle-container").setAttribute("visible", false);
+    document.getElementById("white-board-immersive-entity-container").setAttribute("visible", false);
+    document.getElementById("inactive-sessions-option-button-immersive-entity-container").setAttribute("visible", false);
+    document.getElementById("active-sessions-option-button-immersive-entity-container").setAttribute("visible", false);
+    document.getElementById("look-down-title-container").setAttribute("visible", false);              
+}
+
+function revealSessionCategoryOptions(category){
+    console.log("reveal session category options");
+    let sessionCovers = [
+        document.getElementById("alleluia-immersive-entity-container"),
+        document.getElementById("menor-que-tres-immersive-entity-container"),
+        document.getElementById("had-enough-remix-immersive-entity-container"),
+        document.getElementById("rainbow-in-the-dark-immersive-entity-container")
+    ];
+    let categoryTitle = document.getElementById("session-category-title-immersive-entity-container");
+    hideMainMenuComponents();
+    
+    switch(category){
+        case "inactive":
+            categoryTitle.setAttribute("visible", true);
+            categoryTitle.setAttribute("text", "value", "INACTIVE SESSIONS");
+            sessionCovers[0].emit("revealSession0");
+            document.getElementById("session-0-title-immersive-entity-container").setAttribute("visible", true);
+            
+            sessionCovers[1].emit("revealSession1");
+            document.getElementById("session-1-title-immersive-entity-container").setAttribute("visible", true);
+            
+            sessionCovers[2].emit("revealSession2");
+            document.getElementById("session-2-title-immersive-entity-container").setAttribute("visible", true);
+            
+            sessionCovers[3].emit("revealSession3");
+            document.getElementById("session-3-title-immersive-entity-container").setAttribute("visible", true);
+            break;
+        case "active":
+            categoryTitle.setAttribute("visible", true);
+            categoryTitle.setAttribute("text", "value", "ACTIVE SESSIONS");
+            
+            document.getElementById("no-active-sessions-title-immersive-entity-container").setAttribute("visible", true);
+            break;
+        default:
+            break;
+    }
+}
+
 function addButtonListeners(){
+    
     toggleEyeLidsButton.addEventListener("click", function(){
         moveMyEyelids();
         
@@ -140,6 +283,26 @@ function addButtonListeners(){
             console.log("Loaded Model!");
         });
     });
+    
+    toggleKeyboardViewButton.addEventListener("click", function(){
+        toggleKeyboardModule();
+    });
+    
+    if(pageInFocus==="login"){
+        loginButton.addEventListener("click", function(){
+            window.location.href = "./session";
+        });
+    }
+    
+    if(pageInFocus==="select"){
+        toggleSessionHighlightButton.addEventListener("click", function(){
+            toggleSessionHighlights();
+        });   
+    
+        selectSessionButton.addEventListener("click", function(){
+            selectSessionCategory();
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(){

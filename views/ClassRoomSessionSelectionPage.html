@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+    <title>AugR Hand Tracking Library v. 0.2.0.4</title>
+    <link rel="stylesheet" href="./css/handtracking.css">
+    <script>
+        var pageInFocus = "select";
+    </script>
+    <script src="./js/aframe100.js"></script>
+    <script src="./js/augr-hand-tracking.js"> </script>
+    <script src="./js/ImmersiveClassroom.js"></script>
+    <script src="./js/WorkRoom.js"></script>
+</head>
+<body>
+    <h2 id="Immersive-Classroom-application-header" class="rooms-auto-generated-application-header">Immersive Classroom v.0.2.0.3</h2>
+     <!--<audio id="native-audio-controller" controls>
+       <source id="native-audio-stream-controller" src="./media/audio/MenorQueTres.mp3" />
+    </audio>-->
+    <div id="Immersive-Classroom-application-console">
+        ...
+    </div>
+    <a-scene embedded id="immersive-layer-container">
+        <a-assets>
+            <img id="left-hand-button-cover-texture" src="./media/img/left-hand-icon.png" />
+            <img id="right-hand-button-cover-texture" src="./media/img/right-hand-icon.png" />
+            <img id="add-widget-button-cover-texture" src="./media/img/add-widget-icon.png" />
+            <img id="teacher-video-stream-placeholder-cover-texture" src="./media/img/eric-profile-pic.png" />
+            <img id="keyboard-placeholder-texture" src="./media/img/keyboard-placeholder.png" />
+            
+            <img id="alleluia-cover-texture" src="./media/img/alleluia-cover.png" />
+            <img id="menor-que-tres-cover-texture" src="./media/img/menor-que-tres-cover.png" />
+            <img id="had-enough-remix-cover-texture" src="./media/img/had-enough-remix-cover.png" />
+            <img id="rainbow-in-the-dark-cover-texture" src="./media/img/rainbow-in-the-dark-cover.png" />
+        </a-assets>
+        
+        <a-entity id="welcome-title-container"
+                  geometry="primitive: plane; width: 6; height: 1;"
+                  material="transparent: true; opacity: 0"
+                  text="value: EcheLearn; align: center; width: 12; color: white;"
+                  position="0 5 -6">
+        </a-entity>
+        
+        <a-entity id="welcome-subtitle-container"
+                  geometry="primitive: plane; width: 6; height: 1;"
+                  material="transparent: true; opacity: 0"
+                  text="value: Select a session category; align: center; width: 6; color: white;"
+                  position="0 4.3 -6">
+        </a-entity>
+        
+        <!--<a-entity id="teacher-video-stream-immersive-entity-container"
+                  geometry="primitive: circle; radius: 1.5;"
+                  material="src: #teacher-video-stream-placeholder-cover-texture; opacity: 0.8;"
+                  position="-4.8 1 -6">
+        </a-entity>-->
+        
+        <a-entity id="white-board-immersive-entity-container"
+                  geometry="primitive: plane; width: 6; height: 3;"
+                  material="color: white; opacity: 0.6;"
+                  position="0 2 -6">
+        </a-entity>
+        
+        <a-entity id="inactive-sessions-option-button-immersive-entity-container"
+                  geometry="primitive: plane; width: 6; height: 1.5;"
+                  material="color: white; opacity: 1.0;"
+                  text="value: Inactive Sessions; color: black; align: center; width: 6;"
+                  position="0 2.75 -6">
+        </a-entity>
+        
+        <a-entity id="active-sessions-option-button-immersive-entity-container"
+                  geometry="primitive: plane; width: 6; height: 1.5;"
+                  material="color: white; opacity: 1.0;"
+                  text="value: Active Sessions; color: black; align: center; width: 6;"
+                  position="0 1.25 -6">
+        </a-entity>
+        
+        <a-entity id="look-down-title-container"
+                  geometry="primitive: plane; width: 6; height: 1;"
+                  material="transparent: true; opacity: 0"
+                  text="value: look down to use keyboard; align: center; width: 6; color: white;"
+                  position="0 -2 -6">
+        </a-entity>
+        
+        <a-entity id="keyboard-immersive-entity-container"
+                    geometry="primitive: plane; width: 8; height: 4;"
+                    material="src: #keyboard-placeholder-texture; opacity: 0;"
+                    animation__revealKeys="property: material.opacity; to: 1.0; dur: 1000; easing: linear; loop: false; startEvents: revealKeyboard"
+                    animation__hideKeys="property: material.opacity; to: 0; dur: 1000; easing: linear; loop: false; startEvents: hideKeyboard"
+                    position="0 -3 -6"
+                    rotation="-40 0 0">
+        </a-entity>
+        
+        
+        <!----->
+        <a-entity id="session-category-title-immersive-entity-container"
+                  geometry="primitive: plane; width: 5; height: 1.5;"
+                  material="color: black; opacity: 0; transparent: true;"
+                  text="value: INACTIVE SESSIONS; color: white; align: center; width: 14;"
+                  visible="false"
+                  position="0 6 -6">
+        </a-entity>
+        
+        
+        <a-entity id="no-active-sessions-title-immersive-entity-container"
+                  geometry="primitive: plane; width: 5; height: 1.5;"
+                  material="color: black; opacity: 0; transparent: true;"
+                  text="value: There are currently no Active Sessions; color: white; align: center; width: 14;"
+                  visible="false"
+                  position="0 3 -6">
+        </a-entity>
+        
+        <a-entity id="alleluia-immersive-entity-container"
+                  geometry="primitive: plane; width: 3; height: 3;"
+                  material="src: #alleluia-cover-texture; opacity: 0;"
+                  animation__revealSessionZero="property: material.opacity; to: 1.0; dur: 1000; easing: linear; loop: false; startEvents: revealSession0"
+                  animation__hideSessionZero="property: material.opacity; to: 0; dur: 1000; easing: linear; loop: false; startEvents: hideSession0"
+                  position="-5 4 -6">
+        </a-entity>
+        <a-entity id="session-0-title-immersive-entity-container"
+                  geometry="primitive: plane; width: 2; height: 1.5;"
+                  material="color: black; opacity: 0; transparent: true;"
+                  text="value: AP English Lit; color: white; align: center; width: 10;"
+                  visible="false"
+                  position="-5 2.2 -6">
+        </a-entity>
+        
+        <a-entity id="menor-que-tres-immersive-entity-container"
+                  geometry="primitive: plane; width: 3; height: 3;"
+                  material="src: #menor-que-tres-cover-texture; opacity: 0;"
+                  animation__revealSessionOne="property: material.opacity; to: 1.0; dur: 1000; easing: linear; loop: false; startEvents: revealSession1"
+                  animation__hideSessionOne="property: material.opacity; to: 0; dur: 1000; easing: linear; loop: false; startEvents: hideSession1"
+                  position="0 4 -6">
+        </a-entity>
+        <a-entity id="session-1-title-immersive-entity-container"
+                  geometry="primitive: plane; width: 2; height: 1.5;"
+                  material="color: black; opacity: 0; transparent: true;"
+                  text="value: Linear Algebra; color: white; align: center; width: 10;"
+                  visible="false"
+                  position="0 2.2 -6">
+        </a-entity>
+        
+        <a-entity id="had-enough-remix-immersive-entity-container"
+                  geometry="primitive: plane; width: 3; height: 3;"
+                  material="src: #had-enough-remix-cover-texture; opacity: 0;"
+                  animation__revealSessionTwo="property: material.opacity; to: 1.0; dur: 1000; easing: linear; loop: false; startEvents: revealSession2"
+                  animation__hideSessionTwo="property: material.opacity; to: 0; dur: 1000; easing: linear; loop: false; startEvents: hideSession2"
+                  position="5 4 -6">
+        </a-entity>
+        <a-entity id="session-2-title-immersive-entity-container"
+                  geometry="primitive: plane; width: 2; height: 1.5;"
+                  material="color: black; opacity: 0; transparent: true;"
+                  text="value: AP Chemistry; color: white; align: center; width: 10;"
+                  visible="false"
+                  position="5 2.2 -6">
+        </a-entity>
+        
+        <a-entity id="rainbow-in-the-dark-immersive-entity-container"
+                  geometry="primitive: plane; width: 3; height: 3;"
+                  material="src: #rainbow-in-the-dark-cover-texture; opacity: 0;"
+                  animation__revealSessionThree="property: material.opacity; to: 1.0; dur: 1000; easing: linear; loop: false; startEvents: revealSession3"
+                  animation__hideSessionThree="property: material.opacity; to: 0; dur: 1000; easing: linear; loop: false; startEvents: hideSession3"
+                  position="-5 -1 -6">
+        </a-entity>
+        <a-entity id="session-3-title-immersive-entity-container"
+                  geometry="primitive: plane; width: 2; height: 1.5;"
+                  material="color: black; opacity: 0; transparent: true;"
+                  text="value: Music Theory; color: white; align: center; width: 10;"
+                  visible="false"
+                  position="-5 -2.8 -6">
+        </a-entity>
+        
+        <a-entity id="rig" rotation="0 0 0"
+                  animation__lookDown="property: rotation; to: -40 0 0; dur: 1000; easing: linear; loop: false; startEvents: lookDownAtKeyboard"
+                  animation__lookUp="property: rotation; to: 0 0 0; dur: 1000; easing: linear; loop: false; startEvents: lookAwayFromKeyboard">
+            <a-entity camera position="0 1.9 0"></a-entity><!-- look-controls wasd-controls-->
+        </a-entity>
+    </a-scene>
+    <div>
+        <button  id="move-my-eyelids-button-container" type="button"></button><!-- disabled-->
+    </div>
+    <div id="select-session-button-container" style="position: absolute; bottom: 2%; right: 20%; z-index: 200; width: 100px; height: 100px; border-radius: 50%; background-color: greenyellow; cursor: pointer;"></div>
+    
+    <div id="toggle-session-highlight-button-container" style="position: absolute; bottom: 2%; right: 10%; z-index: 200; width: 100px; height: 100px; border-radius: 50%; background-color: yellow; cursor: pointer;"></div>
+    <div id="toggle-keyboard-view-button-container" style="position: absolute; bottom: 2%; right: 2%; z-index: 200; width: 100px; height: 100px; border-radius: 50%; background-color: blue; cursor: pointer;"></div>
+    <video class="videobox lens" autoplay="autoplay" id="myvideo"></video>
+    <canvas id="canvas" class="lens"></canvas>  
+</body>
+</html>

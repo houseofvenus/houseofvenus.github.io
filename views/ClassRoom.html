@@ -5,6 +5,9 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
     <title>AugR Hand Tracking Library v. 0.2.0.4</title>
     <link rel="stylesheet" href="./css/handtracking.css">
+    <script>
+        var pageInFocus = "room";
+    </script>
     <script src="./js/aframe100.js"></script>
     <script src="./js/augr-hand-tracking.js"> </script>
     <script src="./js/ImmersiveClassroom.js"></script>
@@ -24,7 +27,18 @@
             <img id="right-hand-button-cover-texture" src="./media/img/right-hand-icon.png" />
             <img id="add-widget-button-cover-texture" src="./media/img/add-widget-icon.png" />
             <img id="teacher-video-stream-placeholder-cover-texture" src="../media/img/eric-profile-pic.png" />
+            
+            <img id="keyboard-placeholder-texture" src="./media/img/keyboard-placeholder.png" />
         </a-assets>
+        
+        
+        <a-entity id="classroom-title-container"
+                  geometry="primitive: plane; width: 6; height: 2;"
+                  material="transparent: true; opacity: 0"
+                  text="value: AP English Literature; align: center; width: 16; color: white;"
+                  position="0 6 -6">
+        </a-entity>
+        
         
         <a-entity id="left-hand-raised-button-immersive-entity-container"
                   geometry="primitive: plane; width: 2.5; height: 2.5;"
@@ -45,9 +59,9 @@
         </a-entity>
         
         <a-entity id="white-board-immersive-entity-container"
-                  geometry="primitive: plane; width: 6; height: 4;"
+                  geometry="primitive: plane; width: 7; height: 5;"
                   material="color: white; opacity: 0.3;"
-                  position="0 2 -6">
+                  position="0.75 2 -6">
         </a-entity>
         
         <a-entity id="look-down-title-container"
@@ -69,11 +83,26 @@
                   position="5 -2 -6">
         </a-entity>
         
-        <a-entity camera position="0 1.9 0"></a-entity><!-- look-controls wasd-controls-->
+        
+        <a-entity id="keyboard-immersive-entity-container"
+                    geometry="primitive: plane; width: 8; height: 4;"
+                    material="src: #keyboard-placeholder-texture; opacity: 0;"
+                    animation__revealKeys="property: material.opacity; to: 1.0; dur: 1000; easing: linear; loop: false; startEvents: revealKeyboard"
+                    animation__hideKeys="property: material.opacity; to: 0; dur: 1000; easing: linear; loop: false; startEvents: hideKeyboard"
+                    position="0 -3 -6"
+                    rotation="-40 0 0">
+        </a-entity>
+        
+        <a-entity id="rig" rotation="0 0 0"
+                  animation__lookDown="property: rotation; to: -40 0 0; dur: 1000; easing: linear; loop: false; startEvents: lookDownAtKeyboard"
+                  animation__lookUp="property: rotation; to: 0 0 0; dur: 1000; easing: linear; loop: false; startEvents: lookAwayFromKeyboard">
+            <a-entity camera position="0 1.9 0"></a-entity><!-- look-controls wasd-controls-->
+        </a-entity>
     </a-scene>
     <div>
         <button  id="move-my-eyelids-button-container" type="button"></button><!-- disabled-->
     </div>
+    <div id="toggle-keyboard-view-button-container" style="position: absolute; bottom: 2%; right: 2%; z-index: 200; width: 100px; height: 100px; border-radius: 50%; background-color: blue; cursor: pointer;"></div>
     <video class="videobox lens" autoplay="autoplay" id="myvideo"></video>
     <canvas id="canvas" class="lens"></canvas>  
 </body>

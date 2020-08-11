@@ -119,6 +119,52 @@ else {*/
         res.render('index.html',{root: dir[0]});
     });
 
+    app.get('/login', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('ClassRoomLoginPage.html',{root: dir[0]});
+    });
+
+
+    app.get('/session', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('ClassRoomSessionSelectionPage.html', {root: dir[0]});
+    });
+
+    app.get('/classroom', function(req, res){
+        var result = new WhichBrowser(req.headers);
+        console.log(result.toString());
+        if(result.isType('desktop')){
+            console.log('This is a desktop computer.');
+            deviceType = 'desktop';
+        }
+        else{
+            console.log('This is a mobile device.');
+            deviceType = 'mobile';
+        }
+
+        res.render('ClassRoom.html', {root: dir[0]});
+    });
+
     app.get('/pArk/rooms/getting/started/ar', function(req, res){
         var result = new WhichBrowser(req.headers);
         console.log(result.toString());
