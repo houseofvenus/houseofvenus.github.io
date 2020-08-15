@@ -43,6 +43,10 @@
                 height: "100%",
                 opacity: 1.0
             }, 500, "swing", transitionToActions());
+            
+            document.getElementById("rooms-more-button-container").addEventListener("click", function(){
+                window.location.href = "./rooms";
+            });
 
         });
     </script>
@@ -54,12 +58,12 @@
                 <div id='company-header-button'>house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="rooms-title-container" class="bold-text-title-container">rooms</div>
-                <div id="products-content-wrapper">
-                    <p style="font-size: 24px; line-height: 30px; font-weight: 200; margin-top: 12%;">
+                <div id="rooms-scroll-bar" class="generic-content-wrapper">
+                    <p class="content-paragraph-container">
                         A browser for the <span style="font-weight: 700;">pARk</span>, the world's immersive internet.<span style="font-weight: 700;">View</span>, <span style="font-weight: 700;">create</span>, and <span style="font-weight: 700;">share</span> immersive experiences using Rooms. The world is your desktop.
                     </p>
                 </div>
-                <div id="rooms-more-button-container" class="more-button-container">learn more</div>
+                <div id="rooms-more-button-container" class="more-button-container">0pen</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
