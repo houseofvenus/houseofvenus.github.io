@@ -692,6 +692,9 @@ body, html{
 }
 
 .member-bold-text-title-container{
+    height: 50px;
+    font-size: 40px;
+    font-weight: 900;
     width: 300px;
     position: absolute;
     top: 10%;
