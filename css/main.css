@@ -691,6 +691,15 @@ body, html{
     border-color: rgba(30, 30, 255, 0.8) !important;
 }
 
+.member-bold-text-title-container{
+    width: 300px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
+}
+
 .bold-text-title-container{
     width: 300px;
     position: absolute;
