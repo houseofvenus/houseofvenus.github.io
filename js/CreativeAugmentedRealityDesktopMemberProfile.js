@@ -1,4 +1,3 @@
-
 function hideInstructionsOverlay(){
     document.getElementById("instructions-overlay-container").style.opacity = 0;
     setTimeout(function(){
@@ -20,11 +19,22 @@ function animateInstructionsOverlayToCoverConsole(){
 function openCardApplication(name){
     switch(name){
         case "rooms":
+            window.location.href = "http://houseofven.us/rooms";
+            break;
         case "library":
+            window.location.href = "./library";
+            break;
         case "preview":
-            console.log(`open the ${name} application`);
+            window.location.href = "./rushmore";
+            break;
+        case "honeycomb":
+            window.location.href = "./honeycomb";
+            break;
+        case "t0wn":
+            window.location.href = "./t0wn";
             break;
         default:
             console.log("no associated application");
     }
 }
+
