@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- VERSION 0.1.0.10 -->
+    <title>House of Venus | City as a Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" />
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            let servicesVisible = false;
+            
+            function transitionToActions(){
+                let page0wrapper = document.getElementById("page-0-content-wrapper");
+                let page1wrapper = document.getElementById("page-1-content-wrapper");
+                
+                $(page0wrapper).animate({
+                    opacity: 0
+                }, 500, "swing");
+                
+                $(page1wrapper).animate({
+                    opacity: 1.0
+                }, 500, "swing");
+                
+            }
+            
+            document.getElementById("instagram-social-button-container").addEventListener("click", function(){
+                window.location.href = "https://instagram.com/ceo.hov"
+            });
+            
+            document.getElementById("youtube-social-button-container").addEventListener("click", function(){
+                window.location.href = "https://www.youtube.com/channel/UCGbhZq-wHMPHgg-Zdt9hfWw";
+            });
+            
+            document.getElementById("company-header-button").addEventListener("click", function(){
+                window.location.href = "../../";
+            });
+            
+            document.getElementById("open-rushmore-app-button-container").addEventListener("click", function(){
+                window.location.href = "./rushmore/preview";
+            });
+           
+            let overlay = document.getElementById("page-overlay-container");
+            overlay.style.display = "block";
+            $(overlay).animate({
+                height: "100%",
+                opacity: 1.0
+            }, 500, "swing", transitionToActions());
+
+        });
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+        <div id="library-page-container" class="page-container">
+            <div id="page-overlay-container">
+                <div id='company-header-button'>house of venus</div>
+                <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
+                <div id="library-title-container" class="bold-text-title-container library-coloring">rushmore</div>
+                <div id="library-content-wrapper" class="library-coloring">
+                    <p style="font-size: 24px; line-height: 30px; font-weight: 200; width: 80%; text-align: center; margin: 20% auto 0 auto;">
+                        Pick your top four and compare your Rushmore
+                    </p>
+                    <p style="font-size: 24px; line-height: 30px; font-weight: 200; width: 80%; text-align: center; margin: 2% auto 0 auto;">
+                        Popular rankings win you prizes, cash, and more
+                    </p>
+                </div>
+                <div id="open-rushmore-app-button-container" class="more-button-container library-coloring">open</div>
+                <div id="social-media-button-bar-container">
+                    <div id="instagram-social-button-container" class="social-button-container"></div>
+                    <div id="youtube-social-button-container" class="social-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
