@@ -19,6 +19,37 @@ body, html{
     font-family: "AuraRegular W05 Regular", Fallback, sans-serif;
 }
 
+#rooms-app-dock-icon-container, #rooms-app-icon-container{
+    background-image: url(../media/img/rooms-app-icon.png);
+}
+
+#hov-app-dock-icon-container{
+    background-image: url(../media/img/hov_ig_logo.png);
+}
+
+#library-app-icon-container{
+    background-image: url(../media/img/library-app-icon.png);
+}
+
+#preview-app-icon-container{
+    background-image: url(../media/img/preview-app-icon.png);
+    background-size: 75px auto;
+}
+
+#honeycomb-app-icon-container{
+    background-image: url(../media/img/honeycomb-app-icon.png);
+    background-size: 75px auto;
+}
+
+#t0wn-app-icon-container{
+    background-image: url(../media/img/t0wn-app-icon.png);
+    background-size: 75px auto;
+}
+
+#instructions-overlay-title-container{
+    margin-top: 5%;
+}
+
 /* DESKTOP */
 @media only screen and (min-width: 768px){  
 
@@ -104,39 +135,7 @@ body, html{
     .card-app-dock-icon-container:hover{
         border: 2px black solid;
         box-shadow: 3px 3px 3px white;
-    }
-
-    #rooms-app-dock-icon-container, #rooms-app-icon-container{
-        background-image: url(../media/img/rooms-app-icon.png);
-    }
-
-    #hov-app-dock-icon-container{
-        background-image: url(../media/img/hov_ig_logo.png);
-    }
-
-    #library-app-icon-container{
-        background-image: url(../media/img/library-app-icon.png);
-    }
-
-    #preview-app-icon-container{
-        background-image: url(../media/img/preview-app-icon.png);
-        background-size: 75px auto;
-    }
-
-    #honeycomb-app-icon-container{
-        background-image: url(../media/img/honeycomb-app-icon.png);
-        background-size: 75px auto;
-    }
-
-    #t0wn-app-icon-container{
-        background-image: url(../media/img/t0wn-app-icon.png);
-        background-size: 75px auto;
-    }
-
-    #instructions-overlay-title-container{
-        margin-top: 5%;
-    }
-    
+    }    
 }
 
 /* MOBILE */
@@ -162,17 +161,17 @@ body, html{
         color: white;
         transition: margin 0.5s, top 0.5s, left 0.5s, opacity 1s;
     }
-/*
+
     .card-app-container{
-        width: 102px;
-        height: 152px;
+        width: 78px;
+        height: 102px;
         display: inline-block;
     }
 
     .card-app-icon-container{
         display: block;
-        width: 100px;
-        height: 100px;
+        width: 75px;
+        height: 75px;
         border-radius: 50%;
         background-size: 100% 100%;
         margin: 1% auto;
@@ -180,19 +179,18 @@ body, html{
 
     .card-app-label-container{
         width: 100%;
-        height: 50px;
-        line-height: 50px;
+        height: 25px;
+        line-height: 25px;
         text-align: center;
-        font-size: 24px;
+        font-size: 20px;
     }
 
     #main-card-console-container{
-        width: 500px;
+        width: 100%;
         height: 80%;
         position: absolute;
         top: 10%;
-        left: 50%;
-        margin-left: -250px;
+        left: 0;
     }
 
     #dock-app-container{
@@ -214,26 +212,4 @@ body, html{
         background-repeat: no-repeat;
         margin: 1% auto;
     }
-
-    #rooms-app-dock-icon-container, #rooms-app-icon-container{
-        background-image: url(../../media/img/rooms-app-icon.png);
-    }
-
-    #hov-app-dock-icon-container{
-        background-image: url(../../media/img/hov_ig_logo.png);
-    }
-
-    #library-app-icon-container{
-        background-image: url(../../media/img/library-app-icon.png);
-    }
-
-    #preview-app-icon-container{
-        background-image: url(../../media/img/preview-app-icon.png);
-        background-size: 75px auto;
-    }
-
-    #instructions-overlay-title-container{
-        margin-top: 5%;
-    }
-*/
 }
