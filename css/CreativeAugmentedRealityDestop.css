@@ -105,29 +105,29 @@ body, html{
     }
 
     #rooms-app-dock-icon-container, #rooms-app-icon-container{
-        background-image: url(../../media/img/rooms-app-icon.png);
+        background-image: url(../media/img/rooms-app-icon.png);
     }
 
     #hov-app-dock-icon-container{
-        background-image: url(../../media/img/hov_ig_logo.png);
+        background-image: url(../media/img/hov_ig_logo.png);
     }
 
     #library-app-icon-container{
-        background-image: url(../../media/img/library-app-icon.png);
+        background-image: url(../media/img/library-app-icon.png);
     }
 
     #preview-app-icon-container{
-        background-image: url(../../media/img/preview-app-icon.png);
+        background-image: url(../media/img/preview-app-icon.png);
         background-size: 75px auto;
     }
 
     #honeycomb-app-icon-container{
-        background-image: url(../../media/img/preview-app-icon.png);
+        background-image: url(../media/img/honeycomb-app-icon.png);
         background-size: 75px auto;
     }
 
     #t0wn-app-icon-container{
-        background-image: url(../../media/img/preview-app-icon.png);
+        background-image: url(../media/img/t0wn-app-icon.png);
         background-size: 75px auto;
     }
 
