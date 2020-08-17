@@ -55,6 +55,7 @@ body, html{
     background-size: auto 120%;
     background-repeat: no-repeat;
     display: inline-block;
+    height: 150px;
 }
 
 #view-apps-diagram-container{
@@ -64,6 +65,7 @@ body, html{
     background-size: 80% auto;
     background-repeat: no-repeat;
     display: inline-block;
+    height: 150px;
 }
 /* DESKTOP */
 @media only screen and (min-width: 768px){  
