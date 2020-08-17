@@ -21,6 +21,7 @@
             text-align: center;
             background-color: black;
             color: white;
+            transition: margin 0.5s;
         }
         
         
@@ -97,11 +98,11 @@
         });
         
         function animateInstructionsOverlayToCoverConsole(){
+            document.getElementById("instructions-overlay-container").style.margin = 0;
+            
             $("#instructions-overlay-container").animate({
                 height: "100%",
                 width: "100%",
-                marginTop: "0px",
-                marginLeft: "0px"
             }, 1000, "swing");
         }
         
