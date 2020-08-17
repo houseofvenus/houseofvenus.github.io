@@ -146,22 +146,23 @@ body, html{
     }
     
     #instructions-overlay-container{
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
+        width: 200px;
+        height: 102px;
+        border-radius: 15px;
         z-index: 200;
         cursor: pointer;
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
         position: absolute;
-        margin: 0;
+        margin: -150px 0 0 -100px;
         line-height: 35px;
         font-size: 20px;
         text-align: center;
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
+        transition: margin 0.5s, top 0.5s, left 0.5s, opacity 1s;
     }
-
+/*
     .card-app-container{
         width: 102px;
         height: 152px;
@@ -176,7 +177,7 @@ body, html{
         background-size: 100% 100%;
         margin: 1% auto;
     }
-/*
+
     .card-app-label-container{
         width: 100%;
         height: 50px;
