@@ -32,7 +32,7 @@
             margin: 0 25px;
         }
         
-        .card-app-icon-container{
+        .card-app-dock-icon-container, .card-app-icon-container{
             display: block;
             width: 100px;
             height: 100px;
@@ -61,8 +61,12 @@
             margin-left: -250px;
         }
         
-        #rooms-app-icon-container{
+        #rooms-app-dock-icon-container, #rooms-app-icon-container{
             background-image: url(../../media/img/rooms-app-icon.png);
+        }
+        
+        #hov-app-dock-icon-container{
+            background-image: url(../../media/img/hov_ig_logo.png);
         }
         
         #library-app-icon-container{
@@ -98,7 +102,7 @@
         });
         
         function animateInstructionsOverlayToCoverConsole(){
-            document.getElementById("instructions-overlay-container").style.margin = "-250px";
+            document.getElementById("instructions-overlay-container").style.margin = "0 0 0 -250px";
             document.getElementById("instructions-overlay-container").style.top = "10%";
             document.getElementById("instructions-overlay-container").style.left = "50%";
             
@@ -148,6 +152,14 @@
                     </div>
                     <div id="preview-app-label-container" class="card-app-label-container">
                         preview
+                    </div>
+                </div>
+                <div id="dock-app-container">
+                    <div id="hov-app-dock-icon-container" class="card-app-dock-icon-container">
+                        
+                    </div>
+                    <div id="rooms-app-dock-icon-container" class="card-app-dock-icon-container">
+                        
                     </div>
                 </div>
             </duv>
