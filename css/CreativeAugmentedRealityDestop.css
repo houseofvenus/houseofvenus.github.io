@@ -53,6 +53,12 @@ body, html{
         border-radius: 50%;
         background-size: 100% 100%;
         margin: 1% auto;
+        cursor: pointer;
+    }
+    
+    .card-app-icon-container:hover{
+        border: 2px black solid;
+        box-shadow: 3px 3px 3px white;
     }
 
     .card-app-label-container{
@@ -90,6 +96,12 @@ body, html{
         background-position: center center;
         background-repeat: no-repeat;
         margin: 1% auto;
+        cursor: pointer;
+    }
+    
+    .card-app-dock-icon-container:hover{
+        border: 2px black solid;
+        box-shadow: 3px 3px 3px white;
     }
 
     #rooms-app-dock-icon-container, #rooms-app-icon-container{
@@ -105,6 +117,16 @@ body, html{
     }
 
     #preview-app-icon-container{
+        background-image: url(../../media/img/preview-app-icon.png);
+        background-size: 75px auto;
+    }
+
+    #honeycomb-app-icon-container{
+        background-image: url(../../media/img/preview-app-icon.png);
+        background-size: 75px auto;
+    }
+
+    #t0wn-app-icon-container{
         background-image: url(../../media/img/preview-app-icon.png);
         background-size: 75px auto;
     }
