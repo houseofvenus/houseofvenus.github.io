@@ -28,7 +28,7 @@
             width: 102px;
             height: 152px;
             display: inline-block;
-            margin: 0 50px;
+            margin: 0 25px;
         }
         
         .card-app-icon-container{
@@ -62,6 +62,8 @@
     <script>
         
         document.addEventListener("DOMContentLoaded", function(){
+            animateInstructionsOverlayToCoverConsole();
+            
             document.getElementById("instructions-overlay-container").addEventListener("click", function(){
                 
             });
@@ -78,6 +80,13 @@
                 openCardApplication("preview");
             });
         });
+        
+        function animateInstructionsOverlayToCoverConsole(){
+            $("#instructions-overlay-container").animate({
+                height: "100%",
+                width: "100%"
+            }, 500, "swing");
+        }
         
         function openCardApplication(name){
             switch(name){
