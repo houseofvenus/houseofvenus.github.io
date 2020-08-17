@@ -65,6 +65,7 @@ body, html{
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
         transition: margin 0.5s, top 0.5s, left 0.5s, opacity 1s;
+        overflow: hidden;
     }
 
     .card-app-container{
@@ -105,6 +106,7 @@ body, html{
         top: 10%;
         left: 50%;
         margin-left: -250px;
+        overflow: hidden;
     }
 
     #dock-app-container{
@@ -161,6 +163,7 @@ body, html{
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
         transition: margin 0.5s, top 0.5s, left 0.5s, opacity 1s;
+        overflow: hidden;
     }
 
     .card-app-container{
@@ -193,6 +196,7 @@ body, html{
         position: absolute;
         bottom: 0;
         left: 0;
+        overflow: hidden;
     }
 
     #dock-app-container{
