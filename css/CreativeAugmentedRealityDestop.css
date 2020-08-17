@@ -143,9 +143,9 @@ body, html{
 
 /* MOBILE */
 @media only screen and (max-width: 768px){ 
-    body, html{
+    /*body, html{
         background-color: yellow;
-    }
+    }*/
     
     #instructions-overlay-container{
         width: 200px;
@@ -177,6 +177,8 @@ body, html{
         display: block;
         width: 75px;
         height: 75px;
+        background-repeat: no-repeat;
+        background-position: center center;
         border-radius: 50%;
         background-size: 100% 100%;
         margin: 1% auto;
