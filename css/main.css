@@ -21,7 +21,7 @@ body, html{
     font-size: 0;
 }
 
-#rushmore-content-line-0-container{
+#rushmore-content-line-0-container, #honeycomb-content-line-0-container{
     font-size: 24px;
     line-height: 30px;
     font-weight: 200;
@@ -30,7 +30,7 @@ body, html{
     margin: 20% auto 0 auto;
 }
 
-#rushmore-content-line-1-container{
+#rushmore-content-line-1-container, #honeycomb-content-line-1-container{
     font-size: 24px;
     line-height: 30px;
     font-weight: 200;
@@ -79,12 +79,11 @@ body, html{
 
 @media only screen and (max-width: 768px){
     
-    #open-rushmore-app-button-container{
+    #open-rushmore-app-button-container, #open-honeycomb-app-button-container{
         bottom: 30% !important;
     }
     
-    #rushmore-content-line-0-container{
-        font-size: 18px;
+    #rushmore-content-line-0-container, #honeycomb-content-line-0-container{
         line-height: 20px;
         font-weight: 200;
         width: 80%;
@@ -92,8 +91,7 @@ body, html{
         margin: 70% auto 0 auto;
     }
 
-    #rushmore-content-line-1-container{
-        font-size: 18px;
+    #rushmore-content-line-1-container, #honeycomb-content-line-1-container{
         line-height: 20px;
         font-weight: 200;
         width: 80%;
