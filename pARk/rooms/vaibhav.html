@@ -5,22 +5,114 @@
     <title>Vaibhav Ponnuri | House of Venus | pARk</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="../../css/CreativeAugmentedRealityDestop.css" type="text/css" />
+    <style>
+        #instructions-overlay-container{
+            width: 200px;
+            height: 102px;
+            border-radius: 15px;
+            z-index: 200;
+            cursor: pointer;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            margin: -150px 0 0 -100px;
+            line-height: 50px;
+            font-size: 24px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+        
+        
+        .card-app-container{
+            width: 102px;
+            height: 152px;
+            display: inline-block;
+        }
+        
+        .card-app-icon-container{
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: black;
+            margin: 1% auto;
+        }
+        
+        .card-app-label-container{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
     <script src="../../js/jquery-3.2.1.min.js"></script>
     <script>
         
         document.addEventListener("DOMContentLoaded", function(){
+            document.getElementById("instructions-overlay-container").addEventListener("click", function(){
+                
+            });
             
+            document.getElementById("rooms-app-icon-container").addEventListener("click", function(){
+                openCardApplication("rooms");
+            });
+            
+            document.getElementById("honeycomb-app-icon-container").addEventListener("click", function(){
+                openCardApplication("honeycomb");
+            });
+            
+            document.getElementById("ourt0wn-app-icon-container").addEventListener("click", function(){
+                openCardApplication("ourt0wn");
+            });
         });
+        
+        function openCardApplication(name){
+            switch(name){
+                case "rooms":
+                case "honeycomb":
+                case "ourt0wn":
+                    console.log(`open the ${name} application`);
+                    break;
+                default:
+                    console.log("no associated application");
+            }
+        }
     </script>
 </head>
 <body>
     <div id="main-app-container">
         <div id="pARk-page-container" class="page-container">
-            <div>tap on icon to load</div>
-            <div>applications</div>
-            <div>rooms</div>
-            <div>rank1t form</div>
-            <div>rank1t preview</div>
+            <div id="instructions-overlay-container">tap on icon to load</div>
+            <duv id="main-card-console-container">
+                <div>applications</div>
+                <div id="rooms-app-container" class="card-app-container">
+                    <div id="rooms-app-icon-container" class="card-app-icon-container">
+                        
+                    </div>
+                    <div id="rooms-app-label-container" class="card-app-label-container">
+                        rooms
+                    </div>
+                </div>
+                <div id="honeycomb-app-container" class="card-app-container">
+                    <div id="honeycomb-app-icon-container" class="card-app-icon-container">
+                        
+                    </div>
+                    <div id="honeycomb-app-label-container" class="card-app-label-container">
+                        honeycomb
+                    </div>
+                </div>
+                <div id="ourt0wn-app-container" class="card-app-container">
+                    <div id="ourt0wn-app-icon-container" class="card-app-icon-container">
+                        
+                    </div>
+                    <div id="ourt0wn-app-label-container" class="card-app-label-container">
+                        ourt0wn
+                    </div>
+                </div>
+            </duv>
+            
         </div>
     </div>
 </body>
