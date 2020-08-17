@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #main-app-container{
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        #go-to-mobile-container{
+            background-color: black;
+            z-index: 100;
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+        }
+            
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+        }
+        
+        #app-header-container{
+            width: 100%;
+            height: 15%;
+            background-color: rgba(0, 0, 0, 0.05);
+            position: absolute;
+            top: 0;
+        }
+        
+        #back-to-messages-main-button-container{
+            background-image: url("../media/img/back.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-top: 8%;
+            margin-left: 3%;
+        }
+        
+        #widget-functionality-container{
+            height: 25px;
+            width: 95%;
+            left: 0;
+            position: absolute;
+            top: 5%;
+        }
+        
+        #network-indicator-container{
+            background-image: url("../media/img/network.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            float: right;
+            margin-right: 5px;
+            width: 25px;
+            height: 100%;
+        }
+        
+        #wifi-indicator-container{
+            background-image: url("../media/img/wifi.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            float: right;
+            margin-right: 5px;
+            width: 25px;
+            height: 100%;
+        }
+        
+        #battery-indicator-container{
+            background-image: url("../media/img/battery.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            float: right;
+            margin-right: 5px;
+            width: 25px;
+            height: 100%;
+        }
+        
+        #access-camera-button-container{
+            background-image: url("../media/img/camera.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 35px;
+            height: 30px;
+            position: absolute;
+            bottom: 25px;
+            left: 20px;
+            display: inline-block;
+        }
+        
+        .app-widget-button-container{
+            background-image: url("../media/img/app-store.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 35px;
+            height: 30px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+        
+        #rushmore-app-widget-button-container{
+            background-image: url("../media/img/rushmore-icon-container.png") !important;
+            background-size: 100% 100%;
+            margin-left: 10px;
+            border-radius: 50%;
+        }
+        
+        #access-app-store-button-container{
+            background-image: url("../media/img/app-store.png");
+            background-size: 90% 90%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 35px;
+            height: 30px;
+            position: absolute;
+            bottom: 25px;
+            left: 55px;
+            display: inline-block;
+        }
+        
+        #messages-input-container{
+            width: 100%;
+            height: 20%;
+            position: absolute;
+            bottom: 3%;
+            font-family: "Helvetica Neue", sans-serif;
+            overflow-x: scroll;
+            transition: bottom 0.5s;
+        }
+        
+        #application-icons-banner-container{
+            background-color: lightgray;
+            color: white;
+            width: 100%;
+            height: 5%;
+            position: absolute;
+            bottom: 0;
+            transition: bottom 0.5s;
+        }
+        
+        #application-widgets-banner-container{
+            width: 100%;
+            height: 100%;
+            display: block;
+            transition: height 0.5s, opacity 0.5s;
+        }
+        
+        #input-container{
+            width: 250px;
+            display: inline-block;
+            position: absolute;
+            right: 25px;
+            bottom: 25px;
+            height: 40%;
+            border-radius: 25px;
+            border: 2px lightgray solid;
+            color: lightgray;
+        }
+        
+        #subject-input-container{
+            height: 50%;
+            line-height: 35px;
+            width: 90%;
+            display: block;
+            margin: 0 auto;
+            border-bottom: 1px lightgray solid;
+        }
+        
+        #main-input-container{
+            line-height: 35px;
+            width: 90%;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        #messages-body-container{
+            position: absolute;
+            top: 15%;
+            width: 100%;
+        }
+        
+        #title-container{
+            color: #3333FF;
+            font-weight: 900;
+            font-size: 18px;
+        }
+        
+        #rushmore-app-container{
+            font-family: "Helvetica Neue", sans-serif; 
+            display: block;
+            width: 70%;
+            height: 350px;
+            margin: 3% 0 0 7%;
+        }
+        
+        .rushmore-option-container{
+            width: 96%;
+            padding-left: 10%;
+            display: block;
+            margin: 2% 0 2% 1%;
+            border-radius: 25px;
+            line-height: 50px;
+            height: 50px;
+            font-size: 16px;
+            background-color:  rgba(0, 0, 0, 0.05);
+            transition: background-color 1s, width 0.5s;
+        }
+        
+        .selected-option-container{
+            background-color: #67E1DC;
+        }
+        
+        .rushmore-title-container{
+            display: inline-block;
+        }
+        
+        .rushmore-counter-container{
+            display: inline-block;
+            opacity: 1.0;
+            margin-left: 50%;
+        }
+        
+        #selected-application-widget-container{
+            height: 0;
+            display: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transition: height 0.5s;
+        }
+        
+        .option-button-container{
+            display: inline-block;
+            width: 100px;
+            font-size: 0;
+            height: 100px;
+            line-height: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-family: monospace;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: fixed;
+            border-radius: 50%;
+        }
+        
+        #create-option-button-container{
+            background-image: url("../media/img/create-icon.png");
+            left: 15%;
+            background-color: rgba(255, 0, 0, 0.7);
+            background-size: 118% 118%;
+        }
+        
+        #category-option-button-container{
+            background-image: url("../media/img/category-icon.png");
+            right: 15%;
+            background-color: rgba(50, 205, 50, 0.7);
+            background-size: 125% 125%;
+        }
+        
+        #search-for-category-container{
+            width: 80%;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 10px;
+            display: block;
+            margin: 5% auto;
+            outline: none;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+    </style>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>
+        var selectedOption = null;
+        var selectedOptionHistory = [];
+        var selectedOptionCounterHistory = [];
+        var votes = [0, 0, 0, 0];
+        var AWBInView = true; //AWB = Application Widget Banner
+        
+        function selectOption(optionNumber){
+            let target = document.getElementById(`rushmore-option-${optionNumber}-container`);
+            let targetCounter = document.getElementById(`rushmore-option-${optionNumber}-counter-container`);
+            
+            let current = optionNumber;
+            
+            if(selectedOption!==current){
+                console.log(selectedOptionHistory);
+                selectedOption = current;
+
+                if(selectedOptionHistory.length>0){
+                    let oldTarget = document.getElementById(selectedOptionHistory[0]);
+                    let oldTargetCounter = document.getElementById(selectedOptionCounterHistory[0]);
+
+                    oldTarget.classList.remove("selected-option-container");
+                    oldTarget.style.width = "75px";
+                    
+                    
+                    let voteFix = selectedOptionHistory[0].substring(selectedOptionHistory[0].indexOf("n-")+2,selectedOptionHistory[0].indexOf("n-")+3);
+                    
+                    votes[voteFix]--;
+                    
+                    oldTargetCounter.innerHTML = votes[voteFix];
+                    oldTargetCounter.style.display = "none";
+                    
+                    setTimeout(function(){
+                        oldTarget.style.width = "96%";
+                        setTimeout(function(){
+                            oldTargetCounter.style.display = "inline-block"
+                        }, 450);
+                    }, 500);
+
+                }
+
+                selectedOptionHistory.unshift(`rushmore-option-${optionNumber}-container`);
+                selectedOptionCounterHistory.unshift(`rushmore-option-${optionNumber}-counter-container`);
+
+                target.classList.add("selected-option-container");
+                target.style.width = "75px";
+                
+                votes[optionNumber]++;
+                
+                targetCounter.innerHTML = votes[optionNumber];
+                targetCounter.style.display = "none"
+                
+                setTimeout(function(){
+                    target.style.width = "96%";
+                    setTimeout(function(){
+                        targetCounter.style.display = "inline-block"
+                    }, 450);
+                }, 500);
+            }
+            else{
+                console.log("already selected this option");
+            }
+        }
+        
+        function toggleApplicationWidgetBanner(){
+            let banner = document.getElementById("application-widgets-banner-container");
+            
+            if(AWBInView){
+                
+                banner.style.height = 0;
+                banner.style.opacity = 0;
+                AWBInView = false;
+                
+                setTimeout(function(){
+                    banner.style.display = "none";
+                    console.log(AWBInView);
+                }, 550);
+                
+            }
+            else{
+                banner.style.display = "block";
+                setTimeout(function(){
+                    banner.style.height = 1.0;
+                    banner.style.opacity = 1.0;
+
+                    AWBInView = true;
+                    console.log(AWBInView);
+                }, 50);
+            }
+        }
+        
+        var RushmoreAppIsVisible = true;
+        
+        function hideRushmoreAppContainer(){
+            let rushmoreApp = document.getElementById("rushmore-app-container");
+            rushmoreApp.style.height = 0;
+            rushmoreApp.style.opacity = 0;
+
+            setTimeout(function(){
+                rushmoreApp.style.display = "none";
+                RushmoreAppIsVisible = false;
+            }, 550);
+        }
+        
+        function showRushmoreAppContainer(){
+            let rushmoreApp = document.getElementById("rushmore-app-container");
+            rushmoreApp.style.display = "block";
+
+            setTimeout(function(){
+                rushmoreApp.style.height = 1.0;
+                rushmoreApp.style.opacity = 1.0;
+                RushmoreAppIsVisible = true;
+            }, 50);
+        }
+        
+        function toggleRushmoreAppVisibility(value){
+            
+            
+            if(value!==null){
+                if(value===0){
+                    hideRushmoreAppContainer();
+                }
+                else if(value===1){
+                    showRushmoreAppContainer();
+                }
+            }
+            else{
+                if(RushmoreAppIsVisible){
+                    hideRushmoreAppContainer();
+                }
+                else{
+                    showRushmoreAppContainer();
+                }
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            toggleRushmoreAppVisibility(0);
+            
+            document.getElementById("rushmore-option-0-container").addEventListener("click", function(){
+                selectOption(0);
+            });
+            
+            document.getElementById("rushmore-option-1-container").addEventListener("click", function(){
+                selectOption(1);
+            });
+            
+            document.getElementById("rushmore-option-2-container").addEventListener("click", function(){
+                selectOption(2);
+            });
+            
+            document.getElementById("rushmore-option-3-container").addEventListener("click", function(){
+                selectOption(3);
+            });
+            
+            document.getElementById("access-app-store-button-container").addEventListener("click", function(){
+                toggleApplicationWidgetBanner();
+            });
+            
+            document.getElementById("rushmore-app-widget-button-container").addEventListener("click", function(){
+                document.getElementById("selected-application-widget-container").style.display = "block";
+                
+                setTimeout(function(){
+                    document.getElementById("selected-application-widget-container").style.height = "30%";
+                    document.getElementById("messages-input-container").style.bottom = "33%";
+                    document.getElementById("application-icons-banner-container").style.bottom = "30%";
+                }, 50);
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="go-to-mobile-container">
+        <p>go to the mobile version to see the app</p>
+    </div>
+    <div id="main-app-container">
+        <div id="app-header-container">
+            <div id="widget-functionality-container">
+                <div id="battery-indicator-container"></div>
+                <div id="wifi-indicator-container"></div>
+                <div id="network-indicator-container"></div>
+            </div>
+            <div id="back-to-messages-main-button-container"></div>
+        </div>
+        <div id="messages-body-container">
+            <div id="rushmore-app-container">
+                <div id="title-container">
+                    Topic/Subject to be Ranked
+                </div>
+                <div id="rushmore-option-0-container" class="rushmore-option-container">
+                    <div id="rushmore-option-0-title-container" class="rushmore-title-container">
+                        Option 0
+                    </div>
+                    <div id="rushmore-option-0-counter-container" class="rushmore-counter-container">
+                        0
+                    </div>
+                </div>
+                <div id="rushmore-option-1-container" class="rushmore-option-container">
+                    <div id="rushmore-option-1-title-container" class="rushmore-title-container">
+                        Option 1
+                    </div>
+                    <div id="rushmore-option-1-counter-container" class="rushmore-counter-container">
+                        0
+                    </div>
+                </div>
+                <div id="rushmore-option-2-container" class="rushmore-option-container">
+                    <div id="rushmore-option-2-title-container" class="rushmore-title-container">
+                        Option 2
+                    </div>
+                    <div id="rushmore-option-2-counter-container" class="rushmore-counter-container">
+                        0
+                    </div>
+                </div>
+                <div id="rushmore-option-3-container" class="rushmore-option-container">
+                    <div id="rushmore-option-3-title-container" class="rushmore-title-container">
+                        Option 3
+                    </div>
+                    <div id="rushmore-option-3-counter-container" class="rushmore-counter-container">
+                        0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="messages-input-container">
+            <div id="access-camera-button-container"></div>
+            <div id="access-app-store-button-container"></div>
+            <div id="input-container">
+                <div id="subject-input-container">Objet</div>
+                <div id="main-input-container">iMessage</div>
+            </div>
+        </div>
+        <div id="application-icons-banner-container">
+            <div id="application-widgets-banner-container">
+                <div id="rushmore-app-widget-button-container" class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+                <div class="app-widget-button-container"></div>
+            </div>
+        </div>
+        <div id="selected-application-widget-container">
+            <input id="search-for-category-container" type="text" placeholder="Search Rushmore Rankings..."/>
+            <div id="main-rushmore-options-container">
+                <div id="create-option-button-container" class="option-button-container">create</div>
+                <div id="category-option-button-container" class="option-button-container">category</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

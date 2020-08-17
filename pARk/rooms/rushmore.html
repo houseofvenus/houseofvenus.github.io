@@ -36,6 +36,10 @@
             document.getElementById("company-header-button").addEventListener("click", function(){
                 window.location.href = "../../";
             });
+            
+            document.getElementById("open-rushmore-app-button-container").addEventListener("click", function(){
+                window.location.href = "./rushmore/preview";
+            });
            
             let overlay = document.getElementById("page-overlay-container");
             overlay.style.display = "block";
@@ -62,7 +66,7 @@
                         Popular rankings win you prizes, cash, and more
                     </p>
                 </div>
-                <div class="more-button-container library-coloring">open</div>
+                <div id="open-rushmore-app-button-container" class="more-button-container library-coloring">open</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
