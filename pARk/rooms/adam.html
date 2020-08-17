@@ -21,7 +21,7 @@
             text-align: center;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            transition: margin 0.5s, top 0.5s, left 0.5s;
+            transition: margin 0.5s, top 0.5s, left 0.5s, opacity 1s;
         }
         
         
@@ -122,6 +122,12 @@
             });
         });
         
+        function hideInstructionsOverlay(){
+            document.getElementById("instructions-overlay-container").style.opacity = 0;
+            setTimeout(function(){
+                document.getElementById("instructions-overlay-container").style.display = "none";
+            }, 1001);
+        }
         function animateInstructionsOverlayToCoverConsole(){
             document.getElementById("instructions-overlay-container").style.margin = "0 0 0 -250px";
             document.getElementById("instructions-overlay-container").style.top = "10%";
