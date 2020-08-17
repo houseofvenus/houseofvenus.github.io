@@ -94,6 +94,10 @@
             background-image: url(../../media/img/preview-app-icon.png);
             background-size: 75px auto;
         }
+        
+        #instructions-overlay-title-container{
+            margin-top: 10%;
+        }
     </style>
     <script src="../../js/jquery-3.2.1.min.js"></script>
     <script>
@@ -146,17 +150,18 @@
     <div id="main-app-container">
         <div id="pARk-page-container" class="page-container">
             <div id="instructions-overlay-container">
-                <p>
+                <p id="instructions-overlay-title-container">
                     welcome to your cARd!
                 </p>
                 <p>
-                    view your apps on mobile/desktop or as an immersive experience
-                </p>
-                <div style="width: 100%; background-color: blue; height: 150px; display: inline-block;"></div>
-                <p>
                     tap an icon to load a given app
                 </p>
-                <div style="width: 100%; background-color: red; height: 150px; display: inline-block;"></div>
+                <div style="width: 100%; background-image: url(../../media/img/tap-phone.gif); background-position: center center; background-repeat: no-repeat; height: 150px; display: inline-block;"></div>
+                <p>
+                    view your apps on mobile/desktop or as an immersive experience
+                </p>
+                <div style="width: 100%; background-image: url(../../media/img/vr-body-demo.gif); background-position: center center; background-size: 100% 100%; background-repeat: no-repeat; height: 150px; display: inline-block;"></div>
+                
                 <p>
                     tap here to begin
                 </p>
