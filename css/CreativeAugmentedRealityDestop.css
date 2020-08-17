@@ -163,9 +163,9 @@ body, html{
     }
 
     .card-app-container{
-        width: 78px;
+        width: 76px;
         height: 102px;
-        margin: 0 25px;
+        margin: 0 2px;
         display: inline-block;
     }
 
