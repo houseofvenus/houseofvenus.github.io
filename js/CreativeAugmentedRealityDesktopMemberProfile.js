@@ -40,6 +40,9 @@ function animateInstructionsOverlayToCoverConsole(){
 
 function openCardApplication(name){
     switch(name){
+        case "hov":
+            window.location.href = "http://houseofven.us/";
+            break;
         case "rooms":
             window.location.href = "http://houseofven.us/rooms";
             break;

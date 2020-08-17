@@ -15,7 +15,16 @@
             document.getElementById("instructions-overlay-container").addEventListener("click", function(){
                 hideInstructionsOverlay();
             });
+            
             document.getElementById("rooms-app-icon-container").addEventListener("click", function(){
+                openCardApplication("rooms");
+            });
+            
+            document.getElementById("hov-app-dock-icon-container").addEventListener("click", function(){
+                openCardApplication("hov");
+            });
+            
+            document.getElementById("rooms-app-dock-icon-container").addEventListener("click", function(){
                 openCardApplication("rooms");
             });
             
