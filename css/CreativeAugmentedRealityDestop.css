@@ -135,6 +135,7 @@ body, html{
     
     #instructions-overlay-title-container{
         margin-top: 5%;
+        font-size: 24px;
     }
 }
 
@@ -155,7 +156,7 @@ body, html{
         position: absolute;
         margin: -150px 0 0 -100px;
         line-height: 35px;
-        font-size: 20px;
+        font-size: 18px;
         text-align: center;
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
@@ -215,6 +216,7 @@ body, html{
     }
     
     #instructions-overlay-title-container{
-        margin-top: 15%;
+        margin-top: 10%;
+        font-size: 24px;
     }
 }
