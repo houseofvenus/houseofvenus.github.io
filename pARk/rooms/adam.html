@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="../../css/CreativeAugmentedRealityDestop.css" type="text/css" />
     <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/CreativeAugmentedRealityDesktopMemberProfile.js"></script>
     <script>
         
         document.addEventListener("DOMContentLoaded", function(){
@@ -27,36 +28,6 @@
                 openCardApplication("preview");
             });
         });
-        
-        function hideInstructionsOverlay(){
-            document.getElementById("instructions-overlay-container").style.opacity = 0;
-            setTimeout(function(){
-                document.getElementById("instructions-overlay-container").style.display = "none";
-            }, 1001);
-        }
-        
-        function animateInstructionsOverlayToCoverConsole(){
-            document.getElementById("instructions-overlay-container").style.margin = "0 0 0 -250px";
-            document.getElementById("instructions-overlay-container").style.top = "10%";
-            document.getElementById("instructions-overlay-container").style.left = "50%";
-            
-            $("#instructions-overlay-container").animate({
-                height: "80%",
-                width: "500px",
-            }, 1000, "swing");
-        }
-        
-        function openCardApplication(name){
-            switch(name){
-                case "rooms":
-                case "library":
-                case "preview":
-                    console.log(`open the ${name} application`);
-                    break;
-                default:
-                    console.log("no associated application");
-            }
-        }
     </script>
 </head>
 <body>

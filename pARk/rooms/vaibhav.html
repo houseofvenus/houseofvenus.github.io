@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="../../css/CreativeAugmentedRealityDestop.css" type="text/css" />
     <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/CreativeAugmentedRealityDesktopMemberProfile.js"></script>
     <script>
         
         document.addEventListener("DOMContentLoaded", function(){
-            document.getElementById("instructions-overlay-container").addEventListener("click", function(){
-                
-            });
+            animateInstructionsOverlayToCoverConsole();
             
+            document.getElementById("instructions-overlay-container").addEventListener("click", function(){
+                hideInstructionsOverlay();
+            });
             document.getElementById("rooms-app-icon-container").addEventListener("click", function(){
                 openCardApplication("rooms");
             });
@@ -25,18 +27,6 @@
                 openCardApplication("ourt0wn");
             });
         });
-        
-        function openCardApplication(name){
-            switch(name){
-                case "rooms":
-                case "honeycomb":
-                case "ourt0wn":
-                    console.log(`open the ${name} application`);
-                    break;
-                default:
-                    console.log("no associated application");
-            }
-        }
     </script>
 </head>
 <body>
