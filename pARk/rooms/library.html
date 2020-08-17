@@ -4,8 +4,8 @@
     <!-- VERSION 0.1.0.10 -->
     <title>House of Venus | City as a Service</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="../../css/main.css" type="text/css" />
-    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" />
+    <script src="../js/jquery-3.2.1.min.js"></script>
     <script>
         
         document.addEventListener("DOMContentLoaded", function(){
@@ -34,7 +34,11 @@
             });
             
             document.getElementById("company-header-button").addEventListener("click", function(){
-                window.location.href = "../../";
+                window.location.href = "../";
+            });
+           
+            document.getElementById("submit-library-door-button-container").addEventListener("click", function(){
+                window.location.href = "../pARk/rooms/library/submit";
             });
            
             let overlay = document.getElementById("page-overlay-container");
@@ -55,11 +59,14 @@
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="library-title-container" class="bold-text-title-container library-coloring">library</div>
                 <div id="library-content-wrapper" class="library-coloring">
-                    <p style="font-size: 24px; line-height: 30px; margin-top: 20%; font-weight: 200;">
-                        Why <span style="font-weight: 700;">do</span>?<p>
+                    <p style="font-size: 24px; line-height: 30px; text-align: center; font-weight: 200; width: 80%; margin: 20% auto 0 auto;">
+                        Enter the categories, subcategories, questions, topics, and other content entries for the application in quotes separated by commas in the text field below, e.g. "Unexpected Comeup NBA Teams During the Bubble", "Best Indian Cuisine Restaurants", "Top Ten Rock and Roll Albums of 2020".
+                    </p>
+                    <p style="font-size: 24px; line-height: 30px; text-align: center; font-weight: 200; width: 80%; margin: 20% auto 0 auto;">
+                        If you want to specify varying levels add them with parentheses, e.g. "Best Indian Cuisine Restaurants"("Cities", "Budget Friendly", "All-You-Can-Eat") produces a "Best Indian Cuisine Restaurants" category and adds three sub categories for rankings named "Cities", "Budget Friendly", and "All-You-Can-Eat".
                     </p>
                 </div>
-                <div class="more-button-container library-coloring">open</div>
+                <div id="submit-library-door-button-container" class="more-button-container library-coloring">submit</div>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
