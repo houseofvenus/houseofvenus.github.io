@@ -78,7 +78,17 @@ body, html{
 }
 
 @media only screen and (max-width: 768px){
-    
+
+    .bold-text-option-button-container, .bold-text-title-container{
+        text-transform: uppercase;
+        font-size: 44px;
+        font-weight: 900;
+        color: white;
+        transition: color 0.5s;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
     #open-rushmore-app-button-container, #open-honeycomb-app-button-container{
         bottom: 30% !important;
     }
