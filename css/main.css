@@ -21,558 +21,9 @@ body, html{
     font-size: 0;
 }
 
-#rushmore-content-line-0-container, #honeycomb-content-line-0-container{
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: 200;
-    width: 80%;
-    text-align: center;
-    margin: 20% auto 0 auto;
-}
-
-#rushmore-content-line-1-container, #honeycomb-content-line-1-container{
-    font-size: 24px;
-    line-height: 30px;
-    font-weight: 200;
-    width: 80%;
-    text-align: center;
-    margin: 2% auto 0 auto;
-}
-
-@media only screen and (min-width: 768px){
-    .social-profile-icon-banner-container{
-        width: 335px; height: 105px; display: block; margin: 2% auto;
-    }
-    
-    .social-icon-container{
-        cursor: pointer; display: inline-block; width: 100px; height: 100px; border-radius: 50%; background-color: black; margin: 1% 5px;  background-size: 100% 100%; background-repeat: no-repeat;
-    }
-
-    #adam-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/adam-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #vaibhav-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #cameron-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/cameron-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #eric-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/eric-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #louis-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/louis-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #guedalia-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/guedalia-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #patrice-morgan-profile-image-container{
-        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-}
-
-@media only screen and (max-width: 768px){
-
-    .bold-text-option-button-container, .bold-text-title-container{
-        text-transform: uppercase;
-        font-size: 44px;
-        font-weight: 900;
-        color: white;
-        transition: color 0.5s;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    #open-rushmore-app-button-container, #open-honeycomb-app-button-container{
-        bottom: 30% !important;
-    }
-    
-    #rushmore-content-line-0-container, #honeycomb-content-line-0-container{
-        line-height: 20px;
-        font-weight: 200;
-        width: 80%;
-        text-align: center;
-        margin: 70% auto 0 auto;
-    }
-
-    #rushmore-content-line-1-container, #honeycomb-content-line-1-container{
-        line-height: 20px;
-        font-weight: 200;
-        width: 80%;
-        text-align: center;
-        margin: 5% auto 0 auto;
-    }
-    
-    .social-profile-icon-banner-container{
-        width: 260px; height: 85px; display: block; margin: 2% auto;
-    }
-    
-    .social-icon-container{
-        cursor: pointer; display: inline-block; width: 75px; height: 75px; border-radius: 50%; background-color: black; margin: 1% 5px;  background-size: 100% 100%; background-repeat: no-repeat;
-    }
-
-    #adam-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/adam-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #vaibhav-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #cameron-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/cameron-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #eric-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/eric-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #louis-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/louis-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #guedalia-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/guedalia-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-    
-    #patrice-morgan-profile-image-container{
-        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
-    }
-}
-
-.page-container{
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    color: white;
-    position: relative;
-}
-
-#page-overlay-container{
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    display: none;
-    opacity: 0;
-}
-
-#page-0-content-wrapper{
-    width: 300px;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    margin-left: -150px;
-}
-
-#company-logo-container{
-    width: 100px;
-    height: 100px;
-    background-image: url("../media/img/hov_ig_logo.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    display: block;
-    margin: 5% auto;
-}
-
-#second-company-logo-container{
-    width: 50px;
-    height: 50px;
-    background-image: url("../media/img/hov_ig_logo.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    top: 3%;
-    right: 3%;
-}
-
-#company-header-button{
-    position: absolute;
-    top: 3%;
-    left: 3%;
-    width: 300px;
-    height: 50px;
-    z-index: 50;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: white;/*black;*/
-    font-size: 24px;
-    line-height: 50px;
-    font-weight: 900;
-}
-
-#social-media-button-bar-container{
-    position: absolute;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-}
-
-.social-button-container{
-    width: 35px;
-    height: 35px;
-    margin: 7px;
-    border-radius: 50%;
-    background-size: 100% 100%;
-    display: inline-block;
-    cursor: pointer;
-}
-
-#instagram-social-button-container{
-    background-image: url("../media/img/instagram-texture.png");
-    float: left;
-}
-
-#youtube-social-button-container{
-    background-image: url("../media/img/play-button.png");
-    float: right;
-}
-
-#company-title-container{
-    width: 300px;
-    text-align: center;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 24px;
-}
-
-#company-slogan-container{
-    width: 300px;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 2%;
-}
-
-#next-page-container{
-    position: absolute;
-    bottom: 15%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    margin-left: -25px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 900;
-    background-image: url("../media/img/down-arrow.png");
-    background-size: 100% 100%;
-    opacity: 1.0;
-    transition: opacity 0.5s;
-    animation: blinkButton 2s linear 0s infinite normal;/**/
-}
-
-#next-product-button-container{
-    position: fixed;
-    bottom: 25%;
-    right: 25%;
-    width: 150px;
-    height: 150px;
-    /*margin-left: -25px;*/
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 900;
-    background-image: url("../media/img/down-arrow.png");
-    background-size: 100% 100%;
-    opacity: 1.0;
-    transition: opacity 0.5s;
-    animation: blinkButton 2s linear 0s infinite normal;/**/
-}
-
-@keyframes blinkButton {
-  50% {opacity: 0;}
-}
-
-.service-select-button-container{
-    width: 300px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: black;
-    color: white;
-    border: 2px white solid;
-    text-align: center;
-    line-height: 50px;
-    font-size: 24px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.5s, color 0.5s;
-}
-
-.service-select-button-container:hover{
-    background-color: white;
-    color: black;
-}
-
-#services-button-container{
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    margin-left: -150px;
-}
-
-#subscribe-button-container{
-    position: absolute;
-    bottom: 25%;
-    left: 50%;
-    margin-left: -150px;
-}
-
-@media only screen and (max-width: 768px){
-    #page-1-content-wrapper{
-        width: 275px !important;
-        margin-left: -137px !important;
-        margin-top: -250px !important;
-        font-size: 18px !important;
-        line-height: 30px !important;
-        text-align: center!important;
-    }
-    
-    #origin-content-wrapper{
-        width: 275px !important;
-        margin-left: -137px !important;
-        margin-top: -250px !important;
-        font-size: 18px !important;
-        line-height: 30px !important;
-    }
-    
-    #products-content-wrapper{
-        width: 100%;
-        position: absolute;
-        top: 20%;
-        left: 0;
-    }
-    
-    .product-image-container{
-        width: 100% !important;
-        height: 275px  !important;
-        border-radius: 5px;
-        margin: 7% auto 3% auto;
-        display: block;
-    }
-
-    .product-label-container{
-        text-transform: uppercase;
-        font-size: 24px;
-        font-weight: 700;
-        text-align: center !important;
-        display: block;
-        width: 100%;
-    }
-    
-    .option-label-container{
-        margin-bottom: 15%;
-        text-transform: uppercase;
-        font-size: 28px;
-        font-weight: 700;
-        display: block;
-        text-align: center;
-    }
-    
-    .option-label-container-prime{
-        line-height: 50px !important;
-        margin-bottom: 30% !important;
-        text-align: center;
-    }
-    
-    .video-container{
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: 100px auto 50px auto !important;
-    }
-    
-    .back-to-main-products-page-button-container{
-        margin: 10% auto 0 auto !important;
-    }
-    
-    #next-product-button-container{
-        bottom: 2% !important;
-        right: 50% !important;
-        margin-right: -75px !important;
-    }
-    
-    .bold-text-title-container{
-        text-align: center;
-    }
-
-
-}
-/* iPHONE 11 - 1792x828px at 326ppi */
-@media only screen 
-    and (device-width: 414px) 
-    and (device-height: 896px) 
-    and (-webkit-device-pixel-ratio: 2) { 
-        #page-0-container{
-            background-position: 0% -35%;
-            animation: mymovePhones 60s linear 0s infinite normal;/**/
-        }
-        
-        #page-1-content-wrapper, #origin-content-wrapper{
-            width: 300px;
-            margin-left: -150px;
-            margin-top: -220px;
-        }
-        
-        #products-content-wrapper{
-            width: 100%;
-            position: absolute;
-            top: 20%;
-            left: 0;
-            overflow-y: scroll;
-        }
-        
-        .product-image-container{
-            width: 100% !important;
-            height: 275px  !important;
-            border-radius: 5px;
-            margin: 7% auto 3% auto;
-            display: block;
-        }
-        
-        .product-label-container{
-            text-transform: uppercase;
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center !important;
-            display: block;
-            width: 100%;
-        }
-        
-        .option-label-container{
-            margin-bottom: 15%;
-            text-transform: uppercase;
-            font-size: 28px;
-            font-weight: 700;
-            display: block;
-            text-align: center;
-        }
-
-        .option-label-container-prime{
-            line-height: 50px !important;
-            margin-bottom: 30% !important;
-            text-align: center;
-        }
-
-        .video-container{
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: 100px auto 50px auto !important;
-        }
-
-        .back-to-main-products-page-button-container{
-            margin: 10% auto 0 auto !important;
-        }
-
-        #next-product-button-container{
-            bottom: 2% !important;
-            right: 50% !important;
-            margin-right: -75px !important;
-        }
-        
-        .bold-text-title-container{
-            text-align: center;
-        }
-
-}
-
-/* iPHONE 11 PRO - 2436x1125px at 458ppi */
-@media only screen 
-    and (device-width: 375px) 
-    and (device-height: 812px) 
-    and (-webkit-device-pixel-ratio: 3) {
-        #page-0-container{
-            background-position: 0% -35%;
-            animation: mymovePhones 60s linear 0s infinite normal;/**/
-        }
-        
-        #page-1-content-wrapper, #origin-content-wrapper{
-            width: 300px;
-            margin-left: -150px;
-            margin-top: -220px;
-            font-size: 20px;
-            line-height: 36px;
-        }
-        
-        #products-content-wrapper{
-            width: 100%;
-            position: absolute;
-            top: 20%;
-            left: 0;
-            overflow-y: scroll;
-        }
-
-        .product-image-container{
-            width: 100% !important;
-            height: 275px !important;
-            border-radius: 5px;
-            margin: 7% auto 3% auto;
-            display: block;
-        }
-        
-        .product-label-container{
-            text-transform: uppercase;
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center !important;
-            display: block;
-            width: 100%;
-        }
-        #origin-content-wrapper{
-            overflow-y: scroll;
-        }
-        
-        .option-label-container{
-            margin-bottom: 15%;
-            text-transform: uppercase;
-            font-size: 28px;
-            font-weight: 700;
-            display: block;
-            text-align: center;
-        }
-
-        .option-label-container-prime{
-            line-height: 50px !important;
-            margin-bottom: 30% !important;
-            text-align: center;
-        }
-
-        .video-container{
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: 100px auto 50px auto !important;
-        }
-
-        .back-to-main-products-page-button-container{
-            margin: 10% auto 0 auto !important;
-        }
-
-        #next-product-button-container{
-            bottom: 2% !important;
-            right: 50% !important;
-            margin-right: -75px !important;
-        }
-        
-        .bold-text-title-container{
-            text-align: center;
-        }
-
-}
-
 /*#orgs-page-container, #we-are-a-community-page-container{
     background-color: blue;
 }*/
-
-
 
 #maryland-page-container{
     background-color: yellow;
@@ -657,6 +108,7 @@ body, html{
     color: black;
     font-weight: 700;
 }
+
 #page-0-container{
     background-image: url("../media/img/venus_bg.jpg");
     background-repeat: repeat-x;
@@ -768,6 +220,7 @@ body, html{
     left: 0 !important;
     margin: 0 !important;
 }
+
 #we-are-option-button-container:hover{
     color: red;
 }
@@ -1129,4 +582,552 @@ body, html{
 .video-container{
     display: block;
     margin: 3% auto 2% auto;
+}
+
+.page-container{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    color: white;
+    position: relative;
+}
+
+#page-overlay-container{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    display: none;
+    opacity: 0;
+}
+
+#page-0-content-wrapper{
+    width: 300px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#company-logo-container{
+    width: 100px;
+    height: 100px;
+    background-image: url("../media/img/hov_ig_logo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display: block;
+    margin: 5% auto;
+}
+
+#second-company-logo-container{
+    width: 50px;
+    height: 50px;
+    background-image: url("../media/img/hov_ig_logo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+}
+
+#company-header-button{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 300px;
+    height: 50px;
+    z-index: 50;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: white;/*black;*/
+    font-size: 24px;
+    line-height: 50px;
+    font-weight: 900;
+}
+
+#social-media-button-bar-container{
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.social-button-container{
+    width: 35px;
+    height: 35px;
+    margin: 7px;
+    border-radius: 50%;
+    background-size: 100% 100%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#instagram-social-button-container{
+    background-image: url("../media/img/instagram-texture.png");
+    float: left;
+}
+
+#youtube-social-button-container{
+    background-image: url("../media/img/play-button.png");
+    float: right;
+}
+
+#company-title-container{
+    width: 300px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+#company-slogan-container{
+    width: 300px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+#next-page-container{
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 900;
+    background-image: url("../media/img/down-arrow.png");
+    background-size: 100% 100%;
+    opacity: 1.0;
+    transition: opacity 0.5s;
+    animation: blinkButton 2s linear 0s infinite normal;/**/
+}
+
+#next-product-button-container{
+    position: fixed;
+    bottom: 25%;
+    right: 25%;
+    width: 150px;
+    height: 150px;
+    /*margin-left: -25px;*/
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 900;
+    background-image: url("../media/img/down-arrow.png");
+    background-size: 100% 100%;
+    opacity: 1.0;
+    transition: opacity 0.5s;
+    animation: blinkButton 2s linear 0s infinite normal;/**/
+}
+
+@keyframes blinkButton {
+  50% {opacity: 0;}
+}
+
+.service-select-button-container{
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    border: 2px white solid;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.service-select-button-container:hover{
+    background-color: white;
+    color: black;
+}
+
+#services-button-container{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#subscribe-button-container{
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#rushmore-content-line-0-container, #honeycomb-content-line-0-container{
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 200;
+    width: 80%;
+    text-align: center;
+    margin: 20% auto 0 auto;
+}
+
+#rushmore-content-line-1-container, #honeycomb-content-line-1-container{
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 200;
+    width: 80%;
+    text-align: center;
+    margin: 2% auto 0 auto;
+}
+
+@media only screen and (min-width: 768px){
+    .social-profile-icon-banner-container{
+        width: 335px; height: 105px; display: block; margin: 2% auto;
+    }
+    
+    .social-icon-container{
+        cursor: pointer; display: inline-block; width: 100px; height: 100px; border-radius: 50%; background-color: black; margin: 1% 5px;  background-size: 100% 100%; background-repeat: no-repeat;
+    }
+
+    #adam-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/adam-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #vaibhav-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #cameron-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/cameron-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #eric-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/eric-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #louis-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/louis-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #guedalia-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/guedalia-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #patrice-morgan-profile-image-container{
+        width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+}
+
+@media only screen and (max-width: 768px){
+
+    .bold-text-option-button-container, .bold-text-title-container{
+        text-transform: uppercase;
+        font-size: 44px;
+        font-weight: 900;
+        color: white;
+        transition: color 0.5s;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    #open-rushmore-app-button-container, #open-honeycomb-app-button-container{
+        bottom: 30% !important;
+    }
+    
+    #rushmore-content-line-0-container, #honeycomb-content-line-0-container{
+        line-height: 20px;
+        font-weight: 200;
+        width: 80%;
+        text-align: center;
+        margin: 70% auto 0 auto;
+    }
+
+    #rushmore-content-line-1-container, #honeycomb-content-line-1-container{
+        line-height: 20px;
+        font-weight: 200;
+        width: 80%;
+        text-align: center;
+        margin: 5% auto 0 auto;
+    }
+    
+    .social-profile-icon-banner-container{
+        width: 260px; height: 85px; display: block; margin: 2% auto;
+    }
+    
+    .social-icon-container{
+        cursor: pointer; display: inline-block; width: 75px; height: 75px; border-radius: 50%; background-color: black; margin: 1% 5px;  background-size: 100% 100%; background-repeat: no-repeat;
+    }
+
+    #adam-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/adam-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #vaibhav-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #cameron-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/cameron-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #eric-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/eric-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #louis-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/louis-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #guedalia-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/guedalia-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+    
+    #patrice-morgan-profile-image-container{
+        width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    #page-1-content-wrapper{
+        width: 275px !important;
+        margin-left: -137px !important;
+        margin-top: -250px !important;
+        font-size: 18px !important;
+        line-height: 30px !important;
+        text-align: center!important;
+    }
+    
+    #origin-content-wrapper{
+        width: 275px !important;
+        margin-left: -137px !important;
+        margin-top: -250px !important;
+        font-size: 18px !important;
+        line-height: 30px !important;
+    }
+    
+    #products-content-wrapper{
+        width: 100%;
+        position: absolute;
+        top: 20%;
+        left: 0;
+    }
+    
+    .product-image-container{
+        width: 100% !important;
+        height: 275px  !important;
+        border-radius: 5px;
+        margin: 7% auto 3% auto;
+        display: block;
+    }
+
+    .product-label-container{
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center !important;
+        display: block;
+        width: 100%;
+    }
+    
+    .option-label-container{
+        margin-bottom: 15%;
+        text-transform: uppercase;
+        font-size: 28px;
+        font-weight: 700;
+        display: block;
+        text-align: center;
+    }
+    
+    .option-label-container-prime{
+        line-height: 50px !important;
+        margin-bottom: 30% !important;
+        text-align: center;
+    }
+    
+    .video-container{
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 100px auto 50px auto !important;
+    }
+    
+    .back-to-main-products-page-button-container{
+        margin: 10% auto 0 auto !important;
+    }
+    
+    #next-product-button-container{
+        bottom: 2% !important;
+        right: 50% !important;
+        margin-right: -75px !important;
+    }
+    
+    .bold-text-title-container{
+        text-align: center;
+    }
+
+
+}
+/* iPHONE 11 - 1792x828px at 326ppi */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) { 
+        #page-0-container{
+            background-position: 0% -35%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #page-1-content-wrapper, #origin-content-wrapper{
+            width: 300px;
+            margin-left: -150px;
+            margin-top: -220px;
+        }
+        
+        #products-content-wrapper{
+            width: 100%;
+            position: absolute;
+            top: 20%;
+            left: 0;
+            overflow-y: scroll;
+        }
+        
+        .product-image-container{
+            width: 100% !important;
+            height: 275px  !important;
+            border-radius: 5px;
+            margin: 7% auto 3% auto;
+            display: block;
+        }
+        
+        .product-label-container{
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center !important;
+            display: block;
+            width: 100%;
+        }
+        
+        .option-label-container{
+            margin-bottom: 15%;
+            text-transform: uppercase;
+            font-size: 28px;
+            font-weight: 700;
+            display: block;
+            text-align: center;
+        }
+
+        .option-label-container-prime{
+            line-height: 50px !important;
+            margin-bottom: 30% !important;
+            text-align: center;
+        }
+
+        .video-container{
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 100px auto 50px auto !important;
+        }
+
+        .back-to-main-products-page-button-container{
+            margin: 10% auto 0 auto !important;
+        }
+
+        #next-product-button-container{
+            bottom: 2% !important;
+            right: 50% !important;
+            margin-right: -75px !important;
+        }
+        
+        .bold-text-title-container{
+            text-align: center;
+        }
+
+}
+
+/* iPHONE 11 PRO - 2436x1125px at 458ppi */
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+        #page-0-container{
+            background-position: 0% -35%;
+            animation: mymovePhones 60s linear 0s infinite normal;/**/
+        }
+        
+        #page-1-content-wrapper, #origin-content-wrapper{
+            width: 300px;
+            margin-left: -150px;
+            margin-top: -220px;
+            font-size: 20px;
+            line-height: 36px;
+        }
+        
+        #products-content-wrapper{
+            width: 100%;
+            position: absolute;
+            top: 20%;
+            left: 0;
+            overflow-y: scroll;
+        }
+
+        .product-image-container{
+            width: 100% !important;
+            height: 275px !important;
+            border-radius: 5px;
+            margin: 7% auto 3% auto;
+            display: block;
+        }
+        
+        .product-label-container{
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center !important;
+            display: block;
+            width: 100%;
+        }
+        
+        #origin-content-wrapper{
+            overflow-y: scroll;
+        }
+        
+        .option-label-container{
+            margin-bottom: 15%;
+            text-transform: uppercase;
+            font-size: 28px;
+            font-weight: 700;
+            display: block;
+            text-align: center;
+        }
+
+        .option-label-container-prime{
+            line-height: 50px !important;
+            margin-bottom: 30% !important;
+            text-align: center;
+        }
+
+        .video-container{
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 100px auto 50px auto !important;
+        }
+
+        .back-to-main-products-page-button-container{
+            margin: 10% auto 0 auto !important;
+        }
+
+        #next-product-button-container{
+            bottom: 2% !important;
+            right: 50% !important;
+            margin-right: -75px !important;
+        }
+        
+        .bold-text-title-container{
+            text-align: center;
+        }
+
 }
