@@ -1,0 +1,35 @@
+Lyoko
+- Rust
+- Foreward
+- Introduction
+Getting Started
+- Installation
+- Hello World
+- Code Lyoko
+DIAs
+- Programming an MP3 player
+ATOWN
+- Axiomatic approach to spatial computation with the following considerations
+- Any conceivable hyperreality exists
+- A hyperreality is:
+    - an entity comprised of at most five fundamental components:
+        - Environment [required]
+        - Effector
+        - Selector
+        - Object-subject
+        - Subject-object
+    - Computable
+        - Elements can be added (hyper realization)
+        - All elements can be counted, i.e. computed or derived from other elements (localization)
+        - All elements can be operated on (delivery)\
+Conversational Programming
+    - Logic and argument as the basis for construction
+    - Computation based on narrative as an abstraction of symbolic manipulation rather than getting bogged down in the details of the abstraction
+        - Playing the game rather than worry about the rules
+        - To play correctly you have a master referee
+    - Vantage
+        - Getting Daria to classify concepts correctly into one of the five fundamental categories using example training
+        - Deriving custom entities from the five basic categories
+        - Converting assets between formats
+        - Sharing on the pARk
+        - Accessing functionality and objects from the pARk DLT
