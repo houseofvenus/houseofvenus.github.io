@@ -45,11 +45,12 @@
             }, 500, "swing", transitionToActions());
 
             document.getElementById("eric-connect-button-container").addEventListener("click", function(){
-                $("#server-maintenance-overlay-container").css("display", "block");
+                /*$("#server-maintenance-overlay-container").css("display", "block");
                 $("#server-maintenance-overlay-container").animate({
                     opacity: 1.0,
                     height: "100%"
-                }, 500);
+                }, 500);*/
+                window.location.href = "./rooms/eric.html";
             });
         });
     </script>
@@ -60,7 +61,7 @@
             <div id="page-overlay-container">
                 <div id='company-header-button' class="pARk-coloring">house of venus</div>
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
-                <div id="pARk-title-container" class="bold-text-title-container pARk-coloring" style="text-transform: lowercase;">@eric</div>
+                <div id="pARk-title-container" class="member-bold-text-title-container pARk-coloring" style="text-transform: lowercase;">@eric</div>
                 <div id="pARk-content-wrapper" class="profile-content-wrapper">
                     <div id="eric-profile-image-container" class="user-profile-image-container"></div>
                     <p style="font-size: 24px; line-height: 30px; width: 100%; text-align: center;font-weight: 200;">

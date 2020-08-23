@@ -45,11 +45,12 @@
             }, 500, "swing", transitionToActions());
 
             document.getElementById("louis-connect-button-container").addEventListener("click", function(){
-                $("#server-maintenance-overlay-container").css("display", "block");
+                /*$("#server-maintenance-overlay-container").css("display", "block");
                 $("#server-maintenance-overlay-container").animate({
                     opacity: 1.0,
                     height: "100%"
-                }, 500);
+                }, 500);*/
+                window.location.href = "./rooms/louis.html";
             });
         });
     </script>
@@ -82,7 +83,7 @@
                 
                 <p style="margin-top: 5%; currently width: 100%; text-align: center; font-size: 18px;">[Amazon Web Services EB Code 05478lgh91293]</p>
                 <p id="server-maintenance-message-container">
-                    The DLT server is undergoing maintenance. Please close this window and try to reconnect after 00:00:00 (UTC-0500) on Monday, July 20, 2020. </p>
+                    The DLT server is undergoing maintenance. Please close this window and try to reconnect after 00:00:00 (UTC-0500) on Sunday, August 23, 2020. </p>
             </div>
         </div>
     </div>
