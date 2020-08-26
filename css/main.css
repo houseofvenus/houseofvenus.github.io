@@ -817,6 +817,14 @@ body, html{
     #patrice-morgan-profile-image-container{
         width: 300px; height: 300px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
     }
+    
+    #library-content-paragraph-0{
+        font-size: 24px; line-height: 30px; text-align: justify; font-weight: 200; width: 80%; margin: 15% auto 0 auto;
+    }
+    
+    #library-content-paragraph-1{
+        font-size: 24px; line-height: 30px; text-align: justify; font-weight: 200; width: 80%; margin: 2% auto 0 auto;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -886,9 +894,7 @@ body, html{
     #patrice-morgan-profile-image-container{
         width: 200px; height: 200px; border-radius: 50%; background-color: black; margin: 0 auto; background-image: url(../media/img/vaibhav-profile-pic.png); background-size: 100% 100%; background-repeat: no-repeat;
     }
-}
 
-@media only screen and (max-width: 768px){
     #page-1-content-wrapper{
         width: 275px !important;
         margin-left: -137px !important;
@@ -965,8 +971,14 @@ body, html{
     .bold-text-title-container{
         text-align: center;
     }
-
-
+    
+    #library-content-paragraph-0{
+        font-size: 18px; line-height: 20px; text-align: justify; font-weight: 200; width: 80%; margin: 50% auto 0 auto;
+    }
+    
+    #library-content-paragraph-1{
+        font-size: 18px; line-height: 20px; text-align: justify; font-weight: 200; width: 80%; margin: 2% auto 0 auto;
+    }
 }
 /* iPHONE 11 - 1792x828px at 326ppi */
 @media only screen 
