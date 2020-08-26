@@ -825,6 +825,16 @@ body, html{
     #library-content-paragraph-1{
         font-size: 24px; line-height: 30px; text-align: justify; font-weight: 200; width: 80%; margin: 2% auto 0 auto;
     }
+    
+    #library-content-submission{
+        display: block;
+        width: 300px;
+        height: 150px;
+        overflow-y: scroll;
+        outline: none;
+        cursor: pointer;
+        margin: 2% auto 0 auto;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -1057,6 +1067,15 @@ body, html{
             text-align: center;
         }
 
+        #library-content-submission{
+            display: block;
+            width: 300px;
+            height: 150px;
+            overflow-y: scroll;
+            outline: none;
+            cursor: pointer;
+            margin: 2% auto 0 auto;
+        }
 }
 
 /* iPHONE 11 PRO - 2436x1125px at 458ppi */
