@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- VERSION 0.1.0.15 -->
+    <title>Roger Dina-Lenda | House of Venus | pARk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../css/CreativeAugmentedRealityDestop.css" type="text/css" />
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/CreativeAugmentedRealityDesktopMemberProfile.js"></script>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            animateInstructionsOverlayToCoverConsole();
+            
+            document.getElementById("instructions-overlay-container").addEventListener("click", function(){
+                hideInstructionsOverlay();
+            });
+            
+            document.getElementById("rooms-app-icon-container").addEventListener("click", function(){
+                openCardApplication("rooms");
+            });
+            
+            document.getElementById("hov-app-dock-icon-container").addEventListener("click", function(){
+                openCardApplication("hov");
+            });
+            
+            document.getElementById("rooms-app-dock-icon-container").addEventListener("click", function(){
+                openCardApplication("rooms");
+            });
+            
+            document.getElementById("honeycomb-app-icon-container").addEventListener("click", function(){
+                openCardApplication("honeycomb");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+        <div id="pARk-page-container" class="page-container">
+            <div id="instructions-overlay-container">
+                <p id="instructions-overlay-title-container">
+                    welcome
+                </p>
+                <p>
+                    tap an icon to load a given app
+                </p>
+                <div id="tap-phone-diagram-container"></div>
+                <p>
+                    view your apps on mobile/desktop or as an immersive experience
+                </p>
+                <div id="view-apps-diagram-container"></div>
+                
+                <p>
+                    tap here to begin
+                </p>
+            </div>
+            <duv id="main-card-console-container">
+                <div id="rooms-app-container" class="card-app-container">
+                    <div id="rooms-app-icon-container" class="card-app-icon-container">
+                        
+                    </div>
+                    <div id="rooms-app-label-container" class="card-app-label-container">
+                        rooms
+                    </div>
+                </div>
+                <div id="honeycomb-app-container" class="card-app-container">
+                    <div id="honeycomb-app-icon-container" class="card-app-icon-container">
+                        
+                    </div>
+                    <div id="honeycomb-app-label-container" class="card-app-label-container">
+                        hc
+                    </div>
+                </div>
+                
+                <div id="dock-app-container">
+                    <div id="hov-app-dock-icon-container" class="card-app-dock-icon-container">
+                        
+                    </div>
+                    <div id="rooms-app-dock-icon-container" class="card-app-dock-icon-container">
+                        
+                    </div>
+                </div>
+            </duv>
+            
+        </div>
+    </div>
+</body>
+</html>
