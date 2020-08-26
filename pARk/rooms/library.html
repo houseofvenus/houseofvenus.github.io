@@ -59,14 +59,20 @@
                 <a href="mailto:ceo@houseofven.us"><div id="second-company-logo-container"></div></a>
                 <div id="library-title-container" class="bold-text-title-container library-coloring">library</div>
                 <div id="library-content-wrapper" class="library-coloring">
-                    <p style="font-size: 24px; line-height: 30px; text-align: justify; font-weight: 200; width: 80%; margin: 20% auto 0 auto;">
+                    <p style="font-size: 24px; line-height: 30px; text-align: justify; font-weight: 200; width: 80%; margin: 15% auto 0 auto;">
                         Enter the categories, subcategories, questions, topics, and other content entries for the application in quotes separated by commas in the text field below, e.g. "Unexpected Comeup NBA Teams During the Bubble", "Best Indian Cuisine Restaurants", "Top Ten Rock and Roll Albums of 2020".
                     </p>
                     <p style="font-size: 24px; line-height: 30px; text-align: justify; font-weight: 200; width: 80%; margin: 2% auto 0 auto;">
                         If you want to specify varying levels add them with parentheses, e.g. "Best Indian Cuisine Restaurants"("Cities", "Budget Friendly", "All-You-Can-Eat") produces a "Best Indian Cuisine Restaurants" category and adds three sub categories for rankings named "Cities", "Budget Friendly", and "All-You-Can-Eat".
                     </p>
                 </div>
-                <div id="submit-library-door-button-container" class="more-button-container library-coloring">submit</div>
+                <form action="https://formspree.io/mlepyegv" method="POST">
+                  <label>
+                    Your message:
+                    <textarea name="message"></textarea>
+                  </label>
+                    <button type="submit" id="submit-library-door-button-container" class="more-button-container library-coloring">submit</button>
+                </form>
                 <div id="social-media-button-bar-container">
                     <div id="instagram-social-button-container" class="social-button-container"></div>
                     <div id="youtube-social-button-container" class="social-button-container"></div>
