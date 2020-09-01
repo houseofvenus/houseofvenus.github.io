@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>House of Venus | The world is your desktop</title>
+    <title>Isabelle's Market</title>
     
     <style>
         @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
@@ -283,212 +283,15 @@
     </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script>
-        var mobileNavIsVisible = true;
-        var isDesktop = false;
-        
-        function loadUI(){   
+        document.getElementById("DOMContentLoaded", function(){
             setTimeout(function(){
-                document.getElementById("sia-product-icon-container").style.opacity = 1.0;
-            }, 600);
-            
-            setTimeout(function(){
-                document.getElementById("honeycomb-product-icon-container").style.opacity = 1.0;
-            }, 750);
-            
-            setTimeout(function(){
-                document.getElementById("rushmore-product-icon-container").style.opacity = 1.0;
-            }, 500);
-            
-            setTimeout(function(){
-                document.getElementById("honeycomb-product-icon-container").style.opacity = 1.0;
-            }, 250);
-            
-            setTimeout(function(){
-                document.getElementById("rooms-product-icon-container").style.opacity = 1.0;
-            }, 350);
-            
-            setTimeout(function(){
-                document.getElementById("tulse-1-product-icon-container").style.opacity = 1.0;
-            }, 125);
-            
-            setTimeout(function(){
-                hideCorrespondingDescriptionContainer("sia");
-                hideCorrespondingDescriptionContainer("honeycomb");
-                hideCorrespondingDescriptionContainer("rushmore");
-                hideCorrespondingDescriptionContainer("honeycomb");
-                hideCorrespondingDescriptionContainer("rooms");
-                hideCorrespondingDescriptionContainer("tulse-1");
-                
-                //document.getElementById("sia-product-description-container").
-                
-                
-                document.getElementById("sia-product-description-container").onmouseout = function(){
-                    hideCorrespondingDescriptionContainer("sia");
-                };
-                /*
-                document.getElementById("sia-product-description-container").style.opacity = 0;
-                document.getElementById("honeycomb-product-description-container").style.opacity = 0;
-                document.getElementById("rushmore-product-description-container").style.opacity = 0;
-                document.getElementById("honeycomb-product-description-container").style.opacity = 0;
-                document.getElementById("rooms-product-description-container").style.opacity = 0;
-                document.getElementById("tulse-1-product-description-container").style.opacity = 0;
-                */
-            }, 1000);
-        }
-        
-        function showCorrespondingDescriptionContainer(productName){
-            document.getElementById(`${productName}-product-description-container`).style.opacity = 1.0;
-        }
-        
-        function hideCorrespondingDescriptionContainer(productName){
-            /*console.log(productName);
-            console.log(`#${productName}-product-description-container`);*/
-            document.getElementById(`${productName}-product-description-container`).style.opacity = 0;
-        }
-        
-        function checkWindowWidth(){
-            let winWidth = window.innerWidth;
-            console.log("window width");
-            console.log(winWidth);
-            
-            if(winWidth<601){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        
-        function toggleMobileMenuView(){
-            let isMobile = checkWindowWidth();
-            if(isMobile){
-                if(mobileNavIsVisible){
-                    document.getElementById("navigation-menu-container").style.opacity = 0;
-                    document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/mobile-menu-icon.png)";
-                    
-                    setTimeout(function(){
-                        document.getElementById("navigation-menu-container").style.display = "none";
-                    }, 550);
-                                        
-                    mobileNavIsVisible = false;
-                }
-                else{
-                    if(isDesktop){
-                        document.getElementById("navigation-menu-container").style.opacity = 0;
-                        document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/mobile-menu-icon.png)";
-                        
-                        setTimeout(function(){
-                            document.getElementById("navigation-menu-container").style.display = "none";
-                        }, 550);
-
-                        mobileNavIsVisible = false;
-                    }
-                    else{
-                        document.getElementById("navigation-menu-container").style.display = "block";
-                        document.getElementById("mobile-menu-toggle-button-container").style.backgroundImage = "url(../media/img/exit-menu-button-icon.png)";
-                        
-                        setTimeout(function(){
-                            document.getElementById("navigation-menu-container").style.opacity = 1.0;    
-                        }, 50);
-                        
-                        mobileNavIsVisible = true;
-                    }
-                }
-                isDesktop = false;
-            }
-            else{
-                isDesktop = true;
-                mobileNavIsVisible = false;
-                document.getElementById("navigation-menu-container").style.display = "block";
-                setTimeout(function(){
-                    document.getElementById("navigation-menu-container").style.opacity = 1.0;    
-                }, 50);
-            }
-            console.log(mobileNavIsVisible);
-            console.log('toggle oy');
-        }
-        
-        document.addEventListener("DOMContentLoaded", function(){
-            
-            loadUI();
-            
-            document.getElementById("hov-logo-container").addEventListener("click", function(){
-                window.location.href = "./en";
-            });
-            
-            document.getElementById("house-of-venus-title-container").addEventListener("click", function(){
-                window.location.href = "./en";
-            });
-            
-            document.getElementById("about-us-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./about";
-            });
-            
-            document.getElementById("products-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./products";
-            });
-        
-            document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
-                toggleMobileMenuView();
-            });
-            
-            toggleMobileMenuView();
-            
-            window.addEventListener("resize", function(){
-                toggleMobileMenuView();
-            });
-        
+                window.location.href = "https://isabelles-market.squarespace.com/"
+            }, 5000);
         });
     </script>
 </head>
 <body>
     <div id="main-app-container">
-        <div id="mobile-menu-toggle-button-container"></div>
-        <div id="hov-logo-container"></div>
-        <div id="house-of-venus-title-container">house of venus</div>
-        <div id="navigation-menu-container">
-            <div id="about-us-menu-option-container" class="menu-option-container">about</div>
-            <div id="products-menu-option-container" class="menu-option-container">products</div>            
-        </div>
-        <div id="product-line-container">
-            <div id="home-product-line-container">
-                <div id="home-product-line-header-container" class="product-line-header-container">for homes</div>
-                <div id="honeycomb-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('honeycomb');" onmouseout="hideCorrespondingDescriptionContainer('honeycomb');">HoneyComb</div>
-                <div id="sia-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('sia');" onmouseout="hideCorrespondingDescriptionContainer('sia');">Sia</div>
-                <div id="rushmore-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rushmore');" onmouseout="hideCorrespondingDescriptionContainer('rushmore');">Rushmore</div>
-            </div>
-            <div id="home-product-line-descriptions-container" class="product-line-descriptions-container">
-                <div id="honeycomb-product-description-container" class="product-description-container">Groceries, subscribed: Avoid the hassle of shopping and storage. Focus on meals and get your ingredients as you need them.</div>
-                <div id="sia-product-description-container" class="product-description-container">School in absentia: learn in the best environments imaginable from educators you know and love.</div>
-                <div id="rushmore-product-description-container" class="product-description-container">Name your top four, compare with friends for prizes then go out and explore.</div>
-            </div>
-            <div id="organization-product-line-container">
-                <div id="organization-product-line-header-container" class="product-line-header-container">
-                    for organizations
-                </div>
-                <!--<div id="honeycomb-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('honeycomb');" onmouseout="hideCorrespondingDescriptionContainer('honeycomb');">
-                    HoneyComb
-                </div>
-                <!--<div id="arnoir-product-icon-container" class="product-icon-container">ARnoir</div>-->
-                <div id="rooms-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rooms');" onmouseout="hideCorrespondingDescriptionContainer('rooms');">
-                    Rooms
-                </div>
-                <div id="tulse-1-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('tulse-1');" onmouseout="hideCorrespondingDescriptionContainer('tulse-1');">
-                    Tulse
-                </div>
-            </div>
-            <div id="organization-product-line-descriptions-container" class="product-line-descriptions-container">
-                <div id="rooms-product-description-container" class="product-description-container">
-                    A browser for the immersive internet. Create, share, and explore distributed immersive applications.
-                </div>
-                <!--<div id="arnoir-product-description-container" class="product-description-container">
-                    Merge digital metadata with physical accessories to drive trends
-                </div>-->
-                <div id="tulse-1-product-description-container" class="product-description-container">
-                    Machine-augmented content distribution with additional tools for digital business management
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>

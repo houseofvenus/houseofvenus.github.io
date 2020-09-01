@@ -14,10 +14,21 @@
   "hosting": {
     "public": "public",
     "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+    ],
+      "redirects": [ 
+          {
+              "source": "/about",
+              "destination": "/about.html",          
+              "type": 301
+          },
+          {
+              "source": "/buy",
+              "destination": "/buy.html",
+              "type": 301
+      }]
   },
   "storage": {
     "rules": "storage.rules"
