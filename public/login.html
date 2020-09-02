@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Isabelle's Market</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #main-app-container{
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-family: "IBM Plex Sans", sans-serif;
+            overflow: hidden;
+        }
+        
+        #house-of-venus-title-container{
+            text-transform: uppercase;
+            position: absolute;
+            top: 2%;
+            left: 3%;
+            font-size: 24px;
+            height: 100px;
+            width: 250px;
+            line-height: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        #navigation-menu-container{
+            position: absolute;
+            top: 2%;
+            right: 3%;
+            width: 300px;
+            font-size: 0;
+            height: 100px;
+        }
+        
+        .menu-option-container{
+            width: 150px;
+            height: 100%;
+            display: inline-block;
+            font-size: 24px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        
+        #start-video-button-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -50px 0 0 -50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-image: url(../media/img/play-button.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        #start-video-button-container:hover{
+            
+        }
+        
+        #hov-logo-container{
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            margin-left: -25px;
+            
+            border-radius: 50%;
+            background-image: url(../media/img/hov-logo.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            cursor: pointer;
+        }
+        
+        #products-menu-option-container{
+            font-weight: 900;
+            text-decoration: underline;
+        }
+        
+        #about-us-menu-option-container:hover, #products-menu-option-container:hover,{
+            font-style: italic;
+        }
+        
+        .product-icon-container{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px white solid;
+            text-align: center;
+            line-height: 300px;
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 1% 25px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        #sia-product-icon-container{
+            background-color: blue;
+        }
+        
+        #honeycomb-product-icon-container{
+            background-color: black;
+        }
+        
+        #rushmore-product-icon-container, #tulse-1-product-icon-container{
+            background-color: red;
+            
+        }
+        
+        #honeycomb-product-icon-container{
+            background-color: blue;
+        }
+        
+        #rooms-product-icon-container, #arnoir-product-icon-container{
+            background-color: black;
+        }
+        
+        #product-line-container{
+            width: 775px;
+            display: block;
+            margin: 10% auto 0 auto;
+        }
+        
+        .product-line-header-container{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin-top: 5%;
+            text-align: left;
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: lowercase;
+        }
+        
+        .product-description-container{
+            width: 31%;
+            height: 100%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: top;
+            margin: 0 1%;
+            opacity: 1.0;
+            transition: opacity 0.5s;
+        }
+        
+        #mobile-menu-toggle-button-container{
+            display: none;
+        }
+        
+        @media only screen and (max-width: 600px) { 
+            /*#main-app-container {
+                background-color: lightblue;
+            }*/
+            
+            #go-to-mobile-container{
+                z-index: -100;
+                display: none;
+            }
+            
+            #house-of-venus-title-container, #navigation-menu-container{
+                display: none;
+            }
+            
+            #navigation-menu-container{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                font-size: 0;
+                height: 100%;
+                color: white;
+                opacity: 0;
+                transition: opacity 0.5s;
+            }
+            
+            #mobile-menu-toggle-button-container{
+                display: block;
+                position: absolute;
+                z-index: 200;
+                right: 3%;
+                top: 5%;
+                border-radius: 10px;
+                width: 50px;
+                height: 50px;
+                background-image: url(./media/img/mobile-menu-icon.png);
+                background-size: 150% 150%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                cursor: pointer;
+                background-color: white;
+            }
+            
+            .menu-option-container{
+                width: 100%;
+                height: 49%;
+                display: inline-block;
+                font-size: 40px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-align: center;
+                line-height: 315px;
+                cursor: pointer;
+                background-color: rgba(0, 0, 255, 0.7);
+            }
+            
+            #about-us-menu-option-container{
+                border-bottom: 3px white solid;
+            }
+            
+            #product-line-container{
+                width: 100%;
+            }
+            
+            #home-product-line-container{
+                margin-top: 25%;
+            }
+            .product-icon-container{
+                width: 250px;
+                height: 250px;
+                display: block;
+                margin: 1% auto 10% auto;
+            }
+            
+            .product-line-header-container{
+                width: 100%;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+
+            .product-line-descriptions-container{
+                display: none;
+            }
+            
+            #mobile-menu-toggle-button-container{
+                display: block;
+                position: absolute;
+                z-index: 200;
+                right: 3%;
+                top: 5%;
+                border-radius: 10px;
+                width: 50px;
+                height: 50px;
+                background-image: url(../media/img/mobile-menu-icon.png);
+                background-size: 150% 150%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                cursor: pointer;
+                background-color: white;
+            }
+        }        
+    </style>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script>
+        document.getElementById("DOMContentLoaded", function(){
+       
+        });
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+    </div>
+</body>
+</html>
