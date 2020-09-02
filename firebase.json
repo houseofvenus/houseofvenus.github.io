@@ -18,9 +18,21 @@
             "**/.*",
             "**/node_modules/**"
         ],
+        "redirects": [
+            {
+                "source": "/about",
+                "destination": "/about.html",          
+                "type": 301
+            },
+            {
+                "source": "/buy",
+                "destination": "/buy.html",
+                "type": 301
+            }
+        ],
         "rewrites": [
             {
-                "source": "**",
+                "source": "/room",
                 "function": "app"
             }
         ]
@@ -50,15 +62,4 @@
     }
 }
 /*
-"redirects": [
-    {
-        "source": "/about",
-        "destination": "/about.html",          
-        "type": 301
-    },
-    {
-        "source": "/buy",
-        "destination": "/buy.html",
-        "type": 301
-    }
-]*/
+*/
