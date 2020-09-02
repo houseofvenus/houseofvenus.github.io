@@ -31,12 +31,32 @@
         
         #login-page-container{
             width: 300px;
-            height: 200px;
+            height: 500px;
             border-radius: 10px;
             position: absolute;
             top: 50%;
             left: 50%;
-            margin: -100px 0 0 -150px;
+            margin: -250px 0 0 -150px;
+            background-color: blue;
+            color: white;
+            text-align: center;
+        }
+        
+        .form-input-container{
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+            display: block;
+            margin: 1% auto;
+            line-height: 30px;
+        }
+        
+        #submit-login-credentials{
+            width: 60%;
+            height: 40px;
+            line-height: 40px;
+            margin: 2% auto;
+            display: block;
         }
     </style>
     <script>
@@ -50,8 +70,8 @@
 <body>
     <div id="main-app-container">
         <div id="login-page-container">
-            <input type="text" id="username-container" placeholder="username" />
-            <input type="password" id="password-container" />
+            <input type="text" id="username-container" class="form-input-container" placeholder="username" />
+            <input type="password" id="password-container" class="form-input-container" />
             <button id="submit-login-credentials">login</button>
         </div>
     </div>
