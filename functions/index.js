@@ -1,29 +1,5 @@
 const functions = require('firebase-functions');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
-// Include the cluster module
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-/*var firebase = require("firebase/app");
-
-// Add the Firebase products that you want to use
-require("firebase/auth");
-require("firebase/firestore");
-*/
-// Code to run if we're in the master process
-// author(s):  Patrice-Morgan Ongoly
-// version: 0.1.0.10
-// last modified: MONDAY, JUNE 29, 2020 23:04 EDT
-// description:
-
-// required modules
+const cors = require('cors')({origin: true});
 
 var bodyParser = require('body-parser');
 var express = require('express');
@@ -60,10 +36,12 @@ var config = {
 var deviceType = 'unknown';
 let dir = config.DIRECTORY;
 
+app.use(cors);
 app.engine('html', require('ejs').renderFile);
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 
 app.use(express.static('/'));
 
@@ -82,7 +60,7 @@ app.get('/', function(req, res){
     res.render('index.html',{root: dir[0]});
 });
 
-app.get('/', function(req, res){
+app.get('/about', function(req, res){
     var result = new WhichBrowser(req.headers);
     console.log(result.toString());
     if(result.isType('desktop')){
@@ -94,10 +72,10 @@ app.get('/', function(req, res){
         deviceType = 'mobile';
     }
 
-    res.render('index.html',{root: dir[0]});
+    res.render('about.html',{root: dir[0]});
 });
 
-app.get('/login', function(req, res){
+app.get('/buy', function(req, res){
     var result = new WhichBrowser(req.headers);
     console.log(result.toString());
     if(result.isType('desktop')){
@@ -109,68 +87,7 @@ app.get('/login', function(req, res){
         deviceType = 'mobile';
     }
 
-    res.render('ClassRoomLoginPage.html',{root: dir[0]});
-});
-
-
-app.get('/session', function(req, res){
-    var result = new WhichBrowser(req.headers);
-    console.log(result.toString());
-    if(result.isType('desktop')){
-        console.log('This is a desktop computer.');
-        deviceType = 'desktop';
-    }
-    else{
-        console.log('This is a mobile device.');
-        deviceType = 'mobile';
-    }
-
-    res.render('ClassRoomSessionSelectionPage.html', {root: dir[0]});
-});
-
-app.get('/classroom', function(req, res){
-    var result = new WhichBrowser(req.headers);
-    console.log(result.toString());
-    if(result.isType('desktop')){
-        console.log('This is a desktop computer.');
-        deviceType = 'desktop';
-    }
-    else{
-        console.log('This is a mobile device.');
-        deviceType = 'mobile';
-    }
-
-    res.render('ClassRoom.html', {root: dir[0]});
-});
-
-app.get('/pArk/rooms/getting/started/ar', function(req, res){
-    var result = new WhichBrowser(req.headers);
-    console.log(result.toString());
-    if(result.isType('desktop')){
-        console.log('This is a desktop computer.');
-        deviceType = 'desktop';
-    }
-    else{
-        console.log('This is a mobile device.');
-        deviceType = 'mobile';
-    }
-
-    res.render('ar.html',{root: dir[0]});
-});
-
-app.get('/pArk/rooms/getting/started/vr', function(req, res){
-    var result = new WhichBrowser(req.headers);
-    console.log(result.toString());
-    if(result.isType('desktop')){
-        console.log('This is a desktop computer.');
-        deviceType = 'desktop';
-    }
-    else{
-        console.log('This is a mobile device.');
-        deviceType = 'mobile';
-    }
-
-    res.render('vr.html',{root: dir[0]});
+    res.render('buy.html',{root: dir[0]});
 });
 
 app.get('/css/:stylesheet_id', function(req, res){
@@ -233,7 +150,7 @@ app.get('/media/vid/:vid_id', function(req, res){
     res.sendFile(vid_id, {root: dir[12]});
 });
 
-var io = require('socket.io').listen(app.listen(config.PORT, function(){
+/*var io = require('socket.io').listen(app.listen(config.PORT, function(){
     console.log(`booting up your ARrow...\n\n\n--------------------------------------------------`);
     console.log(`--------------------------------------------------`);
     console.log(`--      HOUSE OF VENUS BENEFIT CORPORATION      --`);
@@ -257,12 +174,5 @@ io.sockets.on('connection', function(socket){
         console.log(`socket ${socket.id} disconnected.`);
     });
 });
-/*
-// TODO: Replace the following with your app's Firebase project configuration
-var firebaseConfig = {
-// ...
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-//}//*/
+*/
+exports.app = functions.https.onRequest(app);
