@@ -90,6 +90,13 @@ app.get('/buy', function(req, res){
     res.render('buy.html',{root: dir[0]});
 });
 
+app.post("/login", function(req, res){
+    let user_name = req.body.user;
+    let password = req.body.password;
+    console.log("User name = "+user_name+", password is "+password);
+    res.end("yes");
+});
+
 app.get('/css/:stylesheet_id', function(req, res){
     let stylesheet_id = req.params.stylesheet_id;
     res.sendFile(stylesheet_id, {root: dir[1]});

@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+
+#main-app-container{
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    overflow: hidden;
+}   
+
+
+#isabelles-market-header-container{
+    position: absolute;
+    left: 5%;
+    top: 2%;
+    width: 350px;
+    height: 30px;
+}
+
+#main-header-container{
+    vertical-align: top;
+    height: 36px;
+    width: 200px;
+    display: inline-block;
+    line-height: 36px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", sans-serif;
+    cursor: pointer;
+}
+
+#main-logo-container{
+    width: 35px;
+    height: 35px;
+    margin-right: 2%;
+    display: inline-block;
+    background-image: url(../media/img/honeycomb-app-icon.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+#sign-up-container{
+    position: absolute;
+    right: 0;
+    top: 2%;
+    width: 350px;
+    height: 30px
+}
+
+#sign-up-label-container{
+    display: inline-block;
+    margin-right: 5%;
+}
+
+#sign-up-button-container{
+    display: inline-block;
+    width: 90px;
+    height: 35px;
+    border-radius: 10px;
+    border: 0;
+    text-align: center;
+    color: white;
+    line-height: 35px;
+    background-color: rgba(0, 173, 238, 0.6);
+    transition: background-color 0.5s;
+}
+
+#sign-up-button-container:hover{
+    background-color: rgba(0, 173, 238, 1.0);
+}
+
+#login-page-container{
+    width: 500px;
+    height: 600px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -300px 0 0 -250px;
+    background-color: white;
+    color: white;
+    text-align: center;
+    border: 2px #ddd solid;
+    box-shadow: 5px 5px 5px #ddd;
+}
+
+#submit-login-credentials{
+    outline: none;
+    width: 40%;
+    height: 50px;
+    line-height: 50px;
+    margin: 5% auto 0 auto;
+    display: block;
+    border-radius: 20px;
+    border: 0;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 172, 238, 0.4);
+    transition: background-color 0.5s;
+}
+
+#submit-login-credentials:hover{
+    background-color: rgba(0, 172, 238, 0.8);
+}
+
+#welcome-back-header-container{
+    height: 100px;
+    line-height: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    color: black;
+}
+
+#login-instructions-container-line-0{
+    margin-top: 20px;
+    color: black;
+}
+
+#login-instructions-container-line-1{
+    margin-bottom: 25px;
+}
+
+.login-instructions-container{
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#login-options-container{
+    width: 100%;
+    height: 50px;
+    display: inline-block;
+    margin: 2% auto;
+}
+
+.label-container{
+    color: black;
+    text-align: left;
+    width: 80%;
+    margin: 2% auto;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.login-option-container{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 2% 1%;
+    display: inline-block;
+    border: 2px #ddd solid;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+.login-option-container:hover{
+    background-color: black;
+}
+
+#hov-login-option-container{
+    background-image: url(../media/img/hov-logo.png);
+    background-size: 22px 22px;
+}
+
+#twitter-login-option-container{
+    background-image: url(../media/img/twitter-icon.png);
+    background-size: 32px 32px;
+}
+
+.form-input-container{
+    height: 40px;
+    line-height: 40px;
+    width: 80%;
+    display: block;
+    margin: 1% auto;
+    border-radius: 10px;
+    border: 2px #ddd solid;
+    outline: none;
+}

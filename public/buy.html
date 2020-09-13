@@ -3,74 +3,57 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Isabelle's Market</title>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        body, html{
-            width: 100%;
-            height: 100%;
-        }
-        
-        #main-app-container{
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-family: "IBM Plex Sans", sans-serif;
-            overflow: hidden;
-        }   
-        
-        #login-page-container{
-            width: 300px;
-            height: 500px;
-            border-radius: 10px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -250px 0 0 -150px;
-            background-color: blue;
-            color: white;
-            text-align: center;
-        }
-        
-        .form-input-container{
-            width: 80%;
-            height: 30px;
-            border-radius: 5px;
-            display: block;
-            margin: 1% auto;
-            line-height: 30px;
-        }
-        
-        #submit-login-credentials{
-            width: 60%;
-            height: 40px;
-            line-height: 40px;
-            margin: 2% auto;
-            display: block;
-        }
-    </style>
+    <title>Isabelle's Market | Login</title>
+    <link rel="stylesheet" href="./css/login-interstitial.css" type="text/css" />
+    <link rel="stylesheet" href="./css/login-interstitial-mobile.css" type="text/css" />
     <script>
-        document.getElementById("DOMContentLoaded", function(){
+        function goToHomeView(){
+            window.location.href = "./";  
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("submit-login-credentials").addEventListener("click", function(){
                 window.location.href = "https://isabelles-market.squarespace.com/";  
+            });
+            
+            document.getElementById("main-logo-container").addEventListener("click", function(){
+                goToHomeView();
+            });
+            
+            document.getElementById("main-header-container").addEventListener("click", function(){
+                goToHomeView();
             });
         });
     </script>
 </head>
 <body>
     <div id="main-app-container">
+        <div id="isabelles-market-header-container">
+            <div id="main-logo-container">
+            </div>
+            <div id="main-header-container">
+                isabelle's market
+            </div>
+        </div>
+        <div id="sign-up-container">
+            <div id="sign-up-label-container">
+                Don't have an account?
+            </div>
+            <div id="sign-up-button-container">
+                Sign up
+            </div>
+        </div>
         <div id="login-page-container">
-            <input type="text" id="username-container" class="form-input-container" placeholder="username" />
+            <div id="welcome-back-header-container">Welcome back</div>
+            <div id="login-instructions-container-line-0" class="login-instructions-container">Use an existing account</div>
+            <div id="login-options-container">
+                <div id="hov-login-option-container" class="login-option-container"></div>
+                <div id="twitter-login-option-container" class="login-option-container"></div>
+            </div>
+            <div id="login-instructions-container-line-1" class="login-instructions-container">Or sign in with</div>
+            <div id="username-label" class="label-container">Your email</div>
+            <input type="text" id="email-container" class="form-input-container" placeholder="example@email.com" />
+            <div id="password-label" class="label-container">Your password</div>
             <input type="password" id="password-container" class="form-input-container" />
             <button id="submit-login-credentials">login</button>
         </div>

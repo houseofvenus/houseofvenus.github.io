@@ -1,0 +1,98 @@
+@media only screen and (max-width: 980px){
+    #login-page-container{
+        width: 100%;
+        height: 90%;
+        margin: 0;
+        top: 9%;
+        left: 0;
+        box-shadow: 0;
+        border: 0;
+        border-radius: 0;
+    }  
+    
+    #submit-login-credentials{
+        height: 100px;
+        border-radius: 50px;
+        font-size: 44px;
+    }
+    
+    #submit-login-credentials:hover{
+        font-size: 36px;
+    }
+    
+    #welcome-back-header-container{
+        height: 150px;
+        line-height: 150px;
+        font-size: 100px;
+    }
+    
+    #login-instructions-container-line-0{}
+    
+    #login-instructions-container-line-1{
+        margin-bottom: 10%;
+    }
+    
+    .login-instructions-container{
+        font-size: 44px;
+    }
+    
+    #login-options-container{}
+    
+    .label-container{
+        font-size: 30px;
+    }
+    
+    .login-option-container{
+        width: 200px;
+        height: 90px;
+        border-radius: 15px;
+    }
+    
+    #hov-login-option-container{
+        background-size: 60px 60px;
+    }
+    
+    #twitter-login-option-container{
+        background-size: 100px 100px;
+    }
+    
+    .form-input-container{
+        height: 100px;
+        line-height: 100px;
+        font-size: 44px;
+        border: 2px #bbb solid;
+    }
+    
+    #sign-up-label-container{
+        display: none;
+    }
+    
+    #sign-up-button-container{
+        position: fixed;
+        right: 5%;
+        height: 75px;
+        width: 150px;
+        font-size: 36px;
+        line-height: 75px;
+        border-radius: 25px;
+    }
+    
+    #isabelles-market-header-container{
+        width: 650px;
+        height: 100px;
+    }
+
+    #main-header-container{
+        font-size: 30px;
+        width: 400px;
+        height: 75px;
+        line-height: 75px;
+    }
+    
+    #main-logo-container{
+        width: 75px;
+        height: 75px;
+        margin-right: 5%;
+    }
+
+}

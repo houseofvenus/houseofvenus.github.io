@@ -1,0 +1,160 @@
+@media only screen and (max-width: 980px) { 
+    /*#main-app-container {
+        background-color: lightblue;
+    }*/
+
+    #go-to-mobile-container{
+        z-index: -100;
+        display: none;
+    }
+    
+    .about-page-background-highlight{
+        background-color: rgba(0, 0, 0, 1.0) !important;
+    }
+
+    #background-layer-container{
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #house-of-venus-title-container, #navigation-menu-container, #isabelle-s-market-title-container{
+        display: none;
+    }
+    
+    #navigation-menu-container{
+        position: absolute;
+        top: 0;
+        right: 1%;
+        border-right: 3px solid rgba(255, 255, 255, 0.7);
+        width: 100%;
+        font-size: 0;
+        height: 100%;
+        display: none;
+    }
+    
+    #products-option-highlight{
+        background-color: black;
+    }
+    
+    #mobile-menu-toggle-button-container{
+        border-radius: 10px;
+        width: 150px;
+        height: 150px;
+        display: block;
+        background-image: url(../media/img/mobile-menu-icon.png);
+        background-size: 150% 150%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: white;
+        position: absolute;
+        top: 4%;
+        right: 3%;
+        z-index: 200;
+    }
+
+    .menu-option-container{    
+        font-family: "AuraRegular W05 Regular", Fallback, sans-serif;
+        width: 100%;
+        height: 50%;
+        display: inline-block;
+        font-size: 56px;
+        font-weight: 900;
+        text-align: center;
+        border-radius: 0;
+        line-height: 900px;
+        transition: opacity 0.5s;
+    }
+
+    #about-us-menu-option-container{
+        font-size: 80px;
+        border-bottom: 3px white solid;
+        color: black;
+    }
+    
+    #products-menu-option-container{
+        font-size: 80px;
+    }
+        
+    #tag-line-container{
+        width: 900px;
+        height: 350px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        margin: -125px 0 0 -450px;
+        /*text-align: center;
+        opacity: 0;
+        transition: opacity 0.5s;*/
+    }
+
+    #house-of-venus-tag-line-0-container{
+        font-size: 60px;
+     /*   text-transform: uppercase;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 900;
+        border-radius: 5px;*/
+    }
+
+    #house-of-venus-tag-line-1-container{
+        /*margin-top: 5%;*/
+        font-size: 48px;
+        /*border-radius: 5px;*/
+    }
+
+    #build-your-own-button-container{
+        font-family: "Helvetica Neue", sans-serif;/*font-family: "IBM Plex Sans", sans-serif;*/
+        width: 500px;
+        height: 200px;
+        border-radius: 100px;
+        font-weight: 900;
+        font-size: 60px;
+        margin-left: -250px;
+        line-height: 200px;
+    }
+    
+    #build-your-own-button-container:hover{
+        text-transform: uppercase;
+        background-color: aquamarine;
+        color: black;
+        font-size: 50px;
+    }
+    
+    #hov-logo-container, #im-logo-container{
+        width: 150px;
+        height: 150px;
+        margin-left: -75px;
+    }
+    
+    .bottom-bunk{
+        margin: 20px auto 0 auto;
+        display: block;
+        width: 700px;
+    }
+    
+    #about-us-menu-option-container{
+        color: black;
+        background-image: url(../media/img/about-us.gif);
+    }
+
+    #products-menu-option-container{
+        color: white;
+        background-image: url(../media/img/shopping-cart.gif);
+    }
+    
+    #video-container{
+        position: absolute;
+        display: block;
+        width: 1080px;
+        height: 720px;
+        margin: -360px 0 0 -540px;
+        top: 50%;
+        left: 50%;
+    /*    display: none;
+        opacity:0 ;*/
+        z-index: 0;
+        transition: opacity 0.5s;
+    }
+
+}
