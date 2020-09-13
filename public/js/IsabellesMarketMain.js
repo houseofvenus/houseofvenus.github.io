@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+    
     loadUI();
 
     toggleMobileMenuView();

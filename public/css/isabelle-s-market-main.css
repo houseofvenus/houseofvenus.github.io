@@ -15,6 +15,12 @@ body, html{
     height: 100%;
 }
 
+/*#animated-background-layer-container{
+    z-index: -5;
+    background-color: red;
+    transition: background-color 0.25s;
+}*/
+
 #main-app-container{
     position: absolute;
     top: 0;
@@ -40,8 +46,8 @@ body, html{
     height: 100%;
     z-index: -50;
 
-    background-image: url(../media/img/shopping.gif);
-    background-size: 120% 120%;
+    background-image: url(../media/img/shopping-mall.gif);
+    background-size: cover/*120% 120%*/;
     background-position: center center;
     background-repeat: no-repeat;
 

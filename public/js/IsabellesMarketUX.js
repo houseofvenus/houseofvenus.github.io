@@ -1,7 +1,26 @@
 var mobileNavIsVisible = true;
 var isDesktop = false;
+var colorWheel = ["red", "yellow", "green", "blue"];
+var colorIndex = 0;
+var colorChanger = null;
+
+function playFinalBackgroundVideo(){
+    clearInterval(colorChanger);
+    document.getElementById("animated-background-layer-container").style.backgroundColor = "rgba(255, 255, 255,0)";
+    /*document.getElementById("animated-background-layer-container").style.backgroundImage = "url(./media/img/shopping-mall.gif)";
+    document.getElementById("animated-background-layer-container").style.backgroundSize = "cover";
+    document.getElementById("animated-background-layer-container").style.backgroundRepeat = "no-repeat";
+    document.getElementById("animated-background-layer-container").style.backgroundPosition = "center center";*/
+}
 
 function loadUI(){
+    colorChanger = setInterval(function(){
+        document.getElementById("animated-background-layer-container").style.backgroundColor = colorWheel[colorIndex];
+        colorIndex++;
+        console.log(colorIndex);
+        if(colorIndex===colorWheel.length)playFinalBackgroundVideo();
+    }, 1000);
+    
     setTimeout(function(){
         document.getElementById("build-your-own-button-container").style.opacity = 1.0;
     }, 750);

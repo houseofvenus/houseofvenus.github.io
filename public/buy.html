@@ -10,10 +10,75 @@
         function goToHomeView(){
             window.location.href = "./";  
         }
+        var UserCredentials = {
+            "john@gmail.com": "johns!23",
+            "ceo@houseofven.us": "Cl@!r3f0nt@!n3",
+            "lbanzani35@gmail.com": "l3r0!n0!R",
+            "bgoma@aol.com": "R3!n3m@dz!@"
+        };
+        
+        function incorrectCredentials(){
+            document.getElementById("email-container").style.boxShadow = "0px 0px 2px 3px red";
+            document.getElementById("password-container").style.boxShadow = "0px 0px 2px 3px red";
+        }
+        
+        let maidenAttempt = true;
+        function checkCredentials(){
+            let email = document.getElementById("email-container").value;
+            let password = document.getElementById("password-container").value;
+            if(email==""&&password==""){
+                incorrectCredentials();
+                cleanUpOutline();
+                console.log("empty credentials input");
+            }
+            else if(email==""||password=="")console.log("missing credentials input");
+            else if(Object.keys(UserCredentials).indexOf(email)>-1){
+                let credIndex = Object.keys(UserCredentials).indexOf(email);
+                console.log("email found");
+                if(Object.values(UserCredentials)[credIndex]===password){
+                    console.log("correct password entered.\nrelocating...");
+                    setTimeout(function(){
+                        window.location.href = "https://isabelles-market.squarespace.com/";
+                    }, 2000)
+                }
+                else{
+                    document.getElementById("password-container").style.boxShadow = "0px 0px 2px 3px red";
+                    cleanUpOutline();
+                    
+                    console.log("incorrect password");
+                    console.log(credIndex)
+                    console.log(Object.values(UserCredentials)[credIndex]);
+                    console.log(password);
+                }
+            }
+            else {
+                console.log("email not found");
+                console.log(email);
+                console.log(password);
+                incorrectCredentials();
+                cleanUpOutline();
+            }
+        }
+        
+        function cleanUpOutline(){
+            console.log(maidenAttempt);
+            if(maidenAttempt){
+                document.getElementById("email-container").addEventListener("click", function(){
+                    this.style.boxShadow = "0px 0px 0px 0px red";
+                    console.log("resetting outline color");
+                });
+                document.getElementById("password-container").addEventListener("click", function(){
+                    this.style.boxShadow = "0px 0px 0px 0px red";
+                    console.log("resetting outline color");
+                });
+                maidenAttempt = false;
+            }
+        }
         
         document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("submit-login-credentials").addEventListener("click", function(){
-                window.location.href = "https://isabelles-market.squarespace.com/";  
+                //window.location.href = "https://isabelles-market.squarespace.com/";  
+                checkCredentials();
             });
             
             document.getElementById("main-logo-container").addEventListener("click", function(){
