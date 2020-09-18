@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Nexus | ai-managed entertainment streams | a TULSE partner</title>
+    <link rel="stylesheet" href="./css/nexus.css" type="text/css" />
+    <script>
+    
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("loading NEXUS v. 0.0.0.1");
+            
+            document.getElementById("go-to-streams-button-container").addEventListener("click", function(){
+                transitionOffPage();
+            });
+
+        });
+        
+        
+        function transitionOffPage(){
+            console.log("leaving main page");
+            
+            setTimeout(function(){
+                document.getElementById("main-suggested-content-description-container").style.opacity = 0;
+            }, 250);
+            
+            setTimeout(function(){
+                document.getElementById("play-button-container").style.opacity = 0;
+            }, 500);
+            
+            setTimeout(function(){
+                document.getElementById("more-info-button-container").style.opacity = 0;
+            }, 750);
+            
+            setTimeout(function(){
+                document.getElementById("details-console-container").style.opacity = 0;
+            }, 1000);
+            
+            setTimeout(function(){
+                document.getElementById("navigation-banner-container").style.opacity = 0;
+            }, 1250);
+            
+            setTimeout(function(){
+                document.getElementById("main-app-container").style.opacity = 0;
+            }, 1500);
+            
+            setTimeout(function(){
+                window.location.href = "./nexus/stream";
+            }, 1750);
+        }
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+        <div id="navigation-banner-container">
+            <div id="nexus-title-container" class="navigation-banner-item-container">
+                nexus
+            </div>
+            <div id="left-banner-container" class="navigation-banner-item-container">
+                <div id="film-content-button-container" class="navigation-banner-item-container content-button-container clickable-item">
+                    film
+                </div>
+                <div id="tv-content-button-container" class="navigation-banner-item-container content-button-container clickable-item">
+                    tv
+                </div>
+                <div id="suggested-content-button-container" class="navigation-banner-item-container content-button-container clickable-item">
+                    suggested
+                </div>
+            </div>
+            <div id="right-banner-container" class="navigation-banner-item-container">
+                <div id="search-button-container" class="navigation-banner-item-container clickable-item">
+                </div>
+                <div id="profile-icon-container" class="navigation-banner-item-container clickable-item">
+                </div>
+            </div>
+        </div>
+        <div id="main-suggested-content-container">
+            <div id="main-suggested-content-title-container">
+                Title
+            </div>
+            <div id="main-suggested-content-description-container">
+                Content description goes here where the member can easily access and read it.
+            </div>
+            <div id="main-suggested-content-actions-container">
+                <div id="play-button-container" class="content-action-button-container clickable-item">
+                    play
+                </div>
+                <div id="more-info-button-container" class="content-action-button-container clickable-item">
+                    more
+                </div>
+            </div>
+            <div id="details-console-container">
+                <div id="toggle-audio-button-container" class="clickable-item">
+                </div>
+                <div id="content-rating-container" class="clickable-item">
+                    tv-ma
+                </div>
+            </div>
+        </div>
+        <div id="go-to-streams-button-container" class="clickable-item"></div>
+    </div>
+</body>
+</html>
