@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>Nexus | ai-managed entertainment streams | a TULSE partner</title>
+    <link rel="stylesheet" href="../css/nexus.css" type="text/css" />
+    <style>
+        
+        ::-webkit-scrollbar {
+            width: 0.5em;
+            height: 0.5em;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: rgba(255, 255, 255, 0);
+          outline: 1px solid black;
+        }
+        
+        #nexus-stream-app-container{
+            background-color: black;
+        }
+
+        #content-streams-container{
+            overflow-x: hidden;
+            overflow-y: scroll;
+            width: 96%;
+            height: 90%;
+            position: absolute;
+            bottom: 0;
+            left: 2%;
+            display: block;
+        }
+        
+        .content-stream-container{
+            overflow-y: hidden;
+            height: 200px;
+        }
+        
+        .content-stream-wrapper-container{
+            overflow-x: scroll;
+            width: 2600px;
+            display: block;
+        }
+
+        .content-block-container{
+            width: 250px;
+            height: 150px;
+            margin: 1% 2px;
+            display: inline-block;
+            background-color: white;
+        }
+        
+        #content-block-0-line-0{
+            background-color: yellow;
+        }
+        
+        #content-block-1-line-0{
+            background-color: red;
+        }
+        
+        #content-block-2-line-0{
+            background-color: orange;
+        }
+        
+        #content-block-3-line-0{
+            background-color: violet;
+        }
+        
+        #content-block-4-line-0{
+            background-color: aquamarine;
+        }
+        
+        #content-block-5-line-0{
+            background-color: coral;
+        }
+        
+        #content-block-6-line-0{
+            background-color: salmon;
+        }
+        
+        #content-block-7-line-0{
+            background-color: blue;
+        }
+        
+        #content-block-8-line-0{
+            background-color: green;
+        }
+        
+        #content-block-9-line-0{
+            background-color: darkviolet;
+        }
+        
+        #content-block-0-line-1{
+            background-color: darkviolet;
+        }
+        
+        #content-block-1-line-1{
+            background-color: aquamarine;
+        }
+        
+        #content-block-2-line-1{
+            background-color: blue;
+        }
+        
+        #content-block-3-line-1{
+            background-color: salmon;
+        }
+        
+        #content-block-4-line-1{
+            background-color: coral;
+        }
+        
+        #content-block-5-line-1{
+            background-color: yellow;
+        }
+        
+        #content-block-6-line-1{
+            background-color: deepskyblue;
+        }
+        
+        #content-block-7-line-1{
+            background-color: #FF5733;
+        }
+        
+        #content-block-8-line-1{
+            background-color: #FFBD33;
+        }
+        
+        #content-block-9-line-1{
+            background-color: #DBFF33;
+        }
+        
+        #content-block-0-line-2{
+            background-color: mediumblue;
+        }
+        
+        #content-block-1-line-2{
+            background-color: #33FF57;
+        }
+        
+        #content-block-2-line-2{
+            background-color: #33FFBD;
+        }
+        
+        #content-block-3-line-2{
+            background-color: #FFC300;
+        }
+        
+        #content-block-4-line-2{
+            background-color: #D2B4DE;
+        }
+        
+        #content-block-5-line-2{
+            background-color: #D1F2EB;
+        }
+        
+        #content-block-6-line-2{
+            background-color: #FF5733;
+        }
+        
+        #content-block-7-line-2{
+            background-color: #AF7AC5;
+        }
+        
+        #content-block-8-line-2{
+            background-color: #D1F2EB;
+        }
+        
+        #content-block-9-line-2{
+            background-color: #75FF33;
+        }
+        
+        #content-block-0-line-3{
+            background-color: #AF7AC5;
+        }
+        
+        #content-block-1-line-3{
+            background-color: #33FF57;
+        }
+        
+        #content-block-2-line-3{
+            background-color: mediumvioletred;
+        }
+        
+        #content-block-3-line-3{
+            background-color: orangered;
+        }
+        
+        #content-block-3-line-3{
+            background-color: dodgerblue;
+        }
+        
+        #content-block-4-line-3{
+            background-color: yellow;
+        }
+        
+        #content-block-5-line-3{
+            background-color: #CCD1D1;
+        }
+        
+        #content-block-6-line-3{
+            background-color: red;
+        }
+        
+        #content-block-7-line-3{
+            background-color: blue;
+        }
+        
+        #content-block-8-line-3{
+            background-color: cornflowerblue;
+        }
+        
+        #content-block-9-line-3{
+            background-color: crimson;
+        }
+        
+        #content-block-0-line-4{
+            background-color: yellow;
+        }
+        
+        #content-block-1-line-4{
+            background-color: red;
+        }
+        
+        #content-block-2-line-4{
+            background-color: orange;
+        }
+        
+        #content-block-3-line-4{
+            background-color: violet;
+        }
+        
+        #content-block-4-line-4{
+            background-color: aquamarine;
+        }
+        
+        #content-block-5-line-4{
+            background-color: coral;
+        }
+        
+        #content-block-6-line-4{
+            background-color: salmon;
+        }
+        
+        #content-block-7-line-4{
+            background-color: blue;
+        }
+        
+        #content-block-8-line-4{
+            background-color: green;
+        }
+        
+        #content-block-9-line-4{
+            background-color: darkviolet;
+        }
+        
+        #content-block-0-line-5{
+            background-color: darkviolet;
+        }
+        
+        #content-block-1-line-5{
+            background-color: aquamarine;
+        }
+        
+        #content-block-2-line-5{
+            background-color: blue;
+        }
+        
+        #content-block-3-line-5{
+            background-color: salmon;
+        }
+        
+        #content-block-4-line-5{
+            background-color: coral;
+        }
+        
+        #content-block-5-line-5{
+            background-color: yellow;
+        }
+        
+        #content-block-6-line-5{
+            background-color: deepskyblue;
+        }
+        
+        #content-block-7-line-5{
+            background-color: #FF5733;
+        }
+        
+        #content-block-8-line-5{
+            background-color: #FFBD33;
+        }
+        
+        #content-block-9-line-5{
+            background-color: #DBFF33;
+        }
+        
+    </style>
+    <script>
+    
+        document.addEventListener("DOMContentLoaded", function(){
+            console.log("loading NEXUS v. 0.0.0.1");
+            
+            function loadStreams(){
+                console.log("streams loaded");
+            }
+            
+        });
+        
+    </script>
+</head>
+<body>
+    <div id="nexus-stream-app-container" class="main-app-container">
+        <div id="navigation-banner-container">
+            <div id="nexus-title-container" class="navigation-banner-item-container">
+                nexus
+            </div>
+            <div id="left-banner-container" class="navigation-banner-item-container">
+                <div id="film-content-button-container" class="navigation-banner-item-container content-button-container clickable-item">
+                    film
+                </div>
+                <div id="tv-content-button-container" class="navigation-banner-item-container content-button-container clickable-item">
+                    tv
+                </div>
+                <div id="suggested-content-button-container" class="navigation-banner-item-container content-button-container clickable-item">
+                    suggested
+                </div>
+            </div>
+            <div id="right-banner-container" class="navigation-banner-item-container">
+                <div id="search-button-container" class="navigation-banner-item-container clickable-item">
+                </div>
+                <div id="profile-icon-container" class="navigation-banner-item-container clickable-item">
+                </div>
+            </div>
+        </div>
+        <div id="content-streams-container">
+            <div id="content-stream-line-0" class="content-stream-container">
+                <div class="content-stream-wrapper-container">
+                    <div id="content-block-0-line-0" class="content-block-container"></div>
+                    <div id="content-block-1-line-0" class="content-block-container"></div>
+                    <div id="content-block-2-line-0" class="content-block-container"></div>
+                    <div id="content-block-3-line-0" class="content-block-container"></div>
+                    <div id="content-block-4-line-0" class="content-block-container"></div>
+                    <div id="content-block-5-line-0" class="content-block-container"></div>
+                    <div id="content-block-6-line-0" class="content-block-container"></div>
+                    <div id="content-block-7-line-0" class="content-block-container"></div>
+                    <div id="content-block-8-line-0" class="content-block-container"></div>
+                    <div id="content-block-9-line-0" class="content-block-container"></div>
+                </div>
+            </div>
+            <div id="content-stream-line-1" class="content-stream-container">
+                <div class="content-stream-wrapper-container">
+                    <div id="content-block-0-line-1" class="content-block-container"></div>
+                    <div id="content-block-1-line-1" class="content-block-container"></div>
+                    <div id="content-block-2-line-1" class="content-block-container"></div>
+                    <div id="content-block-3-line-1" class="content-block-container"></div>
+                    <div id="content-block-4-line-1" class="content-block-container"></div>
+                    <div id="content-block-5-line-1" class="content-block-container"></div>
+                    <div id="content-block-6-line-1" class="content-block-container"></div>
+                    <div id="content-block-7-line-1" class="content-block-container"></div>
+                    <div id="content-block-8-line-1" class="content-block-container"></div>
+                    <div id="content-block-9-line-1" class="content-block-container"></div>
+                </div>
+            </div>
+            <div id="content-stream-line-2" class="content-stream-container">
+                <div class="content-stream-wrapper-container">
+                    <div id="content-block-0-line-2" class="content-block-container"></div>
+                    <div id="content-block-1-line-2" class="content-block-container"></div>
+                    <div id="content-block-2-line-2" class="content-block-container"></div>
+                    <div id="content-block-3-line-2" class="content-block-container"></div>
+                    <div id="content-block-4-line-2" class="content-block-container"></div>
+                    <div id="content-block-5-line-2" class="content-block-container"></div>
+                    <div id="content-block-6-line-2" class="content-block-container"></div>
+                    <div id="content-block-7-line-2" class="content-block-container"></div>
+                    <div id="content-block-8-line-2" class="content-block-container"></div>
+                    <div id="content-block-9-line-2" class="content-block-container"></div>
+                </div>
+            </div>
+            <div id="content-stream-line-3" class="content-stream-container">
+                <div class="content-stream-wrapper-container">
+                    <div id="content-block-0-line-3" class="content-block-container"></div>
+                    <div id="content-block-1-line-3" class="content-block-container"></div>
+                    <div id="content-block-2-line-3" class="content-block-container"></div>
+                    <div id="content-block-3-line-3" class="content-block-container"></div>
+                    <div id="content-block-4-line-3" class="content-block-container"></div>
+                    <div id="content-block-5-line-3" class="content-block-container"></div>
+                    <div id="content-block-6-line-3" class="content-block-container"></div>
+                    <div id="content-block-7-line-3" class="content-block-container"></div>
+                    <div id="content-block-8-line-3" class="content-block-container"></div>
+                    <div id="content-block-9-line-3" class="content-block-container"></div>
+                </div>
+            </div>
+            <div id="content-stream-line-4" class="content-stream-container">
+                <div class="content-stream-wrapper-container">
+                    <div id="content-block-0-line-4" class="content-block-container"></div>
+                    <div id="content-block-1-line-4" class="content-block-container"></div>
+                    <div id="content-block-2-line-4" class="content-block-container"></div>
+                    <div id="content-block-3-line-4" class="content-block-container"></div>
+                    <div id="content-block-4-line-4" class="content-block-container"></div>
+                    <div id="content-block-5-line-4" class="content-block-container"></div>
+                    <div id="content-block-6-line-4" class="content-block-container"></div>
+                    <div id="content-block-7-line-4" class="content-block-container"></div>
+                    <div id="content-block-8-line-4" class="content-block-container"></div>
+                    <div id="content-block-9-line-4" class="content-block-container"></div>
+                </div>
+            </div>
+            <div id="content-stream-line-5" class="content-stream-container">
+                <div class="content-stream-wrapper-container">
+                    <div id="content-block-0-line-5" class="content-block-container"></div>
+                    <div id="content-block-1-line-5" class="content-block-container"></div>
+                    <div id="content-block-2-line-5" class="content-block-container"></div>
+                    <div id="content-block-3-line-5" class="content-block-container"></div>
+                    <div id="content-block-4-line-5" class="content-block-container"></div>
+                    <div id="content-block-5-line-5" class="content-block-container"></div>
+                    <div id="content-block-6-line-5" class="content-block-container"></div>
+                    <div id="content-block-7-line-5" class="content-block-container"></div>
+                    <div id="content-block-8-line-5" class="content-block-container"></div>
+                    <div id="content-block-9-line-5" class="content-block-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
