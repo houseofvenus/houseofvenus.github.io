@@ -65,16 +65,17 @@ var ImmersiveAudio = {
             console.log(`\n\n-----------------------\n----  NOW PLAYING   ---\n-----------------------\n ${self.playlist[self.focus].title} by ${self.playlist[self.focus].author}\n L ${self.playlist[self.focus].registration.lyokoin}`);
         }
         else{
-            audio.pause();
-            self.priorFocus = self.focus;
-            self.focus = destination;
-            audio.setAttribute("src", self.playlist[self.focus].audio);
-            audio.play();
-           console.log(self.priorFocus)
+            //self.priorFocus = self.focus;
+            console.log(self.priorFocus)
             if(self.priorFocus!==null){
+                audio.pause();
                 console.log(self.playlist[self.priorFocus].registration.ledgerspace.entityID);
                 //document.getElementById().setAttribute("material.opacity", 0.5); 
             }
+            self.focus = destination;
+            audio.setAttribute("src", self.playlist[self.focus].audio);
+            audio.play();
+           
             
             for(let opacityArr = 0; opacityArr<self.playlist.length; opacityArr++){
                 (function(){
