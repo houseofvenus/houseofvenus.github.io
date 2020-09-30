@@ -6,7 +6,8 @@
     <title>EcheLearn. 0.1.1.2</title>
     <link rel="stylesheet" href="./css/handtracking.css">
     <!--<script src="./js/aframe.min.js.map"></script>-->
-    <script src="./js/aframe100.js"></script>-->
+    <script src="./js/aframe100.js"></script>
+    <script src="./js/aframe-ar.js"></script>
     <script src="./js/augr-hand-tracking.js"> </script>
     <script src="./js/IAOff.js"></script>
     <script src="./js/EcheLearnMain.js"></script>
@@ -17,16 +18,25 @@
         <!--<source id="native-audio-stream-controller" src="./media/audio/MenorQueTres.mp3" />-->
     </audio>
     <a-scene embedded id="immersive-layer-container">
-        <a-assets>
+        <a-assets timeout="60000">
+            <img id="earth-planet-object-texture" src="./media/texture/earthmap1k.jpg" preload="true" />
+            <a-asset-item id="room-obj" src="./media/model/ChildHoodRoomTest0.obj" preload="true"></a-asset-item>
+            <a-asset-item id="room-mtl" src="./media/model/ChildHoodRoomTest0.mtl" preload="true"></a-asset-item>
+            <img id="room-texture" src="../media/model/ChildHoodRoomTest0.png" preload="true"/>
+        
             <img id="alleluia-cover-texture" src="./media/img/alleluia-cover.png" />
             <img id="menor-que-tres-cover-texture" src="./media/img/menor-que-tres-cover.png" />
             <img id="had-enough-remix-cover-texture" src="./media/img/had-enough-remix-cover.png" />
             <img id="rainbow-in-the-dark-cover-texture" src="./media/img/rainbow-in-the-dark-cover.png" />
         </a-assets>
         
+        <a-marker preset="hiro">
+            <a-obj-model src="#room-obj" material="src: #room-texture; side: double;" rotation="180 0 0" position="0 0 0"></a-obj-model>
+        </a-marker>
         
         <a-entity camera position="0 1.9 0"></a-entity><!-- look-controls wasd-controls-->
     </a-scene>
+    
     <div>
         <button  id="move-my-eyelids-button-container" type="button"></button><!-- disabled-->
     </div>
