@@ -26,7 +26,7 @@
             top: 0;
             left: 0;
             font-family: "IBM Plex Sans", sans-serif;
-            overflow: hidden;
+            /*overflow: hidden;*/
         }
         
         #house-of-venus-title-container{
@@ -53,12 +53,13 @@
         
         .menu-option-container{
             width: 150px;
-            height: 100%;
+            height: 98%;
             display: inline-block;
             font-size: 24px;
             text-align: center;
             line-height: 100px;
             cursor: pointer;
+            border: 2px white solid;
         }
         
         #start-video-button-container{
@@ -228,7 +229,7 @@
                 text-align: center;
                 line-height: 315px;
                 cursor: pointer;
-                background-color: rgba(0, 0, 255, 0.7);
+                background-color: rgba(0, 0, 255, 0.9);
             }
             
             #about-us-menu-option-container{
@@ -425,7 +426,7 @@
             });
             
             document.getElementById("products-menu-option-container").addEventListener("click", function(){
-                window.location.href = "./products";
+                window.location.href = "./en";
             });
         
             document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
@@ -447,22 +448,23 @@
         <div id="hov-logo-container"></div>
         <div id="house-of-venus-title-container">house of venus</div>
         <div id="navigation-menu-container">
-            <div id="about-us-menu-option-container" class="menu-option-container">about</div>
-            <div id="products-menu-option-container" class="menu-option-container">products</div>            
+            <div id="products-menu-option-container" class="menu-option-container">home</div> <div id="about-us-menu-option-container" class="menu-option-container">about</div>           
         </div>
         <div id="product-line-container">
             <div id="home-product-line-container">
-                <div id="home-product-line-header-container" class="product-line-header-container">community</div>
+                <div id="home-product-line-header-container" class="product-line-header-container">for cities</div>
                 <div id="honeycomb-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('honeycomb');" onmouseout="hideCorrespondingDescriptionContainer('honeycomb');">The pARk</div>
-                <div id="sia-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('sia');" onmouseout="hideCorrespondingDescriptionContainer('sia');">Isabelle's Market</div>
+                <div id="sia-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('sia');" onmouseout="hideCorrespondingDescriptionContainer('sia');">Isabelle's</div>
+                <div id="rushmore-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('rushmore');" onmouseout="hideCorrespondingDescriptionContainer('rushmore');">Tulse</div>
             </div>
             <div id="home-product-line-descriptions-container" class="product-line-descriptions-container">
                 <div id="honeycomb-product-description-container" class="product-description-container">Explore the world around you as if it were your desktop using the Public Augmented Reality Kinectome (pARk).</div>
-                <div id="sia-product-description-container" class="product-description-container">School in absentia: learn in the best environments imaginable from educators you know and love.</div>
+                <div id="sia-product-description-container" class="product-description-container">Groceries-as-a-service. Pay a fixed fee for a set delivery weight each month, regardless of what you order.</div>
+                <div id="rushmore-product-description-container" class="product-description-container">Markets made for you. Tulse is the home for community based exchange in the digital era.</div>
             </div>
             <div id="organization-product-line-container">
                 <div id="organization-product-line-header-container" class="product-line-header-container">
-                    personal
+                    for homes
                 </div>
                 <!--<div id="honeycomb-product-icon-container" class="product-icon-container" onmouseover="showCorrespondingDescriptionContainer('honeycomb');" onmouseout="hideCorrespondingDescriptionContainer('honeycomb');">
                     HoneyComb
