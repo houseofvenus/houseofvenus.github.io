@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+
+#main-app-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    background-color: rgba(255, 255, 255, 0);
+    font-family: "IBM Plex Sans", sans-serif;
+    color: black;
+
+    transition: color 0.5s;
+
+    overflow: hidden;
+}
+
+#background-layer-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -50;
+
+    background-image: url(../media/img/ar-bg-src.gif);
+    background-size: 120% 120%;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    transition: opacity 2s;
+
+}
+
+#house-of-venus-title-container{
+    text-transform: uppercase;
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    font-size: 24px;
+    height: 100px;
+    width: 250px;
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#navigation-menu-container{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    width: 300px;
+    font-size: 0;
+    height: 100px;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.menu-option-container{
+    width: 150px;
+    height: 100%;
+    display: inline-block;
+    font-size: 24px;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.menu-option-container:hover{
+    font-style: italic;
+}
+
+#mobile-menu-toggle-button-container{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) { 
+    /*#main-app-container {
+        background-color: lightblue;
+    }*/
+
+    #go-to-mobile-container{
+        z-index: -100;
+        display: none;
+    }
+
+    #background-layer-container{
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #house-of-venus-title-container, #navigation-menu-container{
+        display: none;
+    }
+
+    #navigation-menu-container{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        font-size: 0;
+        height: 100%;
+    }
+
+    #mobile-menu-toggle-button-container{
+        display: block;
+        position: absolute;
+        z-index: 200;
+        right: 3%;
+        top: 5%;
+        border-radius: 10px;
+        width: 50px;
+        height: 50px;
+        background-image: url(../media/img/mobile-menu-icon.png);
+        background-size: 150% 150%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        cursor: pointer;
+        background-color: white;
+    }
+
+    .menu-option-container{
+        width: 100%;
+        height: 49%;
+        display: inline-block;
+        font-size: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 315px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.5s;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #about-us-menu-option-container{
+        border-bottom: 3px white solid;
+    }
+
+}
+
+#tag-line-container{
+    width: 600px;
+    height: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -300px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#house-of-venus-tag-line-0-container{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 900;
+}
+
+#house-of-venus-tag-line-1-container{
+    margin-top: 5%;
+    font-size: 24px;
+}
+
+#build-your-own-button-container{
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: crimson;
+    color: white;
+    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    margin-left: -125px;
+    line-height: 50px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#build-your-own-button-container:hover{
+    text-transform: uppercase;
+    background-color: aquamarine;
+    color: black;
+    font-size: 20px;
+}
+
+#hov-logo-container{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url(../media/img/hov-logo.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    margin-left: -25px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#about-us-menu-option-container:hover, #products-menu-option-container:hover,{
+    font-style: italic;
+}
