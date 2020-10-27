@@ -15,6 +15,7 @@
         }
     </style>
     <script>
+        var map;
         function initMap() {
             /* silver spring
             center: {lat: 38.9907, lng: -77.0261}
@@ -127,9 +128,6 @@
                     }
                   ]
             });
-
-            connection.emit("CLIENTconnectToSERVER", {status: true});
-
         }
     </script>
 </head>
@@ -137,10 +135,10 @@
     <div id="main-app-container">
         <div id="user-access-layer-container" class="layer-container upper-layer-container">
         </div>
-        <div id="map-layer-container" class="layer-container base-layer-container">
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMto1hIf8DcCvwGyJ1wp9jJhTD4uy8CCI&callback=initMap"
-async defer></script>
+        <div id="map" class="layer-container base-layer-container">
         </div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMto1hIf8DcCvwGyJ1wp9jJhTD4uy8CCI&callback=initMap"
+async defer></script>
 </body>
 </html>
