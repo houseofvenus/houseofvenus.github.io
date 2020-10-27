@@ -131,7 +131,7 @@ function goToDoor(){
     }, 1000);    //1250
 
     setTimeout(function(){
-        window.location.href = "./door";
+        window.location.href = "./pARk/enter";
     }, 1500);
 }
 
