@@ -2,16 +2,414 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.0</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.1</title>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
+
         * {
             margin: 0;
             padding: 0;
         }
-        
-        body, html, #main-app-container{
-            width: 100%; 
+
+        body, html, #main-app-wrapper-container{
+            background-color: yellow;
+            overflow-y: scroll;
+            width: 100%;
             height: 100%;
+        }
+
+        .page-container{
+            width: 100%;
+            height: 100%;
+            transition: height 0.5s, opacity 0.5s;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        #logo-container{
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            margin: -150px 0 0-150px;
+        }
+
+        #map{
+            height: 100%;
+        }
+
+        #logo-container-symbol{
+            width: 40%;
+            height: 40%;
+            background-image: url("../media/img/delivery-icon.png");
+            background-size: 150% 150%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin: 1% auto;
+            border-radius: 50%;
+        }
+
+        #logo-container-label{
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 30px;
+            color: black;
+        }
+
+        #logo-container-sub-label{
+            text-align: center;
+            text-transform: lowercase;
+            font-size: 16px;
+            color: black;
+            width: 210px;
+            z-index: 5;
+            margin: 5% auto 0 auto;
+        }
+
+        #page-0-container, #page-1-container, #page-2-container, #page-3-container{
+            height: 0;
+            display: none;
+        }
+
+        #page-3-container{
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .item-count-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            margin: -25px 0 0 -25px;
+        }
+        #page-2-container{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 50;
+            border-radius: 25px 25px 0 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: black;
+        }
+
+        #restaurant-logo-container{
+            width: 75px;
+            height: 75px;
+            margin: 2% auto 1% auto;
+            border-radius: 50%;
+            border: 2px black solid;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-color: black;
+        }
+
+        #restaurant-name-container{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-transform: capitalize;
+            text-align: center;
+            font-weight: 900;
+            font-size: 24px;
+        }
+
+        #restaurant-rating-container{
+            width: 100%;
+            text-align: center;
+            color: yellow;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        #restaurant-description-container{
+            width: 90%;
+            margin: 2% auto;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .info-details-container, .info-details-section-container{
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .info-details-section-container{
+            font-size: 0;
+            width: 33%;
+            display: inline-block;
+            height: 100px;
+        }
+
+        #restaurant-details-menu-container{
+            overflow-x: scroll;
+            width: 100%;
+            height: 0;
+        }
+
+        #detail-wrapper-container{
+            width: 1250px;
+        }
+
+        .preview-detail-item-container{
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 20px;
+            background-size: 100% 100%;
+            color: black;
+            margin: 25px;
+        }
+
+        #restaurant-menu-icon-container{
+            background-image: url("../media/img/");
+
+        }
+        #restaurant-reviews-icon-container{
+            background-image: url("../media/img/reviews-icon.png");
+        }
+
+        #restaurant-summary-icon-container{
+            background-image: url("../media/img/summary-icon.png");
+        }
+
+        #restaurant-menu-label-container, #restaurant-reviews-label-container, #restaurant-summary-label-container{
+            width: 100%;
+            line-height: 100px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #see-tables-button-container, #close-preview-button-container{
+            min-width: 200px;
+            width: 80%;
+            height: 75px;
+            border-radius: 5px;
+            margin: 5% auto;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 75px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        #see-tables-button-container{
+            background-color: aquamarine;
+        }
+
+        #close-preview-button-container{
+            background-color: red;
+            color: white;
+        }
+
+        #add-to-cart-overlay-container{
+            font-family: "Open Sans", sans-serif;
+            width: 300px;
+            height: 300px;
+            border-radius: 5px;
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+            display: none;
+            cursor: pointer;
+            opacity: 0;
+            text-align: center;
+            background-color: white;
+            font-size: 16px;
+            transition: top 1s, opacity 1s;
+        }
+
+        #added-item-name-container{
+            font-family: "Open Sans", sans-serif;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            font-size: 26px;
+            color: black;
+            line-height: 75px;
+        }
+
+        #success-indicator-container{
+            width: 130px;
+            height: 175px;
+            margin: 0 auto;
+            background-image: url("../media/img/success.png");
+            background-size: 100% 100%;
+        }
+
+        #success-indicator-label-container{
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #checkout-cart-button-container{
+            width: 50px;
+            height: 50px;
+            z-index: 99;
+            position: absolute;
+            top: 7%;
+            right: 3%;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+            cursor: pointer;
+            background-image: url("../media/img/cart-icon.png");
+            background-size: 80% 80%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .checkout-cart-button-page-container{
+            position: absolute;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            z-index: 200;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            font-family: "Open Sans", sans-serif;
+            transition: height 1s, opacity 1s;
+            overflow-y: scroll;
+        }
+
+        .cart-item-container{
+            width: 100%;
+            height: 20%;
+            text-align: center;
+            font-size: 20px;
+            color: white;
+            font-family: "Montserrat", sans-serif;
+            line-height: 50px;
+            font-weight: 900;
+            position: relative;
+        }
+
+        .decrease-item-count-button-container, .increase-item-count-button-container{
+            width: 15%;
+            height: 100%;
+            border-radius: 5px;
+            text-align: center;
+            background-color: white;
+            color: black;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: 900;
+            margin: 0 1%;
+        }
+
+        .increase-item-count-button-container{
+
+        }
+
+        .decrease-item-count-button-container{
+
+        }
+
+        .item-name-container{
+            display: inline-block;
+            width: 60%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #submit-cart-for-checkout-button-container, #hide-cart-button-container{
+            color: white;
+            text-align: center;
+            width: 250px;
+            height: 75px;
+            border-radius: 10px;
+            font-size: 20px;
+            line-height: 75px;
+            cursor: pointer;
+            margin: 1% auto;
+        }
+
+        #submit-cart-for-checkout-button-container{
+            background-color: aquamarine;
+        }
+
+        #hide-cart-button-container{
+            background-color: salmon;
+        }
+
+        .payment-options-page-container{    /* page-4-container*/
+            z-index: 300;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: black;
+            transition: height 0.5s, opacity 0.5s;
+        }
+
+        #apple-pay-payment-option-container{
+            background-image: url("../media/img/apple-pay-option-icon.svg");
+            background-size: 140% 60%;
+            background-color: black;
+        }
+
+        .payment-option-container{
+            display: inline-block;
+            width: 95%;
+            height: 46%;
+            margin: 2%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #paypal-payment-option-container{
+            background-image: url("../media/img/paypal-option-button-icon.png");
+            background-size: 60% 60%;
+            background-color: white;
+        }
+
+        .payment-loading-page-container{    /*  page-5-container    */
+            width: 100%;
+            height: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 400;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s, height 0.5s;
+        }
+        #payment-loader-container{
+            background-image: url("../media/img/loading.gif");
+            background-size: 100% 100%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -25px 0 0 -25px;
+            cursor: pointer;
+            transition: background-image 0.5s;
+        }
+
+        #payment-loader-container:hover{
+            background-image: url("../media/img/loading.gif");
         }
     </style>
     <script>
