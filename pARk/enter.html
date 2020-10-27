@@ -4,10 +4,133 @@
     <meta charset="utf-8" />
     <title>Public Augmented Reality Kinectome | v. 1.0.0</title>
     <style>
-
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html, #main-app-container{
+            width: 100%; 
+            height: 100%;
+        }
     </style>
     <script>
+        function initMap() {
+            /* silver spring
+            center: {lat: 38.9907, lng: -77.0261}
+            */
 
+            /* ellicott city
+            center: {lat: 39.249620, lng: -76.836200}
+            */
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 39.249620, lng: -76.836200},
+                zoom: 13,
+                styles: [
+                    {
+                        elementType: 'geometry', 
+                        stylers: [
+                            {color: '#242f3e'},
+                            {visibility: 'on'}
+                        ]
+                    },
+                    {
+                        elementType: 'labels.text.stroke',
+                        stylers: [
+                            {color: '#242f3e'},
+                            {visibility: 'on'}
+                         ]
+                    },
+                    {
+                        elementType: 'labels.text.fill', stylers: [
+                            {color: '#746855'},{visibility: 'on'}
+                        ]
+                    },
+                    {
+                      featureType: 'administrative.locality',
+                      elementType: 'labels.text.fill',
+                      stylers: [
+                          {color: '#ffffff'}, {visibility: 'on'}
+                      ] //#d59563
+                    },
+                    {
+                      featureType: 'poi',
+                      elementType: 'labels',//.text.fill
+                      stylers: [
+                          {color: '#ffffff'}, {visibility: 'off'}
+                      ] //#d59563
+                    },
+                    {
+                      featureType: 'poi.park',
+                      elementType: 'geometry',
+                      stylers: [{color: '#263c3f'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'poi.park',
+                      elementType: 'labels.text.fill',
+                      stylers: [{color: '#6b9a76'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'road',
+                      elementType: 'geometry',
+                      stylers: [{color: '#38414e'}, {visibility: 'on'}]
+                    },
+                    {
+                      featureType: 'road',
+                      elementType: 'geometry.stroke',
+                      stylers: [{color: '#212a37'}, {visibility: 'on'}]
+                    },
+                    {
+                      featureType: 'road',
+                      elementType: 'labels',//.text.fill
+                      stylers: [{color: '#9ca5b3'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'road.highway',
+                      elementType: 'geometry',
+                      stylers: [{color: '#746855'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'road.highway',
+                      elementType: 'geometry.stroke',
+                      stylers: [{color: '#1f2835'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'road.highway',
+                      elementType: 'labels.text.fill',
+                      stylers: [{color: '#f3d19c'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'transit',
+                      elementType: 'geometry',
+                      stylers: [{color: '#2f3948'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'transit.station',
+                      elementType: 'labels',//.text.fill
+                      stylers: [{color: '#ffffff'}, {visibility: 'off'}] //#d59563
+                    },
+                    {
+                      featureType: 'water',
+                      elementType: 'geometry',
+                      stylers: [{color: '#17263c'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'water',
+                      elementType: 'labels.text.fill',
+                      stylers: [{color: '#515c6d'}, {visibility: 'off'}]
+                    },
+                    {
+                      featureType: 'water',
+                      elementType: 'labels.text.stroke',
+                      stylers: [{color: '#17263c'}, {visibility: 'off'}]
+                    }
+                  ]
+            });
+
+            connection.emit("CLIENTconnectToSERVER", {status: true});
+
+        }
     </script>
 </head>
 <body>
@@ -15,6 +138,8 @@
         <div id="user-access-layer-container" class="layer-container upper-layer-container">
         </div>
         <div id="map-layer-container" class="layer-container base-layer-container">
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMto1hIf8DcCvwGyJ1wp9jJhTD4uy8CCI&callback=initMap"
+async defer></script>
         </div>
     </div>
 </body>
