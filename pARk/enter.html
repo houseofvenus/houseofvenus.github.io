@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.3</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.5</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -533,6 +533,216 @@
                   ]
             });
         }
+        
+        var locations = [
+            {
+                position: {
+                    lat: 38.039810,
+                    lng: -84.509540
+                },
+                icon: "../media/img/hov-ig-logo.png",
+                name: "Isabelle's",
+                description: "Wraps, lighters, pods, cups, pongers, you name it we'll bring it to you.",
+                rating: "****4.8",
+                tables: [
+                    {
+                        productName: "Tylenol",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/tylenol.png"
+                    },
+                    {
+                        productName: "PanadoL",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/panadol.png"
+                    },
+                    {
+                        productName: "Tempra",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/tempra.png"
+                    },
+                    {
+                        productName: "Motrin",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/motrin.png"
+                    },
+                    {
+                        productName: "Advil",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/advil.png"
+                    },
+                    {
+                        productName: "Naprosyn",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/naprosyn.png"
+                    }
+                ],
+                menu: {
+                    Item0: {
+                        price: 9.99,
+                        prepTime: 10.5,
+                        description: "item 0 food description"
+                    }
+                }
+            },
+            {   
+                position: {lat: 39.243270, lng: -76.842570},
+                icon: "../media/img/hov-ig-logo.png",
+                name: "Evan Opter's",
+                description: "Your neighborhood grocer with all your essentials: excellent food, drink, and news from the places you want it most.",
+                rating: "****4.5",
+                tables: [
+                    {
+                        productName: "Water",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/water.png"
+                    },
+                    {
+                        productName: "Plantain Chips",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/plantain-chips.png"
+                    },
+                    {
+                        productName: "Bread",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/bread.png"
+                    },
+                    {
+                        productName: "Mandarines",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/mandarine.png"
+                    }
+                ],
+                menu: {
+                    Item1: {
+                        price: 9.99,
+                        prepTime: 10.5,
+                        description: "item 0 food description"
+                    }
+                }
+            },
+            {
+                position: {lat: 39.249620, lng: -76.836200},
+                icon: "../media/img/hov-ig-logo.png",
+                name: "V's Store",
+                description: "pARk storefront for goods distributed by Vaibhav Ponnuri",
+                rating: "N/A",
+                tables: [
+                    {
+                        productName: "Sample 0",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/water.png"
+                    },
+                    {
+                        productName: "Sample 1",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/plantain-chips.png"
+                    },
+                    {
+                        productName: "Sample 2",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/bread.png"
+                    },
+                    {
+                        productName: "Sample 3",
+                        productMetaData: {
+                            thc: 0,
+                            thc: 0,
+                            thc: 0,
+                        },
+                        cover: "../media/img/mandarine.png"
+                    }
+                ],
+                menu: {
+                    Item1: {
+                        price: 9.99,
+                        prepTime: 10.5,
+                        description: "item 0 food description"
+                    }
+                }
+            }
+        ];
+        document.addEventListener("DOMContentLoaded", function(){
+            
+            for(var i=0; i<locations.length; i++){
+            (function(){
+                let currentLocation = {
+                    marker: null,
+                    position: locations[i].position,
+                    icon: locations[i].icon,
+                    name: locations[i].name,
+                    rating: locations[i].rating,
+                    description: locations[i].description,
+                    tables: locations[i].tables
+                };
+
+                currentLocation.marker = new google.maps.Marker({
+                    position: currentLocation.position,
+                    map: map,
+                    icon: {
+                        url: currentLocation.icon,
+                        size: new google.maps.Size(50, 50)
+                    }
+                });
+
+                currentLocation.marker.addListener("click", function(){                            toggleRestaurantInfoPreview(currentLocation.name)
+                });
+
+                //console.log(currentLocation);
+                Restaurants.push(currentLocation);
+            })();
+        })
     </script>
 </head>
 <body>
