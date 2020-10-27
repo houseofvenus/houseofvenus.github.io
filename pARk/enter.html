@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.5</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.6</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -716,33 +716,33 @@
         document.addEventListener("DOMContentLoaded", function(){
             
             for(var i=0; i<locations.length; i++){
-            (function(){
-                let currentLocation = {
-                    marker: null,
-                    position: locations[i].position,
-                    icon: locations[i].icon,
-                    name: locations[i].name,
-                    rating: locations[i].rating,
-                    description: locations[i].description,
-                    tables: locations[i].tables
-                };
+                (function(){
+                    let currentLocation = {
+                        marker: null,
+                        position: locations[i].position,
+                        icon: locations[i].icon,
+                        name: locations[i].name,
+                        rating: locations[i].rating,
+                        description: locations[i].description,
+                        tables: locations[i].tables
+                    };
 
-                currentLocation.marker = new google.maps.Marker({
-                    position: currentLocation.position,
-                    map: map,
-                    icon: {
-                        url: currentLocation.icon,
-                        size: new google.maps.Size(50, 50)
-                    }
-                });
+                    currentLocation.marker = new google.maps.Marker({
+                        position: currentLocation.position,
+                        map: map,
+                        icon: {
+                            url: currentLocation.icon,
+                            size: new google.maps.Size(50, 50)
+                        }
+                    });
 
-                currentLocation.marker.addListener("click", function(){                            toggleRestaurantInfoPreview(currentLocation.name)
-                });
+                    currentLocation.marker.addListener("click", function(){                            toggleRestaurantInfoPreview(currentLocation.name)
+                    });
 
-                //console.log(currentLocation);
-                Restaurants.push(currentLocation);
-            })();
-        })
+                    //console.log(currentLocation);
+                    Restaurants.push(currentLocation);
+                })();
+            }
     </script>
 </head>
 <body>
