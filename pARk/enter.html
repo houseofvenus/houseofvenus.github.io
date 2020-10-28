@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.16</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.17</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -18,6 +18,15 @@
             width: 100%;
             height: 100%;
             display: block;
+        }
+        
+        #instructions-wrapper-container{
+            width: 400px;
+            height: 300px;
+            display: block;
+            margin: 10% auto 0 auto;
+            font-size: 20px;
+            text-align: center;
         }
         
         #user-access-layer-container{
@@ -956,9 +965,11 @@
 <body>
     <div id="main-app-container">
         <div id="user-access-layer-container" class="page-container layer-container upper-layer-container">
-            <p>Instructions</p>
-            <p>The icons represent markers for immersive experiences in your area.</p>
-            <p>Click on an icon to preview the experience and visit the physical site to [experience] it in its entirety.</p>
+            <div id="instructions-wrapper-container">
+                <p>Instructions</p>
+                <p>The icons represent markers for immersive experiences in your area.</p>
+                <p>Click on an icon to preview the experience and visit the physical site to [experience] it in its entirety.</p>
+            </div>
         </div>
         <div id="map" class="layer-container base-layer-container">
         </div>
