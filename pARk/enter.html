@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.12</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.13</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -723,6 +723,88 @@
            console.log("content loaded");
         });
         
+        var pages, buttons;
+        
+        function attachButtonHandlers(){
+            pages = [
+                document.getElementById("user-access-layer-container"),
+                document.getElementById("map"),
+            ];
+
+            buttons = [
+                document.getElementById("see-tables-button-container"),
+                document.getElementById("close-preview-button-container"),
+                document.getElementById("checkout-cart-button-container"),
+                document.getElementById("apple-pay-payment-option-container"),
+                document.getElementById("paypal-payment-option-container")
+            ];
+
+            pages[0].style.opacity = 1.0;
+            pages[0].style.height = "100%";
+            pages[0].style.display = "block";
+
+            pages[0].addEventListener("click", function(){
+                this.style.opacity = "0";
+                this.style.height = "0";
+
+                pages[1].style.display = "block";
+                pages[1].style.height = "100%"
+
+                setTimeout(function(){
+                    pages[0].style.display = "none";
+                }, 500);
+
+                //openFullscreen();
+
+            });
+
+            buttons[1].addEventListener("click", function(){
+                toggleRestaurantInfoPreview(previewOn)
+            });
+
+            buttons[0].addEventListener("click", function(){
+                if(fullViewOpen){
+                    console.log("the view is open already");
+                }
+                else{
+                    pages[2].style.height = "100%";
+
+                    document.getElementById("restaurant-details-menu-container").style.display = "block";
+                    document.getElementById("restaurant-details-menu-container").style.opacity = 1.0;
+
+                    document.getElementById("restaurant-details-menu-container").style.height = "200px";
+                   /* document.getElementById("restaurant-menu-container").style.display = "block";
+                    document.getElementById("restaurant-menu-container").style.opacity = 1.0;*/
+
+                    fullViewOpen = true;
+
+                    //fillLocationMenu();
+                }
+            });
+
+            buttons[2].addEventListener("click", function(){
+                /*pages[3].style.display = "block";
+
+                setTimeout(function(){
+                    pages[3].style.height = "100%";
+                    pages[3].style.opacity = 1.0;
+                }, 50);*/
+                connection.emit("CLIENTrequestCartItemsForCheckoutFromSERVER", {status: true});
+            });
+
+            buttons[3].addEventListener("click", function(){
+                window.open("http://pay.apple.com", "_blank");
+                pages[5].style.height = "100%";
+                pages[5].style.opacity = 1.0;
+            });
+
+            buttons[4].addEventListener("click", function(){
+                window.open("http://paypal.com", "_blank");
+                pages[5].style.height = "100%";
+                pages[5].style.opacity = 1.0;
+            });
+        }
+
         function loadMarkers(){
              for(var i=0; i<locations.length; i++){
                 (function(){
@@ -754,6 +836,111 @@
                 })();
             }
         }
+        
+        function openFullscreen() {
+            let docEl = document.documentElement;
+
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen();
+            } else if (docEl.mozRequestFullScreen) { /* Firefox */
+                docEl.mozRequestFullScreen();
+            } else if (docEl.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                docEl.webkitRequestFullscreen();
+            } else if (docEl.msRequestFullscreen) { /* IE/Edge */
+                docEl.msRequestFullscreen();
+            }
+        }
+
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+              document.msExitFullscreen();
+            }
+        }
+
+        function closePreview(){
+            pages[2].style.height = 0;
+            pages[2].style.opacity = 0;
+
+            setTimeout(function(){
+                pages[2].style.display = "none";
+            }, 500);
+
+            previewOpen = false;
+            previewOn = null;
+        }
+
+        function openPreview(focus){
+            let target = focus;
+            fullViewOn = target;
+
+            pages[2].style.display = "block";
+            setTimeout(function(){
+                pages[2].style.height = "70%";
+                pages[2].style.opacity = 1.0;
+            }, 50)
+
+            var j=0;
+
+            while(j<Restaurants.length&&target!=Restaurants[j].name){
+                j++;
+            }
+
+            document.getElementById("restaurant-logo-container").style.backgroundImage = `url(${Restaurants[j].icon})`;
+
+            document.getElementById("restaurant-name-container").innerHTML = `${Restaurants[j].name}`;
+
+            document.getElementById("restaurant-rating-container").innerHTML = `${Restaurants[j].rating}`;
+
+            document.getElementById("restaurant-description-container").innerHTML = `${Restaurants[j].description}`;
+
+            previewOpen = true;
+            previewOn = target;
+        }
+
+        function toggleRestaurantInfoPreview(focus){
+            let target = focus;
+
+            console.log(`clicked on ${target}`);
+            //console.log(pages);
+            if(previewOn===target){
+                console.log("I am currently on this page so you can toggle it away");
+
+                if(fullViewOpen){
+
+                    pages[2].style.height = "100px";
+
+                    document.getElementById("restaurant-details-menu-container").style.display = "none";
+                    document.getElementById("restaurant-details-menu-container").style.opacity = 0;
+
+                    document.getElementById("restaurant-details-menu-container").style.height = 0;
+                    /*document.getElementById("restaurant-menu-container").style.display = "none";
+                    document.getElementById("restaurant-menu-container").style.opacity = 0;*/
+                    emptyFilledLocation();
+                    fullViewOpen = false;
+                }
+
+                closePreview();
+            }
+            else{
+                if(previewOpen){
+                    closePreview();
+                    setTimeout(function(){
+                        if(previewOn!==target){
+                            openPreview(target);
+                        }
+                    }, 550);
+                }
+                else{
+                    openPreview(target);
+                }
+            }
+        }
     </script>
 </head>
 <body>
@@ -761,6 +948,26 @@
         <div id="user-access-layer-container" class="layer-container upper-layer-container">
         </div>
         <div id="map" class="layer-container base-layer-container">
+        </div>
+        <div id="page-2-container" class="page-container">
+            <div id="restaurant-logo-container"></div>
+            <div id="restaurant-name-container">Restaurant Name</div>
+            <div id="restaurant-rating-container">****4.5</div>
+            <div id="table-seating-chart" class="info-details-container"></div>
+            <div id="restaurant-details-menu-container" class="info-details-container"></div>
+            <div id="restaurant-description-container" class="info-preview-container">Brief description of restaurant/bar</div>
+            <div id="see-tables-button-container" class="info-preview-container">see items</div>
+            <div id="close-preview-button-container">close</div>
+        </div>
+        <div id="page-3-container" class="checkout-cart-button-page-container">
+
+        </div>
+        <div id="page-4-container" class="payment-options-page-container">
+            <div id="apple-pay-payment-option-container" class="payment-option-container"></div>
+            <div id="paypal-payment-option-container" class="payment-option-container"></div>
+        </div>
+        <div id="page-5-container" class="payment-loading-page-container">
+            <div id="payment-loader-container"></div>
         </div>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMto1hIf8DcCvwGyJ1wp9jJhTD4uy8CCI&callback=initMap"
