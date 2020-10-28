@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.7</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.9</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -532,6 +532,8 @@
                     }
                   ]
             });
+            
+            loadMarkers();
         }
         
         var locations = [
@@ -715,7 +717,11 @@
         ];
         document.addEventListener("DOMContentLoaded", function(){
             
-            for(var i=0; i<locations.length; i++){
+           console.log("content loaded");
+        });
+        
+        function loadMarkers(){
+             for(var i=0; i<locations.length; i++){
                 (function(){
                     let currentLocation = {
                         marker: null,
@@ -736,14 +742,15 @@
                         }
                     });
 
-                    currentLocation.marker.addListener("click", function(){                            toggleRestaurantInfoPreview(currentLocation.name)
+                    currentLocation.marker.addListener("click", function(){                   //         toggleRestaurantInfoPreview(currentLocation.name)
+                        console.log("you clicked on a marker");
                     });
 
                     //console.log(currentLocation);
-                    Restaurants.push(currentLocation);
+             //       Restaurants.push(currentLocation);
                 })();
             }
-        });
+        }
     </script>
 </head>
 <body>
