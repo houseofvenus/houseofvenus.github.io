@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.18</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.19</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -802,13 +802,13 @@
                 }
             });
 
-            buttons[2].addEventListener("click", function(){
-                /*pages[3].style.display = "block";
+            /*buttons[2].addEventListener("click", function(){
+                pages[3].style.display = "block";
 
                 setTimeout(function(){
                     pages[3].style.height = "100%";
                     pages[3].style.opacity = 1.0;
-                }, 50);*/
+                }, 50);//
                 connection.emit("CLIENTrequestCartItemsForCheckoutFromSERVER", {status: true});
             });
 
@@ -822,7 +822,7 @@
                 window.open("http://paypal.com", "_blank");
                 pages[5].style.height = "100%";
                 pages[5].style.opacity = 1.0;
-            });
+            });*/
         }
 
         function loadMarkers(){
