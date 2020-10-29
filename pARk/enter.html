@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.24</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.25</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -855,7 +855,8 @@
                         }
                     });
 
-                    currentLocation.marker.addListener("click", function(){                   //         toggleRestaurantInfoPreview(currentLocation.name)
+                    currentLocation.marker.addListener("click", function(){                          
+                        toggleRestaurantInfoPreview(currentLocation.name);
                         console.log("you clicked on a marker");
                     });
 
@@ -975,7 +976,7 @@
     <div id="main-app-container">
         <div id="user-access-layer-container" class="page-container layer-container upper-layer-container">
             <div id="instructions-wrapper-container">
-                <p style="text-align: center; margin-bottom: 5%; font-size: 30px;">Welcome to the pARk!</p>
+                <p style="text-align: center; margin-bottom: 5%; font-size: 30px; font-weight: 900; text-transform: uppercase;">Welcome to the pARk</p>
                 <p style="text-align: left;">The icons represent markers for immersive experiences in your area.</p>
                 <div id="instruction-graphic-0-container" class="instruction-graphic-container"></div>
                 <p style="text-align: left;">Click on an icon to preview the experience and visit the physical site to [experience] it in its entirety.</p>
