@@ -443,6 +443,11 @@
     </style>
     <script>
         var map;
+        var previewOpen = false;
+        var previewOn = null;
+        var fullViewOn = null;
+        var fullViewOpen = false;
+
         function initMap() {
             /* silver spring
             center: {lat: 38.9907, lng: -77.0261}
@@ -757,6 +762,10 @@
             pages = [
                 document.getElementById("user-access-layer-container"),
                 document.getElementById("map"),
+                document.getElementById("page-2-container"),
+                document.getElementById("page-3-container"),
+                document.getElementById("page-4-container"),
+                document.getElementById("page-5-container"),
             ];
 
             buttons = [
