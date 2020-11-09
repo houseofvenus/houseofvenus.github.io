@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Public Augmented Reality Kinectome | v. 1.0.25</title>
+    <title>Public Augmented Reality Kinectome | v. 1.0.28</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
@@ -443,6 +443,7 @@
     </style>
     <script>
         var map;
+        var Restaurants = [];
         var previewOpen = false;
         var previewOn = null;
         var fullViewOn = null;
@@ -870,7 +871,7 @@
                     });
 
                     //console.log(currentLocation);
-             //       Restaurants.push(currentLocation);
+                    Restaurants.push(currentLocation);
                 })();
             }
         }
