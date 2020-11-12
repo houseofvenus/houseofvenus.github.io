@@ -27,7 +27,7 @@ function loadUI(){
     }, 625);    //1250
 
     setTimeout(function(){
-        document.getElementById("background-layer-container").style.opacity = 0.8;
+        document.getElementById("background-layer-container").style.opacity = 1.0; //0.8;
         document.getElementById("main-app-container").style.color = "white";
         /*
         document.getElementById("background-layer-container").style.opacity = 0.4;
