@@ -29,6 +29,8 @@ function loadUI(){
     setTimeout(function(){
         document.getElementById("background-layer-container").style.opacity = 1.0; //0.8;
         document.getElementById("main-app-container").style.color = "white";
+        
+        document.getElementById("background-layer-container").style.backgroundImage = "url(../media/img/BlackMarble_720p.gif)";
         /*
         document.getElementById("background-layer-container").style.opacity = 0.4;
         */
