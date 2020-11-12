@@ -35,8 +35,8 @@ body, html{
     height: 100%;
     z-index: -50;
 
-    background-image: url(../media/img/ar-bg-src.gif);
-    background-size: 120% 120%;
+    background-image: url(../media/img/BlackMarble_720p.gif);
+    background-size: cover cover;
     background-position: center center;
     background-repeat: no-repeat;
 
