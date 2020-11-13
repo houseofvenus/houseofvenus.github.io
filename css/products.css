@@ -123,6 +123,7 @@ body, html{
     background-repeat: no-repeat;
     background-position: center center;
     background-color: rgba(55, 107, 185, 1.0);
+    font-size: 0;
 }
 
 #rushmore-product-icon-container{
@@ -131,7 +132,7 @@ body, html{
     background-repeat: no-repeat;
     background-position: center center;
     border: 2px solid black;
-
+    font-size: 0;
 }
 
 #honeycomb-product-icon-container{
@@ -139,6 +140,7 @@ body, html{
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center center;
+    font-size: 0;
 }
 
 #rooms-product-icon-container, #arnoir-product-icon-container{
