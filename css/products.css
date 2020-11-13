@@ -119,9 +119,10 @@ body, html{
 
 #sia-product-icon-container{
     background-image: url(../media/img/isabelles-icon.png);
-    background-size: 80% 80%;
+    background-size: 80% 50%;
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: rgba(55, 107, 185, 1.0);
 }
 
 #rushmore-product-icon-container{
