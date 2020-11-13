@@ -91,9 +91,9 @@ body, html{
     cursor: pointer;
 }
 
-#products-menu-option-container{
-    font-weight: 900;
+#about-us-menu-option-container{
     text-decoration: underline;
+    font-weight: 900;
 }
 
 #about-us-menu-option-container:hover, #products-menu-option-container:hover,{
