@@ -79,7 +79,7 @@ body, html{
     height: 100px;
     border-radius: 50%;
     cursor: pointer;
-    background-image: url(./media/img/play-button.png);
+    background-image: url(../media/img/play-button.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center center;
