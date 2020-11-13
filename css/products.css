@@ -117,20 +117,25 @@ body, html{
 }
 
 #sia-product-icon-container{
-    background-color: blue;
-}
-
-#honeycomb-product-icon-container{
-    background-color: black;
+    background-image: url(../media/img/pARk-icon.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #rushmore-product-icon-container, #tulse-1-product-icon-container{
-    background-color: red;
+    background-image: url(../media/img/tulse-icon.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
 
 }
 
 #honeycomb-product-icon-container{
-    background-color: blue;
+    background-image: url(../media/img/pARk-icon.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #rooms-product-icon-container, #arnoir-product-icon-container{
