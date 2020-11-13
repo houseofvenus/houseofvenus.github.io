@@ -125,7 +125,7 @@ body, html{
 
 #rushmore-product-icon-container, #tulse-1-product-icon-container{
     background-image: url(../media/img/tulse-icon.png);
-    background-size: 100% 100%;
+    background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center center;
 
