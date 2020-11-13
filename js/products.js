@@ -23,10 +23,6 @@ function loadUI(){
     }, 350);
 
     setTimeout(function(){
-        document.getElementById("tulse-1-product-icon-container").style.opacity = 1.0;
-    }, 125);
-
-    setTimeout(function(){
         hideCorrespondingDescriptionContainer("sia");
         hideCorrespondingDescriptionContainer("honeycomb");
         hideCorrespondingDescriptionContainer("rushmore");

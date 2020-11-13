@@ -113,21 +113,23 @@ body, html{
     font-weight: 900;
     margin: 1% 25px;
     opacity: 0;
+    text-decoration: none;
     transition: opacity 0.5s;
 }
 
 #sia-product-icon-container{
-    background-image: url(../media/img/pARk-icon.png);
-    background-size: 100% 100%;
+    background-image: url(../media/img/isabelles-icon.png);
+    background-size: 80% 80%;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-#rushmore-product-icon-container, #tulse-1-product-icon-container{
+#rushmore-product-icon-container{
     background-image: url(../media/img/tulse-icon.png);
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: center center;
+    border: 2px solid black;
 
 }
 
