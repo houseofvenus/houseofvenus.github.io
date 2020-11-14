@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     document.getElementById("products-menu-option-container").addEventListener("click", function(){
-        window.location.href = "./en";
+        window.location.href = "./products";
     });
 
     document.getElementById("mobile-menu-toggle-button-container").addEventListener("click", function(){
