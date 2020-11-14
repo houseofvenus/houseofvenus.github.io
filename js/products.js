@@ -26,12 +26,7 @@ function loadUI(){
         hideCorrespondingDescriptionContainer("sia");
         hideCorrespondingDescriptionContainer("honeycomb");
         hideCorrespondingDescriptionContainer("rushmore");
-        hideCorrespondingDescriptionContainer("honeycomb");
         hideCorrespondingDescriptionContainer("rooms");
-        hideCorrespondingDescriptionContainer("tulse-1");
-
-        //document.getElementById("sia-product-description-container").
-
 
         document.getElementById("sia-product-description-container").onmouseout = function(){
             hideCorrespondingDescriptionContainer("sia");

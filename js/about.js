@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     document.getElementById("about-us-menu-option-container").addEventListener("click", function(){
-        window.location.href = "./en";
+        window.location.href = "./aboutn";
     });
 
     document.getElementById("products-menu-option-container").addEventListener("click", function(){
